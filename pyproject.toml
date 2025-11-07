@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools>=77.0.3"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "team-10-application"
+version = "0.1.0"
+description = "Web application that will allow users with different disabilities to easily find games that they can enjoy"
+dependencies = [
+    "Django>=5.2.8",
+    "django-cors-headers>=4.9.0"
+]
+
+[tool.setuptools.packages.find]
+where = ["team_10_application"]
+exclude = ["tests*", "env*", "frontend*"]
