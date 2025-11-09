@@ -1,6 +1,0 @@
-Metadata-Version: 2.4
-Name: team-10-application
-Version: 0.1.0
-Summary: Web application that will allow users with different disabilities to easily find games that they can enjoy
-Requires-Dist: Django>=5.2.8
-Requires-Dist: django-cors-headers>=4.9.0
