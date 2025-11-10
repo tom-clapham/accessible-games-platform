@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import './App.css'
 import Home from './Home.jsx'
-import GameProfile from './GameProfile.jsx'
+import GameProfile from './game_profile/GameProfile.jsx'
 
 function App() {
   return (

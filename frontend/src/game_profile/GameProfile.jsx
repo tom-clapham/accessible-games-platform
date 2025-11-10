@@ -2,6 +2,9 @@ import { useEffect, useState} from 'react';
 import { useParams} from 'react-router-dom';
 import axios from 'axios';
 
+import GameThumbnail from './GameThumbnail';
+import GameTrailer from './GameTrailer';
+
 function GameProfile() {
     const {id} = useParams(); // get ID of game from the URL, will change this to name/slug later 
     const [game, setGame] = useState(null);
@@ -28,9 +31,16 @@ function GameProfile() {
 
     return(
         <div>
-            <h1>Game name: {game.name}</h1>
-            <section>Game publisher: {game.publisher}</section>
-            <section>Game description: {game.description}</section>
+            <h1>{game.name}</h1>
+
+            <GameThumbnail url={game.thumbnail_url} name={game.name}/><br/>
+
+            <GameTrailer url={game.trailer_url} name={game.name}/><br/>
+
+            <section>PRICE: £{game.price}</section><br/>
+            <section>PUBLISHER: {game.publisher}</section><br/>
+            <section>RELEASE DATE: {game.release_date}</section><br/>
+            <section>{game.description}</section><br/>
         </div>
     )
 }
