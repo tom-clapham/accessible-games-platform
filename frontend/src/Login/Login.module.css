@@ -4,14 +4,14 @@
     margin: 0;
 }
 
-.logo-picture {
+.logo {
     width: 80px;
     height: 80px;
     border-radius: 200px;
     margin-bottom: 25px;
 }
 
-h1 {
+.signin {
     margin-bottom: 6px;
 }
 
@@ -20,35 +20,35 @@ h1 {
     margin-bottom: 30px;
 }
 
-.create-account-text {
+.create {
     font-size: 14px;
 }
 
-.create-account-text a {
+.create a {
     font-size: 14px;
     color: #115ea3; 
 }
 
-.create-account-text a:hover {
+.create a:hover {
     font-size: 14px;
     color: #2d6ca3; 
     text-decoration: underline;
     cursor: pointer;
 }
 
-label {
+.label {
     font-size: 15px;
     width: 80%;
     margin-bottom: 5px;
 }
 
-.forgot-text {
+.forgot {
     font-weight: 600;
     margin-bottom: 30px;
     color: #115ea3;
 }
 
-.forgot-text a:hover {
+.forgot a:hover {
     font-weight: 600;
     margin-bottom: 30px;
     color: #2d6ca3; 
@@ -56,7 +56,7 @@ label {
     cursor: pointer;
 }
 
-input {
+.input {
     width: 80%;
     margin-bottom: 5px;
     height: 30px;
@@ -64,7 +64,7 @@ input {
     padding-left: 5px;
 }
 
-button {
+.button {
     width: 83%;
     padding: 8px 30px;
     border: #115ea3;
@@ -76,7 +76,7 @@ button {
     cursor: pointer;
 }
 
-.input-container {
+.container {
     display: flex;
     align-items: center;
     justify-content: center;  
@@ -96,7 +96,7 @@ button {
     margin: 30px;
 }
 
-.form-elements {
+.elements {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -111,14 +111,14 @@ button {
     border: none;    
   }
 
-  .logo-picture {
+  .logo {
     width: 80px;
     height: 80px;
     border-radius: 200px;
     margin-bottom: 25px;
   }
 
-  input {
+  .input {
     width: 80%;
     margin-bottom: 5px;
     height: 30px;
@@ -126,13 +126,13 @@ button {
     padding-left: 5px;
   }
 
-  label {
+  .label {
     font-size: 15px;
     width: 80%;
     margin-bottom: 5px;
   }
 
-  button {
+  .button {
     width: 83%;
     padding: 8px 30px;
     border: #115ea3;
@@ -149,18 +149,18 @@ button {
     margin-bottom: 30px;
   }
 
-  .create-account-text, .create-account-text a {
+  .create, .create a {
     font-size: 14px;
   }
 
-  .create-account-text a:hover {
+  .create a:hover {
     font-size: 14px;
     color: #2d6ca3; 
     text-decoration: underline;
     cursor: pointer;
 }
 
-  .forgot-text {
+  .forgot {
     font-weight: 600;
     margin-bottom: 30px;
     color: #115ea3;

@@ -1,0 +1,127 @@
+* {
+    font-family: sans-serif;
+    padding: 0;
+    margin: 0;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    border: 2px solid black;
+    border-radius: 20px;
+    width: 20%;
+    padding: 25px;
+    min-width: 425px;
+    margin: 30px;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;  
+    align-items: center;      
+    height: 100vh;
+}
+
+.h1 {
+    margin-top:17px;
+    margin-bottom: 15px;
+    margin-left: 14px;
+    font-size: 20px;
+}
+
+.subtext {
+    margin-left: 14px;
+    margin-bottom: 25px;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.dob {
+    margin-left: 14px;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.error {
+    color: #fff;
+    font-weight: 500;
+    background-color: #86131dce;
+    margin-left: 14px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    padding-left: 5px;
+    font-size: 14px;
+    margin-right: 14px;
+    display: flex;
+    align-items: center;
+
+}
+
+.warning {
+    width: 7%;
+    height: 7%;
+    padding-left: 15px;
+    padding-right: 10px;
+}
+
+.dropdown {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 5px;
+    margin-bottom: 27px;
+}
+
+.day {
+    margin-left: 14px;
+}
+
+.year {
+    margin-right: 14px;
+}
+
+.day, .month, .year {
+    width: 27%;
+    padding: 8px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.continue {
+    margin-right: 14px;
+    margin-left: 14px;
+    padding: 8px;
+    border-radius: 10px;
+    border: none;
+    color: #fff;
+    background-color: #242424;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+.account {
+    font-size: 14px;
+}
+
+.account a {
+    font-size: 14px;
+    color: #115ea3; 
+}
+
+.account a:hover {
+    font-size: 14px;
+    color: #2d6ca3; 
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.accountContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
