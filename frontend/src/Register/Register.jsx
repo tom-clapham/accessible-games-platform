@@ -58,6 +58,34 @@ const Register = () => {
                 <h3 className={styles.or}>or</h3>
             </div>
         </div>
+        <div className={styles.form3}>
+            <a className={styles.back}>Back</a>
+            <h1 className={styles.h1}>Create your account</h1>
+            <label className={styles.emailL}>Email address</label>
+            <input className={styles.emailI} type='email' placeholder='Type your email address'></input>
+
+            <div className={styles.names}>
+                <div className={styles.firstContainer}>
+                    <label className={styles.firstL}>First Name</label>
+                    <input className={styles.firstI} type='text' placeholder='Type your first name'></input>
+                </div>
+                <div className={styles.lastContainer}>
+                    <label className={styles.lastL}>Last Name</label>
+                    <input className={styles.lastI} type='text' placeholder='Type your last name'></input>
+                </div>
+            </div>
+
+            <label className={styles.userL}>Choose your username</label>
+            <input className={styles.userI} type='text' placeholder='Type a username'></input>
+
+            <label className={styles.passwordL}>Choose your password</label>
+            <input className={styles.passwordI} type='password' placeholder='Type a password'></input>
+
+            <label className={styles.passwordL}>Re-type your password</label>
+            <input className={styles.passwordI} type='password' placeholder='Re-type your password'></input>
+
+            <button className={styles.continue3} type="button">Continue</button>
+        </div>
     </form>
   )
 }
