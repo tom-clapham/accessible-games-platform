@@ -9,7 +9,7 @@ const Register = () => {
 
   return (
     <form className={styles.container}>
-        <div className={styles.form}>
+        <div className={styles.form1}>
             <h1 className={styles.h1}>Create an account</h1>
             <h3 className={styles.subtext}>Please enter your date of birth. This is to help you have a safe and fun experience no matter your age. </h3>
             <div className={styles.elements}>
@@ -46,6 +46,16 @@ const Register = () => {
             <button className={styles.continue} type="button">Continue</button>
             <div className={styles.accountContainer}>
                 <h3 className={styles.account}>Already have an account? <a>Sign in</a></h3>
+            </div>
+        </div>
+        <div className={styles.form2}>
+            <a className={styles.back}>Back</a>
+            <h1 className={styles.h1}>What's your email?</h1>
+            <label className={styles.emailLabel}>Email address</label>
+            <input className={styles.email} type='email' placeholder='Type your email address'></input>
+            <button className={styles.continue} type="button">Continue</button>
+            <div className={styles.orContainer}>
+                <h3 className={styles.or}>or</h3>
             </div>
         </div>
     </form>
