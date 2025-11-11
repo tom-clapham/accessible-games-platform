@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     'threads',
 ]
 
+AUTH_USER_MODEL = 'threads.CustomUser'
+
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
