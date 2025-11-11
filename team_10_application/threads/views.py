@@ -1,10 +1,10 @@
 from django.shortcuts import render
-# from django.db import connection
+from django.db.models import F
 from rest_framework import generics, status
 from rest_framework.response import Response
-from rest_framework.views import APIView
-from . models import Posts
-from . serializer import PostsSerializer
+from rest_framework.decorators import api_view
+from . models import *
+from . serializer import *
 from django.http import JsonResponse
 
 class PostsListCreate(generics.ListCreateAPIView): # This is a class based view
@@ -15,15 +15,34 @@ class PostsListCreate(generics.ListCreateAPIView): # This is a class based view
     #     Reviews.objects.all().delete()
     #     return Response(status=status.HTTP_204_NO_CONTENT)
 
-class PostsRUD(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Posts.objects.all()
-    serializer_class = PostsSerializer
-    lookup_field = "pk"
+# class PostsRUD(generics.RetrieveUpdateDestroyAPIView):
+#     queryset = Posts.objects.all()
+#     serializer_class = PostsSerializer
+#     lookup_field = "pk"
 
-def getFirstPost(request):
-    for vals in Posts.objects.raw("SELECT id, gameId FROM threads_posts WHERE id in (SELECT postId_id FROM threads_parents WHERE gameId = 1)"):
-        print(vals.userId)
-    
-    return JsonResponse({
-        "everything": "Hello"
+class ParentsListCreate(generics.ListCreateAPIView):
+    queryset = Parents.objects.all()
+    serializer_class = ParentsSerializer
+
+@api_view()
+def getFirstPost(request, pk):
+    post_id = pk
+    print(request.data)
+    posts = (
+        Posts.objects
+        .select_related('userId')
+        .filter(parents__isnull=False, id=post_id)
+        .values(
+            'id',
+            'title',
+            'message',
+            'date',
+            firstname=F('userId__firstname'),
+            surname=F('userId__surname'),
+            username=F('userId__username')
+        )
+    )
+
+    return Response({
+        "starters": posts
     })
