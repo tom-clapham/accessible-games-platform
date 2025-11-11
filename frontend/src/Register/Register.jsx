@@ -69,7 +69,7 @@ const Register = () => {
                     <label className={styles.firstL}>First Name</label>
                     <input className={styles.firstI} type='text' placeholder='Type your first name'></input>
                 </div>
-                <div className={styles.lastContainer}>
+                <div className={styles.lastContainer}>cd
                     <label className={styles.lastL}>Last Name</label>
                     <input className={styles.lastI} type='text' placeholder='Type your last name'></input>
                 </div>
