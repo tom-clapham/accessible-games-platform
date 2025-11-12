@@ -13,8 +13,11 @@ team_10_application/team_10_application.egg-info/top_level.txt
 team_10_application/threads/__init__.py
 team_10_application/threads/admin.py
 team_10_application/threads/apps.py
+team_10_application/threads/authentication.py
 team_10_application/threads/models.py
+team_10_application/threads/serializer.py
 team_10_application/threads/tests.py
 team_10_application/threads/urls.py
 team_10_application/threads/views.py
+team_10_application/threads/migrations/0001_initial.py
 team_10_application/threads/migrations/__init__.py

@@ -69,7 +69,7 @@ const Register = () => {
                     <label className={styles.firstL}>First Name</label>
                     <input className={styles.firstI} type='text' placeholder='Type your first name'></input>
                 </div>
-                <div className={styles.lastContainer}>cd
+                <div className={styles.lastContainer}>
                     <label className={styles.lastL}>Last Name</label>
                     <input className={styles.lastI} type='text' placeholder='Type your last name'></input>
                 </div>
@@ -85,6 +85,19 @@ const Register = () => {
             <input className={styles.passwordI} type='password' placeholder='Re-type your password'></input>
 
             <button className={styles.continue3} type="button">Continue</button>
+        </div>
+        <div className={styles.form4}>
+            <a className={styles.back}>Back</a>
+            <h1 className={styles.h1}>Your accessibility settings</h1>
+            <h3 className={styles.subtext}>Please tick all that apply to you. This is to help us provide you with the best possible experience.</h3>
+            <ul className={styles.impairmentsList}>
+                <li><button className={styles.visual}>Visual Impairments</button></li>
+                <li><button className={styles.dexterity}>Dexterity Impairments</button></li>
+                <li><button className={styles.speech}>Speech Impairments</button></li>
+                <li><button className={styles.hearing}>Hearing Impairments</button></li>
+                <li><button className={styles.cognitive}>Cognitive Impairments</button></li>
+            </ul>
+            <button className={styles.continue4} type="button">Continue</button>
         </div>
     </form>
   )

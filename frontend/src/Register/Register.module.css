@@ -4,7 +4,7 @@
     margin: 0;
 }
 
-.form1 {
+.form1, .form2, .form3, .form4 {
     display: flex;
     flex-direction: column;
     align-items: left;
@@ -14,32 +14,18 @@
     padding: 25px;
     min-width: 425px;
     margin: 30px;
+}
+
+.form1 {
     display: none;
 }
 
 .form2 {
-    display: flex;
-    flex-direction: column;
-    align-items: left;
-    border: 2px solid black;
-    border-radius: 20px;
-    width: 20%;
-    padding: 25px;
-    min-width: 425px;
-    margin: 30px;
     display: none;
 }
 
 .form3 {
-    display: flex;
-    flex-direction: column;
-    align-items: left;
-    border: 2px solid black;
-    border-radius: 20px;
-    width: 20%;
-    padding: 25px;
-    min-width: 425px;
-    margin: 30px;
+    display: none;
 }
 
 .container {
@@ -62,6 +48,7 @@
     margin-bottom: 25px;
     font-size: 15px;
     font-weight: 500;
+    margin-right: 14px;
 }
 
 .dob, .back {
@@ -196,7 +183,7 @@
     margin-left: 14px;
 }
 
-.continue3 {
+.continue3, .continue4 {
     margin-right: 14px;
     margin-left: 14px;
     padding: 8px;
@@ -222,4 +209,45 @@
 
 .lastI, .firstI {
     margin-top: 5px;
+}
+
+.impairmentsList {
+    display: flex;
+    list-style: none;
+    flex-direction: column;
+    align-items: center;
+    justify-self: center;
+    margin-bottom: 15px;
+    margin-right: 14px;
+    margin-left: 14px;
+}
+
+.impairmentsList li {
+    width: 100%;
+}
+
+.visual, .dexterity, .speech, .hearing, .cognitive {
+    display: flex;
+    justify-content: center;
+    border-radius: 10px;
+    border: 1px solid black;
+    background-color: #d7d7d7;
+    cursor: pointer;
+    margin-bottom: 10px;
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.visual:hover, .dexterity:hover, .speech:hover, .hearing:hover, .cognitive:hover {
+    display: flex;
+    justify-content: center;
+    border-radius: 10px;
+    border: 1px solid black;
+    background-color: #919090;
+    cursor: pointer;
+    margin-bottom: 10px;
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
