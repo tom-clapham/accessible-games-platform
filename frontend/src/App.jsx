@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import './App.css'
 import Home from './Home.jsx'
-import Discover from './Discover.jsx'
+import Discover from './discover/Discover.jsx'
 
 function App() {
   return (

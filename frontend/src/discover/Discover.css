@@ -1,0 +1,45 @@
+.carousel {
+    display: block;
+    width: 80%;
+    margin: auto;
+    overflow-x: auto;
+    white-space: nowrap; 
+    padding: 1vh 0;
+    
+}
+
+.game_card {
+    display: inline-block; 
+    width: 20vw;           
+    min-width: 200px;
+    margin-right: 1vw;    
+    vertical-align: top;   
+    background-color: #222;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.thumbnail {
+    width: 100%;
+    aspect-ratio: 16/9;
+}
+
+.thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.card_info {
+    width: 100%;
+    background-color: black;
+    color: white;
+    padding: 1vh 1vw;
+    box-sizing: border-box;
+    line-height: 1vh;
+    font-family: 'Arial', sans-serif;
+    font-size: clamp(12px, 1.2vw, 13px);
+    min-width: 30px;
+    
+}
