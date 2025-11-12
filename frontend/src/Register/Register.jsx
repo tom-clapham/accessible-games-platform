@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import styles from './Register.module.css';
-import Warning from '../assets/warning.png'
+import Warning from '../assets/warning.png';
+import { addGenre } from './Register';
 
 
 const Register = () => {
@@ -90,7 +91,7 @@ const Register = () => {
             <a className={styles.back}>Back</a>
             <h1 className={styles.h1}>Your accessibility settings</h1>
             <h3 className={styles.subtext}>Please tick all that apply to you. This is to help us provide you with the best possible experience.</h3>
-            <ul className={styles.impairmentsList}>
+            <ul className={styles.impairments}>
                 <li><button className={styles.visual}>Visual Impairments</button></li>
                 <li><button className={styles.dexterity}>Dexterity Impairments</button></li>
                 <li><button className={styles.speech}>Speech Impairments</button></li>
@@ -98,6 +99,25 @@ const Register = () => {
                 <li><button className={styles.cognitive}>Cognitive Impairments</button></li>
             </ul>
             <button className={styles.continue4} type="button">Continue</button>
+        </div>
+        <div className={styles.form5}>
+            <a className={styles.back}>Back</a>
+            <h1 className={styles.h1}>Your favourite genres</h1>
+            <h3 className={styles.subtext}>Select all games genres that you enjoy playing.</h3>
+            <ul className={styles.selectedGenres}></ul>
+            <hr className={styles.line}/>
+            <ul className={styles.genres}>
+                <li><button className={styles.genre} id='Action' type='button' onClick={(e) => addGenre(e.target.id)}>Action</button></li>
+                <li><button className={styles.genre} id='Adventure' type='button' onClick={(e) => addGenre(e.target.id)}>Adventure</button></li>
+                <li><button className={styles.genre} id='Puzzle' type='button' onClick={(e) => addGenre(e.target.id)}>Puzzle</button></li>
+                <li><button className={styles.genre} id='Simulation' type='button' onClick={(e) => addGenre(e.target.id)}>Simulation</button></li>
+                <li><button className={styles.genre} id='Sport' type='button' onClick={(e) => addGenre(e.target.id)}>Sport</button></li>
+                <li><button className={styles.genre} id='Shooter' type='button' onClick={(e) => addGenre(e.target.id)}>Shooter</button></li>
+                <li><button className={styles.genre} id='RPG' type='button' onClick={(e) => addGenre(e.target.id)}>RPG</button></li>
+                <li><button className={styles.genre} id='Horror' type='button' onClick={(e) => addGenre(e.target.id)}>Horror</button></li>
+                <li><button className={styles.genre} id='Educational' type='button' onClick={(e) => addGenre(e.target.id)}>Educational</button></li>
+            </ul>
+            <button className={styles.continue5} type="button">Continue</button>
         </div>
     </form>
   )

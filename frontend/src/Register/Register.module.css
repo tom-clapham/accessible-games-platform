@@ -4,7 +4,7 @@
     margin: 0;
 }
 
-.form1, .form2, .form3, .form4 {
+.form1, .form2, .form3, .form4, .form5 {
     display: flex;
     flex-direction: column;
     align-items: left;
@@ -25,6 +25,10 @@
 }
 
 .form3 {
+    display: none;
+}
+
+.form4 {
     display: none;
 }
 
@@ -183,7 +187,7 @@
     margin-left: 14px;
 }
 
-.continue3, .continue4 {
+.continue3, .continue4, .continue5 {
     margin-right: 14px;
     margin-left: 14px;
     padding: 8px;
@@ -193,7 +197,7 @@
     background-color: #242424;
     cursor: pointer;
     margin-bottom: 10px;
-    margin-top: 10px;
+    margin-top: 20px;
 }
 
 .names {
@@ -222,7 +226,7 @@
     margin-left: 14px;
 }
 
-.impairmentsList li {
+.impairments li {
     width: 100%;
 }
 
@@ -250,4 +254,46 @@
     width: 100%;
     padding-top: 10px;
     padding-bottom: 10px;
+}
+
+.genres {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px; /* space between items */
+  list-style: none; /* remove bullets */
+  padding: 0;
+  margin-right: 14px;
+  margin-left: 14px;
+}
+
+.genres li {
+  flex: 1 1 calc(33.333% - 20px);
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center; 
+}
+
+.genre {
+  width: 100%; 
+  padding: 20px 10px;
+  border-radius: 10px;
+  border: 1px solid black;
+  background-color: #d7d7d7;
+  cursor: pointer;
+}
+
+.genre:hover {
+  width: 100%; 
+  padding: 20px 10px;
+  border-radius: 10px;
+  border: 1px solid black;
+  background-color: #919090;
+  cursor: pointer;
+}
+
+.line {
+    border: '1px solid #ccc';
+    margin: '20px 0';
+    margin: 15px 14px;
+
 }
