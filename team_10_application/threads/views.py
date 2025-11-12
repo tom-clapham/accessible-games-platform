@@ -25,18 +25,17 @@ class ParentsListCreate(generics.ListCreateAPIView):
     serializer_class = ParentsSerializer
 
 @api_view()
-def getFirstPost(request, pk):
-    post_id = pk
-    print(request.data)
+def getFirstPost(request, game_id):
     posts = (
         Posts.objects
         .select_related('userId')
-        .filter(parents__isnull=False, id=post_id)
+        .filter(parents__isnull=False, gameId=game_id)
         .values(
             'id',
             'title',
             'message',
             'date',
+            'gameId',
             firstname=F('userId__firstname'),
             surname=F('userId__surname'),
             username=F('userId__username')
@@ -44,5 +43,5 @@ def getFirstPost(request, pk):
     )
 
     return Response({
-        "starters": posts
+        "parents": posts
     })

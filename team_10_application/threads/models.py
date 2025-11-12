@@ -22,7 +22,6 @@ class Posts(models.Model):
         return self.title
     
 class Parents(models.Model):
-    gameId = models.IntegerField(default=1) # THIS MUST CHANGE TO FOREIGN KEY EVENTUALLY
     postId = models.ForeignKey(Posts, on_delete=models.CASCADE)
 
     def __str__(self):

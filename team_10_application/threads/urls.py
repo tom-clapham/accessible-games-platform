@@ -4,5 +4,5 @@ from . import views
 urlpatterns = [
     path("reviews/", views.PostsListCreate.as_view(), name="review-view-read"),
     # path("reviews/<int:pk>/", views.PostsRUD.as_view(), name="crud"),
-    path("reviews/<int:pk>/", views.getFirstPost, name='test'),
+    path("reviews/<int:game_id>/", views.getFirstPost, name='test'),
 ]
