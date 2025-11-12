@@ -103,19 +103,19 @@ const Register = () => {
         <div className={styles.form5}>
             <a className={styles.back}>Back</a>
             <h1 className={styles.h1}>Your favourite genres</h1>
-            <h3 className={styles.subtext}>Select all games genres that you enjoy playing.</h3>
-            <ul className={styles.selectedGenres}></ul>
+            <h3 className={styles.h3}>Select all games genres that you enjoy playing.</h3>
+            <ul id='selectedGenres' className={styles.selectedGenres}></ul>
             <hr className={styles.line}/>
             <ul className={styles.genres}>
-                <li><button className={styles.genre} id='Action' type='button' onClick={(e) => addGenre(e.target.id)}>Action</button></li>
-                <li><button className={styles.genre} id='Adventure' type='button' onClick={(e) => addGenre(e.target.id)}>Adventure</button></li>
-                <li><button className={styles.genre} id='Puzzle' type='button' onClick={(e) => addGenre(e.target.id)}>Puzzle</button></li>
-                <li><button className={styles.genre} id='Simulation' type='button' onClick={(e) => addGenre(e.target.id)}>Simulation</button></li>
-                <li><button className={styles.genre} id='Sport' type='button' onClick={(e) => addGenre(e.target.id)}>Sport</button></li>
-                <li><button className={styles.genre} id='Shooter' type='button' onClick={(e) => addGenre(e.target.id)}>Shooter</button></li>
-                <li><button className={styles.genre} id='RPG' type='button' onClick={(e) => addGenre(e.target.id)}>RPG</button></li>
-                <li><button className={styles.genre} id='Horror' type='button' onClick={(e) => addGenre(e.target.id)}>Horror</button></li>
-                <li><button className={styles.genre} id='Educational' type='button' onClick={(e) => addGenre(e.target.id)}>Educational</button></li>
+                <li><button id='Action' type='button' onClick={(e) => addGenre(e.target.id)}>Action</button></li>
+                <li><button id='Adventure' type='button' onClick={(e) => addGenre(e.target.id)}>Adventure</button></li>
+                <li><button id='Puzzle' type='button' onClick={(e) => addGenre(e.target.id)}>Puzzle</button></li>
+                <li><button id='Simulation' type='button' onClick={(e) => addGenre(e.target.id)}>Simulation</button></li>
+                <li><button id='Sport' type='button' onClick={(e) => addGenre(e.target.id)}>Sport</button></li>
+                <li><button id='Shooter' type='button' onClick={(e) => addGenre(e.target.id)}>Shooter</button></li>
+                <li><button id='RPG' type='button' onClick={(e) => addGenre(e.target.id)}>RPG</button></li>
+                <li><button id='Horror' type='button' onClick={(e) => addGenre(e.target.id)}>Horror</button></li>
+                <li><button id='Educational' type='button' onClick={(e) => addGenre(e.target.id)}>Educational</button></li>
             </ul>
             <button className={styles.continue5} type="button">Continue</button>
         </div>

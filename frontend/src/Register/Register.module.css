@@ -259,8 +259,8 @@
 .genres {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px; /* space between items */
-  list-style: none; /* remove bullets */
+  gap: 20px;
+  list-style: none; 
   padding: 0;
   margin-right: 14px;
   margin-left: 14px;
@@ -273,7 +273,7 @@
   justify-content: center; 
 }
 
-.genre {
+.genres button {
   width: 100%; 
   padding: 20px 10px;
   border-radius: 10px;
@@ -282,7 +282,7 @@
   cursor: pointer;
 }
 
-.genre:hover {
+.genres button:hover {
   width: 100%; 
   padding: 20px 10px;
   border-radius: 10px;
@@ -296,4 +296,42 @@
     margin: '20px 0';
     margin: 15px 14px;
 
+}
+
+.selectedGenres {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  list-style: none;
+  margin-left: 14px;
+  margin-right: 14px;
+}
+
+.selectedGenres li {
+  display: flex;
+  flex-direction: row;
+  align-items: center; 
+  justify-content: space-between;
+  max-width: 29%;
+  box-sizing: border-box;
+  border-radius: 3px;
+  border: 1px solid black;
+  background-color: #d7d7d7;
+  padding-left: 5px;
+  font-size: 13px;
+}
+
+.remove {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+.h3 {
+    margin-left: 14px;
+    margin-bottom: 15px;
+    font-size: 15px;
+    font-weight: 500;
+    margin-right: 14px;
 }
