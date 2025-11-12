@@ -4,6 +4,9 @@ import axios from 'axios';
 
 import GameThumbnail from './GameThumbnail';
 import GameTrailer from './GameTrailer';
+import GameTag from './GameTag';
+
+import "./game_profile_styles.css";
 
 function GameProfile() {
     const {id} = useParams(); // get ID of game from the URL, will change this to name/slug later 
@@ -41,6 +44,27 @@ function GameProfile() {
             <section>PUBLISHER: {game.publisher}</section><br/>
             <section>RELEASE DATE: {game.release_date}</section><br/>
             <section>{game.description}</section><br/>
+
+            <h2>Accessibility tags</h2>
+            <div className="tag_container">
+                {game.accessibility_tags?.map((name) => (
+                    <GameTag name={name}/>
+                ))}
+            </div>
+
+            <h2>Genres</h2>
+            <div className="tag_container">
+                {game.genre_tags?.map((name) => (
+                    <GameTag name={name}/>
+                ))}
+            </div>
+
+            <h2>Platforms</h2>
+            <div className="tag_container">
+                {game.platform_tags?.map((name) => (
+                    <GameTag name={name}/>
+                ))}
+            </div>
         </div>
     )
 }
