@@ -16,13 +16,9 @@ class Posts(models.Model):
     message = models.CharField(max_length=500)
     date = models.DateTimeField(auto_now_add=True)
     gameId = models.IntegerField(default=1) # THIS MUST CHANGE TO FOREIGN KEY EVENTUALLY
-    userId = models.ForeignKey(Users, on_delete=models.CASCADE, default=1) # THIS MUST CHANGE TO FOREIGN KEY EVENTUALLY
+    userId = models.ForeignKey(Users, on_delete=models.CASCADE, default=1)
+    parent = models.IntegerField(null=True) # THIS MUST CHANGE TO FOREIGN KEY EVENTUALLY
 
     def __str__(self):
         return self.title
     
-class Parents(models.Model):
-    postId = models.ForeignKey(Posts, on_delete=models.CASCADE)
-
-    def __str__(self):
-        return f"{self.postId} for 'game': {self.gameId}"

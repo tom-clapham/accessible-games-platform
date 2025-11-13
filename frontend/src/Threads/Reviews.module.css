@@ -5,3 +5,20 @@
     justify-content: center;
     height: 100vh;
 }
+
+.postBox {
+    display: flex;
+    flex-direction: column;
+    border-style: solid;
+    border-color: hsl(0, 0%, 1%);
+    border-radius: 5px;
+    border-width: 2px;
+    margin-bottom: 5px;
+    padding: 10px;
+}
+
+.postStats {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}

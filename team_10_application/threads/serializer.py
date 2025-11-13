@@ -10,8 +10,3 @@ class PostsSerializer(serializers.ModelSerializer):
             'gameId': {"write_only": True}
                     }
         
-class ParentsSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Parents
-        fields = ['gameId', 'postId']
-        # extra_kwargs
