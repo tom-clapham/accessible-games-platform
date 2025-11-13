@@ -19,14 +19,24 @@ const Login = () => {
       if(success){
         if (window.opener) {
           window.opener.location.href = '/';
+          window.close();
+        } else {
+          nav('/')
         }
-        window.close();
-
       } else {
         setError(true);
         nav('/login');
       }
     }
+
+  const handleRegister = () => {
+    if (window.opener) {
+          window.opener.location.href = '/register';
+          window.close();
+        } else {
+          nav('/register');
+        }
+  }
 
   return (
     <form className={styles.container}>
@@ -48,7 +58,7 @@ const Login = () => {
               </div> 
             )}
             <button className={styles.button} type="button" onClick={handleLogin}>Sign in</button>
-            <h3 className={styles.create}>New to us? <a>Create an account</a></h3> 
+            <h3 className={styles.create}>New to us? <a onClick={handleRegister}>Create an account</a></h3> 
         </div>
     </form>
   )

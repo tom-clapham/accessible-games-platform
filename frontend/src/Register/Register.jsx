@@ -1,16 +1,27 @@
 import React, {useState} from 'react';
 import styles from './Register.module.css';
 import Warning from '../assets/warning.png';
-import { addGenre } from './Register';
-
+import { addGenre, addAccessibility } from './Register';
+import { useNavigate } from 'react-router-dom';
 
 const Register = () => {
   const [day, setDay] = useState("");
   const [month, setMonth] = useState("");
+  const [stage, setStage] = useState("1");
+  const nav = useNavigate();
+
+  const handleLogin = () => {
+    if (window.opener) {
+        window.opener.location.href = '/login';
+        window.close();
+    } else {
+        nav('/login')
+    }
+  }
 
   return (
     <form className={styles.container}>
-        <div className={styles.form1}>
+        {stage == '1' && (<div className={styles.form1}>
             <h1 className={styles.h1}>Create an account</h1>
             <h3 className={styles.subtext}>Please enter your date of birth. This is to help you have a safe and fun experience no matter your age. </h3>
             <div className={styles.elements}>
@@ -44,23 +55,25 @@ const Register = () => {
                     <input className={styles.year} type='text' placeholder='Year'></input>
                 </div>
             </div>
-            <button className={styles.continue} type="button">Continue</button>
+            <button className={styles.continue} type="button" onClick={() => {setStage("2")}}>Continue</button>
             <div className={styles.accountContainer}>
-                <h3 className={styles.account}>Already have an account? <a>Sign in</a></h3>
+                <h3 className={styles.account}>Already have an account? <a onClick={handleLogin}>Sign in</a></h3>
             </div>
         </div>
-        <div className={styles.form2}>
-            <a className={styles.back}>Back</a>
+        )}
+        {stage == "2" &&(<div className={styles.form2}>
+            <a className={styles.back} onClick={() => {setStage("1"); next(stage)}}>Back</a>
             <h1 className={styles.h1}>What's your email?</h1>
             <label className={styles.emailLabel}>Email address</label>
             <input className={styles.email} type='email' placeholder='Type your email address'></input>
-            <button className={styles.continue} type="button">Continue</button>
+            <button className={styles.continue2} type="button" onClick={() => {setStage("3")}}>Continue</button>
             <div className={styles.orContainer}>
                 <h3 className={styles.or}>or</h3>
             </div>
         </div>
-        <div className={styles.form3}>
-            <a className={styles.back}>Back</a>
+        )}
+        {stage == "3" &&(<div className={styles.form3}>
+            <a className={styles.back} onClick={() => {setStage("2")}}>Back</a>
             <h1 className={styles.h1}>Create your account</h1>
             <label className={styles.emailL}>Email address</label>
             <input className={styles.emailI} type='email' placeholder='Type your email address'></input>
@@ -85,27 +98,28 @@ const Register = () => {
             <label className={styles.passwordL}>Re-type your password</label>
             <input className={styles.passwordI} type='password' placeholder='Re-type your password'></input>
 
-            <button className={styles.continue3} type="button">Continue</button>
+            <button className={styles.continue3} type="button" onClick={() => {setStage("4")}}>Continue</button>
         </div>
-        <div className={styles.form4}>
-            <a className={styles.back}>Back</a>
+        )}
+        {stage == "4" &&(<div className={styles.form4}>
+            <a className={styles.back} onClick={() => {setStage("3")}}>Back</a>
             <h1 className={styles.h1}>Your accessibility settings</h1>
             <h3 className={styles.subtext}>Please tick all that apply to you. This is to help us provide you with the best possible experience.</h3>
             <ul className={styles.impairments}>
-                <li><button className={styles.visual}>Visual Impairments</button></li>
-                <li><button className={styles.dexterity}>Dexterity Impairments</button></li>
-                <li><button className={styles.speech}>Speech Impairments</button></li>
-                <li><button className={styles.hearing}>Hearing Impairments</button></li>
-                <li><button className={styles.cognitive}>Cognitive Impairments</button></li>
+                <li><button id='Visual' type='button' className={styles.visual} onClick={(e) => addAccessibility(e.target.id, e.target.value)}>Visual Impairments</button></li>
+                <li><button id='Dexterity' type='button' className={styles.dexterity} onClick={(e) => addAccessibility(e.target.id, e.target.value)}>Dexterity Impairments</button></li>
+                <li><button id='Speech' type='button' className={styles.speech} onClick={(e) => addAccessibility(e.target.id, e.target.value)}>Speech Impairments</button></li>
+                <li><button id='Hearing' type='button' className={styles.hearing} onClick={(e) => addAccessibility(e.target.id, e.target.value)}>Hearing Impairments</button></li>
+                <li><button id='Cognitive' type='button' className={styles.cognitive} onClick={(e) => addAccessibility(e.target.id, e.target.value)}>Cognitive Impairments</button></li>
             </ul>
-            <button className={styles.continue4} type="button">Continue</button>
+            <button className={styles.continue4} type="button" onClick={() => {setStage("5")}}>Continue</button>
         </div>
-        <div className={styles.form5}>
-            <a className={styles.back}>Back</a>
+        )}
+        {stage == "5" &&(<div className={styles.form5}>
+            <a className={styles.back} onClick={() => {setStage("4")}}>Back</a>
             <h1 className={styles.h1}>Your favourite genres</h1>
             <h3 className={styles.h3}>Select all games genres that you enjoy playing.</h3>
             <ul id='selectedGenres' className={styles.selectedGenres}></ul>
-            <hr className={styles.line}/>
             <ul className={styles.genres}>
                 <li><button id='Action' type='button' onClick={(e) => addGenre(e.target.id)}>Action</button></li>
                 <li><button id='Adventure' type='button' onClick={(e) => addGenre(e.target.id)}>Adventure</button></li>
@@ -117,8 +131,9 @@ const Register = () => {
                 <li><button id='Horror' type='button' onClick={(e) => addGenre(e.target.id)}>Horror</button></li>
                 <li><button id='Educational' type='button' onClick={(e) => addGenre(e.target.id)}>Educational</button></li>
             </ul>
-            <button className={styles.continue5} type="button">Continue</button>
+            <button className={styles.signup} type="button">Register</button>
         </div>
+        )}
     </form>
   )
 }

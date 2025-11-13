@@ -1,36 +1,47 @@
-let array = [];
-import deleteIcon from '../assets/delete.png';
-import styles from './Register.module.css';
+let array_genre = [];
+let accessibility_array = [];
 
 export function addGenre(id){
-    const ul = document.getElementById('selectedGenres');
+    const btn = document.getElementById(id);
     
-    if(!(array.includes(id))){
-        array.push(id);
-    }
-
-    ul.innerHTML = '';
-
-    array.forEach(item => {
-        const li = document.createElement('li');
-        const cross = document.createElement('img');
-        cross.src = deleteIcon;    
-        cross.alt = 'Remove genre';               
-        cross.id = item; 
-        cross.className = styles.remove;
-        li.id = item;
-        li.textContent = item;
-        li.appendChild(cross);
-        ul.appendChild(li);
-
-        cross.addEventListener('click', () => {
-            array = array.filter(item => item !== cross.id);
-            document.getElementById(cross.id).remove();
+    if(!(array_genre.includes(id))){
+        array_genre.push(id);
+        btn.style.backgroundColor = '#919090';
+        btn.style.border = '2px solid black';
+    } else {
+        array_genre = array_genre.filter(item => item !== id);
+        btn.style.backgroundColor = '#d7d7d7';
+        btn.style.border = '1px solid black';
+        btn.addEventListener('mouseover', () => {
+            btn.style.backgroundColor = '#919090';
         });
-    });
+        btn.addEventListener('mouseout', () => {
+            btn.style.backgroundColor = '#d7d7d7';
+        });
+    }
+    console.log(array_genre);
 }
 
-export function handleLogin(){
+export function addAccessibility(id, value){
+    const btn = document.getElementById(id);
     
+    if(!(accessibility_array.includes(id))){
+        accessibility_array.push(id);
+        btn.style.backgroundColor = '#919090';
+        btn.style.border = '2px solid black';
+    } else {
+        accessibility_array = accessibility_array.filter(item => item !== id);;
+        btn.style.backgroundColor = '#d7d7d7';
+        btn.style.border = '1px solid black';
+        btn.addEventListener('mouseover', () => {
+            btn.style.backgroundColor = '#919090';
+        });
+        btn.addEventListener('mouseout', () => {
+            btn.style.backgroundColor = '#d7d7d7';
+        });
+    }
+    console.log(accessibility_array);
 }
+
+
 
