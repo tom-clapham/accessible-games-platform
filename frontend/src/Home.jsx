@@ -11,8 +11,7 @@ function Home() {
     useEffect(() => {
         const fetchInfo = async () => {
             const info = await user_info()
-            setInfo(info)
-            console.log(info)
+            setInfo(info);
         }
         fetchInfo();
     }, [])

@@ -16,7 +16,7 @@ const Register = () => {
             <div className={styles.elements}>
                 <div className={styles.error}><img src={Warning} alt="Warning Logo" className={styles.warning}/>
                     Please ensure this is your real birthday.
-                    </div> 
+                </div> 
                 <label className={styles.dob}>Date of birth</label>
                 <div className={styles.dropdown}>
                     <select name="day" className={styles.day} value={day} onChange={(e) => setDay(e.target.value)}>
