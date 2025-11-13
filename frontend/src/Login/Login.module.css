@@ -44,8 +44,10 @@
 
 .forgot {
     font-weight: 600;
+    width: 80%;
     margin-bottom: 30px;
     color: #115ea3;
+    margin-top: 3px;
 }
 
 .forgot a:hover {
@@ -162,6 +164,7 @@
 
   .forgot {
     font-weight: 600;
+    margin-top: 3px;
     margin-bottom: 30px;
     color: #115ea3;
   }

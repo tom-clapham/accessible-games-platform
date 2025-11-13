@@ -4,6 +4,7 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from .serializer import UserRegistrationSerializer
+from .models import CustomUser
 
 from rest_framework_simplejwt.views import (
     TokenObtainPairView,
@@ -78,6 +79,18 @@ class CustomRefreshTokenView(TokenRefreshView):
 
         except:
             return Response({'refreshed':False})
+        
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def get_user(request):
+    user = request.user
+    try:
+        info = CustomUser.objects.get(pk=user.pk)
+    except CustomUser.DoesNotExist:
+        return Response({"detail": "User not found"}, status=404)
+
+    serializer = UserRegistrationSerializer(info)
+    return Response(serializer.data)
         
 @api_view(['POST'])
 def logout(request):
