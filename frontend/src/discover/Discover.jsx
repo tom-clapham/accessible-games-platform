@@ -5,7 +5,11 @@ import GameCard from './GameCard.jsx';
 
 
 function Discover() {
-    const [games, setGames] = useState([]);
+    const [games, setGames] = useState({
+        trending_games: [],
+        on_sale_games: [],
+        recently_released_games: []
+    });
     useEffect(() => {
     axios.get(`http://127.0.0.1:8000/api/games/discover`)
     .then(response => {
@@ -21,7 +25,21 @@ function Discover() {
                 
                 <div className="carousel">
                     <h2>Trending</h2>
-                    {games.map((game) => (
+                    {games.trending_games.map((game) => (
+                        GameCard({ game })
+                    ))}
+                </div>
+
+                <div className="carousel">
+                    <h2>On-Sale</h2>
+                    {games.on_sale_games.map((game) => (
+                        GameCard({ game })
+                    ))}
+                </div>
+
+                <div className="carousel">
+                    <h2>Highest Rated</h2>
+                    {games.recently_released_games.map((game) => (
                         GameCard({ game })
                     ))}
                 </div>
