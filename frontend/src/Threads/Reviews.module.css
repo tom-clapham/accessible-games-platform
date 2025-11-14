@@ -1,16 +1,87 @@
+h2, h3 {
+    font-weight:400;
+    color:hsl(0, 0%, 90%);
+    background-color: hsl(0, 0%, 15%);
+}
+
+
 .loadingIcon {
     font-weight: 100;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
     height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modalBox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: auto;
+    background-color: hsl(0, 0%, 0%);
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modalActual {
+    z-index: 1;
+    border-width: 2px;
+    border-style: solid;
+    border-color: hsl(0, 0%, 40%);
+    border-radius: 5px;
+    padding-right: 10px;
+    padding-left: 10px;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.postNameBlock {
+    display: flex;
+    flex-direction: row;
+
+}
+
+.titleMessage {
+    display: flex;
+    flex-direction: column;
+}
+
+.parentMessage {
+    margin-top: 5px;
+}
+
+.postButton {
+    display:flex;
+    margin:5px;
+}
+
+.backButton {
+    font-size:xx-large;
+    background: none;
+    border:0;
+    color:hsl(0, 0%, 90%);   
+}
+
+.backButton:hover, .newPost:hover {
+    cursor: pointer;
 }
 
 .postBox {
     display: flex;
     flex-direction: column;
     border-style: solid;
-    border-color: hsl(0, 0%, 1%);
+    border-color: hsl(0, 0%, 40%);
     border-radius: 5px;
     border-width: 2px;
     margin-bottom: 5px;

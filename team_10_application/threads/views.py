@@ -46,7 +46,7 @@ def getFirstPost(request, game_id):
     })
 
 @api_view()
-def getReplies(request, post_id):
+def getThread(request, post_id):
     parent = (
         Posts.objects
         .select_related('userId')
@@ -77,8 +77,14 @@ def getReplies(request, post_id):
             username=F('userId__username')
         )
     )
-    print(replies)
     return Response({
         "parent": parent,
         "replies": replies
+    })
+
+@api_view(['POST'])
+def createNewParentPost(request):
+    print(request.body)
+    return Response({
+        "message": "Post successfully added!"
     })

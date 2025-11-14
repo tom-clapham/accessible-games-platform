@@ -12,7 +12,7 @@ class Users(models.Model):
         return self.username
 
 class Posts(models.Model):
-    title = models.CharField(max_length=50)
+    title = models.CharField(max_length=50, null=True)
     message = models.CharField(max_length=500)
     date = models.DateTimeField(auto_now_add=True)
     gameId = models.IntegerField(default=1) # THIS MUST CHANGE TO FOREIGN KEY EVENTUALLY

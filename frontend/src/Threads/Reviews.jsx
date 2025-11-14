@@ -6,9 +6,9 @@ import { useNavigate, useParams } from 'react-router-dom'
 function Reviews() {
     const { reviewId } = useParams();
     const [parents, setParents] = useState({});
-    const [replies, setReplies] = useState({});
     const [loading, setLoading] = useState(true);
-    const [view, setView] = useState(0) // 0 Means that we are looking at the main posts, 1 means that we are looking at a thread
+    const [newTitle, setNewTitle] = useState("");
+    const [newMessage, setNewMessage] = useState("");
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -24,12 +24,31 @@ function Reviews() {
     //     console.log(parents)
     // }, [parents]);
 
-    
+    const titleChange = (event) => {
+        setNewTitle(event.target.value)
+    };
+
+    const messageChange = (event) => {
+        setNewMessage(event.target.value)
+    }
+
+    const createNewPost = () => {
+        axios.post("http://localhost:8000/app/threads/review/new-post/", {
+            gameId: reviewId,
+            // userId: userId,
+            title: newTitle,
+            message: newMessage
+        })
+        .then(response => console.log(response))
+        setNewTitle("")
+        setNewMessage("")
+    };
 
     const displayParents = () => parents['parents'].map((item, idx) => (
         <>
         <div className={styles.postBox} key={idx} onClick={() => navigate(`/replies/${item.id}`)}>
             <h2>{item.title}</h2>
+            {/* profile picture */}
             <h3>{item.firstname} {item.surname}</h3>
             <h3>{item.message}</h3>
             <div className={styles.postStats}>
@@ -53,9 +72,26 @@ function Reviews() {
     return(
         <>
             <h1>&lt;Game Name&gt;</h1>
+            <button className={styles.newPost} onClick={() => createNewPost()}>New Post</button>
             {loading ? (<h2 className={styles.loadingIcon}>Loading...</h2>) : null}
             {loading == false ? displayParents() : null}
+            <div id='postModal' className={styles.modalBox}>
+                {/* need to get user details from JWT token? */}
+                <div className={styles.modalActual}>
+                    <div className={styles.postNameBlock}>
+                        <h3>Firstname</h3>
+                        <br/>
+                        <h3>Surname</h3>
+                    </div>
+                    <h3 className={styles.username}>@username</h3>
+                    <div className={styles.titleMessage}>
+                        <input placeholder='Create title...' value={newTitle} onChange={titleChange}/>
+                        <textarea className={styles.parentMessage} value={newMessage} placeholder='Write your message here...' onChange={messageChange}></textarea>
+                    </div>
+                    <button className={styles.postButton} onClick={() => createNewPost()}>Post</button>
+                </div>
+            </div>
         </>
     );
-}
+};
 export default Reviews;
