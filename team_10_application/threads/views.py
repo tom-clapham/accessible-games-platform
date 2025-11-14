@@ -11,19 +11,6 @@ class PostsListCreate(generics.ListCreateAPIView): # This is a class based view
     queryset = Posts.objects.all()
     serializer_class = PostsSerializer
 
-    # def delete(self, request, *args, **kwargs):
-    #     Reviews.objects.all().delete()
-    #     return Response(status=status.HTTP_204_NO_CONTENT)
-
-# class PostsRUD(generics.RetrieveUpdateDestroyAPIView):
-#     queryset = Posts.objects.all()
-#     serializer_class = PostsSerializer
-#     lookup_field = "pk"
-
-# class ParentsListCreate(generics.ListCreateAPIView):
-#     queryset = Parents.objects.all()
-#     serializer_class = ParentsSerializer
-
 @api_view()
 def getFirstPost(request, game_id):
     posts = (
@@ -84,7 +71,10 @@ def getThread(request, post_id):
 
 @api_view(['POST'])
 def createNewParentPost(request):
-    print(request.body)
-    return Response({
-        "message": "Post successfully added!"
-    })
+    print(request.data)
+    serializer = PostsSerializer(data=request.data)
+    if serializer.is_valid():
+        serializer.save()
+        return Response(status.HTTP_201_CREATED)
+    else:
+        return Response(status.HTTP_400_BAD_REQUEST)

@@ -35,13 +35,14 @@ function Reviews() {
     const createNewPost = () => {
         axios.post("http://localhost:8000/app/threads/review/new-post/", {
             gameId: reviewId,
-            // userId: userId,
+            userId: 1, // THIS WILL BE BASED ON THE AUTHENTICATED USER WHEN THAT IS PUSHED
             title: newTitle,
             message: newMessage
         })
         .then(response => console.log(response))
         setNewTitle("")
         setNewMessage("")
+        window.location.reload()
     };
 
     const displayParents = () => parents['parents'].map((item, idx) => (
@@ -68,7 +69,7 @@ function Reviews() {
         </div>
         </>
     ));
-    
+
     return(
         <>
             <h1>&lt;Game Name&gt;</h1>
