@@ -30,9 +30,9 @@ export const AuthProvider = ({children}) => {
         return success;
     }
 
-    const register_user = async (first, last, user, user_password, email_address, dob) => {
+    const register_user = async (first, last, user, user_password, email_address, dob, genres, accessibility) => {
         try{
-            await register(first, last, user, user_password, email_address, dob)
+            await register(first, last, user, user_password, email_address, dob, genres, accessibility)
 
         } catch (error){
             console.log(error)

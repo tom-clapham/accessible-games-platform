@@ -4,7 +4,7 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from .serializer import UserRegistrationSerializer, UserEmailsSerializer
-from .models import CustomUser
+from .models import CustomUser, GenreTag, AccessibilityTag
 
 from rest_framework_simplejwt.views import (
     TokenObtainPairView,
@@ -119,9 +119,16 @@ def is_authenticated(request):
 @api_view(['POST'])
 @permission_classes([AllowAny])
 def register(request):
+    data = request.data
+    genre_list = data.get('genre_tags', []) 
+    accessibility_list = data.get('accessibility_tags', [])
     serializer = UserRegistrationSerializer(data=request.data)
     if serializer.is_valid():
-        serializer.save()
+        user = serializer.save()
+        genres_qs = GenreTag.objects.filter(name__in=genre_list)
+        access_qs = AccessibilityTag.objects.filter(name__in=accessibility_list)
+        user.genre_tags.set(genres_qs)
+        user.accessibility_tags.set(access_qs)
         return Response(serializer.data)
     return Response(serializer.errors)
 

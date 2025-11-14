@@ -45,9 +45,10 @@ export const login = async (email, password) => {
 }
 
 
-export const register = async (first, last, user, user_password, email_address, dob) => {
+export const register = async (first, last, user, user_password, email_address, dob, genres, accessibilities) => {
 	const response = axios.post(REGISTER_URL,
-		{first_name:first, last_name:last, username:user,  email:email_address, password:user_password, date_of_birth:dob},{ withCredentials:true }
+		{first_name:first, last_name:last, username:user,  email:email_address, password:user_password, 
+            date_of_birth:dob, genre_tags:genres, accessibility_tags:accessibilities},{ withCredentials:true }
 	)
 	return response.data
 }

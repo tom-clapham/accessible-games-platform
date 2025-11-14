@@ -31,6 +31,8 @@ function Home() {
                 <p>First name: {info.first_name}</p>
                 <p>Last name: {info.last_name}</p>
                 <p>Date of Birth: {info.date_of_birth}</p>
+                <p>Favourite Genres: {info.genre_tags}</p>
+                <p>Accessibility Needs: {info.accessibility_tags}</p>
                 </div>
             ) : (
                 <p>Loading user info...</p>

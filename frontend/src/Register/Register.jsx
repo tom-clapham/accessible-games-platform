@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import styles from './Register.module.css';
 import Warning from '../assets/warning.png';
-import { addGenre, addAccessibility, saveDob, saveEmail, savePersonalInfo, register } from './Register';
+import { addGenre, addAccessibility } from './Register';
 import { useNavigate } from 'react-router-dom';
-import { array_genre } from './Register';
+import { array_genre, accessibility_array } from './Register';
 import {useAuth} from '../contexts/useAuth.jsx'
 
 const Register = () => {
@@ -32,7 +32,6 @@ const Register = () => {
   const checkDate = (year, month, day) => {
     const d = new Date(year, month - 1, day);
     if(d.getFullYear() < 2012 && d.getFullYear() > 1940 && d.getMonth() === month - 1 && d.getDate() === day){
-        saveDob(day, month, year);
         setStage("2");
     } else {
         setIsDate("false");
@@ -85,7 +84,7 @@ const Register = () => {
     if(array.length < 3){
         setIsGenres("false");
     } else {
-        register_user(first, last, user, password, email, (year+'-'+month+'-'+day))
+        register_user(first, last, user, password, email, (year+'-'+month+'-'+day), array_genre, accessibility_array)
     }
   }
 
@@ -208,11 +207,11 @@ const Register = () => {
             <h1 className={styles.h1}>Your accessibility settings</h1>
             <h3 className={styles.subtext}>Please tick all that apply to you. This is to help us provide you with the best possible experience.</h3>
             <ul className={styles.impairments}>
-                <li><button id='Visual' type='button' className={styles.visual} onClick={(e) => addAccessibility(e.target.id, e.target.value)}>Visual Impairments</button></li>
-                <li><button id='Dexterity' type='button' className={styles.dexterity} onClick={(e) => addAccessibility(e.target.id, e.target.value)}>Dexterity Impairments</button></li>
-                <li><button id='Speech' type='button' className={styles.speech} onClick={(e) => addAccessibility(e.target.id, e.target.value)}>Speech Impairments</button></li>
-                <li><button id='Hearing' type='button' className={styles.hearing} onClick={(e) => addAccessibility(e.target.id, e.target.value)}>Hearing Impairments</button></li>
-                <li><button id='Cognitive' type='button' className={styles.cognitive} onClick={(e) => addAccessibility(e.target.id, e.target.value)}>Cognitive Impairments</button></li>
+                <li><button id='Visual' type='button' className={styles.visual} onClick={(e) => addAccessibility(e.target.id)}>Visual Impairments</button></li>
+                <li><button id='Dexterity' type='button' className={styles.dexterity} onClick={(e) => addAccessibility(e.target.id)}>Dexterity Impairments</button></li>
+                <li><button id='Speech' type='button' className={styles.speech} onClick={(e) => addAccessibility(e.target.id)}>Speech Impairments</button></li>
+                <li><button id='Hearing' type='button' className={styles.hearing} onClick={(e) => addAccessibility(e.target.id)}>Hearing Impairments</button></li>
+                <li><button id='Cognitive' type='button' className={styles.cognitive} onClick={(e) => addAccessibility(e.target.id)}>Cognitive Impairments</button></li>
             </ul>
             <button className={styles.continue4} type="button" onClick={() => {setStage("5")}}>Continue</button>
         </div>

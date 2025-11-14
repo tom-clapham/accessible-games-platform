@@ -1,5 +1,5 @@
 export let array_genre = [];
-let accessibility_array = [];
+export let accessibility_array = [];
 let date;
 let email_address;
 let username;
@@ -45,7 +45,7 @@ export function addGenre(id){
 
 export function addAccessibility(id){
     const btn = document.getElementById(id);
-    
+    console.log(accessibility_array)
     if(!(accessibility_array.includes(id))){
         accessibility_array.push(id);
         btn.style.backgroundColor = '#919090';
@@ -54,24 +54,9 @@ export function addAccessibility(id){
         accessibility_array = accessibility_array.filter(item => item !== id);;
         btn.style.backgroundColor = '#d7d7d7';
         btn.style.border = '1px solid black';
-        btn.addEventListener('mouseover', () => {
-            btn.style.backgroundColor = '#919090';
-        });
-        btn.addEventListener('mouseout', () => {
-            btn.style.backgroundColor = '#d7d7d7';
-        });
+        
     }
     
-}
-
-export function register(){
-    console.log(email_address);
-    console.log(first_name);
-    console.log(last_name);
-    console.log(username);
-    console.log(user_password);
-    console.log(array_genre);
-    console.log(accessibility_array);
 }
 
 
