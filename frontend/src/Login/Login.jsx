@@ -17,25 +17,14 @@ const Login = () => {
       const success = await login(email, password);
 
       if(success){
-        if (window.opener) {
-          window.opener.location.href = '/';
-          window.close();
-        } else {
-          nav('/')
-        }
+        nav('/', { replace: true });
       } else {
-        setError(true);
-        nav('/login');
+        setError(true)
       }
-    }
+  }
 
   const handleRegister = () => {
-    if (window.opener) {
-          window.opener.location.href = '/register';
-          window.close();
-        } else {
-          nav('/register');
-        }
+      nav('/register');
   }
 
   return (

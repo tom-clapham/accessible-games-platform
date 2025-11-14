@@ -1,5 +1,26 @@
-let array_genre = [];
+export let array_genre = [];
 let accessibility_array = [];
+let date;
+let email_address;
+let username;
+let first_name;
+let last_name;
+let user_password;
+
+export function saveDob(day, month, year){
+    date = year + '-' + month + '-' + day;
+}
+
+export function saveEmail(email){
+    email_address = email;
+}
+
+export function savePersonalInfo(first, last, user, password){
+    first_name = first;
+    last_name = last;
+    username = user;
+    user_password = password;
+}
 
 export function addGenre(id){
     const btn = document.getElementById(id);
@@ -19,10 +40,9 @@ export function addGenre(id){
             btn.style.backgroundColor = '#d7d7d7';
         });
     }
-    console.log(array_genre);
 }
 
-export function addAccessibility(id, value){
+export function addAccessibility(id){
     const btn = document.getElementById(id);
     
     if(!(accessibility_array.includes(id))){
@@ -40,6 +60,16 @@ export function addAccessibility(id, value){
             btn.style.backgroundColor = '#d7d7d7';
         });
     }
+    
+}
+
+export function register(){
+    console.log(email_address);
+    console.log(first_name);
+    console.log(last_name);
+    console.log(username);
+    console.log(user_password);
+    console.log(array_genre);
     console.log(accessibility_array);
 }
 

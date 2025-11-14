@@ -5,6 +5,8 @@ const LOGIN_URL = `${BASE_URL}token/`
 const LOGOUT_URL = `${BASE_URL}logout/`
 const REFRESH_URL = `${BASE_URL}token/refresh/`
 const USER_INFO_URL = `${BASE_URL}home/`
+const AUTH_URL = `${BASE_URL}authenticated/`
+
 
 export const user_info = async () => {
     try {
@@ -67,4 +69,13 @@ export const logout = async () => {
         return false
     }
     
+}
+
+export const is_authenticated = async () => {
+    try{
+        await axios.post(AUTH_URL, {}, {withCredentials:true})
+        return true
+    } catch(error) {
+        return false;
+    }
 }
