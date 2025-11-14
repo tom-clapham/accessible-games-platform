@@ -7,6 +7,7 @@ const REFRESH_URL = `${BASE_URL}token/refresh/`
 const USER_INFO_URL = `${BASE_URL}home/`
 const AUTH_URL = `${BASE_URL}authenticated/`
 const  REGISTER_URL = `${BASE_URL}register/`
+const  USER_URL = `${BASE_URL}users/`
 
 
 export const user_info = async () => {
@@ -17,6 +18,17 @@ export const user_info = async () => {
         return response.data
     } catch (error) {
         return call_refresh(error, axios.get(USER_INFO_URL, { withCredentials: true}))
+    }
+}
+
+export const allUserEmails = async () => {
+    try {
+        const response = await axios.get(USER_URL,
+            { withCredentials: true}
+        )
+        return response.data
+    } catch (error) {
+        return call_refresh(error, axios.get(USER_URL, { withCredentials: true}))
     }
 }
 

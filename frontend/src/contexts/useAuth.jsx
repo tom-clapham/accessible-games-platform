@@ -1,7 +1,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { is_authenticated } from "../endpoints/api";
 import { useNavigate} from 'react-router-dom';
-import { register, login } from '../endpoints/api';
+import { register, login, allUserEmails } from '../endpoints/api';
 
 const AuthContext = createContext();
 export const AuthProvider = ({children}) => {
@@ -37,7 +37,28 @@ export const AuthProvider = ({children}) => {
         } catch (error){
             console.log(error)
         }
+    }
 
+    const user_usernames = async (u_user) => {
+        const data = await allUserEmails();
+        for (const user of data) {
+            const username = user && user.username;        
+            if (typeof username === "string" && u_user.trim().toLowerCase() === username.trim().toLowerCase()) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    const user_emails = async (u_email) => {
+        const data = await allUserEmails();
+        for (const user of data) {
+            const email = user && user.email;        
+            if (typeof email === "string" && u_email.trim().toLowerCase() === email.trim().toLowerCase()) {
+                return false;
+            }
+        }
+        return true;
     }
 
     useEffect(() => {
@@ -45,7 +66,7 @@ export const AuthProvider = ({children}) => {
     }, [window.location.pathname])
 
     return(
-        <AuthContext.Provider value={{isAuthenticated, loading, login_user, register_user}}>
+        <AuthContext.Provider value={{isAuthenticated, loading, login_user, register_user, user_usernames, user_emails}}>
             {children}
         </AuthContext.Provider>
     )

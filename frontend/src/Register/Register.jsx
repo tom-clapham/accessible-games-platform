@@ -6,17 +6,14 @@ import { useNavigate } from 'react-router-dom';
 import { array_genre } from './Register';
 import {useAuth} from '../contexts/useAuth.jsx'
 
-
-
 const Register = () => {
-  const { register_user} = useAuth();
+  const { register_user, user_usernames, user_emails } = useAuth();
   const [isDate, setIsDate] = useState("");
   const [isEmail, setIsEmail] = useState("");
   const [emailExists, setEmailExists] = useState("");
   const [userExists, setUserExists] = useState("");
   const [isGenres, setIsGenres] = useState("");
   const [isBlank, setIsBlank] = useState("");
-  const [isUser, setIsUser] = useState("");
   const [isPassword, setIsPassword] = useState("");
   
 
@@ -37,25 +34,30 @@ const Register = () => {
     if(d.getFullYear() < 2012 && d.getFullYear() > 1940 && d.getMonth() === month - 1 && d.getDate() === day){
         saveDob(day, month, year);
         setStage("2");
-        setIsDate("true")
     } else {
-        setStage("1");
         setIsDate("false");
     }
   }
 
-  const checkEmail = (email) => {
+  const checkEmail = async (email) => {
     if (!((email.includes("@gmail.com")) || (email.includes("@icloud.com")) || (email.includes("@hotmail.com")) || (email.includes("@outlook.com")) || (email.includes("@me.com")))){
         setIsEmail("false");
+
     } else {
-        saveEmail(email);
-        setStage("3");
-        setIsDate("true")
+        const emailAvailable = await user_emails(email);
+        if (!emailAvailable){
+            setEmailExists("false");
+            setIsEmail("true");
+        } else {
+            setStage("3");
+        }
     }
   }
 
-  const checkPersonal = (first, last, user, password, cPassword) => {
+  const checkPersonal = async (first, last, user, password, cPassword) => {
     const regex = /(?:.*\d){2,}/;
+    const userAvailable = await user_usernames(user);
+
     if(first == '' || last == '' || user == '' || password == ''){
         setIsBlank("false");
         setIsPassword("true");
@@ -70,9 +72,12 @@ const Register = () => {
         setIsPassword("false");
     }
 
+    if (!userAvailable) {
+        setUserExists("false");
+    }
+    
     if (!(first == '' || last == '' || user == '' || password == '') && !(password != cPassword || (!regex.test(password)) || password.length < 8)){
         setStage("4");
-        setIsDate("true")
     }
   }
 

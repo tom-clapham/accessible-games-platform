@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from rest_framework.response import Response
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated, AllowAny
-from .serializer import UserRegistrationSerializer
+from .serializer import UserRegistrationSerializer, UserEmailsSerializer
 from .models import CustomUser
 
 from rest_framework_simplejwt.views import (
@@ -90,6 +90,13 @@ def get_user(request):
         return Response({"detail": "User not found"}, status=404)
 
     serializer = UserRegistrationSerializer(info)
+    return Response(serializer.data)
+
+@api_view(['GET'])
+@permission_classes([AllowAny])
+def user_emails(request):
+    users = CustomUser.objects.all()
+    serializer = UserEmailsSerializer(users, many=True)
     return Response(serializer.data)
         
 @api_view(['POST'])
