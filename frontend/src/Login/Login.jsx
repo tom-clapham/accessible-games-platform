@@ -5,21 +5,21 @@ import Warning from '../assets/Warning.png';
 import {login} from '../endpoints/api';
 import {OpenLogin} from './Login.js';
 import { useNavigate } from 'react-router-dom';
+import {useAuth} from '../contexts/useAuth.jsx';
 
 const Login = () => {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(false);
+  const {login_user} = useAuth();
   const nav = useNavigate();
 
   const handleLogin = async () => {
-      const success = await login(email, password);
+      const success = await login_user(email, password);
 
-      if(success){
-        nav('/', { replace: true });
-      } else {
-        setError(true)
+      if(!success){
+        setError(false);
       }
   }
 

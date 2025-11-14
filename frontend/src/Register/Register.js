@@ -39,6 +39,7 @@ export function addGenre(id){
         btn.addEventListener('mouseout', () => {
             btn.style.backgroundColor = '#d7d7d7';
         });
+        
     }
 }
 

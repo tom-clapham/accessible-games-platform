@@ -6,6 +6,7 @@ const LOGOUT_URL = `${BASE_URL}logout/`
 const REFRESH_URL = `${BASE_URL}token/refresh/`
 const USER_INFO_URL = `${BASE_URL}home/`
 const AUTH_URL = `${BASE_URL}authenticated/`
+const  REGISTER_URL = `${BASE_URL}register/`
 
 
 export const user_info = async () => {
@@ -29,7 +30,14 @@ export const login = async (email, password) => {
     } catch(error){
         return error
     }
-    
+}
+
+
+export const register = async (first, last, user, user_password, email_address, dob) => {
+	const response = axios.post(REGISTER_URL,
+		{first_name:first, last_name:last, username:user,  email:email_address, password:user_password, date_of_birth:dob},{ withCredentials:true }
+	)
+	return response.data
 }
 
 export const refresh_token = async () => {

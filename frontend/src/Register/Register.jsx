@@ -4,8 +4,12 @@ import Warning from '../assets/warning.png';
 import { addGenre, addAccessibility, saveDob, saveEmail, savePersonalInfo, register } from './Register';
 import { useNavigate } from 'react-router-dom';
 import { array_genre } from './Register';
+import {useAuth} from '../contexts/useAuth.jsx'
+
+
 
 const Register = () => {
+  const { register_user} = useAuth();
   const [isDate, setIsDate] = useState("");
   const [isEmail, setIsEmail] = useState("");
   const [emailExists, setEmailExists] = useState("");
@@ -30,7 +34,7 @@ const Register = () => {
 
   const checkDate = (year, month, day) => {
     const d = new Date(year, month - 1, day);
-    if(d.getFullYear() < 2012 && d.getMonth() === month - 1 && d.getDate() === day){
+    if(d.getFullYear() < 2012 && d.getFullYear() > 1940 && d.getMonth() === month - 1 && d.getDate() === day){
         saveDob(day, month, year);
         setStage("2");
         setIsDate("true")
@@ -75,7 +79,9 @@ const Register = () => {
   const checkGenres = (array) => {
     if(array.length < 3){
         setIsGenres("false");
-    } 
+    } else {
+        register_user(first, last, user, password, email, (year+'-'+month+'-'+day))
+    }
   }
 
   const handleLogin = () => {
