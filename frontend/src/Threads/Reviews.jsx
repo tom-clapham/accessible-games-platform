@@ -38,7 +38,7 @@ function Reviews() {
     };
     
     const createNewPost = () => {
-        axios.post("http://localhost:8000/app/threads/review/new-post/", {
+        axios.post("http://localhost:8000/app/threads/reviews/new-post/", {
             gameId: reviewId,
             userId: 1, // THIS WILL BE BASED ON THE AUTHENTICATED USER WHEN THAT IS PUSHED
             title: newTitle,

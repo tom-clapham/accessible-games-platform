@@ -7,9 +7,9 @@ function Replies() {
     const { reviewId } = useParams();
     const [thread, setThread] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [reply, setReply] = useState("");
     const navigate = useNavigate();
 
-    console.log("review id: " + reviewId);
     useEffect(() => {
         axios.get(`http://localhost:8000/app/threads/reviews/replies/${reviewId}`)
         .then(res => {
@@ -18,10 +18,6 @@ function Replies() {
         })
         .catch(err => console.log(err))
     }, [reviewId]);
-
-    useEffect(() =>{
-        console.log(thread)
-    }, [thread]);
 
     const displayParent = () => {
         return thread['parent'].map((item, idx) => (
@@ -82,13 +78,35 @@ function Replies() {
             )
         }};
 
+    const replyChange = (event) => {
+        setReply(event.target.value)
+    };
+
+    const submitReply = () => {
+        axios.post("http://localhost:8000/app/threads/reviews/new-reply/", {
+            gameId: reviewId,
+            userId: 2, // THIS WILL BE BASED ON THE AUTHENTICATED USER WHEN THAT IS PUSHED
+            message: reply,
+            parent: thread['parent'][0].id
+        })
+        // .then(response => console.log(response.data))
+        setReply("")
+        window.location.reload()
+    }
 
     return(
         <>
         <div>
-            <h1>Hello World</h1>
             <button className={styles.backButton} onClick={() => navigate(-1)}>&larr;</button>
             {loading ? (<h2 className={styles.loadingIcon}>Loading...</h2>) : displayParent()}
+            <hr/>
+            <div className={styles.createReply}>
+                {/* profile picture */}
+                &lt;Profile picture&gt;
+                <textarea className={styles.createReplyMessage} value={reply} placeholder="Create reply here..." onChange={replyChange}/>
+                <button className={styles.createReplyBtn} onClick={submitReply}>Reply</button>
+            </div>
+            <hr/>
             {loading ? (<h2 className={styles.loadingIcon}>Loading...</h2>) : (<div className={styles.reply}></div>)}
             {loading ? (<h2 className={styles.loadingIcon}>Loading...</h2>) : displayReplies()}
         </div>

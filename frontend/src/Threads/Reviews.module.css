@@ -103,7 +103,7 @@ h2, h3 {
     border-radius:5px
 }
 
-.postButton:hover {
+.postButton:hover, .createReplyBtn:hover {
     cursor: pointer;
     background-color: hsl(201, 100%, 60%);
 }
@@ -130,9 +130,34 @@ h2, h3 {
     padding: 10px;
 }
 
-/* .postOwner {
-
+/* .parentBox {
+    
 } */
+
+.createReply {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 15px;
+    margin-left: 10px;
+}
+
+.createReplyMessage {
+    resize: none;
+    height: 5vh;
+    width: 30vw;
+    align-self: center;
+    background: none;
+    color: hsl(0, 0%, 90%)
+}
+
+.createReplyBtn {
+    margin:5px;
+    padding: 5px 10px;
+    background-color: hsl(201, 100%, 50%);
+    border-width:0;
+    border-radius:5px
+}
 
 .replyBox {
     display: flex;

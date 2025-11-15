@@ -71,6 +71,10 @@ def getThread(request, post_id):
 
 @api_view(['POST'])
 def createNewParentPost(request):
+    '''
+    This function will create a new top-level post
+    '''
+    # This should create a new post with 0 comments and votes
     print(request.data)
     serializer = PostsSerializer(data=request.data)
     if serializer.is_valid():
@@ -78,3 +82,16 @@ def createNewParentPost(request):
         return Response(status.HTTP_201_CREATED)
     else:
         return Response(status.HTTP_400_BAD_REQUEST)
+
+@api_view(['POST'])
+def createNewReply(request):
+    '''
+    This function will create a new post, but with reference to a parent that will be specified in the payload
+    '''
+    # This should also create a new post with 0 comment and votes
+    print(request.data)
+    serializer = PostsSerializer(data=request.data)
+    if serializer.is_valid():
+        serializer.save()
+        return Response(status.HTTP_201_CREATED)
+    return Response(status.HTTP_400_BAD_REQUEST)
