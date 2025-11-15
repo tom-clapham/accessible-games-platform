@@ -34,36 +34,58 @@ function GameProfile() {
 
     return(
         <div>
-            <h1>{game.name}</h1>
+            <div className="gp-page">
+                <h1 className="gp-title">{game.name}</h1>
+                <div className="gp-grid">
 
-            <GameThumbnail url={game.thumbnail_url} name={game.name}/><br/>
+                    <div className="gp-main">
 
-            <GameTrailer url={game.trailer_url} name={game.name}/><br/>
+                        <div className="gp-trailer">
+                            <GameTrailer url={game.trailer_url} name={game.name}/><br/>
+                        </div>
 
-            <section>PRICE: £{game.price}</section><br/>
-            <section>PUBLISHER: {game.publisher}</section><br/>
-            <section>RELEASE DATE: {game.release_date}</section><br/>
-            <section>{game.description}</section><br/>
+                        <p className="gp-description">{game.description}</p>
 
-            <h2>Accessibility tags</h2>
-            <div className="tag_container">
-                {game.accessibility_tags?.map((name) => (
-                    <GameTag name={name}/>
-                ))}
-            </div>
+                        <h2>Accessibility tags</h2>
+                        <div className="tag_container">
+                            {game.accessibility_tags?.map((name) => (
+                                <GameTag name={name}/>
+                            ))}
+                        </div>
 
-            <h2>Genres</h2>
-            <div className="tag_container">
-                {game.genre_tags?.map((name) => (
-                    <GameTag name={name}/>
-                ))}
-            </div>
+                        <h2>Genres</h2>
+                        <div className="tag_container">
+                            {game.genre_tags?.map((name) => (
+                                <GameTag name={name}/>
+                            ))}
+                        </div>
 
-            <h2>Platforms</h2>
-            <div className="tag_container">
-                {game.platform_tags?.map((name) => (
-                    <GameTag name={name}/>
-                ))}
+                        <h2>Platforms</h2>
+                        <div className="tag_container">
+                            {game.platform_tags?.map((name) => (
+                                <GameTag name={name}/>
+                            ))}
+                        </div>
+
+            <h2>Reviews</h2>
+                    </div>
+
+                    <div className="gp-sideinfo">
+                        <div className="gp-infocard">
+                            <GameThumbnail className="gp-thumbnail" url={game.thumbnail_url} name={game.name}/>
+                            <div className="gp-metadata">
+                                <h2 className="gp-name">{game.name}</h2>
+                                <div className="gp-price">£{game.price}</div>
+
+                                <button className="gp-button">Add to favourites</button>
+                                <div className="gp-publisher">{game.publisher}</div>
+                                <div className="gp-releasedate">{game.release_date}</div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
             </div>
         </div>
     )
