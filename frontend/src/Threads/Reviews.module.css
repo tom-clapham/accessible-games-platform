@@ -148,7 +148,10 @@ h2, h3 {
     width: 30vw;
     align-self: center;
     background: none;
-    color: hsl(0, 0%, 90%)
+    color: hsl(0, 0%, 90%);
+    font-family: "Roboto", sans-serif;
+    font-size: small;
+    padding: 3px;
 }
 
 .createReplyBtn {
