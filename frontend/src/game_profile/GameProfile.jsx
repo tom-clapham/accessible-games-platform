@@ -44,8 +44,6 @@ function GameProfile() {
                             <GameTrailer url={game.trailer_url} name={game.name}/><br/>
                         </div>
 
-                        <p className="gp-description">{game.description}</p>
-
                         <h2>Accessibility tags</h2>
                         <div className="tag_container">
                             {game.accessibility_tags?.map((name) => (
@@ -77,9 +75,11 @@ function GameProfile() {
                                 <h2 className="gp-name">{game.name}</h2>
                                 <div className="gp-price">£{game.price}</div>
 
+                                <p className="gp-description">{game.description}</p>
+
                                 <button className="gp-button">Add to favourites</button>
-                                <div className="gp-publisher">{game.publisher}</div>
-                                <div className="gp-releasedate">{game.release_date}</div>
+                                <div className="gp-publisher">PUBLISHER: {game.publisher}</div>
+                                <div className="gp-releasedate">RELEASE DATE: {game.release_date}</div>
                             </div>
                         </div>
                     </div>

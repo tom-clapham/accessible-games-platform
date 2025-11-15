@@ -17,7 +17,7 @@ body {
     display: flex;
     flex-wrap: wrap;
     gap: 6px;
-    margin-bottom: 12px;
+    padding-bottom: 30px;
 }
 
 .gp-page {
@@ -65,7 +65,6 @@ body {
 .gp-description {
   line-height: 1.6;
   color: #ccc;
-  padding-bottom: 32px;
 }
 
 .gp-sideinfo {
