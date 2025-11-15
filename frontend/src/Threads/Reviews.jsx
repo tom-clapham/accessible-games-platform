@@ -9,6 +9,7 @@ function Reviews() {
     const [loading, setLoading] = useState(true);
     const [newTitle, setNewTitle] = useState("");
     const [newMessage, setNewMessage] = useState("");
+    const [modal, setModal] = useState(false);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -32,6 +33,10 @@ function Reviews() {
         setNewMessage(event.target.value)
     }
 
+    const openModal = () => {
+        document.getElementById("modal-overlay").style.display="block"
+    };
+    
     const createNewPost = () => {
         axios.post("http://localhost:8000/app/threads/review/new-post/", {
             gameId: reviewId,
@@ -50,7 +55,10 @@ function Reviews() {
         <div className={styles.postBox} key={idx} onClick={() => navigate(`/replies/${item.id}`)}>
             <h2>{item.title}</h2>
             {/* profile picture */}
-            <h3>{item.firstname} {item.surname}</h3>
+            <div className={styles.postOwner}>
+                <h3>{item.firstname} {item.surname}</h3>
+                <h5>{item.username}</h5>
+            </div>
             <h3>{item.message}</h3>
             <div className={styles.postStats}>
                 <p>votes</p>
@@ -73,12 +81,12 @@ function Reviews() {
     return(
         <>
             <h1>&lt;Game Name&gt;</h1>
-            <button className={styles.newPost} onClick={() => createNewPost()}>New Post</button>
+            <button className={styles.newPost} onClick={() => setModal(true)}>&#10010;</button>
             {loading ? (<h2 className={styles.loadingIcon}>Loading...</h2>) : null}
             {loading == false ? displayParents() : null}
-            <div id='postModal' className={styles.modalBox}>
+            <div id='modal-overlay' className={modal ? styles.modalBox : styles.modalHidden} onClick={() => setModal(false)}>
                 {/* need to get user details from JWT token? */}
-                <div className={styles.modalActual}>
+                <div className={styles.modalActual} onClick={e => e.stopPropagation()}>
                     <div className={styles.postNameBlock}>
                         <h3>Firstname</h3>
                         <br/>
@@ -86,7 +94,7 @@ function Reviews() {
                     </div>
                     <h3 className={styles.username}>@username</h3>
                     <div className={styles.titleMessage}>
-                        <input placeholder='Create title...' value={newTitle} onChange={titleChange}/>
+                        <input className={styles.parentTitle} placeholder='Create title...' value={newTitle} onChange={titleChange}/>
                         <textarea className={styles.parentMessage} value={newMessage} placeholder='Write your message here...' onChange={messageChange}></textarea>
                     </div>
                     <button className={styles.postButton} onClick={() => createNewPost()}>Post</button>

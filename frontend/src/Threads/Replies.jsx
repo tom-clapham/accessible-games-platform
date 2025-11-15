@@ -55,7 +55,7 @@ function Replies() {
         if (thread['replies'].length) {
         return thread['replies'].map((item, idx) => (
             <>
-            <div className={styles.postBox} key={idx} onClick={() => navigate(`/replies/${item.id}`)}>
+            <div className={styles.replyBox} key={idx} onClick={() => navigate(`/replies/${item.id}`)}>
                 <h3>{item.firstname} {item.surname}</h3>
             {/* profile picture */}
                 <h5>{item.username}</h5>
