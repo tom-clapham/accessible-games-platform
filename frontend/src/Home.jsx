@@ -1,23 +1,46 @@
 import { useEffect, useState} from 'react'
-import axios from 'axios'
-import Navbar from './Components/Navbar/Navbar.jsx'
-import './index.css'
+import { useNavigate } from 'react-router-dom';
+import { user_info, logout } from './endpoints/api';
 
 function Home() {
-    const [games, setGames] = useState()
+    const [info, setInfo] = useState([])
+    const nav = useNavigate();
+
     useEffect(() => {
-            axios.get("http://127.0.0.1:8000/app/threads/helloWorld")
-            .then(res => setGames(res.data))
-            .catch(err => console.log(err))
-        }, [games])
-    
-        return(
+        const fetchInfo = async () => {
+            const info = await user_info()
+            setInfo(info);
+        }
+        fetchInfo();
+    }, [])
+
+    const handleLogout = async () => {
+        const success = await logout();
+        if (success) {
+            nav('/login')
+        }
+    }
+
+    return(
         <div>
             <div className='navbar-container'>
                 <Navbar/>
             </div>
             <h1>Hello World</h1>
-            <p>axios call results: {games}</p>
+            {info ? (
+                <div>
+                <p>Username: {info.username}</p>
+                <p>Email: {info.email}</p>
+                <p>First name: {info.first_name}</p>
+                <p>Last name: {info.last_name}</p>
+                <p>Date of Birth: {info.date_of_birth}</p>
+                <p>Favourite Genres: {info.genre_tags}</p>
+                <p>Accessibility Needs: {info.accessibility_tags}</p>
+                </div>
+            ) : (
+                <p>Loading user info...</p>
+            )}
+            <button type='button' onClick={handleLogout}>Logout</button>
         </div>
     )
 }
