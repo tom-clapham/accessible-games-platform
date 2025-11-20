@@ -23,6 +23,9 @@ function Home() {
 
     return(
         <div>
+            <div className='navbar-container'>
+                <Navbar/>
+            </div>
             <h1>Hello World</h1>
             {info ? (
                 <div>
