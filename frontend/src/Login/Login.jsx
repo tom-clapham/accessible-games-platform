@@ -24,7 +24,7 @@ const Login = () => {
   }
 
   const handleRegister = () => {
-      nav('/register');
+      nav('/register/step_1');
   }
 
   return (
