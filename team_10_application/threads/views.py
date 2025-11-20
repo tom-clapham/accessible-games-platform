@@ -92,13 +92,6 @@ def get_user(request):
 
     serializer = UserRegistrationSerializer(info)
     return Response(serializer.data)
-
-@api_view(['GET'])
-@permission_classes([AllowAny])
-def user_emails(request):
-    users = CustomUser.objects.all()
-    serializer = UserEmailsSerializer(users, many=True)
-    return Response(serializer.data)
         
 @api_view(['POST'])
 def logout(request):
@@ -137,11 +130,14 @@ class RegistrationViewSet(viewsets.ViewSet):
     def get_permissions(self):
         if self.action == 'step1' or self.action == 'step2' or self.action == 'step3' or self.action == 'step4' or self.action == 'step5':
             return [AllowAny()]
-        return [IsAuthenticated()]  
+        return [IsAuthenticated()] 
     
-    @action(detail=False, methods=['post'], url_path='step1')
+    def two_digits(self, password) -> bool:
+        digit_count = sum(ch.isdigit() for ch in password)
+        return digit_count >= 2
+    
+    @action(detail=False, methods=['post'], url_path='step1', authentication_classes=[], permission_classes=[AllowAny])
     def step1(self, request):
-        print("we are here")
         date_field = serializers.DateField(input_formats=['%Y-%m-%d'])
         try:
             dob = date_field.run_validation(request.data.get('dob'))
@@ -151,29 +147,47 @@ class RegistrationViewSet(viewsets.ViewSet):
         year = dob.year
         if year > 2012 or year < 1960:
             return Response({'success': False})
+        
+        month = dob.month
+        if month == 'month':
+            return Response({'success': False})
 
         return Response({'success':True})
 
     
     @action(detail=False, methods=['post'], url_path='step2')
     def step2(self, request):
-        # Step 2 logic
-        return
+        data = request.data.get('email')
+        if CustomUser.objects.filter(email=data).exists():
+            return Response({'success': False})
+        return Response({'success': True})
     
     @action(detail=False, methods=['post'], url_path='step3')
     def step3(self, request):
-        # Step 3 logic
-        return
+        username = request.data.get('username')
+        password = request.data.get('pass')
+        print(password)
+        confirm = request.data.get('cPass')
+        if CustomUser.objects.filter(username=username).exists():
+            return Response({'success': 'username'})
+        
+        if(password != confirm) or not(self.two_digits(password)) or (len(password) < 8):
+            return Response({'success': 'password'})
+    
+        
+        
+
+        return Response({'success': True})
     
     @action(detail=False, methods=['post'], url_path='step4')
     def step4(self, request):
         # Step 4 logic
-        return
+        return Response({'success': True})
     
     @action(detail=False, methods=['post'], url_path='step5')
     def step5(self, request):
         # Step 5 logic
-        return
+        return Response({'success': True})
 
 
 

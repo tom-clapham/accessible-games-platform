@@ -1,11 +1,8 @@
-import React, {useEffect, useState} from 'react';
 import styles from './Register.module.css';
-import Warning from '../assets/warning.png';
-import { addGenre, addAccessibility } from './Register';
+import { addAccessibility } from './Register';
 import { useNavigate } from 'react-router-dom';
-import { array_genre, accessibility_array } from './Register';
-import {useAuth} from '../contexts/useAuth.jsx'
-import { step_1 } from '../endpoints/api.js';
+import { accessibility_array } from './Register';
+
 
 const Register_Stage_4 = () => {
   return (

@@ -7,8 +7,6 @@ urlpatterns = [
     path('token/refresh/', views.CustomRefreshTokenView.as_view(), name='token_refresh'),
     path('logout/', views.logout),
     path('authenticated/', views.is_authenticated),
-    path('register/', views.register),
-    path('users/', views.user_emails),
     path('step1/', views.RegistrationViewSet.as_view({'post': 'step1'}), name='step1'),
     path('step2/', views.RegistrationViewSet.as_view({'post': 'step2'}), name='step2'),
     path('step3/', views.RegistrationViewSet.as_view({'post': 'step3'}), name='step3'),

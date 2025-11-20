@@ -1,7 +1,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { is_authenticated } from "../endpoints/api";
 import { useNavigate} from 'react-router-dom';
-import { register, login, allUserEmails, step_1 } from '../endpoints/api';
+import { login, allUserEmails } from '../endpoints/api';
 
 const AuthContext = createContext();
 export const AuthProvider = ({children}) => {
@@ -28,15 +28,6 @@ export const AuthProvider = ({children}) => {
             nav('/')
         }
         return success;
-    }
-
-    const register_user = async (first, last, user, user_password, email_address, dob, genres, accessibility) => {
-        try{
-            await register(first, last, user, user_password, email_address, dob, genres, accessibility)
-
-        } catch (error){
-            console.log(error)
-        }
     }
 
     const user_usernames = async (u_user) => {
@@ -66,7 +57,7 @@ export const AuthProvider = ({children}) => {
     }, [window.location.pathname])
 
     return(
-        <AuthContext.Provider value={{isAuthenticated, loading, login_user, register_user, user_usernames, user_emails}}>
+        <AuthContext.Provider value={{isAuthenticated, loading, login_user, user_usernames, user_emails}}>
             {children}
         </AuthContext.Provider>
     )
