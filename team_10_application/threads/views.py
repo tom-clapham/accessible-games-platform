@@ -174,19 +174,21 @@ class RegistrationViewSet(viewsets.ViewSet):
         if(password != confirm) or not(self.two_digits(password)) or (len(password) < 8):
             return Response({'success': 'password'})
     
-        
-        
-
         return Response({'success': True})
     
     @action(detail=False, methods=['post'], url_path='step4')
     def step4(self, request):
-        # Step 4 logic
+        data = request.data.get('arr')
+        print(data)
         return Response({'success': True})
     
     @action(detail=False, methods=['post'], url_path='step5')
     def step5(self, request):
-        # Step 5 logic
+        data = request.data.get('arr')
+        if len(data) < 3:
+            return Response({'success': False})
+        
+        #Save the users information
         return Response({'success': True})
 
 

@@ -132,26 +132,24 @@ export const step_3 = async (user, password, cPassword, last, first) => {
     }
 }
 
-export const step_4 = async (date_of_birth) => {
+export const step_4 = async (array) => {
     try{
         const response = await axios.post(STEP4_URL,
-        { dob:date_of_birth },
+        { arr:array },
         { withCredentials: true }
         )
-        console.log(response.data.success);
         return response.data.success;
     } catch (error) {
         console.log(error);
     }
 }
 
-export const step_5 = async (date_of_birth) => {
+export const step_5 = async (array) => {
     try{
         const response = await axios.post(STEP5_URL,
-        { dob:date_of_birth },
+        { arr:array },
         { withCredentials: true }
         )
-        console.log(response.data.success);
         return response.data.success;
     } catch (error) {
         console.log(error);
