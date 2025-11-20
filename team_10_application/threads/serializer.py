@@ -35,3 +35,4 @@ class UserEmailsSerializer(serializers.ModelSerializer):
     class Meta:
         model = CustomUser
         fields = ('username', 'email')
+
