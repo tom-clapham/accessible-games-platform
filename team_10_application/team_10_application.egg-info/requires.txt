@@ -3,3 +3,5 @@ django-cors-headers>=4.9.0
 djangorestframework>=3.16.1
 mysqlclient>=2.2.7
 djangorestframework_simplejwt
+python-decouple
+django-allauth

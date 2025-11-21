@@ -7,3 +7,5 @@ Requires-Dist: django-cors-headers>=4.9.0
 Requires-Dist: djangorestframework>=3.16.1
 Requires-Dist: mysqlclient>=2.2.7
 Requires-Dist: djangorestframework_simplejwt
+Requires-Dist: python-decouple
+Requires-Dist: django-allauth

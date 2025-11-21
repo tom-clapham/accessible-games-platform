@@ -15,14 +15,14 @@ class GenreTag(models.Model):
         return self.name
     
 class CustomUser(AbstractUser):
-    date_of_birth = models.DateField()
+    date_of_birth = models.DateField(null=True)
     last_name = models.CharField(max_length=50)
     first_name = models.CharField(max_length=50)
-    email = models.CharField(max_length=50, unique=True)
+    email = models.EmailField(max_length=50, unique=True)
     username = models.CharField(max_length=50, unique=True)
 
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['username', 'date_of_birth', 'last_name', 'first_name', 'genre_tags', 'accessibility_tags']
+    REQUIRED_FIELDS = ['username', 'date_of_birth', 'last_name', 'first_name']
 
     genre_tags = models.ManyToManyField(GenreTag, blank=True, related_name="users")
     accessibility_tags = models.ManyToManyField(AccessibilityTag, blank=True, related_name="users")
