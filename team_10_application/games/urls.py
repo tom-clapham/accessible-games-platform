@@ -6,7 +6,8 @@ from . import discover_views
 router = DefaultRouter()
 router.register(r"games", GameViewSet, basename="game")
 
-urlpatterns = router.urls
 urlpatterns = [
     path('discover/', discover_views.discover_view, name='discover')
 ]
+
+urlpatterns += router.urls

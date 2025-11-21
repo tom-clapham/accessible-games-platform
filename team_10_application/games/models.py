@@ -1,5 +1,4 @@
 from django.db import models
-from .discover_models import Game
 
 # Create your models here.
 class AccessibilityTag(models.Model):
@@ -35,6 +34,9 @@ class Game(models.Model):
 
     thumbnail_url = models.URLField(blank=True)
     trailer_url = models.URLField(blank=True)
+
+    trending = models.BooleanField(blank=False)
+    on_sale = models.BooleanField(blank=False)
 
     def __str__(self):
         return self.name

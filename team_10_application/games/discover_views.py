@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import JsonResponse
-from games.discover_models import Game
+from .models import Game
 
 
 # How to serialise a Django QuerySet using JsonResponse: https://www.geeksforgeeks.org/python/how-to-output-django-queryset-as-json
