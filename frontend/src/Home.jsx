@@ -1,5 +1,7 @@
 import { useEffect, useState} from 'react'
 import axios from 'axios'
+import Navbar from './Components/Navbar/Navbar.jsx'
+import './index.css'
 
 function Home() {
     const [games, setGames] = useState()
@@ -11,6 +13,9 @@ function Home() {
     
         return(
         <div>
+            <div className='navbar-container'>
+                <Navbar/>
+            </div>
             <h1>Hello World</h1>
             <p>axios call results: {games}</p>
         </div>
