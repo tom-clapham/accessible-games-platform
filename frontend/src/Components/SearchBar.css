@@ -1,0 +1,27 @@
+.search-container {
+  display: flex;
+  align-items: center;
+  background: #242424;
+  padding: 10px 20px;
+  border-radius: 50px;
+  flex: 1 1 auto;
+  max-width: 700px;
+  min-width: 0;
+}
+
+.search-container input {
+  padding: 6px;
+  background: transparent;
+  border: 0;
+  outline: 0;
+  color: #fff;
+  font-size: 18px;
+  flex: 1 1 auto;
+  max-width: 700px;
+  min-width: 0;
+}
+
+
+.search-container input::placeholder {
+    color: #fff;
+}

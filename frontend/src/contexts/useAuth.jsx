@@ -1,7 +1,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { is_authenticated } from "../endpoints/api";
 import { useNavigate} from 'react-router-dom';
-import { register, login, allUserEmails } from '../endpoints/api';
+import { register, login, allUserEmails, step_1 } from '../endpoints/api';
 
 const AuthContext = createContext();
 export const AuthProvider = ({children}) => {

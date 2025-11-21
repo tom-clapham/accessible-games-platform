@@ -9,4 +9,9 @@ urlpatterns = [
     path('authenticated/', views.is_authenticated),
     path('register/', views.register),
     path('users/', views.user_emails),
+    path('step1/', views.RegistrationViewSet.as_view({'post': 'step1'}), name='step1'),
+    path('step2/', views.RegistrationViewSet.as_view({'post': 'step2'}), name='step2'),
+    path('step3/', views.RegistrationViewSet.as_view({'post': 'step3'}), name='step3'),
+    path('step4/', views.RegistrationViewSet.as_view({'post': 'step4'}), name='step4'),
+    path('step5/', views.RegistrationViewSet.as_view({'post': 'step5'}), name='step5'),
 ]
