@@ -15,5 +15,5 @@ body, html {
     font-family: "Roboto", sans-serif;
     font-weight:400;
     color:hsl(0, 0%, 90%);
-    background-color: hsl(0, 0%, 15%);
+    /* background-color: hsl(0, 0%, 15%); */
 }
