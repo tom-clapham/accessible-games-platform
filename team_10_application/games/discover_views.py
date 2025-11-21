@@ -1,11 +1,6 @@
-import os
 from django.shortcuts import render
-from dotenv import load_dotenv
 from django.http import JsonResponse
 from games.discover_models import Game
-
-load_dotenv()
-API_KEY = os.getenv("IsThereAnyDeal_API_KEY")
 
 
 # How to serialise a Django QuerySet using JsonResponse: https://www.geeksforgeeks.org/python/how-to-output-django-queryset-as-json
