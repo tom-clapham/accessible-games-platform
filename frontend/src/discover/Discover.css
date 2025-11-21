@@ -1,3 +1,11 @@
+
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 16px;
+    color: #fff;
+    background-color: #121212;
+}
+
 .carousel {
     display: block;
     width: 80%;
@@ -43,3 +51,4 @@
     min-width: 30px;
     
 }
+

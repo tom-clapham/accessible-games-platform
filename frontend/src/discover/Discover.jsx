@@ -38,7 +38,7 @@ function Discover() {
                 </div>
 
                 <div className="carousel">
-                    <h2>Highest Rated</h2>
+                    <h2>Latest Releases</h2>
                     {games.recently_released_games.map((game) => (
                         GameCard({ game })
                     ))}
