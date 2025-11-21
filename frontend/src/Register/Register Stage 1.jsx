@@ -1,30 +1,26 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import styles from './Register.module.css';
 import Warning from '../assets/warning.png';
 import { useNavigate } from 'react-router-dom'
-import { step_1 } from '../endpoints/api.js';
+import { step_1 } from '../endpoints/api';
 
-const Register_Stage_1 = () => {
+const Register_Stage_1 = () => {;
+    
   const nav = useNavigate();
   const [day, setDay] = useState("");
   const [month, setMonth] = useState("");
   const [year, setYear] = useState("");
   const [isDate, setIsDate] = useState("");
-
   const checkDate = async (year, month, day) => {
-    const d = new Date(year, month - 1, day);
+    const d = new Date(year, month, day);
     const isoString = d.toISOString();        
     const dateOnly = isoString.split('T')[0]; 
     const success = await step_1(dateOnly);
     if(success){
-        alert("Success!")
+        nav('/register/step_2');
+    } else {
+        setIsDate("false")
     }
-    // const d = new Date(year, month - 1, day);
-    // if(d.getFullYear() < 2012 && d.getFullYear() > 1940 && d.getMonth() === month - 1 && d.getDate() === day){
-    //     setStage("2");
-    // } else {
-    //     setIsDate("false");
-    // }
   }
 
   const handleLogin = () => {
@@ -33,7 +29,11 @@ const Register_Stage_1 = () => {
 
   return (
     <div className={styles.container}>
-        <form className={styles.form1}>
+        <form className={styles.form1}
+        onSubmit={(e) => {
+            e.preventDefault(); 
+            checkDate(Number(year), Number(month), Number(day));
+        }}>
             <h1 className={styles.h1}>Create an account</h1>
             <h3 className={styles.subtext}>Please enter your date of birth. This is to help you have a safe and fun experience no matter your age. </h3>
             <div className={styles.elements}>
@@ -43,15 +43,15 @@ const Register_Stage_1 = () => {
                 )}
                 <label className={styles.dob}>Date of birth</label>
                 <div className={styles.dropdown}>
-                    <select name="day" className={styles.day} value={day} onChange={(e) => setDay(e.target.value)}>
+                    <select className={styles.day} required value={day} onChange={(e) => setDay(e.target.value)}>
                     <option value="">Day</option>
                     {[...Array(31)].map((_, i) => (
                     <option key={i + 1} value={i + 1}>
                         {i + 1}
                     </option>))}
                     </select>
-                    <select name="month" className={styles.month} value={month} onChange={(e) => setMonth(e.target.value)}>
-                        <option key='month' value='month'>Month</option>
+                    <select className={styles.month} required value={month} onChange={(e) => setMonth(e.target.value)}>
+                        <option value="" disabled>Month</option>
                         <option value='01'>Jan</option>
                         <option value='02'>Feb</option>
                         <option value='03'>Mar</option>
@@ -65,10 +65,10 @@ const Register_Stage_1 = () => {
                         <option value='11'>Nov</option>
                         <option value='12'>Dec</option>
                     </select>
-                    <input className={styles.year} type='text' placeholder='Year' maxLength='4' onChange={(e) => setYear(e.target.value)}></input>
+                    <input className={styles.year} type='text' value={year} placeholder='Year' maxLength='4' onChange={(e) => setYear(e.target.value)}></input>
                 </div>
             </div>
-            <button className={styles.continue} type="submit" onClick={() => {checkDate(Number(year), Number(month), Number(day))}}>Continue</button>
+            <button className={styles.continue} type="submit">Continue</button>
             <div className={styles.accountContainer}>
                 <h3 className={styles.account}>Already have an account? <a onClick={handleLogin}>Sign in</a></h3>
             </div>

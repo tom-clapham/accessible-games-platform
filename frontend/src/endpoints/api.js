@@ -7,9 +7,12 @@ const LOGOUT_URL = `${BASE_URL}logout/`
 const REFRESH_URL = `${BASE_URL}token/refresh/`
 const USER_INFO_URL = `${BASE_URL}home/`
 const AUTH_URL = `${BASE_URL}authenticated/`
-const  REGISTER_URL = `${BASE_URL}register/`
 const  USER_URL = `${BASE_URL}users/`
 const  STEP1_URL = `${BASE_URL}step1/`
+const  STEP2_URL = `${BASE_URL}step2/`
+const  STEP3_URL = `${BASE_URL}step3/`
+const  STEP4_URL = `${BASE_URL}step4/`
+const  STEP5_URL = `${BASE_URL}step5/`
 
 export const user_info = async () => {
     try {
@@ -43,14 +46,6 @@ export const login = async (email, password) => {
     } catch(error){
         return error
     }
-}
-
-export const register = async (first, last, user, user_password, email_address, dob, genres, accessibilities) => {
-	const response = axios.post(REGISTER_URL,
-		{first_name:first, last_name:last, username:user,  email:email_address, password:user_password, 
-            date_of_birth:dob, genre_tags:genres, accessibility_tags:accessibilities},{ withCredentials:true }
-	)
-	return response.data
 }
 
 export const refresh_token = async () => {
@@ -102,19 +97,61 @@ export const is_authenticated = async () => {
 }
 
 export const step_1 = async (date_of_birth) => {
-    const nav = useNavigate()
     try{
-        console.log(date_of_birth)
         const response = await axios.post(STEP1_URL,
         { dob:date_of_birth },
         { withCredentials: true }
-    )
-    if(response.data.success){
-        nav('/register/step_2')
-    } else {
-        console.log("ERRRPRPRPRRPR")
+        )
+        return response.data.success;
+    } catch (error) {
+        console.log(error);
     }
-    } catch(error){
-        return error
+}
+
+export const step_2 = async (user_email) => {
+    try{
+        const response = await axios.post(STEP2_URL,
+        { email:user_email },
+        { withCredentials: true }
+        )
+        return response.data.success;
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+export const step_3 = async (user, password, cPassword, last, first) => {
+    try{
+        const response = await axios.post(STEP3_URL,
+        { username:user, pass:password, cPass:cPassword, last_name:last, first_name:first },
+        { withCredentials: true }
+        )
+        return response.data.success;
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+export const step_4 = async (array) => {
+    try{
+        const response = await axios.post(STEP4_URL,
+        { accessibility_arr:array },
+        { withCredentials: true }
+        )
+        return response.data.success;
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+export const step_5 = async (array) => {
+    try{
+        const response = await axios.post(STEP5_URL,
+        { genre_arr:array },
+        { withCredentials: true }
+        )
+        return response.data.success;
+    } catch (error) {
+        console.log(error);
     }
 }

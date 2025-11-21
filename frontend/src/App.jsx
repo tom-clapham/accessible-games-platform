@@ -16,7 +16,7 @@ function App() {
     <Router>
       <AuthProvider>
           <Routes>
-            <Route path="/" element={<PrivateRoute><Home/></PrivateRoute>}/>
+            <Route path="/" element={<Home/>}/>
             <Route path="/login" element={<Login/>}/>
             <Route path="/register/step_1" element={<Register_Stage_1/>}/>
             <Route path="/register/step_2" element={<Register_Stage_2/>}/>
