@@ -11,7 +11,7 @@ function Discover() {
         recently_released_games: []
     });
     useEffect(() => {
-    axios.get(`http://127.0.0.1:8000/api/games/discover`)
+    axios.get(`http://127.0.0.1:8000/app/games/discover`)
     .then(response => {
         setGames(response.data);
     })

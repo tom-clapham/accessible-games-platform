@@ -1,0 +1,15 @@
+[
+{
+    "model": "games.game",
+    "pk": 1,
+    "fields": {
+        "name": "F1 25",
+        "description": "Leave your mark on the world of racing in F1® 25, the official video game of the 2025 FIA Formula One World Championship™, featuring a revamped My Team mode, the thrilling third chapter of Braking Point, and more!",
+        "publisher": "Electronics Arts",
+        "price": 49.99,
+        "release_date": "2025-05-30",
+        "thumbnail_url": "https://image.api.playstation.com/vulcan/ap/rnd/202505/1521/ca36c3ae7641a273ff3f00e63732fb76e2850c57f577d6eb.jpg?w=440",
+        "trailer_url": "https://youtu.be/u5rWBgBjDsc?si=7ux35bVaNjWnMO28"
+    }
+}
+]
