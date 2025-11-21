@@ -26,10 +26,9 @@ const Register_Stage_2 = () => {
             e.preventDefault(); 
             checkEmail(email);
         }}>
-            <a className={styles.back} onClick={() => {setStage("1"); setDay(""); setMonth(""); setYear("")}}>Back</a>
             <h1 className={styles.h1}>What's your email?</h1>
             <label className={styles.emailLabel}>Email address</label>
-            <input className={styles.email} maxLength='100' required type='email' placeholder='Type your email address' onChange={(e) => setEmail(e.target.value)}></input>
+            <input className={styles.email} maxLength='100' autoFocus required type='email' placeholder='Type your email address' onChange={(e) => setEmail(e.target.value)}></input>
             {emailExists == "false" &&(<div className={styles.error}><img src={Warning} alt="Warning Logo" className={styles.warning}/>
                 This email address is already in use.
             </div>

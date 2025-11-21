@@ -32,9 +32,8 @@ const Register_Stage_3 = () => {
         <form className={styles.form3}
         onSubmit={(e) => {
             e.preventDefault(); 
-            checkPersonal(user, password, cPassword);
+            checkPersonal(user, password, cPassword, last, first);
         }}>
-            <a className={styles.back} onClick={() => {setStage("2"); setEmail("")}}>Back</a>
             <h1 className={styles.h1}>Create your account</h1>
             <label className={styles.emailL}>Email address</label>
             <input className={styles.emailI} required type='email' placeholder={email} disabled={true}></input>
@@ -42,7 +41,7 @@ const Register_Stage_3 = () => {
             <div className={styles.names}>
                 <div className={styles.firstContainer}>
                     <label className={styles.firstL}>First Name</label>
-                    <input className={styles.firstI} required maxLength='100' type='text' placeholder='Type your first name' onChange={(e) => setFirst(e.target.value)}></input>
+                    <input className={styles.firstI} required maxLength='100' autoFocus type='text' placeholder='Type your first name' onChange={(e) => setFirst(e.target.value)}></input>
                 </div>
                 <div className={styles.lastContainer}>
                     <label className={styles.lastL}>Last Name</label>

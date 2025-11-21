@@ -12,13 +12,6 @@ export function addGenre(id){
         array_genre = array_genre.filter(item => item !== id);
         btn.style.backgroundColor = '#d7d7d7';
         btn.style.border = '1px solid black';
-        btn.addEventListener('mouseover', () => {
-            btn.style.backgroundColor = '#919090';
-        });
-        btn.addEventListener('mouseout', () => {
-            btn.style.backgroundColor = '#d7d7d7';
-        });
-        
     }
 }
 
@@ -32,9 +25,7 @@ export function addAccessibility(id){
         accessibility_array = accessibility_array.filter(item => item !== id);;
         btn.style.backgroundColor = '#d7d7d7';
         btn.style.border = '1px solid black';
-        
     }
-    
 }
 
 

@@ -3,11 +3,13 @@ import { addAccessibility } from './Register';
 import { useNavigate } from 'react-router-dom';
 import { accessibility_array } from './Register';
 import { step_4 } from '../endpoints/api.js';
+import { useRef } from 'react';
 
 
 
 const Register_Stage_4 = () => {
   const nav = useNavigate()
+  const formRef = useRef(null);
   const checkAccessibility = async (accessibility_array) => {
     const success = await step_4(accessibility_array)
     if(success){
@@ -15,14 +17,21 @@ const Register_Stage_4 = () => {
     }
   }
 
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter') {
+      formRef.current.requestSubmit();
+    }
+  };
+
   return (
     <div className={styles.container}>
         <form className={styles.form4}
+        ref={formRef}
+        onKeyDown={handleKeyDown}
         onSubmit={(e) => {
             e.preventDefault(); 
             checkAccessibility(accessibility_array);
         }}>
-            <a className={styles.back} onClick={() => {setStage("3"); setLast(""); setFirst(""); setUser(""); setPassword(""); setCPassword("");}}>Back</a>
             <h1 className={styles.h1}>Your accessibility settings</h1>
             <h3 className={styles.subtext}>Please tick all that apply to you. This is to help us provide you with the best possible experience.</h3>
             <ul className={styles.impairments}>

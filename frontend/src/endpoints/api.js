@@ -135,7 +135,7 @@ export const step_3 = async (user, password, cPassword, last, first) => {
 export const step_4 = async (array) => {
     try{
         const response = await axios.post(STEP4_URL,
-        { arr:array },
+        { accessibility_arr:array },
         { withCredentials: true }
         )
         return response.data.success;
@@ -147,7 +147,7 @@ export const step_4 = async (array) => {
 export const step_5 = async (array) => {
     try{
         const response = await axios.post(STEP5_URL,
-        { arr:array },
+        { genre_arr:array },
         { withCredentials: true }
         )
         return response.data.success;

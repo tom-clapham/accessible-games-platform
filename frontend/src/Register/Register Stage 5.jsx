@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import {useState, useRef} from 'react';
 import styles from './Register.module.css';
 import Warning from '../assets/warning.png';
 import { addGenre } from './Register';
@@ -8,8 +8,8 @@ import { useNavigate } from 'react-router-dom';
 
 const Register_Stage_5 = () => {
   const [isGenres, setIsGenres] = useState("");
-
     const nav = useNavigate()
+    const formRef = useRef(null);
     const checkGenres = async (array) => {
         const success = await step_5(array)
         if(success){
@@ -20,14 +20,21 @@ const Register_Stage_5 = () => {
         }
     }
 
+    const handleKeyDown = (e) => {
+      if (e.key === 'Enter') {
+        formRef.current.requestSubmit();
+      }
+    };
+
   return (
     <div className={styles.container}>
         <form className={styles.form5}
+        ref={formRef}
+        onKeyDown={handleKeyDown}
         onSubmit={(e) => {
             e.preventDefault(); 
             checkGenres(array_genre);
         }}>
-            <a className={styles.back} onClick={() => {setStage("4")}}>Back</a>
             <h1 className={styles.h1}>Your favourite genres</h1>
             <h3 className={styles.h3}>Select all games genres that you enjoy playing.</h3>
             <ul id='selectedGenres' className={styles.selectedGenres}></ul>
