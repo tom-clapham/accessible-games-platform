@@ -2,8 +2,6 @@ import React, {useState} from 'react';
 import styles from './Login.module.css';
 import Logo from '../assets/platform_logo.jpg';
 import Warning from '../assets/Warning.png';
-import {login} from '../endpoints/api';
-import {OpenLogin} from './Login.js';
 import { useNavigate } from 'react-router-dom';
 import {useAuth} from '../contexts/useAuth.jsx';
 
@@ -40,7 +38,7 @@ const Login = () => {
 
                 <label className={styles.label}>Password</label>
                 <input className={styles.input} onChange={(e) => setPassword(e.target.value)} value={password} type="password" placeholder="Enter your password"></input>
-                <label className={styles.forgot}><a onClick={OpenLogin}>Forgot password?</a></label>
+                <label className={styles.forgot}><a>Forgot password?</a></label>
             </div>
             {error && (<div className={styles.error}><img src={Warning} alt="Warning Logo" className={styles.warning}/>
                   Username or password is incorrect.

@@ -1,11 +1,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { is_authenticated } from "../endpoints/api";
 import { useNavigate} from 'react-router-dom';
-<<<<<<< HEAD
-import { register, login, allUserEmails, step_1 } from '../endpoints/api';
-=======
 import { login, allUserEmails } from '../endpoints/api';
->>>>>>> 1cb3d31c0a302aad390b306298b49aa63307b1dc
 
 const AuthContext = createContext();
 export const AuthProvider = ({children}) => {
@@ -28,8 +24,11 @@ export const AuthProvider = ({children}) => {
     const login_user = async (email, password) => {
         const success = await login(email, password);
         if(success) {
-            setIsAuthenticated(true)
-            nav('/')
+            if (window.opener) {
+                window.opener.postMessage({ type: 'LOGIN_SUCCESS' }, window.location.origin);
+            }
+            window.close(); 
+            setIsAuthenticated(true);
         }
         return success;
     }

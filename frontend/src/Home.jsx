@@ -4,16 +4,7 @@ import { user_info, logout } from './endpoints/api';
 
 
 function Home() {
-    const [info, setInfo] = useState([])
     const nav = useNavigate();
-
-    useEffect(() => {
-        const fetchInfo = async () => {
-            const info = await user_info()
-            setInfo(info);
-        }
-        fetchInfo();
-    }, [])
 
     const handleLogout = async () => {
         const success = await logout();
@@ -24,7 +15,7 @@ function Home() {
 
     return(
         <div>
-            <h1>User successfully created</h1>
+            <h1>HOME PAGE</h1>
         </div>
     )
 }

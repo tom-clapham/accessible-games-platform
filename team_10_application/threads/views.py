@@ -217,55 +217,5 @@ class RegistrationViewSet(viewsets.ViewSet):
             user.accessibility_tags.set(access_qs)
             print("User:", user)
             return Response({'success': True})
+        return Response({'success':False})
         
-        
-
-class RegistrationViewSet(viewsets.ViewSet):
-    def get_permissions(self):
-        if self.action == 'step1' or self.action == 'step2' or self.action == 'step3' or self.action == 'step4' or self.action == 'step5':
-            return [AllowAny()]
-        return [IsAuthenticated()]  
-    
-    @action(detail=False, methods=['post'], url_path='step1')
-    def step1(self, request):
-        print("we are here")
-        date_field = serializers.DateField(input_formats=['%Y-%m-%d'])
-        try:
-            dob = date_field.run_validation(request.data.get('dob'))
-        except serializers.ValidationError as e:
-            return Response({'success': False})
-        
-        year = dob.year
-        if year > 2012 or year < 1960:
-            return Response({'success': False})
-
-        return Response({'success':True})
-
-    
-    @action(detail=False, methods=['post'], url_path='step2')
-    def step2(self, request):
-        # Step 2 logic
-        return
-    
-    @action(detail=False, methods=['post'], url_path='step3')
-    def step3(self, request):
-        # Step 3 logic
-        return
-    
-    @action(detail=False, methods=['post'], url_path='step4')
-    def step4(self, request):
-        # Step 4 logic
-        return
-    
-    @action(detail=False, methods=['post'], url_path='step5')
-    def step5(self, request):
-        # Step 5 logic
-        return
-
-
-
-
-
-
-
-

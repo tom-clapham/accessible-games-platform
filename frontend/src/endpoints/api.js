@@ -9,13 +9,10 @@ const USER_INFO_URL = `${BASE_URL}home/`
 const AUTH_URL = `${BASE_URL}authenticated/`
 const  USER_URL = `${BASE_URL}users/`
 const  STEP1_URL = `${BASE_URL}step1/`
-<<<<<<< HEAD
-=======
 const  STEP2_URL = `${BASE_URL}step2/`
 const  STEP3_URL = `${BASE_URL}step3/`
 const  STEP4_URL = `${BASE_URL}step4/`
 const  STEP5_URL = `${BASE_URL}step5/`
->>>>>>> 1cb3d31c0a302aad390b306298b49aa63307b1dc
 
 export const user_info = async () => {
     try {
@@ -51,17 +48,6 @@ export const login = async (email, password) => {
     }
 }
 
-<<<<<<< HEAD
-export const register = async (first, last, user, user_password, email_address, dob, genres, accessibilities) => {
-	const response = axios.post(REGISTER_URL,
-		{first_name:first, last_name:last, username:user,  email:email_address, password:user_password, 
-            date_of_birth:dob, genre_tags:genres, accessibility_tags:accessibilities},{ withCredentials:true }
-	)
-	return response.data
-}
-
-=======
->>>>>>> 1cb3d31c0a302aad390b306298b49aa63307b1dc
 export const refresh_token = async () => {
     try {
         await axios.post(REFRESH_URL,
@@ -111,24 +97,10 @@ export const is_authenticated = async () => {
 }
 
 export const step_1 = async (date_of_birth) => {
-<<<<<<< HEAD
-    const nav = useNavigate()
-=======
->>>>>>> 1cb3d31c0a302aad390b306298b49aa63307b1dc
     try{
         const response = await axios.post(STEP1_URL,
         { dob:date_of_birth },
         { withCredentials: true }
-<<<<<<< HEAD
-    )
-    if(response.data.success){
-        nav('/register/step_2')
-    } else {
-        console.log("ERRRPRPRPRRPR")
-    }
-    } catch(error){
-        return error
-=======
         )
         return response.data.success;
     } catch (error) {
@@ -181,6 +153,5 @@ export const step_5 = async (array) => {
         return response.data.success;
     } catch (error) {
         console.log(error);
->>>>>>> 1cb3d31c0a302aad390b306298b49aa63307b1dc
     }
 }
