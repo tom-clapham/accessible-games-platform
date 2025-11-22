@@ -3,6 +3,7 @@ import styles from './Register.module.css';
 import Warning from '../assets/warning.png';
 import { useNavigate } from 'react-router-dom'
 import { step_1 } from '../endpoints/api.js';
+import { OpenLogin } from '../Login/Login.js';
 
 const Register_Stage_1 = () => {
   const nav = useNavigate();
@@ -20,10 +21,6 @@ const Register_Stage_1 = () => {
     } else {
         setIsDate("false")
     }
-  }
-
-  const handleLogin = () => {
-    nav('/login');
   }
 
   return (
@@ -69,7 +66,7 @@ const Register_Stage_1 = () => {
             </div>
             <button className={styles.continue} type="submit">Continue</button>
             <div className={styles.accountContainer}>
-                <h3 className={styles.account}>Already have an account? <a onClick={handleLogin}>Sign in</a></h3>
+                <h3 className={styles.account}>Already have an account? <a onClick={OpenLogin}>Sign in</a></h3>
             </div>
         </form>
     </div>

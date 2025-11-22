@@ -21,8 +21,8 @@ export const AuthProvider = ({children}) => {
         }
     }
 
-    const login_user = async (email, password) => {
-        const success = await login(email, password);
+    const login_user = async (username, password) => {
+        const success = await login(username, password);
         if(success) {
             if (window.opener) {
                 window.opener.postMessage({ type: 'LOGIN_SUCCESS' }, window.location.origin);

@@ -68,15 +68,19 @@
 }
 
 .button {
-    width: 83%;
+    width: 80%;
     padding: 8px 30px;
-    border: #115ea3;
     border-radius: 3px;
+    border: none;
     margin-bottom: 30px;
     background-color: #115ea3;
     color: white;
     font-size: 16px;
     cursor: pointer;
+}
+
+.button:hover {
+    background-color: #2d6ca3;
 }
 
 .container {
@@ -91,8 +95,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    border: 2px solid black;
-    border-radius: 20px;
     width: 20%;
     padding: 25px;
     min-width: 425px;

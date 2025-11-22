@@ -36,10 +36,10 @@ export const allUserEmails = async () => {
     }
 }
 
-export const login = async (email, password) => {
+export const login = async (user, password) => {
     try{
         const response = await axios.post(LOGIN_URL,
-        {email:email, password:password},
+        {username:user, password:password},
         { withCredentials: true }
     )
     return response.data.success

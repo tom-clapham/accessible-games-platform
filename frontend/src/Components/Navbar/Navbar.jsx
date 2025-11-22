@@ -7,22 +7,22 @@ import { CgGames } from "react-icons/cg";
 import { user_info, logout } from '../../endpoints/api';
 import {OpenLogin} from '../../Login/Login.js';
 import logo from '../../assets/platform_logo.jpg';
-import { useNavigate } from 'react-router-dom';
 
 function Navbar(){
   const [user, setUser] = useState(false);
   const [profile, setProfile] = useState(false);
-  const nav = useNavigate();
   
   useEffect(() => {
+      const fetchInfo = async () => {
+        const info = await user_info();
+        setUser(info);
+      }
+      fetchInfo();
+
     const handleMessage = (event) => {
-        if (event.data.type === 'LOGIN_SUCCESS') {
-            const fetchInfo = async () => {
-              const info = await user_info();
-              setUser(info);
-            }
-            fetchInfo();
-          };
+      if (event.data.type === 'LOGIN_SUCCESS') {
+        fetchInfo();
+      }
     };
 
     window.addEventListener('message', handleMessage);

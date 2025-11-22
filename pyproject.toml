@@ -14,7 +14,8 @@ dependencies = [
     "djangorestframework_simplejwt",
     "python-decouple",
     "django-allauth",
-    "react-icons",
+    "requests",
+    "cryptography",
 ]
 
 [tool.setuptools.packages.find]
