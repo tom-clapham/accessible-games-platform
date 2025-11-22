@@ -2,17 +2,24 @@ import React, {useState} from 'react';
 import styles from './Forgot.module.css';
 import Warning from '../assets/warning.png';
 import { useLocation } from 'react-router-dom'
+import { forgot_info } from '../endpoints/api';
 
 
 const Forgot_Information = () => {
     const [emailExists, setEmailExists] = useState("true")
+    const [email, setEmail] = useState("")
     const location = useLocation();
     const from = location.state?.from;
+
+    const forgot = async (email) => {
+        forgot_info(email, from)
+    }
 
     return (
     <div className={styles.container}>
         <form className={styles.form}
         onSubmit={(e) => {
+            forgot(email)
             e.preventDefault(); 
         }}>
             <h1 className={styles.h1}>{from == "username" ? "Forgot username" : from == "password" ? "Forgot password" : ""}</h1>

@@ -12,4 +12,5 @@ urlpatterns = [
     path('step3/', views.RegistrationViewSet.as_view({'post': 'step3'}), name='step3'),
     path('step4/', views.RegistrationViewSet.as_view({'post': 'step4'}), name='step4'),
     path('step5/', views.RegistrationViewSet.as_view({'post': 'step5'}), name='step5'),
+    path('forgot-credentials/', views.forgot_credentials),
 ]

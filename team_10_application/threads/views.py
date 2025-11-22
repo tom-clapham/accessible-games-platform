@@ -7,6 +7,7 @@ from rest_framework.permissions import IsAuthenticated, AllowAny
 from .serializer import UserRegistrationSerializer, UserEmailsSerializer
 from .models import CustomUser, GenreTag, AccessibilityTag
 from rest_framework_simplejwt.tokens import RefreshToken
+from django.core.mail import send_mail
 
 from rest_framework_simplejwt.views import (
     TokenObtainPairView,
@@ -218,4 +219,34 @@ class RegistrationViewSet(viewsets.ViewSet):
             print("User:", user)
             return Response({'success': True})
         return Response({'success':False})
+
+@api_view(['POST'])
+@permission_classes([AllowAny])
+def forgot_credentials(request):
+    email = request.data.get('email')
+    type = request.data.get('from')
+
+    user = CustomUser.objects.get(email=email)
+
+    if CustomUser.objects.filter(email=email).exists():
+        if(type == "username"):
+            send_mail(
+                "Did you forget your username?",
+                "We were informed you forgot the username to your account, here it is: " + user.username,
+                "accessiblegamesplatform@gmail.com",
+                [email]
+            )
+        else:
+            if(type == "password"):
+                send_mail(
+                    "Password Reset Link for: " + user.username,
+                    "We were informed you forgot the password to your account, click the link to reset it: http://localhost:5173/login",
+                    "accessiblegamesplatform@gmail.com",
+                    [email]
+                )
+                
+
+        return Response({"success": True})
+
+    return Response({"success": False})
         
