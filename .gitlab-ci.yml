@@ -17,4 +17,4 @@ test_file:
   image: alpine
   stage: test
   script:
-    - test -f build/helloword.txt
+    - test -f build/helloworld.txt
