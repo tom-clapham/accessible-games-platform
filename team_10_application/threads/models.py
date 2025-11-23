@@ -1,4 +1,5 @@
 from django.db import models
+from games.models import *
 
 # Create your models here.
 
@@ -15,9 +16,9 @@ class Posts(models.Model):
     title = models.CharField(max_length=50, null=True)
     message = models.CharField(max_length=500)
     date = models.DateTimeField(auto_now_add=True)
-    gameId = models.IntegerField(default=1) # THIS MUST CHANGE TO FOREIGN KEY EVENTUALLY
+    gameId = models.ForeignKey(Game, on_delete=models.CASCADE) # THIS MUST CHANGE TO FOREIGN KEY EVENTUALLY
     userId = models.ForeignKey(Users, on_delete=models.CASCADE, default=1)
-    parent = models.IntegerField(null=True) # THIS MUST CHANGE TO FOREIGN KEY EVENTUALLY
+    parent = models.IntegerField(null=True)
 
     def __str__(self):
         return self.title

@@ -4,6 +4,7 @@ from rest_framework import generics, status
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from . models import *
+from games.models import *
 from . serializer import *
 from django.http import JsonResponse
 from rest_framework.permissions import AllowAny
@@ -16,6 +17,8 @@ class PostsListCreate(generics.ListCreateAPIView): # This is a class based view
 @api_view()
 @permission_classes([AllowAny])
 def getFirstPost(request, game_id):
+    game_exists = (Game.objects.filter(id=game_id).values('name'))
+    # print(game_exists)
     posts = (
         Posts.objects
         .select_related('userId')
@@ -31,9 +34,8 @@ def getFirstPost(request, game_id):
             username=F('userId__username')
         )
     )
-    return Response({
-        "parents": posts
-    })
+    # print(posts)
+    return Response({"parents": posts, "game": game_exists[0].get('name')}) if game_exists else Response(status.HTTP_404_NOT_FOUND)
 
 @api_view()
 @permission_classes([AllowAny])

@@ -4,7 +4,6 @@ h2, h3 {
     /* background-color: hsl(0, 0%, 15%); */
 }
 
-
 .loadingIcon {
     font-weight: 100;
     position: fixed;
@@ -125,14 +124,23 @@ h2, h3 {
     border-style: solid;
     border-color: hsl(0, 0%, 40%);
     border-radius: 5px;
-    border-width: 2px;
+    border-width: 1px;
     margin-bottom: 5px;
     padding: 10px;
 }
 
-/* .parentBox {
-    
-} */
+.voteBtn {
+    background: none;
+    color: white;
+    border: none;
+    font-size: 50px;
+    font-family: "Inter", "Segoe UI", Arial, sans-serif;
+    font-weight: bolder
+}
+
+.voteBtn:hover {
+    cursor: pointer
+}
 
 .createReply {
     display: flex;
@@ -168,7 +176,7 @@ h2, h3 {
     border-style: solid;
     border-color: hsl(0, 0%, 40%);
     border-radius: 5px;
-    border-width: 2px;
+    border-width: 1px;
     margin-bottom: 5px;
     padding: 10px;
 }
