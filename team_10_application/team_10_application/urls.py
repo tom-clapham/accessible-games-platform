@@ -23,6 +23,6 @@ def home(request):
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('app/threads/', include('threads.urls')),
-    path('api/', include('threads.urls')),
+    path('app/users/', include('users.urls')),
+    path('api/', include('users.urls')),
 ]
