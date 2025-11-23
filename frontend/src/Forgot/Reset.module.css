@@ -96,9 +96,24 @@
     width: 80%;
 }
 
-.warning {
-    width: 7%;
-    height: 7%;
-    padding-left: 15px;
-    padding-right: 10px;
+.success {
+    color: #fff;
+    font-weight: 500;
+    background-color: #057c299f;
+    margin-bottom: 25px;
+    border-radius: 10px;
+    padding: 25px 20px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    width: 80%;
 }
+
+.warning {
+    color: red;
+    width: 16%;
+    height: 16%;
+    padding-left: 15px;
+    padding-right: 5px;
+}
+

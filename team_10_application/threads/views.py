@@ -19,8 +19,9 @@ from rest_framework_simplejwt.views import (
 )
 
 # Create your views here.
-def hello_world(request):
-    return HttpResponse("Hello World!")
+def two_digits(password) -> bool:
+        digit_count = sum(ch.isdigit() for ch in password)
+        return digit_count >= 2
 
 class CustomTokenObtainPairView(TokenObtainPairView):
     def post(self, request, *args, **kwargs):
@@ -229,9 +230,9 @@ class RegistrationViewSet(viewsets.ViewSet):
 def forgot_credentials(request):
     email = request.data.get('email')
     type = request.data.get('from')
-    user = CustomUser.objects.get(email=email)
-    reset = f"http://localhost:5173/reset-password?uid={user}"
     if CustomUser.objects.filter(email=email).exists():
+        user = CustomUser.objects.get(email=email)
+        reset = f"http://localhost:5173/reset-password?uid={user}"
         if(type == "username"):
             send_mail(
                 "Did you forget your username?",
@@ -239,8 +240,9 @@ def forgot_credentials(request):
                 "accessiblegamesplatform@gmail.com",
                 [email]
             )
+            return Response({"success": True})
         else:
-            if(type == "password"):
+            if(type == "password" and user):
                 send_mail(
                     "Password Reset Link for: " + user.username,
                     f"We were informed you forgot the password to your account, click the link to reset it: {reset}",
@@ -248,6 +250,31 @@ def forgot_credentials(request):
                     [email]
                 )
                 
-        return Response({"success": True})
+                return Response({"success": True})
     return Response({"success": False})
+
+
+@api_view(['POST'])
+@permission_classes([AllowAny])
+def password_reset(request):
+
+    email = request.data.get('email')
+    new_password = request.data.get('password')
+    new_password_confirm = request.data.get('new_password')
+        
+    if not(two_digits(new_password)) or (len(new_password) < 8):
+        return Response({'success':"invalid"})
+    
+    if(new_password != new_password_confirm):
+        return Response({'success':"match"})
+    
+    try:
+        user = CustomUser.objects.get(email=email)
+    except CustomUser.DoesNotExist:
+        return Response({'success': False})
+
+    user.set_password(new_password)
+    user.save()
+    
+    return Response({'success':True})
         

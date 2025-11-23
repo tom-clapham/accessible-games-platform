@@ -14,6 +14,7 @@ const  STEP3_URL = `${BASE_URL}step3/`
 const  STEP4_URL = `${BASE_URL}step4/`
 const  STEP5_URL = `${BASE_URL}step5/`
 const  FORGOT_URL = `${BASE_URL}forgot-credentials/`
+const  RESET_URL = `${BASE_URL}reset-password/`
 
 export const user_info = async () => {
     try {
@@ -48,6 +49,20 @@ export const login = async (user, password) => {
         return error
     }
 }
+
+export const password_reset = async (password, new_password, email) => {
+    try{
+        const response = await axios.post(RESET_URL,
+        {new_password:new_password, password:password, email:email},
+        { withCredentials: true }
+    )
+    return response.data.success
+    } catch(error){
+        return error
+    }
+}
+
+
 
 export const forgot_info = async (email, type) => {
     try{

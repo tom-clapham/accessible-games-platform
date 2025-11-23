@@ -5,3 +5,5 @@ mysqlclient>=2.2.7
 djangorestframework_simplejwt
 python-decouple
 django-allauth
+requests
+cryptography

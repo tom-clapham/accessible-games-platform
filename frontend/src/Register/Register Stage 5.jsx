@@ -1,6 +1,6 @@
 import {useState, useRef} from 'react';
 import styles from './Register.module.css';
-import Warning from '../assets/warning.png';
+import { IoIosWarning } from "react-icons/io";
 import { addGenre } from './Register';
 import { array_genre } from './Register';
 import { step_5 } from '../endpoints/api.js';
@@ -49,7 +49,7 @@ const Register_Stage_5 = () => {
                 <li><button id='Horror' type='button' onClick={(e) => addGenre(e.target.id)}>Horror</button></li>
                 <li><button id='Educational' type='button' onClick={(e) => addGenre(e.target.id)}>Educational</button></li>
             </ul>
-            {isGenres == "false" &&(<div className={styles.error}><img src={Warning} alt="Warning Logo" className={styles.warning}/>
+            {isGenres == "false" &&(<div className={styles.error}><IoIosWarning className={styles.warning}/>
                 You must select at least 3 genres.
             </div>
             )}

@@ -9,3 +9,5 @@ Requires-Dist: mysqlclient>=2.2.7
 Requires-Dist: djangorestframework_simplejwt
 Requires-Dist: python-decouple
 Requires-Dist: django-allauth
+Requires-Dist: requests
+Requires-Dist: cryptography

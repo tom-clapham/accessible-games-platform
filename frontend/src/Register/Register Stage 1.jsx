@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import styles from './Register.module.css';
-import Warning from '../assets/warning.png';
+import { IoIosWarning } from "react-icons/io";
 import { useNavigate } from 'react-router-dom'
 import { step_1 } from '../endpoints/api.js';
 import { OpenLogin } from '../Login/Login.js';
@@ -33,7 +33,7 @@ const Register_Stage_1 = () => {
             <h1 className={styles.h1}>Create an account</h1>
             <h3 className={styles.subtext}>Please enter your date of birth. This is to help you have a safe and fun experience no matter your age. </h3>
             <div className={styles.elements}>
-                {isDate == "false" &&(<div className={styles.error}><img src={Warning} alt="Warning Logo" className={styles.warning}/>
+                {isDate == "false" &&(<div className={styles.error}><IoIosWarning className={styles.warning}/>
                     Please ensure this is your real birthday.
                 </div>
                 )}

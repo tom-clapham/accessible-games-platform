@@ -1,0 +1,88 @@
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;  
+    align-items: center;      
+    height: 100vh;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 20%;
+    padding: 25px;
+    min-width: 425px;
+    margin: 30px;
+}
+
+.h1 {
+    margin-bottom: 10px;
+    width: 80;
+}
+
+.emailLabel {
+    font-size: 15px;
+    width: 80%;
+    margin-bottom: 5px;
+}
+
+.email {
+    width: 80%;
+    margin-bottom: 15px;
+    height: 30px;
+    font-size: 15px;
+    padding-left: 5px;
+}
+
+.continue2 {
+    width: 80%;
+    padding: 8px 30px;
+    border-radius: 3px;
+    border: none;
+    margin-bottom: 30px;
+    background-color: #115ea3;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.continue2:hover {
+    background-color: #2d6ca3;
+}
+
+.error {
+    color: #fff;
+    font-weight: 500;
+    background-color: #86131dce;
+    margin-bottom: 25px;
+    border-radius: 10px;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    padding-left: 5px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    width: 80%;
+}
+
+.success {
+    color: #fff;
+    font-weight: 500;
+    background-color: #057c299f;
+    margin-bottom: 25px;
+    border-radius: 10px;
+    padding: 25px 20px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    width: 80%;
+}
+
+.warning {
+    color: red;
+    width: 16%;
+    height: 16%;
+    padding-left: 15px;
+    padding-right: 5px;
+}

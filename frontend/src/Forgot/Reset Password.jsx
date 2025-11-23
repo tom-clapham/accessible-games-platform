@@ -1,19 +1,43 @@
 import React, {useState} from 'react';
 import styles from './Reset.module.css';
 import Logo from '../assets/platform_logo.jpg';
-import Warning from '../assets/Warning.png';
+import { IoIosWarning } from "react-icons/io";
 import { useSearchParams } from 'react-router-dom';
+import { password_reset } from '../endpoints/api';
 
 const Reset_Password = () => {
 
     const [searchParams] = useSearchParams();
+    const [password, setPassword] = useState("");
+    const [newPassword, setNewPassword] = useState("");
+    const email = searchParams.get('uid');
+
     const [isPassword, setIsPassword] = useState(true);
     const [match, setMatch] = useState(true);
-    const email = searchParams.get('uid');
+    const [success, setSuccess] = useState(false)
+    
+    const sendPassword = async (password, newPassword, email) => {
+        const success = await password_reset(password, newPassword, email);
+        if(success == "match"){
+            setMatch(false)
+            setSuccess(false)
+            setIsPassword(true)
+        } else if(success == "invalid"){
+            setIsPassword(false)
+            setSuccess(false)
+            setMatch(true)
+        } else {
+            setMatch(true)
+            setIsPassword(true)
+            setSuccess(true)
+        }
+    }
+    
 
   return (
     <form className={styles.container}
     onSubmit={(e) => {
+        sendPassword(password, newPassword, email)
         e.preventDefault(); 
         handleLogin();
     }}>
@@ -23,16 +47,20 @@ const Reset_Password = () => {
             <h3 className={styles.subtext}>{email}</h3>
             <div className={styles.elements}>
                 <label className={styles.label}>New Password</label>
-                <input className={styles.input} placeholder="Enter your new password"></input>
+                <input className={styles.input} onChange={(e) => setPassword(e.target.value)} value={password} type="password" placeholder="Enter your new password"></input>
 
                 <label className={styles.label}>Confirm New Password</label>
-                <input className={styles.input} type="password" placeholder="Re-enter your new password"></input>
+                <input className={styles.input} onChange={(e) => setNewPassword(e.target.value)} value={newPassword} type="password" placeholder="Re-enter your new password"></input>
             </div>
-            {!match &&(<div className={styles.error}><img src={Warning} alt="Warning Logo" className={styles.warning}/>
+            {success &&(<div className={styles.success}>
+                  Your password has been successfully changed! You can now safely close this tab.
+            </div> 
+            )}
+            {!match &&(<div className={styles.error}><IoIosWarning className={styles.warning}/>
                   Passwords do not match.
             </div> 
             )}
-            {!isPassword &&(<div className={styles.error}><img src={Warning} alt="Warning Logo" className={styles.warning}/>
+            {!isPassword &&(<div className={styles.error}><IoIosWarning className={styles.warning}/>
                             <div>
                                 Your password must contain:
                                 <ul>
@@ -44,7 +72,6 @@ const Reset_Password = () => {
                         </div>
                         )}
             <button className={styles.button} type="submit">Change password</button>
-            <h3 className={styles.create}>Access your account: <a>Sign in</a></h3> 
         </div>
     </form>
   )

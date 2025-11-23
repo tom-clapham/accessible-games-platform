@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import styles from './Register.module.css';
-import Warning from '../assets/warning.png';
+import { IoIosWarning } from "react-icons/io";
 import { useNavigate } from 'react-router-dom';
 import { step_3 } from '../endpoints/api.js';
 
@@ -58,11 +58,11 @@ const Register_Stage_3 = () => {
             <label className={styles.passwordL}>Re-type your password</label>
             <input className={styles.passwordI} required maxLength='100' type='password' placeholder='Re-type your password' onChange={(e) => setCPassword(e.target.value)}></input>
 
-            {userExists=="false" &&(<div className={styles.error}><img src={Warning} alt="Warning Logo" className={styles.warning}/>
+            {userExists=="false" &&(<div className={styles.error}><IoIosWarning className={styles.warning}/>
                 This username is already in use.
             </div>
             )}
-            {isPassword=="false" &&(<div className={styles.error}><img src={Warning} alt="Warning Logo" className={styles.warning}/>
+            {isPassword=="false" &&(<div className={styles.error}><IoIosWarning className={styles.warning}/>
                 <div>
                     Your password must contain:
                     <ul>
