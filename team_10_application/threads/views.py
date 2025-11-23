@@ -1,24 +1,15 @@
-from django.shortcuts import render
-from django.http import HttpResponse
 from rest_framework.response import Response
 from rest_framework import viewsets, serializers
 from rest_framework.decorators import api_view, permission_classes, action
 from rest_framework.permissions import IsAuthenticated, AllowAny
-from .serializer import UserRegistrationSerializer, UserEmailsSerializer
+from .serializer import UserRegistrationSerializer
 from .models import CustomUser, GenreTag, AccessibilityTag
-from rest_framework_simplejwt.tokens import RefreshToken
-from django.contrib.auth.views import PasswordResetConfirmView
 from django.core.mail import send_mail
-from django.contrib.auth.tokens import default_token_generator
-from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
-from django.utils.encoding import force_bytes
-
 from rest_framework_simplejwt.views import (
     TokenObtainPairView,
     TokenRefreshView,
 )
 
-# Create your views here.
 def two_digits(password) -> bool:
         digit_count = sum(ch.isdigit() for ch in password)
         return digit_count >= 2

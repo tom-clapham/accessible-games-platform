@@ -1,7 +1,8 @@
 import {useState, useEffect} from 'react';
 import './Navbar.css';
 import logoPicture from '../../assets/platform_logo.jpg';
-import SearchBar from '../SearchBar';'./Components/SearchBar';
+import SearchBar from '../Elements/SearchBar.jsx'
+import { useNavigate } from 'react-router-dom';
 import { MdAccountCircle } from "react-icons/md";
 import { CgGames } from "react-icons/cg";
 import { user_info, logout } from '../../endpoints/api';
@@ -11,6 +12,7 @@ import logo from '../../assets/platform_logo.jpg';
 function Navbar(){
   const [user, setUser] = useState(false);
   const [profile, setProfile] = useState(false);
+  const nav = useNavigate();
   
   useEffect(() => {
       const fetchInfo = async () => {
@@ -19,15 +21,15 @@ function Navbar(){
       }
       fetchInfo();
 
-    const handleMessage = (event) => {
-      if (event.data.type === 'LOGIN_SUCCESS') {
-        fetchInfo();
-      }
-    };
+      const handleMessage = (event) => {
+        if (event.data.type === 'LOGIN_SUCCESS') {
+          fetchInfo();
+        }
+      };
 
-    window.addEventListener('message', handleMessage);
-    return () => window.removeEventListener('message', handleMessage);
-}, []);
+      window.addEventListener('message', handleMessage);
+      return () => window.removeEventListener('message', handleMessage);
+  }, []);
 
   function login_redirect(){
       OpenLogin();
@@ -35,26 +37,30 @@ function Navbar(){
 
   function showHideProfile(){
       if(!profile){
-        setProfile(true);
+          setProfile(true);
       } else if(profile){
-        setProfile(false);
+          setProfile(false);
       }
       
+  }
+
+  function navHome(){
+      nav('/')
   }
 
   const handleLogout = async () => {
       const success = await logout();
       if(success){
-        window.location.reload();
+          window.location.reload();
       }
   }
   
   return (
     <div>
       <div className='navbar'>
-        <img className='logo' src={logoPicture} alt='Logo Picture'></img>
+        <img className='logo' src={logoPicture} alt='Logo Picture' onClick={navHome}></img>
           <ul className='list'>
-            <li className='home-link'>Home</li>
+            <li className='home-link' onClick={navHome}>Home</li>
             <li className='games-link'>Games</li>
             <li className='community-link'>Community</li>
             <li className='about-link'>About us</li>

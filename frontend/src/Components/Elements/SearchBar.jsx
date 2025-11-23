@@ -1,4 +1,3 @@
-
 import './SearchBar.css';
  
 function SearchBar(){

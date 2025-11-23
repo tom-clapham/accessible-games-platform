@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import {useState} from 'react';
 import styles from './Register.module.css';
 import { IoIosWarning } from "react-icons/io";
 import { useNavigate } from 'react-router-dom'
@@ -30,6 +30,17 @@ const Register_Stage_1 = () => {
             e.preventDefault(); 
             checkDate(Number(year), Number(month), Number(day));
         }}>
+            <ul className={styles.list}>
+                <li style={{textDecoration:'underline'}} className={styles.stage1}><b>Date of Birth</b></li>
+                <li className={styles.slash1}><b>/</b></li>
+                <li className={styles.stage2}>Email</li>
+                <li className={styles.slash2}>/</li>
+                <li className={styles.stage3}>Your info</li>
+                <li className={styles.slash3}>/</li>
+                <li className={styles.stage4}>Accessibility</li>
+                <li className={styles.slash4}>/</li>
+                <li className={styles.stage5}>Genres</li>
+            </ul>
             <h1 className={styles.h1}>Create an account</h1>
             <h3 className={styles.subtext}>Please enter your date of birth. This is to help you have a safe and fun experience no matter your age. </h3>
             <div className={styles.elements}>

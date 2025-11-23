@@ -7,14 +7,19 @@ import { step_5 } from '../endpoints/api.js';
 import { useNavigate } from 'react-router-dom';
 
 const Register_Stage_5 = () => {
-  const [isGenres, setIsGenres] = useState("");
+    const [isGenres, setIsGenres] = useState("");
+    const [registered, setRegistered] = useState(false);
     const nav = useNavigate()
     const formRef = useRef(null);
+
     const checkGenres = async (array) => {
         const success = await step_5(array)
         if(success){
-            nav('/');
-            alert('User created successfully')
+            setIsGenres("true")
+            setRegistered(true)
+            const timeout = setTimeout(() => {
+              nav('/');
+            }, 3000);
         } else {
           setIsGenres("false")
         }
@@ -35,6 +40,17 @@ const Register_Stage_5 = () => {
             e.preventDefault(); 
             checkGenres(array_genre);
         }}>
+          <ul className={styles.list}>
+                <li className={styles.stage1}>Date of Birth</li>
+                <li className={styles.slash1}>/</li>
+                <li className={styles.stage2}>Email</li>
+                <li className={styles.slash2}>/</li>
+                <li className={styles.stage3}>Your info</li>
+                <li className={styles.slash3}>/</li>
+                <li className={styles.stage4}>Accessibility</li>
+                <li className={styles.slash4}>/</li>
+                <li style={{textDecoration:'underline'}} className={styles.stage5}><b>Genres</b></li>
+            </ul>
             <h1 className={styles.h1}>Your favourite genres</h1>
             <h3 className={styles.h3}>Select all games genres that you enjoy playing.</h3>
             <ul id='selectedGenres' className={styles.selectedGenres}></ul>
@@ -53,6 +69,12 @@ const Register_Stage_5 = () => {
                 You must select at least 3 genres.
             </div>
             )}
+            {registered &&(<div className={styles.success}>
+                Thank you for registering with us, you will be redirected in <b>5 seconds.</b>
+                
+            </div>
+            )}
+            
             <button className={styles.signup} type="submit">Register</button>
         </form>
     </div>

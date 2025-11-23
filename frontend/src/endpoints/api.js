@@ -1,5 +1,4 @@
 import axios from 'axios'
-import { useNavigate} from 'react-router-dom';
 
 const BASE_URL = 'http://localhost:8000/api/'
 const LOGIN_URL = `${BASE_URL}token/`

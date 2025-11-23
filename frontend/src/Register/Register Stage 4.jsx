@@ -32,6 +32,17 @@ const Register_Stage_4 = () => {
             e.preventDefault(); 
             checkAccessibility(accessibility_array);
         }}>
+          <ul className={styles.list}>
+                <li className={styles.stage1}>Date of Birth</li>
+                <li className={styles.slash1}>/</li>
+                <li className={styles.stage2}>Email</li>
+                <li className={styles.slash2}>/</li>
+                <li className={styles.stage3}>Your info</li>
+                <li className={styles.slash3}>/</li>
+                <li style={{textDecoration:'underline'}} className={styles.stage4}><b>Accessibility</b></li>
+                <li className={styles.slash4}><b>/</b></li>
+                <li className={styles.stage5}>Genres</li>
+            </ul>
             <h1 className={styles.h1}>Your accessibility settings</h1>
             <h3 className={styles.subtext}>Please tick all that apply to you. This is to help us provide you with the best possible experience.</h3>
             <ul className={styles.impairments}>

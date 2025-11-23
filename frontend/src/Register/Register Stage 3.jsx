@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import {useState} from 'react';
 import styles from './Register.module.css';
 import { IoIosWarning } from "react-icons/io";
 import { useNavigate } from 'react-router-dom';
@@ -22,8 +22,10 @@ const Register_Stage_3 = () => {
         nav('/register/step_4');
     } else if (success == "password") {
         setIsPassword("false")
+        setUserExists("true")
     } else if(success =="username"){
         setUserExists("false")
+         setIsPassword("true")
     }
   }
 
@@ -34,10 +36,18 @@ const Register_Stage_3 = () => {
             e.preventDefault(); 
             checkPersonal(user, password, cPassword, last, first);
         }}>
+            <ul className={styles.list}>
+                <li className={styles.stage1}>Date of Birth</li>
+                <li className={styles.slash1}>/</li>
+                <li className={styles.stage2}>Email</li>
+                <li className={styles.slash2}>/</li>
+                <li style={{textDecoration:'underline'}} className={styles.stage3}><b>Your info</b></li>
+                <li className={styles.slash3}><b>/</b></li>
+                <li className={styles.stage4}>Accessibility</li>
+                <li className={styles.slash4}>/</li>
+                <li className={styles.stage5}>Genres</li>
+            </ul>
             <h1 className={styles.h1}>Create your account</h1>
-            <label className={styles.emailL}>Email address</label>
-            <input className={styles.emailI} required type='email' placeholder={email} disabled={true}></input>
-
             <div className={styles.names}>
                 <div className={styles.firstContainer}>
                     <label className={styles.firstL}>First Name</label>

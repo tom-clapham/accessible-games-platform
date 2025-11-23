@@ -42,7 +42,7 @@ const Reset_Password = () => {
         handleLogin();
     }}>
         <div className={styles.form}>
-            {/* <img src={Logo} alt='Platform Logo' className={styles.logo}></img> */}
+            <img src={Logo} alt='Platform Logo' className={styles.logo}></img>
             <h1 className={styles.signin}>Reset your password</h1>
             <h3 className={styles.subtext}>{email}</h3>
             <div className={styles.elements}>
