@@ -11,6 +11,7 @@ import Register_Stage_4 from './Register/Register Stage 4.jsx'
 import Register_Stage_5 from './Register/Register Stage 5.jsx'
 import { AuthProvider } from './contexts/useAuth.jsx';
 import Forgot_Information from './Forgot/Forgot Information.jsx'
+import Reset_Password from './Forgot/Reset Password.jsx'
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
           </Route>
           <Route path="/login" element={<Login/>}/>
           <Route path="/forgot-credentials" element={<Forgot_Information/>}/>
+          <Route path="/reset-password" element={<Reset_Password/>}/>
         </Routes>
       </AuthProvider>
     </Router>

@@ -7,7 +7,11 @@ from rest_framework.permissions import IsAuthenticated, AllowAny
 from .serializer import UserRegistrationSerializer, UserEmailsSerializer
 from .models import CustomUser, GenreTag, AccessibilityTag
 from rest_framework_simplejwt.tokens import RefreshToken
+from django.contrib.auth.views import PasswordResetConfirmView
 from django.core.mail import send_mail
+from django.contrib.auth.tokens import default_token_generator
+from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
+from django.utils.encoding import force_bytes
 
 from rest_framework_simplejwt.views import (
     TokenObtainPairView,
@@ -225,9 +229,8 @@ class RegistrationViewSet(viewsets.ViewSet):
 def forgot_credentials(request):
     email = request.data.get('email')
     type = request.data.get('from')
-
     user = CustomUser.objects.get(email=email)
-
+    reset = f"http://localhost:5173/reset-password?uid={user}"
     if CustomUser.objects.filter(email=email).exists():
         if(type == "username"):
             send_mail(
@@ -240,13 +243,11 @@ def forgot_credentials(request):
             if(type == "password"):
                 send_mail(
                     "Password Reset Link for: " + user.username,
-                    "We were informed you forgot the password to your account, click the link to reset it: http://localhost:5173/login",
+                    f"We were informed you forgot the password to your account, click the link to reset it: {reset}",
                     "accessiblegamesplatform@gmail.com",
                     [email]
                 )
                 
-
         return Response({"success": True})
-
     return Response({"success": False})
         

@@ -1,0 +1,104 @@
+.create {
+    font-size: 14px;
+}
+
+.create a {
+    font-size: 14px;
+    color: #115ea3; 
+}
+
+.create a:hover {
+    font-size: 14px;
+    color: #2d6ca3; 
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.signin {
+    margin-bottom: 10px;
+    width: 80;
+}
+
+.label {
+    font-size: 15px;
+    width: 80%;
+    margin-bottom: 5px;
+}
+
+.input {
+    width: 80%;
+    margin-bottom: 20px;
+    height: 30px;
+    font-size: 15px;
+    padding-left: 5px;
+}
+
+.button {
+    width: 80%;
+    padding: 8px 30px;
+    border-radius: 3px;
+    border: none;
+    margin-bottom: 30px;
+    background-color: #115ea3;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.subtext {
+    font-size: 16px;
+    margin-bottom: 30px;
+}
+
+.button:hover {
+    background-color: #2d6ca3;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;  
+    align-items: center;      
+    height: 100vh;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    border: 2px solid black;
+    border-radius: 10px;
+    align-items: center;
+    width: 20%;
+    padding: 25px;
+    min-width: 425px;
+    margin: 30px;
+}
+
+.elements {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.error {
+    color: #fff;
+    font-weight: 500;
+    background-color: #86131dce;
+    margin-bottom: 25px;
+    border-radius: 10px;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    padding-left: 5px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    width: 80%;
+}
+
+.warning {
+    width: 7%;
+    height: 7%;
+    padding-left: 15px;
+    padding-right: 10px;
+}
