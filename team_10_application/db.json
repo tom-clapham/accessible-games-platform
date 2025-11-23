@@ -1,5 +1,237 @@
 [
 {
+    "model": "threads.posts",
+    "pk": 1,
+    "fields": {
+        "title": "F1 is phenmoneal!",
+        "message": "This is a big moment everyone, can we get some cheers please!!!!",
+        "date": "2025-11-11T13:36:31.111Z",
+        "gameId": 1,
+        "userId": 1,
+        "parent": null
+    }
+},
+{
+    "model": "threads.posts",
+    "pk": 2,
+    "fields": {
+        "title": "CHEER",
+        "message": "WOOP WOOP!!",
+        "date": "2025-11-11T13:36:48.862Z",
+        "gameId": 1,
+        "userId": 2,
+        "parent": 1
+    }
+},
+{
+    "model": "threads.posts",
+    "pk": 3,
+    "fields": {
+        "title": "THREE BIG BOOMS!",
+        "message": "BOOM BOOM BOOM!",
+        "date": "2025-11-11T13:37:02.632Z",
+        "gameId": 1,
+        "userId": 3,
+        "parent": 1
+    }
+},
+{
+    "model": "threads.posts",
+    "pk": 4,
+    "fields": {
+        "title": "YANITED!",
+        "message": "ryan was here",
+        "date": "2025-11-11T13:37:16.564Z",
+        "gameId": 1,
+        "userId": 4,
+        "parent": 1
+    }
+},
+{
+    "model": "threads.posts",
+    "pk": 5,
+    "fields": {
+        "title": "This is the second new post for this site!!",
+        "message": "Hello there my name is founder and I am the goat!",
+        "date": "2025-11-12T15:02:41.698Z",
+        "gameId": 1,
+        "userId": 4,
+        "parent": null
+    }
+},
+{
+    "model": "threads.posts",
+    "pk": 6,
+    "fields": {
+        "title": "asdfasdf",
+        "message": "asdfasdf",
+        "date": "2025-11-14T23:02:38.760Z",
+        "gameId": 1,
+        "userId": 1,
+        "parent": null
+    }
+},
+{
+    "model": "threads.posts",
+    "pk": 7,
+    "fields": {
+        "title": "Hello there",
+        "message": "asdfasdffkalsjdhfklasjdhf",
+        "date": "2025-11-14T23:03:50.844Z",
+        "gameId": 1,
+        "userId": 1,
+        "parent": null
+    }
+},
+{
+    "model": "threads.posts",
+    "pk": 8,
+    "fields": {
+        "title": null,
+        "message": "asdfasdf",
+        "date": "2025-11-15T11:57:13.983Z",
+        "gameId": 1,
+        "userId": 2,
+        "parent": 1
+    }
+},
+{
+    "model": "threads.posts",
+    "pk": 9,
+    "fields": {
+        "title": null,
+        "message": "sdfgsdfgsdfg",
+        "date": "2025-11-15T11:57:22.109Z",
+        "gameId": 1,
+        "userId": 2,
+        "parent": 1
+    }
+},
+{
+    "model": "threads.posts",
+    "pk": 10,
+    "fields": {
+        "title": null,
+        "message": "sdfg",
+        "date": "2025-11-15T11:57:35.575Z",
+        "gameId": 1,
+        "userId": 2,
+        "parent": 1
+    }
+},
+{
+    "model": "threads.posts",
+    "pk": 11,
+    "fields": {
+        "title": null,
+        "message": "sdfg",
+        "date": "2025-11-15T11:59:08.669Z",
+        "gameId": 1,
+        "userId": 2,
+        "parent": 1
+    }
+},
+{
+    "model": "threads.posts",
+    "pk": 12,
+    "fields": {
+        "title": null,
+        "message": "asdf",
+        "date": "2025-11-15T11:59:22.637Z",
+        "gameId": 1,
+        "userId": 2,
+        "parent": 1
+    }
+},
+{
+    "model": "threads.posts",
+    "pk": 13,
+    "fields": {
+        "title": null,
+        "message": "asdfasdf",
+        "date": "2025-11-15T11:59:28.354Z",
+        "gameId": 1,
+        "userId": 2,
+        "parent": 1
+    }
+},
+{
+    "model": "threads.posts",
+    "pk": 14,
+    "fields": {
+        "title": null,
+        "message": "Yes Daiyan!",
+        "date": "2025-11-15T12:01:03.119Z",
+        "gameId": 6,
+        "userId": 2,
+        "parent": 6
+    }
+},
+{
+    "model": "threads.posts",
+    "pk": 15,
+    "fields": {
+        "title": "Tom likes this",
+        "message": "hfsadlkjhflaskjdfhlaskdjfhalsdkjfhlaksdjfhlaskdfj",
+        "date": "2025-11-15T12:15:48.612Z",
+        "gameId": 1,
+        "userId": 1,
+        "parent": null
+    }
+},
+{
+    "model": "threads.posts",
+    "pk": 16,
+    "fields": {
+        "title": null,
+        "message": "Hello Tom!\"",
+        "date": "2025-11-15T12:16:05.548Z",
+        "gameId": 15,
+        "userId": 2,
+        "parent": 15
+    }
+},
+{
+    "model": "threads.users",
+    "pk": 1,
+    "fields": {
+        "firstname": "Daiyan",
+        "surname": "Khan",
+        "age": 21,
+        "username": "@founder_001"
+    }
+},
+{
+    "model": "threads.users",
+    "pk": 2,
+    "fields": {
+        "firstname": "Szymon",
+        "surname": "Wodkiewicz",
+        "age": 20,
+        "username": "@founder_002"
+    }
+},
+{
+    "model": "threads.users",
+    "pk": 3,
+    "fields": {
+        "firstname": "Oscar",
+        "surname": "Webster",
+        "age": 20,
+        "username": "@founder_003"
+    }
+},
+{
+    "model": "threads.users",
+    "pk": 4,
+    "fields": {
+        "firstname": "Tom",
+        "surname": "Clapham",
+        "age": 20,
+        "username": "@founder_004"
+    }
+},
+{
     "model": "games.game",
     "pk": 1,
     "fields": {
@@ -9,7 +241,9 @@
         "price": 49.99,
         "release_date": "2025-05-30",
         "thumbnail_url": "https://image.api.playstation.com/vulcan/ap/rnd/202505/1521/ca36c3ae7641a273ff3f00e63732fb76e2850c57f577d6eb.jpg?w=440",
-        "trailer_url": "https://youtu.be/u5rWBgBjDsc?si=7ux35bVaNjWnMO28"
+        "trailer_url": "https://youtu.be/u5rWBgBjDsc?si=7ux35bVaNjWnMO28",
+        "on_sale": 0,
+        "trending": 1
     }
 }
 ]

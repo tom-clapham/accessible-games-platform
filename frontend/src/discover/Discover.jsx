@@ -26,21 +26,21 @@ function Discover() {
                 <div className="carousel">
                     <h2>Trending</h2>
                     {games.trending_games.map((game) => (
-                        GameCard({ game })
+                        <GameCard key={game.id} game={game}/>
                     ))}
                 </div>
 
                 <div className="carousel">
                     <h2>On-Sale</h2>
                     {games.on_sale_games.map((game) => (
-                        GameCard({ game })
+                        <GameCard key={game.id} game={game}/>
                     ))}
                 </div>
 
                 <div className="carousel">
                     <h2>Latest Releases</h2>
                     {games.recently_released_games.map((game) => (
-                        GameCard({ game })
+                        <GameCard key={game.id} game={game}/>
                     ))}
                 </div>
 
