@@ -31,28 +31,6 @@ export const AuthProvider = ({children}) => {
         return success;
     }
 
-    const user_usernames = async (u_user) => {
-        const data = await allUserEmails();
-        for (const user of data) {
-            const username = user && user.username;        
-            if (typeof username === "string" && u_user.trim().toLowerCase() === username.trim().toLowerCase()) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    const user_emails = async (u_email) => {
-        const data = await allUserEmails();
-        for (const user of data) {
-            const email = user && user.email;        
-            if (typeof email === "string" && u_email.trim().toLowerCase() === email.trim().toLowerCase()) {
-                return false;
-            }
-        }
-        return true;
-    }
-
     useEffect(() => {
        get_authenticated();
     }, [window.location.pathname])

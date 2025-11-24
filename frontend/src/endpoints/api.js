@@ -4,9 +4,8 @@ const BASE_URL = 'http://localhost:8000/app/users/'
 const LOGIN_URL = `${BASE_URL}token/`
 const LOGOUT_URL = `${BASE_URL}logout/`
 const REFRESH_URL = `${BASE_URL}token/refresh/`
-const USER_INFO_URL = `${BASE_URL}home/`
+const USER_INFO_URL = `${BASE_URL}user/`
 const AUTH_URL = `${BASE_URL}authenticated/`
-const  USER_URL = `${BASE_URL}users/`
 const  STEP1_URL = `${BASE_URL}step1/`
 const  STEP2_URL = `${BASE_URL}step2/`
 const  STEP3_URL = `${BASE_URL}step3/`
@@ -23,17 +22,6 @@ export const user_info = async () => {
         return response.data
     } catch (error) {
         return call_refresh(error, axios.get(USER_INFO_URL, { withCredentials: true}))
-    }
-}
-
-export const allUserEmails = async () => {
-    try {
-        const response = await axios.get(USER_URL,
-            { withCredentials: true}
-        )
-        return response.data
-    } catch (error) {
-        return call_refresh(error, axios.get(USER_URL, { withCredentials: true}))
     }
 }
 
@@ -60,8 +48,6 @@ export const password_reset = async (password, new_password, email) => {
         return error
     }
 }
-
-
 
 export const forgot_info = async (email, type) => {
     try{

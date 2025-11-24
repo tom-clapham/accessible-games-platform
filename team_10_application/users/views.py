@@ -11,8 +11,8 @@ from rest_framework_simplejwt.views import (
 )
 
 def two_digits(password) -> bool:
-        digit_count = sum(ch.isdigit() for ch in password)
-        return digit_count >= 2
+    digit_count = sum(ch.isdigit() for ch in password)
+    return digit_count >= 2
 
 class CustomTokenObtainPairView(TokenObtainPairView):
     def post(self, request, *args, **kwargs):
@@ -161,8 +161,8 @@ class RegistrationViewSet(viewsets.ViewSet):
         password = request.data.get('pass')
         last = request.data.get('last_name')
         first = request.data.get('first_name')
-
         confirm = request.data.get('cPass')
+        
         if CustomUser.objects.filter(username=username).exists():
             return Response({'success': 'username'})
         
