@@ -27,16 +27,17 @@ function BrowsePage() {
     if (error) return <p>Error loading game data.</p>;
     if (!games) return <p>No games data found.</p>;
 
-    const visibleGames = games.slice(0, 12);
-
     return (
         <div>
             <div className="browse-page">
                 <h1>Browse</h1>
-                <h2>Filter Results</h2>
+                <div className="browse-page-headings">
+                    <div className="heading">Filter Results</div>
+                    <div className="heading">Filters</div>
+                </div>
                 <div className="browse-page-grid">
                     <div className="filter-results-container">
-                        {visibleGames.map((game) => (
+                        {games.map((game) => (
                             <GameCard 
                                 id={game.id} 
                                 name={game.name}
@@ -46,7 +47,9 @@ function BrowsePage() {
                         ))}
                     </div>
                     <div className="filter-options-container">
-                        <h2>Filters here</h2>
+                        <div>filter 1</div>
+                        <div>filter 2</div>
+                        <div>filter 3</div>
                     </div>
                 </div>
             </div>
