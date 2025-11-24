@@ -171,8 +171,8 @@ class RegistrationViewSet(viewsets.ViewSet):
 
         request.session['reg_username'] = username
         request.session['reg_password'] = password
-        request.session['reg_first'] = last
-        request.session['reg_last'] = first
+        request.session['reg_first'] = first
+        request.session['reg_last'] = last
         return Response({'success': True})
     
     @action(detail=False, methods=['post'], url_path='step4')
@@ -186,7 +186,6 @@ class RegistrationViewSet(viewsets.ViewSet):
         data = request.data.get('genre_arr')
         if len(data) < 3:
             return Response({'success': False})
-        
         
         username = request.session.get('reg_username')
         password = request.session.get('reg_password')

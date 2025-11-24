@@ -9,7 +9,6 @@ const Register_Stage_3 = () => {
   const [isPassword, setIsPassword] = useState("");
 
   const nav = useNavigate();
-  const [email, setEmail] = useState("");
   const [first, setFirst] = useState("");
   const [last, setLast] = useState("");
   const [user, setUser] = useState("");

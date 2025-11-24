@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import './App.css'
 import Home from './Home.jsx'
+import PrivateRoute from './endpoints/private_routes.jsx'
 import Login from './Login/Login.jsx'
 import LayoutWithNav from "./Components/LayoutWithNav";
 import Register_Stage_1 from './Register/Register Stage 1.jsx'

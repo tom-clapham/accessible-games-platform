@@ -48,6 +48,10 @@ function Navbar(){
       nav('/')
   }
 
+  function navAccount(){
+      nav('/account')
+  } 
+
   function navGames(){
       nav('/discover')
   }
@@ -91,7 +95,7 @@ function Navbar(){
             <div className='email'>{user.email}</div>
           </div>
         </div>
-        <div className='account'>My account</div>
+        <div className='account' onClick={navAccount}>My account</div>
         <hr></hr>
         <div className='favourite-container'>
           <div className='favourite-games'><CgGames className='games-icon'/>View my favourite games</div>
