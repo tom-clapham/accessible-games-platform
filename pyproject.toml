@@ -16,6 +16,7 @@ dependencies = [
     "django-allauth",
     "requests",
     "cryptography",
+    "python-dotenv>=1.2.1",
 ]
 
 [tool.setuptools.packages.find]

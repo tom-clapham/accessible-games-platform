@@ -12,6 +12,10 @@ import Register_Stage_5 from './Register/Register Stage 5.jsx'
 import { AuthProvider } from './contexts/useAuth.jsx';
 import Forgot_Information from './Forgot/Forgot Information.jsx'
 import Reset_Password from './Forgot/Reset Password.jsx'
+import GameProfile from './game_profile/GameProfile.jsx'
+import Discover from './discover/Discover.jsx'
+import Reviews from './Threads/Reviews.jsx'
+import Replies from './Threads/Replies.jsx'
 
 function App() {
   return (
@@ -25,6 +29,10 @@ function App() {
             <Route path="/register/step_3" element={<Register_Stage_3/>}/>
             <Route path="/register/step_4" element={<Register_Stage_4/>}/>
             <Route path="/register/step_5" element={<Register_Stage_5/>}/>
+            <Route path="/replies/:reviewId" element={<Replies/>}/>
+            <Route path="/reviews/:reviewId" element={<Reviews/>}/>
+            <Route path="/gameprofile/:id" element={<GameProfile/>}/>
+            <Route path="/discover" element={<Discover/>}/>
           </Route>
           <Route path="/login" element={<Login/>}/>
           <Route path="/forgot-credentials" element={<Forgot_Information/>}/>

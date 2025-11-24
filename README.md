@@ -12,28 +12,22 @@ On some READMEs, you may see small images that convey metadata, such as whether 
 ## Visuals
 Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
 
-## Installation
-We are using react for the front end and Django for the backend server.
-cd into the main application
-#### Prepare Django settings and Database
-- Ensure that the database settings for the database match yours. We are using MariaDB, so recommend using that with the current imports and settings. Changes will need to be made if using something else.
-- Ensure that in settings.py, the database username and password are correct
-- In your DBMS, you create the schema 'team_10_game_platform'
-#### Create environment
+## Installation 
+### Setting Up environment (windows)
 - `python -m venv env`
 - `.\env\Scripts\activate`
 - `pip install -e .`
-#### Setup and Run React Development Server 
-- `cd frontend`
-- `npm install`
-- `npm run dev`
-##### `cd ..`
-#### Setup and Run Django Server
+#### Setting up Django server
 - `cd team_10_application`
+- input settings into .env file - ensure that teh `DB_NAME` variable is based on a real schema
 - `python manage.py makemigrations`
 - `python manage.py migrate`
 - `python manage.py runserver`
-##### `makemigrations and migrate` commands only have to be run when first running the Django server. Only commands after have to be run after initial setup!
+##### Go back with `cd ..` to access frontend folder
+##### Running dev server for react
+- `cd frontend`
+- `npm install`
+- `npm run dev`
 
 ## Usage
 Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.

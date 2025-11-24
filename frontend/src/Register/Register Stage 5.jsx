@@ -70,7 +70,7 @@ const Register_Stage_5 = () => {
             </div>
             )}
             {registered &&(<div className={styles.success}>
-                Thank you for registering with us, you will be redirected in <b>5 seconds.</b>
+                Thank you for registering with us, you will be redirected in <b>3 seconds.</b>
                 
             </div>
             )}

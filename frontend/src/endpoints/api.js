@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const BASE_URL = 'http://localhost:8000/api/'
+const BASE_URL = 'http://localhost:8000/app/users/'
 const LOGIN_URL = `${BASE_URL}token/`
 const LOGOUT_URL = `${BASE_URL}logout/`
 const REFRESH_URL = `${BASE_URL}token/refresh/`

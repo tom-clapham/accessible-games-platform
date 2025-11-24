@@ -1,0 +1,192 @@
+h2, h3 {
+    font-weight:400;
+    color:hsl(0, 0%, 90%);
+    /* background-color: hsl(0, 0%, 15%); */
+}
+
+
+.loadingIcon {
+    font-weight: 100;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modalBox {
+    position: fixed;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: auto;
+    background-color: hsl(0, 0%, 0%);
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.modalHidden {
+    display: none;
+}
+
+.modalActual {
+    z-index: 3;
+    border-width: 2px;
+    border-style: solid;
+    border-color: hsl(0, 0%, 40%);
+    border-radius: 5px;
+    padding-right: 10px;
+    padding-left: 10px;
+    background-color: hsl(0, 0%, 15%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.postNameBlock {
+    display: flex;
+    flex-direction: row;
+
+}
+
+.titleMessage {
+    display: flex;
+    flex-direction: column;
+}
+
+.parentTitle {
+    height: 3vh;
+    background-color: hsl(0, 0%, 15%);
+    border-style: solid;
+    border-color:hsl(0, 0%, 40%);
+    border-width: 1px;
+    border-radius: 5px;
+    color: hsl(0, 0%, 90%);
+    font-family: "Roboto", sans-serif;
+    padding: 3px;
+}
+
+.parentMessage {
+    resize: none;
+    margin-top: 5px;
+    height: 25vh;
+    width: 30vw;
+    background-color: hsl(0, 0%, 15%);
+    border-style: solid;
+    border-color:hsl(0, 0%, 40%);
+    border-width: 1px;
+    border-radius: 5px;
+    color: hsl(0, 0%, 90%);
+    font-family: "Roboto", sans-serif;
+    padding: 3px;
+}
+
+::placeholder {
+    color: hsl(0, 0%, 90%);
+    font-family: "Roboto", sans-serif;
+    font-size: small;
+}
+
+.postButton {
+    margin:5px;
+    padding: 5px 10px;
+    background-color: hsl(201, 100%, 50%);
+    border-width:0;
+    border-radius:5px
+}
+
+.postButton:hover, .createReplyBtn:hover {
+    cursor: pointer;
+    background-color: hsl(201, 100%, 60%);
+}
+
+.backButton {
+    font-size:xx-large;
+    background: none;
+    border:0;
+    color:hsl(0, 0%, 90%);   
+}
+
+.backButton:hover, .newPost:hover, .postBox:hover {
+    cursor: pointer;
+}
+
+.postBox {
+    display: flex;
+    flex-direction: column;
+    border-style: solid;
+    border-color: hsl(0, 0%, 40%);
+    border-radius: 5px;
+    border-width: 2px;
+    margin-bottom: 5px;
+    padding: 10px;
+}
+
+/* .parentBox {
+    
+} */
+
+.createReply {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 15px;
+    margin-left: 10px;
+}
+
+.createReplyMessage {
+    resize: none;
+    height: 5vh;
+    width: 30vw;
+    align-self: center;
+    background: none;
+    color: hsl(0, 0%, 90%);
+    font-family: "Roboto", sans-serif;
+    font-size: small;
+    padding: 3px;
+}
+
+.createReplyBtn {
+    margin:5px;
+    padding: 5px 10px;
+    background-color: hsl(201, 100%, 50%);
+    border-width:0;
+    border-radius:5px
+}
+
+.replyBox {
+    display: flex;
+    flex-direction: column;
+    border-style: solid;
+    border-color: hsl(0, 0%, 40%);
+    border-radius: 5px;
+    border-width: 2px;
+    margin-bottom: 5px;
+    padding: 10px;
+}
+
+.postStats {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.newPost {
+    z-index: 1;
+    position: fixed;
+    bottom: 50px;
+    right: 50px;
+    background-color: hsl(201, 100%, 50%);
+    border-width: 0;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+}

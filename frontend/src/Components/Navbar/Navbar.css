@@ -23,7 +23,12 @@
     color: white;
 }
 
-.list li {
+.login {
+    padding-left: 20px;
+    color: white;
+}
+
+.list li, .login li {
     display: inline-block;
     margin: 10px 20px;
     font-size: 18px;
