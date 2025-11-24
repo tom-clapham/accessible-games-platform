@@ -1,15 +1,1006 @@
 [
-{
+  {
+    "model": "games.accessibilitytag",
+    "pk": 1,
+    "fields": { "name": "Subtitles" }
+  },
+  {
+    "model": "games.accessibilitytag",
+    "pk": 2,
+    "fields": { "name": "Colourblind options" }
+  },
+  {
+    "model": "games.accessibilitytag",
+    "pk": 3,
+    "fields": { "name": "Remappable controls" }
+  },
+  {
+    "model": "games.accessibilitytag",
+    "pk": 4,
+    "fields": { "name": "Difficulty options" }
+  },
+  {
+    "model": "games.accessibilitytag",
+    "pk": 5,
+    "fields": { "name": "High contrast mode" }
+  },
+  {
+    "model": "games.accessibilitytag",
+    "pk": 6,
+    "fields": { "name": "Audio descriptions" }
+  },
+
+  {
+    "model": "games.genretag",
+    "pk": 1,
+    "fields": { "name": "Racing" }
+  },
+  {
+    "model": "games.genretag",
+    "pk": 2,
+    "fields": { "name": "Action" }
+  },
+  {
+    "model": "games.genretag",
+    "pk": 3,
+    "fields": { "name": "Action-Adventure" }
+  },
+  {
+    "model": "games.genretag",
+    "pk": 4,
+    "fields": { "name": "RPG" }
+  },
+  {
+    "model": "games.genretag",
+    "pk": 5,
+    "fields": { "name": "Simulation" }
+  },
+  {
+    "model": "games.genretag",
+    "pk": 6,
+    "fields": { "name": "Sports" }
+  },
+  {
+    "model": "games.genretag",
+    "pk": 7,
+    "fields": { "name": "Platformer" }
+  },
+  {
+    "model": "games.genretag",
+    "pk": 8,
+    "fields": { "name": "Horror" }
+  },
+  {
+    "model": "games.genretag",
+    "pk": 9,
+    "fields": { "name": "Shooter" }
+  },
+  {
+    "model": "games.genretag",
+    "pk": 10,
+    "fields": { "name": "Puzzle" }
+  },
+
+  {
+    "model": "games.platformtag",
+    "pk": 1,
+    "fields": { "name": "PC" }
+  },
+  {
+    "model": "games.platformtag",
+    "pk": 2,
+    "fields": { "name": "PlayStation" }
+  },
+  {
+    "model": "games.platformtag",
+    "pk": 3,
+    "fields": { "name": "Xbox" }
+  },
+  {
+    "model": "games.platformtag",
+    "pk": 4,
+    "fields": { "name": "Nintendo Switch" }
+  },
+
+  {
     "model": "games.game",
     "pk": 1,
     "fields": {
-        "name": "F1 25",
-        "description": "Leave your mark on the world of racing in F1® 25, the official video game of the 2025 FIA Formula One World Championship™, featuring a revamped My Team mode, the thrilling third chapter of Braking Point, and more!",
-        "publisher": "Electronics Arts",
-        "price": 49.99,
-        "release_date": "2025-05-30",
-        "thumbnail_url": "https://image.api.playstation.com/vulcan/ap/rnd/202505/1521/ca36c3ae7641a273ff3f00e63732fb76e2850c57f577d6eb.jpg?w=440",
-        "trailer_url": "https://youtu.be/u5rWBgBjDsc?si=7ux35bVaNjWnMO28"
+      "name": "F1 25",
+      "description": "Leave your mark on the world of racing in F1® 25, the official video game of the 2025 FIA Formula One World Championship™, featuring a revamped My Team mode, the thrilling third chapter of Braking Point, and more!",
+      "publisher": "Electronics Arts",
+      "price": 49.99,
+      "release_date": "2025-05-30",
+      "thumbnail_url": "https://placehold.co/440x600?text=F1+25",
+      "trailer_url": "https://youtu.be/u5rWBgBjDsc?si=7ux35bVaNjWnMO28",
+      "trending": true,
+      "on_sale": false,
+      "accessibility_tags": [1, 3, 4],
+      "genre_tags": [1, 6],
+      "platform_tags": [1, 2, 3]
     }
-}
+  },
+
+  {
+    "model": "games.game",
+    "pk": 2,
+    "fields": {
+      "name": "Elden Ring",
+      "description": "Open-world action RPG set in the Lands Between where you become the Tarnished and face punishing bosses.",
+      "publisher": "Bandai Namco Entertainment",
+      "price": 59.99,
+      "release_date": "2022-02-25",
+      "thumbnail_url": "https://placehold.co/440x600?text=Elden+Ring",
+      "trailer_url": "https://youtu.be/u5rWBgBjDsc?si=7ux35bVaNjWnMO28",
+      "trending": true,
+      "on_sale": false,
+      "accessibility_tags": [1, 3, 4],
+      "genre_tags": [2, 3, 4],
+      "platform_tags": [1, 2, 3]
+    }
+  },
+  {
+    "model": "games.game",
+    "pk": 3,
+    "fields": {
+      "name": "Baldur's Gate 3",
+      "description": "Story-rich party-based RPG set in the Dungeons & Dragons universe with deep choices and turn-based combat.",
+      "publisher": "Larian Studios",
+      "price": 59.99,
+      "release_date": "2023-08-03",
+      "thumbnail_url": "https://placehold.co/440x600?text=Baldur%27s+Gate+3",
+      "trailer_url": "https://youtu.be/u5rWBgBjDsc?si=7ux35bVaNjWnMO28",
+      "trending": true,
+      "on_sale": true,
+      "accessibility_tags": [1, 3, 4],
+      "genre_tags": [3, 4],
+      "platform_tags": [1, 2, 3]
+    }
+  },
+  {
+    "model": "games.game",
+    "pk": 4,
+    "fields": {
+      "name": "Cyberpunk 2077",
+      "description": "First-person RPG set in Night City where you play as V, a mercenary chasing immortality in a neon dystopia.",
+      "publisher": "CD Projekt RED",
+      "price": 39.99,
+      "release_date": "2020-12-10",
+      "thumbnail_url": "https://placehold.co/440x600?text=Cyberpunk+2077",
+      "trailer_url": "https://youtu.be/u5rWBgBjDsc?si=7ux35bVaNjWnMO28",
+      "trending": false,
+      "on_sale": true,
+      "accessibility_tags": [1, 3, 4],
+      "genre_tags": [2, 3, 4],
+      "platform_tags": [1, 2, 3]
+    }
+  },
+  {
+    "model": "games.game",
+    "pk": 5,
+    "fields": {
+      "name": "The Witcher 3: Wild Hunt",
+      "description": "Open-world fantasy RPG where monster hunter Geralt searches for his adopted daughter amid a continent at war.",
+      "publisher": "CD Projekt RED",
+      "price": 29.99,
+      "release_date": "2015-05-19",
+      "thumbnail_url": "https://placehold.co/440x600?text=The+Witcher+3",
+      "trailer_url": "https://youtu.be/u5rWBgBjDsc?si=7ux35bVaNjWnMO28",
+      "trending": false,
+      "on_sale": true,
+      "accessibility_tags": [1, 3, 4],
+      "genre_tags": [3, 4],
+      "platform_tags": [1, 2, 3]
+    }
+  },
+  {
+    "model": "games.game",
+    "pk": 6,
+    "fields": {
+      "name": "Red Dead Redemption 2",
+      "description": "Epic Western adventure following Arthur Morgan and the Van der Linde gang across a dying frontier.",
+      "publisher": "Rockstar Games",
+      "price": 39.99,
+      "release_date": "2018-10-26",
+      "thumbnail_url": "https://placehold.co/440x600?text=RDR2",
+      "trailer_url": "https://youtu.be/u5rWBgBjDsc?si=7ux35bVaNjWnMO28",
+      "trending": true,
+      "on_sale": false,
+      "accessibility_tags": [1, 3, 4],
+      "genre_tags": [3, 4],
+      "platform_tags": [1, 2, 3]
+    }
+  },
+  {
+    "model": "games.game",
+    "pk": 7,
+    "fields": {
+      "name": "Grand Theft Auto V",
+      "description": "Open-world crime sandbox in Los Santos featuring three playable protagonists and a massive online mode.",
+      "publisher": "Rockstar Games",
+      "price": 29.99,
+      "release_date": "2013-09-17",
+      "thumbnail_url": "https://placehold.co/440x600?text=GTA+V",
+      "trailer_url": "https://youtu.be/u5rWBgBjDsc?si=7ux35bVaNjWnMO28",
+      "trending": true,
+      "on_sale": true,
+      "accessibility_tags": [1, 3, 4],
+      "genre_tags": [2, 3],
+      "platform_tags": [1, 2, 3]
+    }
+  },
+  {
+    "model": "games.game",
+    "pk": 8,
+    "fields": {
+      "name": "The Legend of Zelda: Tears of the Kingdom",
+      "description": "Action-adventure set above and below Hyrule where Link uses new powers to battle a spreading gloom.",
+      "publisher": "Nintendo",
+      "price": 59.99,
+      "release_date": "2023-05-12",
+      "thumbnail_url": "https://placehold.co/440x600?text=Tears+of+the+Kingdom",
+      "trailer_url": "https://youtu.be/u5rWBgBjDsc?si=7ux35bVaNjWnMO28",
+      "trending": true,
+      "on_sale": false,
+      "accessibility_tags": [1, 3, 4, 5],
+      "genre_tags": [3, 4],
+      "platform_tags": [4]
+    }
+  },
+  {
+    "model": "games.game",
+    "pk": 9,
+    "fields": {
+      "name": "God of War Ragnar\u00f6k",
+      "description": "Kratos and Atreus journey across the Nine Realms as the foretold Ragnar\u00f6k looms over Norse mythology.",
+      "publisher": "Sony Interactive Entertainment",
+      "price": 59.99,
+      "release_date": "2022-11-09",
+      "thumbnail_url": "https://placehold.co/440x600?text=God+of+War+Ragnarok",
+      "trailer_url": "https://youtu.be/u5rWBgBjDsc?si=7ux35bVaNjWnMO28",
+      "trending": true,
+      "on_sale": false,
+      "accessibility_tags": [1, 3, 4],
+      "genre_tags": [2, 3],
+      "platform_tags": [2]
+    }
+  },
+  {
+    "model": "games.game",
+    "pk": 10,
+    "fields": {
+      "name": "Horizon Forbidden West",
+      "description": "Aloy travels to the Forbidden West to uncover the source of a deadly red blight in a lush open world.",
+      "publisher": "Sony Interactive Entertainment",
+      "price": 49.99,
+      "release_date": "2022-02-18",
+      "thumbnail_url": "https://placehold.co/440x600?text=Horizon+Forbidden+West",
+      "trailer_url": "https://youtu.be/u5rWBgBjDsc?si=7ux35bVaNjWnMO28",
+      "trending": false,
+      "on_sale": true,
+      "accessibility_tags": [1, 3, 4],
+      "genre_tags": [3, 4],
+      "platform_tags": [2]
+    }
+  },
+  {
+    "model": "games.game",
+    "pk": 11,
+    "fields": {
+      "name": "Marvel's Spider-Man 2",
+      "description": "Peter Parker and Miles Morales swing through New York in a dual-protagonist superhero adventure.",
+      "publisher": "Sony Interactive Entertainment",
+      "price": 69.99,
+      "release_date": "2023-10-20",
+      "thumbnail_url": "https://placehold.co/440x600?text=Spider-Man+2",
+      "trailer_url": "https://youtu.be/u5rWBgBjDsc?si=7ux35bVaNjWnMO28",
+      "trending": true,
+      "on_sale": false,
+      "accessibility_tags": [1, 3, 4],
+      "genre_tags": [2, 3],
+      "platform_tags": [2]
+    }
+  },
+  {
+    "model": "games.game",
+    "pk": 12,
+    "fields": {
+      "name": "Hades",
+      "description": "Fast-paced roguelike where you battle out of the Greek underworld as Zagreus, son of Hades.",
+      "publisher": "Supergiant Games",
+      "price": 24.99,
+      "release_date": "2020-09-17",
+      "thumbnail_url": "https://placehold.co/440x600?text=Hades",
+      "trailer_url": "https://youtu.be/u5rWBgBjDsc?si=7ux35bVaNjWnMO28",
+      "trending": true,
+      "on_sale": true,
+      "accessibility_tags": [1, 3, 4],
+      "genre_tags": [2, 4],
+      "platform_tags": [1, 2, 3, 4]
+    }
+  },
+  {
+    "model": "games.game",
+    "pk": 13,
+    "fields": {
+      "name": "Stardew Valley",
+      "description": "Relaxing farming sim where you restore a run-down farm, befriend villagers and explore mines.",
+      "publisher": "ConcernedApe",
+      "price": 13.99,
+      "release_date": "2016-02-26",
+      "thumbnail_url": "https://placehold.co/440x600?text=Stardew+Valley",
+      "trailer_url": "https://youtu.be/u5rWBgBjDsc?si=7ux35bVaNjWnMO28",
+      "trending": true,
+      "on_sale": false,
+      "accessibility_tags": [1, 3, 4, 5],
+      "genre_tags": [4, 5],
+      "platform_tags": [1, 2, 3, 4]
+    }
+  },
+  {
+    "model": "games.game",
+    "pk": 14,
+    "fields": {
+      "name": "Hollow Knight",
+      "description": "Metroidvania set in the ruined insect kingdom of Hallownest, full of secrets and tough bosses.",
+      "publisher": "Team Cherry",
+      "price": 14.99,
+      "release_date": "2017-02-24",
+      "thumbnail_url": "https://placehold.co/440x600?text=Hollow+Knight",
+      "trailer_url": "https://youtu.be/u5rWBgBjDsc?si=7ux35bVaNjWnMO28",
+      "trending": false,
+      "on_sale": true,
+      "accessibility_tags": [1, 3, 4],
+      "genre_tags": [2, 7],
+      "platform_tags": [1, 2, 3, 4]
+    }
+  },
+  {
+    "model": "games.game",
+    "pk": 15,
+    "fields": {
+      "name": "Celeste",
+      "description": "Precision platformer about climbing a mountain while confronting anxiety and self-doubt.",
+      "publisher": "Matt Makes Games",
+      "price": 19.99,
+      "release_date": "2018-01-25",
+      "thumbnail_url": "https://placehold.co/440x600?text=Celeste",
+      "trailer_url": "https://youtu.be/u5rWBgBjDsc?si=7ux35bVaNjWnMO28",
+      "trending": true,
+      "on_sale": false,
+      "accessibility_tags": [1, 3, 4, 5],
+      "genre_tags": [7],
+      "platform_tags": [1, 2, 3, 4]
+    }
+  },
+  {
+    "model": "games.game",
+    "pk": 16,
+    "fields": {
+      "name": "Minecraft",
+      "description": "Sandbox building game where you mine resources, craft tools and create in a blocky world.",
+      "publisher": "Mojang Studios",
+      "price": 19.99,
+      "release_date": "2011-11-18",
+      "thumbnail_url": "https://placehold.co/440x600?text=Minecraft",
+      "trailer_url": "https://youtu.be/u5rWBgBjDsc?si=7ux35bVaNjWnMO28",
+      "trending": true,
+      "on_sale": true,
+      "accessibility_tags": [1, 3, 4],
+      "genre_tags": [5],
+      "platform_tags": [1, 2, 3, 4]
+    }
+  },
+  {
+    "model": "games.game",
+    "pk": 17,
+    "fields": {
+      "name": "Sekiro: Shadows Die Twice",
+      "description": "Stealth-action adventure set in Sengoku Japan where a shinobi seeks revenge and redemption.",
+      "publisher": "Activision",
+      "price": 39.99,
+      "release_date": "2019-03-22",
+      "thumbnail_url": "https://placehold.co/440x600?text=Sekiro",
+      "trailer_url": "https://youtu.be/u5rWBgBjDsc?si=7ux35bVaNjWnMO28",
+      "trending": false,
+      "on_sale": true,
+      "accessibility_tags": [1, 3],
+      "genre_tags": [2, 3],
+      "platform_tags": [1, 2, 3]
+    }
+  },
+  {
+    "model": "games.game",
+    "pk": 18,
+    "fields": {
+      "name": "Resident Evil 4",
+      "description": "Survival horror remake where Leon S. Kennedy infiltrates a rural European village to rescue the president's daughter.",
+      "publisher": "Capcom",
+      "price": 59.99,
+      "release_date": "2023-03-24",
+      "thumbnail_url": "https://placehold.co/440x600?text=Resident+Evil+4",
+      "trailer_url": "https://youtu.be/u5rWBgBjDsc?si=7ux35bVaNjWnMO28",
+      "trending": true,
+      "on_sale": false,
+      "accessibility_tags": [1, 3],
+      "genre_tags": [2, 8],
+      "platform_tags": [1, 2, 3]
+    }
+  },
+  {
+    "model": "games.game",
+    "pk": 19,
+    "fields": {
+      "name": "Monster Hunter: World",
+      "description": "Co-op action RPG where you track and hunt colossal creatures in sprawling ecosystems.",
+      "publisher": "Capcom",
+      "price": 29.99,
+      "release_date": "2018-01-26",
+      "thumbnail_url": "https://placehold.co/440x600?text=Monster+Hunter+World",
+      "trailer_url": "https://youtu.be/u5rWBgBjDsc?si=7ux35bVaNjWnMO28",
+      "trending": false,
+      "on_sale": true,
+      "accessibility_tags": [1, 3],
+      "genre_tags": [2, 4],
+      "platform_tags": [1, 2, 3]
+    }
+  },
+  {
+    "model": "games.game",
+    "pk": 20,
+    "fields": {
+      "name": "Diablo IV",
+      "description": "Dark action RPG where you battle the forces of Lilith across a shared open world of Sanctuary.",
+      "publisher": "Blizzard Entertainment",
+      "price": 69.99,
+      "release_date": "2023-06-06",
+      "thumbnail_url": "https://placehold.co/440x600?text=Diablo+IV",
+      "trailer_url": "https://youtu.be/u5rWBgBjDsc?si=7ux35bVaNjWnMO28",
+      "trending": true,
+      "on_sale": false,
+      "accessibility_tags": [1, 3],
+      "genre_tags": [2, 4],
+      "platform_tags": [1, 2, 3]
+    }
+  },
+  {
+    "model": "games.game",
+    "pk": 21,
+    "fields": {
+      "name": "Overwatch 2",
+      "description": "Team-based hero shooter featuring objective-focused 5v5 matches with a diverse cast.",
+      "publisher": "Blizzard Entertainment",
+      "price": 0.00,
+      "release_date": "2022-10-04",
+      "thumbnail_url": "https://placehold.co/440x600?text=Overwatch+2",
+      "trailer_url": "https://youtu.be/u5rWBgBjDsc?si=7ux35bVaNjWnMO28",
+      "trending": true,
+      "on_sale": true,
+      "accessibility_tags": [1, 2, 3, 4],
+      "genre_tags": [9],
+      "platform_tags": [1, 2, 3]
+    }
+  },
+  {
+    "model": "games.game",
+    "pk": 22,
+    "fields": {
+      "name": "Apex Legends",
+      "description": "Free-to-play battle royale where squads of heroes fight to be the last team standing.",
+      "publisher": "Electronic Arts",
+      "price": 0.00,
+      "release_date": "2019-02-04",
+      "thumbnail_url": "https://placehold.co/440x600?text=Apex+Legends",
+      "trailer_url": "https://youtu.be/u5rWBgBjDsc?si=7ux35bVaNjWnMO28",
+      "trending": true,
+      "on_sale": false,
+      "accessibility_tags": [1, 2, 3, 4],
+      "genre_tags": [9],
+      "platform_tags": [1, 2, 3]
+    }
+  },
+  {
+    "model": "games.game",
+    "pk": 23,
+    "fields": {
+      "name": "Fortnite",
+      "description": "Colourful building-focused battle royale with constant live events and seasonal updates.",
+      "publisher": "Epic Games",
+      "price": 0.00,
+      "release_date": "2017-07-25",
+      "thumbnail_url": "https://placehold.co/440x600?text=Fortnite",
+      "trailer_url": "https://youtu.be/u5rWBgBjDsc?si=7ux35bVaNjWnMO28",
+      "trending": true,
+      "on_sale": false,
+      "accessibility_tags": [1, 2, 3, 4],
+      "genre_tags": [2, 9],
+      "platform_tags": [1, 2, 3, 4]
+    }
+  },
+  {
+    "model": "games.game",
+    "pk": 24,
+    "fields": {
+      "name": "League of Legends",
+      "description": "5v5 MOBA where teams battle to destroy the enemy nexus using unique champions.",
+      "publisher": "Riot Games",
+      "price": 0.00,
+      "release_date": "2009-10-27",
+      "thumbnail_url": "https://placehold.co/440x600?text=League+of+Legends",
+      "trailer_url": "https://youtu.be/u5rWBgBjDsc?si=7ux35bVaNjWnMO28",
+      "trending": true,
+      "on_sale": true,
+      "accessibility_tags": [1, 3],
+      "genre_tags": [2, 4],
+      "platform_tags": [1]
+    }
+  },
+  {
+    "model": "games.game",
+    "pk": 25,
+    "fields": {
+      "name": "Rocket League",
+      "description": "High-speed sports game that combines arcade-style football with rocket-powered cars.",
+      "publisher": "Psyonix",
+      "price": 0.00,
+      "release_date": "2015-07-07",
+      "thumbnail_url": "https://placehold.co/440x600?text=Rocket+League",
+      "trailer_url": "https://youtu.be/u5rWBgBjDsc?si=7ux35bVaNjWnMO28",
+      "trending": false,
+      "on_sale": true,
+      "accessibility_tags": [1, 3, 4],
+      "genre_tags": [6],
+      "platform_tags": [1, 2, 3, 4]
+    }
+  },
+  {
+    "model": "games.game",
+    "pk": 26,
+    "fields": {
+      "name": "Among Us",
+      "description": "Social deduction game where Crewmates try to identify Impostors sabotaging a spaceship.",
+      "publisher": "Innersloth",
+      "price": 4.99,
+      "release_date": "2018-06-15",
+      "thumbnail_url": "https://placehold.co/440x600?text=Among+Us",
+      "trailer_url": "https://youtu.be/u5rWBgBjDsc?si=7ux35bVaNjWnMO28",
+      "trending": true,
+      "on_sale": true,
+      "accessibility_tags": [1, 3],
+      "genre_tags": [10],
+      "platform_tags": [1, 2, 3, 4]
+    }
+  },
+  {
+    "model": "games.game",
+    "pk": 27,
+    "fields": {
+      "name": "Dead Cells",
+      "description": "Roguelite metroidvania with fast combat, procedurally generated levels and permadeath.",
+      "publisher": "Motion Twin",
+      "price": 24.99,
+      "release_date": "2018-08-07",
+      "thumbnail_url": "https://placehold.co/440x600?text=Dead+Cells",
+      "trailer_url": "https://youtu.be/u5rWBgBjDsc?si=7ux35bVaNjWnMO28",
+      "trending": false,
+      "on_sale": true,
+      "accessibility_tags": [1, 3],
+      "genre_tags": [2, 7],
+      "platform_tags": [1, 2, 3, 4]
+    }
+  },
+  {
+    "model": "games.game",
+    "pk": 28,
+    "fields": {
+      "name": "Ori and the Will of the Wisps",
+      "description": "Emotional metroidvania platformer with fluid movement and stunning hand-painted visuals.",
+      "publisher": "Xbox Game Studios",
+      "price": 29.99,
+      "release_date": "2020-03-11",
+      "thumbnail_url": "https://placehold.co/440x600?text=Ori+and+the+Will+of+the+Wisps",
+      "trailer_url": "https://youtu.be/u5rWBgBjDsc?si=7ux35bVaNjWnMO28",
+      "trending": true,
+      "on_sale": false,
+      "accessibility_tags": [1, 3, 5],
+      "genre_tags": [3, 7],
+      "platform_tags": [1, 2, 3, 4]
+    }
+  },
+  {
+    "model": "games.game",
+    "pk": 29,
+    "fields": {
+      "name": "Ghost of Tsushima",
+      "description": "Samurai action-adventure where Jin Sakai fights to repel the Mongol invasion of Tsushima Island.",
+      "publisher": "Sony Interactive Entertainment",
+      "price": 49.99,
+      "release_date": "2020-07-17",
+      "thumbnail_url": "https://placehold.co/440x600?text=Ghost+of+Tsushima",
+      "trailer_url": "https://youtu.be/u5rWBgBjDsc?si=7ux35bVaNjWnMO28",
+      "trending": true,
+      "on_sale": false,
+      "accessibility_tags": [1, 3],
+      "genre_tags": [2, 3],
+      "platform_tags": [2]
+    }
+  },
+  {
+    "model": "games.game",
+    "pk": 30,
+    "fields": {
+      "name": "Persona 5 Royal",
+      "description": "Stylish JRPG where high school students lead double lives as Phantom Thieves in Tokyo.",
+      "publisher": "SEGA",
+      "price": 59.99,
+      "release_date": "2020-03-31",
+      "thumbnail_url": "https://placehold.co/440x600?text=Persona+5+Royal",
+      "trailer_url": "https://youtu.be/u5rWBgBjDsc?si=7ux35bVaNjWnMO28",
+      "trending": false,
+      "on_sale": true,
+      "accessibility_tags": [1, 3],
+      "genre_tags": [4],
+      "platform_tags": [1, 2, 3]
+    }
+  },
+  {
+    "model": "games.game",
+    "pk": 31,
+    "fields": {
+      "name": "Assassin's Creed Valhalla",
+      "description": "Viking-themed action RPG where you lead Eivor's clan to settle in England.",
+      "publisher": "Ubisoft",
+      "price": 39.99,
+      "release_date": "2020-11-10",
+      "thumbnail_url": "https://placehold.co/440x600?text=AC+Valhalla",
+      "trailer_url": "https://youtu.be/u5rWBgBjDsc?si=7ux35bVaNjWnMO28",
+      "trending": false,
+      "on_sale": true,
+      "accessibility_tags": [1, 3],
+      "genre_tags": [2, 3, 4],
+      "platform_tags": [1, 2, 3]
+    }
+  },
+  {
+    "model": "games.game",
+    "pk": 32,
+    "fields": {
+      "name": "Starfield",
+      "description": "Spacefaring RPG where you join Constellation and explore a vast galaxy of star systems.",
+      "publisher": "Bethesda Softworks",
+      "price": 69.99,
+      "release_date": "2023-09-06",
+      "thumbnail_url": "https://placehold.co/440x600?text=Starfield",
+      "trailer_url": "https://youtu.be/u5rWBgBjDsc?si=7ux35bVaNjWnMO28",
+      "trending": true,
+      "on_sale": false,
+      "accessibility_tags": [1, 3],
+      "genre_tags": [3, 4, 5],
+      "platform_tags": [1, 2, 3]
+    }
+  },
+  {
+    "model": "games.game",
+    "pk": 33,
+    "fields": {
+      "name": "No Man's Sky",
+      "description": "Procedural space exploration game with base building, survival and seamless planet hopping.",
+      "publisher": "Hello Games",
+      "price": 39.99,
+      "release_date": "2016-08-09",
+      "thumbnail_url": "https://placehold.co/440x600?text=No+Man%27s+Sky",
+      "trailer_url": "https://youtu.be/u5rWBgBjDsc?si=7ux35bVaNjWnMO28",
+      "trending": false,
+      "on_sale": true,
+      "accessibility_tags": [1, 3],
+      "genre_tags": [5],
+      "platform_tags": [1, 2, 3, 4]
+    }
+  },
+  {
+    "model": "games.game",
+    "pk": 34,
+    "fields": {
+      "name": "The Elder Scrolls V: Skyrim",
+      "description": "Open-world fantasy RPG where you are the Dragonborn, destined to face Alduin the World-Eater.",
+      "publisher": "Bethesda Softworks",
+      "price": 19.99,
+      "release_date": "2011-11-11",
+      "thumbnail_url": "https://placehold.co/440x600?text=Skyrim",
+      "trailer_url": "https://youtu.be/u5rWBgBjDsc?si=7ux35bVaNjWnMO28",
+      "trending": false,
+      "on_sale": true,
+      "accessibility_tags": [1, 3],
+      "genre_tags": [3, 4],
+      "platform_tags": [1, 2, 3]
+    }
+  },
+  {
+    "model": "games.game",
+    "pk": 35,
+    "fields": {
+      "name": "Fallout 4",
+      "description": "Post-apocalyptic RPG where you emerge from Vault 111 to search for your missing child.",
+      "publisher": "Bethesda Softworks",
+      "price": 19.99,
+      "release_date": "2015-11-10",
+      "thumbnail_url": "https://placehold.co/440x600?text=Fallout+4",
+      "trailer_url": "https://youtu.be/u5rWBgBjDsc?si=7ux35bVaNjWnMO28",
+      "trending": false,
+      "on_sale": true,
+      "accessibility_tags": [1, 3],
+      "genre_tags": [3, 4],
+      "platform_tags": [1, 2, 3]
+    }
+  },
+  {
+    "model": "games.game",
+    "pk": 36,
+    "fields": {
+      "name": "DOOM Eternal",
+      "description": "Ultra-violent FPS where the Doom Slayer battles demons across Earth and beyond.",
+      "publisher": "Bethesda Softworks",
+      "price": 39.99,
+      "release_date": "2020-03-20",
+      "thumbnail_url": "https://placehold.co/440x600?text=DOOM+Eternal",
+      "trailer_url": "https://youtu.be/u5rWBgBjDsc?si=7ux35bVaNjWnMO28",
+      "trending": true,
+      "on_sale": false,
+      "accessibility_tags": [1, 3],
+      "genre_tags": [2, 9],
+      "platform_tags": [1, 2, 3]
+    }
+  },
+  {
+    "model": "games.game",
+    "pk": 37,
+    "fields": {
+      "name": "Returnal",
+      "description": "Roguelike third-person shooter where Selene is trapped in a time loop on an alien planet.",
+      "publisher": "Sony Interactive Entertainment",
+      "price": 59.99,
+      "release_date": "2021-04-30",
+      "thumbnail_url": "https://placehold.co/440x600?text=Returnal",
+      "trailer_url": "https://youtu.be/u5rWBgBjDsc?si=7ux35bVaNjWnMO28",
+      "trending": false,
+      "on_sale": true,
+      "accessibility_tags": [1, 3],
+      "genre_tags": [2, 9, 4],
+      "platform_tags": [2]
+    }
+  },
+  {
+    "model": "games.game",
+    "pk": 38,
+    "fields": {
+      "name": "Control",
+      "description": "Supernatural action-adventure where Jesse Faden investigates the shifting Federal Bureau of Control.",
+      "publisher": "505 Games",
+      "price": 29.99,
+      "release_date": "2019-08-27",
+      "thumbnail_url": "https://placehold.co/440x600?text=Control",
+      "trailer_url": "https://youtu.be/u5rWBgBjDsc?si=7ux35bVaNjWnMO28",
+      "trending": false,
+      "on_sale": true,
+      "accessibility_tags": [1, 3],
+      "genre_tags": [2, 3],
+      "platform_tags": [1, 2, 3]
+    }
+  },
+  {
+    "model": "games.game",
+    "pk": 39,
+    "fields": {
+      "name": "NieR: Automata",
+      "description": "Action RPG following androids 2B and 9S in a proxy war between machines and humanity.",
+      "publisher": "Square Enix",
+      "price": 39.99,
+      "release_date": "2017-03-07",
+      "thumbnail_url": "https://placehold.co/440x600?text=NieR+Automata",
+      "trailer_url": "https://youtu.be/u5rWBgBjDsc?si=7ux35bVaNjWnMO28",
+      "trending": true,
+      "on_sale": false,
+      "accessibility_tags": [1, 3],
+      "genre_tags": [2, 4],
+      "platform_tags": [1, 2, 3]
+    }
+  },
+  {
+    "model": "games.game",
+    "pk": 40,
+    "fields": {
+      "name": "Dark Souls III",
+      "description": "Challenging action RPG where you face twisted enemies in a crumbling, dying world.",
+      "publisher": "Bandai Namco Entertainment",
+      "price": 39.99,
+      "release_date": "2016-04-12",
+      "thumbnail_url": "https://placehold.co/440x600?text=Dark+Souls+III",
+      "trailer_url": "https://youtu.be/u5rWBgBjDsc?si=7ux35bVaNjWnMO28",
+      "trending": false,
+      "on_sale": true,
+      "accessibility_tags": [1, 3],
+      "genre_tags": [2, 4],
+      "platform_tags": [1, 2, 3]
+    }
+  },
+  {
+    "model": "games.game",
+    "pk": 41,
+    "fields": {
+      "name": "Cuphead",
+      "description": "Run-and-gun platformer with 1930s cartoon art and brutally challenging boss fights.",
+      "publisher": "Studio MDHR",
+      "price": 19.99,
+      "release_date": "2017-09-29",
+      "thumbnail_url": "https://placehold.co/440x600?text=Cuphead",
+      "trailer_url": "https://youtu.be/u5rWBgBjDsc?si=7ux35bVaNjWnMO28",
+      "trending": true,
+      "on_sale": false,
+      "accessibility_tags": [1, 3],
+      "genre_tags": [2, 7],
+      "platform_tags": [1, 2, 3, 4]
+    }
+  },
+  {
+    "model": "games.game",
+    "pk": 42,
+    "fields": {
+      "name": "Slay the Spire",
+      "description": "Deck-building roguelike where you craft card combos to climb a shifting spire.",
+      "publisher": "Humble Games",
+      "price": 24.99,
+      "release_date": "2019-01-23",
+      "thumbnail_url": "https://placehold.co/440x600?text=Slay+the+Spire",
+      "trailer_url": "https://youtu.be/u5rWBgBjDsc?si=7ux35bVaNjWnMO28",
+      "trending": false,
+      "on_sale": true,
+      "accessibility_tags": [1, 3],
+      "genre_tags": [10],
+      "platform_tags": [1, 2, 3, 4]
+    }
+  },
+  {
+    "model": "games.game",
+    "pk": 43,
+    "fields": {
+      "name": "Terraria",
+      "description": "2D sandbox adventure with exploration, crafting, building and boss encounters.",
+      "publisher": "Re-Logic",
+      "price": 9.99,
+      "release_date": "2011-05-16",
+      "thumbnail_url": "https://placehold.co/440x600?text=Terraria",
+      "trailer_url": "https://youtu.be/u5rWBgBjDsc?si=7ux35bVaNjWnMO28",
+      "trending": true,
+      "on_sale": true,
+      "accessibility_tags": [1, 3],
+      "genre_tags": [5],
+      "platform_tags": [1, 2, 3, 4]
+    }
+  },
+  {
+    "model": "games.game",
+    "pk": 44,
+    "fields": {
+      "name": "Genshin Impact",
+      "description": "Anime-styled open-world action RPG with elemental combat and gacha characters.",
+      "publisher": "Cognosphere",
+      "price": 0.00,
+      "release_date": "2020-09-28",
+      "thumbnail_url": "https://placehold.co/440x600?text=Genshin+Impact",
+      "trailer_url": "https://youtu.be/u5rWBgBjDsc?si=7ux35bVaNjWnMO28",
+      "trending": true,
+      "on_sale": false,
+      "accessibility_tags": [1, 3],
+      "genre_tags": [3, 4],
+      "platform_tags": [1, 2, 3, 4]
+    }
+  },
+  {
+    "model": "games.game",
+    "pk": 45,
+    "fields": {
+      "name": "Alan Wake 2",
+      "description": "Survival horror sequel where writer Alan Wake and FBI agent Saga Anderson confront a dark narrative.",
+      "publisher": "Epic Games Publishing",
+      "price": 49.99,
+      "release_date": "2023-10-27",
+      "thumbnail_url": "https://placehold.co/440x600?text=Alan+Wake+2",
+      "trailer_url": "https://youtu.be/u5rWBgBjDsc?si=7ux35bVaNjWnMO28",
+      "trending": true,
+      "on_sale": true,
+      "accessibility_tags": [1, 3],
+      "genre_tags": [3, 8],
+      "platform_tags": [1, 2, 3]
+    }
+  },
+  {
+    "model": "games.game",
+    "pk": 46,
+    "fields": {
+      "name": "Forza Horizon 5",
+      "description": "Open-world racing game set in a vibrant recreation of Mexico with dynamic seasons.",
+      "publisher": "Xbox Game Studios",
+      "price": 59.99,
+      "release_date": "2021-11-09",
+      "thumbnail_url": "https://placehold.co/440x600?text=Forza+Horizon+5",
+      "trailer_url": "https://youtu.be/u5rWBgBjDsc?si=7ux35bVaNjWnMO28",
+      "trending": false,
+      "on_sale": true,
+      "accessibility_tags": [1, 3, 4],
+      "genre_tags": [1, 6],
+      "platform_tags": [1, 3]
+    }
+  },
+  {
+    "model": "games.game",
+    "pk": 47,
+    "fields": {
+      "name": "Gran Turismo 7",
+      "description": "Realistic racing simulator featuring a huge garage of cars and detailed tuning options.",
+      "publisher": "Sony Interactive Entertainment",
+      "price": 69.99,
+      "release_date": "2022-03-04",
+      "thumbnail_url": "https://placehold.co/440x600?text=Gran+Turismo+7",
+      "trailer_url": "https://youtu.be/u5rWBgBjDsc?si=7ux35bVaNjWnMO28",
+      "trending": true,
+      "on_sale": false,
+      "accessibility_tags": [1, 3, 4],
+      "genre_tags": [1, 6],
+      "platform_tags": [2]
+    }
+  },
+  {
+    "model": "games.game",
+    "pk": 48,
+    "fields": {
+      "name": "Mortal Kombat 1",
+      "description": "Brutal fighting game reboot set in a newly forged universe overseen by Fire God Liu Kang.",
+      "publisher": "Warner Bros. Games",
+      "price": 69.99,
+      "release_date": "2023-09-19",
+      "thumbnail_url": "https://placehold.co/440x600?text=Mortal+Kombat+1",
+      "trailer_url": "https://youtu.be/u5rWBgBjDsc?si=7ux35bVaNjWnMO28",
+      "trending": true,
+      "on_sale": true,
+      "accessibility_tags": [1, 3],
+      "genre_tags": [2],
+      "platform_tags": [1, 2, 3]
+    }
+  },
+  {
+    "model": "games.game",
+    "pk": 49,
+    "fields": {
+      "name": "Street Fighter 6",
+      "description": "Modern fighting game with a new World Tour mode and accessible control schemes.",
+      "publisher": "Capcom",
+      "price": 59.99,
+      "release_date": "2023-06-02",
+      "thumbnail_url": "https://placehold.co/440x600?text=Street+Fighter+6",
+      "trailer_url": "https://youtu.be/u5rWBgBjDsc?si=7ux35bVaNjWnMO28",
+      "trending": true,
+      "on_sale": false,
+      "accessibility_tags": [1, 3],
+      "genre_tags": [2],
+      "platform_tags": [1, 2, 3]
+    }
+  },
+  {
+    "model": "games.game",
+    "pk": 50,
+    "fields": {
+      "name": "Palworld",
+      "description": "Monster-collecting survival game where you explore, build bases and battle with armed Pals.",
+      "publisher": "Pocketpair",
+      "price": 29.99,
+      "release_date": "2024-01-19",
+      "thumbnail_url": "https://placehold.co/440x600?text=Palworld",
+      "trailer_url": "https://youtu.be/u5rWBgBjDsc?si=7ux35bVaNjWnMO28",
+      "trending": true,
+      "on_sale": true,
+      "accessibility_tags": [1, 3],
+      "genre_tags": [3, 4],
+      "platform_tags": [1]
+    }
+  }
 ]
