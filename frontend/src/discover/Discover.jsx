@@ -2,6 +2,7 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import './Discover.css';
 import GameCard from './GameCard.jsx';
+import { Link } from 'react-router-dom';
 
 
 function Discover() {
@@ -10,6 +11,8 @@ function Discover() {
         on_sale_games: [],
         recently_released_games: []
     });
+
+
     useEffect(() => {
     axios.get(`http://127.0.0.1:8000/app/games/discover`)
     .then(response => {
@@ -26,7 +29,10 @@ function Discover() {
                 <div className="carousel">
                     <h2>Trending</h2>
                     {games.trending_games.map((game) => (
+                        // Links: https://api.reactrouter.com/v7/functions/react_router.Link.html
+                        <Link to={`/gameprofile/${game.id}`}>
                         <GameCard key={game.id} game={game}/>
+                        </Link>
                     ))}
                 </div>
 
