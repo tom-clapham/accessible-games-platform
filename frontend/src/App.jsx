@@ -16,6 +16,7 @@ import GameProfile from './game_profile/GameProfile.jsx'
 import Discover from './discover/Discover.jsx'
 import Reviews from './Threads/Reviews.jsx'
 import Replies from './Threads/Replies.jsx'
+import Account from './Account/Account.jsx'
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
             <Route path="/reviews/:reviewId" element={<Reviews/>}/>
             <Route path="/gameprofile/:id" element={<GameProfile/>}/>
             <Route path="/discover" element={<Discover/>}/>
+            <Route path="/account" element={<PrivateRoute><Account/></PrivateRoute>}/>
           </Route>
           <Route path="/login" element={<Login/>}/>
           <Route path="/forgot-credentials" element={<Forgot_Information/>}/>
