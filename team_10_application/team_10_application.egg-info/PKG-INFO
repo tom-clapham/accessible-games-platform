@@ -11,3 +11,4 @@ Requires-Dist: python-decouple
 Requires-Dist: django-allauth
 Requires-Dist: requests
 Requires-Dist: cryptography
+Requires-Dist: python-dotenv>=1.2.1
