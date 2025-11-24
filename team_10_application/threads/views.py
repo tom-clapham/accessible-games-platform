@@ -6,12 +6,15 @@ from rest_framework.decorators import api_view
 from . models import *
 from . serializer import *
 from django.http import JsonResponse
+from rest_framework.permissions import AllowAny
+from rest_framework.decorators import permission_classes
 
 class PostsListCreate(generics.ListCreateAPIView): # This is a class based view
     queryset = Posts.objects.all()
     serializer_class = PostsSerializer
 
 @api_view()
+@permission_classes([AllowAny])
 def getFirstPost(request, game_id):
     posts = (
         Posts.objects
@@ -33,6 +36,7 @@ def getFirstPost(request, game_id):
     })
 
 @api_view()
+@permission_classes([AllowAny])
 def getThread(request, post_id):
     parent = (
         Posts.objects
@@ -70,6 +74,7 @@ def getThread(request, post_id):
     })
 
 @api_view(['POST'])
+@permission_classes([AllowAny])
 def createNewParentPost(request):
     '''
     This function will create a new top-level post
@@ -84,6 +89,7 @@ def createNewParentPost(request):
         return Response(status.HTTP_400_BAD_REQUEST)
 
 @api_view(['POST'])
+@permission_classes([AllowAny])
 def createNewReply(request):
     '''
     This function will create a new post, but with reference to a parent that will be specified in the payload

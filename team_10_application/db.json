@@ -1139,5 +1139,89 @@
     "genre_tags": [3, 4],
     "platform_tags": [1]
 }
+},
+{
+"model": "users.GenreTag",
+"fields": {
+    "name": "RPG"
+}
+},
+{
+"model": "users.GenreTag",
+"fields": {
+    "name": "Shooter"
+}
+},
+{
+"model": "users.GenreTag",
+"fields": {
+    "name": "Action"
+}
+},
+{
+"model": "users.GenreTag",
+"fields": {
+    "name": "Adventure"
+}
+},
+{
+"model": "users.GenreTag",
+"fields": {
+    "name": "Horror"
+}
+},
+{
+"model": "users.GenreTag",
+"fields": {
+    "name": "Educational"
+}
+},
+{
+"model": "users.GenreTag",
+"fields": {
+    "name": "Sport"
+}
+},
+{
+"model": "users.GenreTag",
+"fields": {
+    "name": "Simulation"
+}
+},
+{
+"model": "users.GenreTag",
+"fields": {
+    "name": "Puzzle"
+}
+},
+{
+"model": "users.AccessibilityTag",
+"fields": {
+    "name": "Hearing"
+}
+},
+{
+"model": "users.AccessibilityTag",
+"fields": {
+    "name": "Speech"
+}
+},
+{
+"model": "users.AccessibilityTag",
+"fields": {
+    "name": "Visual"
+}
+},
+{
+"model": "users.AccessibilityTag",
+"fields": {
+    "name": "Dexterity"
+}
+},
+{
+"model": "users.AccessibilityTag",
+"fields": {
+    "name": "Cognitive"
+}
 }
 ]
