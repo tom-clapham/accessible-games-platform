@@ -25,8 +25,9 @@ export const AuthProvider = ({children}) => {
             if (window.opener) {
                 window.opener.postMessage({ type: 'LOGIN_SUCCESS' }, window.location.origin);
             }
-            window.close()
             setIsAuthenticated(true);
+            window.close()
+            
         }
         return success;
     }

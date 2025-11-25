@@ -1,6 +1,7 @@
 import {useState, useEffect} from 'react'
 import { user_info } from '../endpoints/api'
 import styles from './Account.module.css'
+import { useLocation } from 'react-router-dom'
 
 const Account = () => {
 
@@ -10,14 +11,21 @@ const Account = () => {
     const [accessibilityAndGenre, setaccessibilityAndGenre] = useState(false);
     const [favouriteGames, setfavouriteGames] = useState(false);
     const [communityPosts, setcommunityPosts] = useState(false);
+    const location = useLocation();
+    const { message } = location.state || {};
 
     useEffect(() => {
         const fetchInfo = async () => {
         const info = await user_info();
             setInfo(info);
         }
-        fetchInfo();
+
+        if(message){
+            fetchInfo();
+        }
     }, []);
+
+    
     
     return (
         <div>
