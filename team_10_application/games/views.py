@@ -17,10 +17,11 @@ class GameViewSet(viewsets.ModelViewSet):
         selected_accessibility_tags = request.query_params.getlist('accessibility_tags[]')
 
         if selected_accessibility_tags:
-            games = games.filter(accessibility_tags__name__in=selected_accessibility_tags)
+            for accessibility_tag in selected_accessibility_tags:
+                games = games.filter(accessibility_tags__name=accessibility_tag).distinct()
 
         print("ACCESSIBILITY PARAMS:", request.query_params)
         print("SELECTED TAGS:", selected_accessibility_tags)
-    
+
         serializer = self.get_serializer(games, many=True)
         return Response(serializer.data)

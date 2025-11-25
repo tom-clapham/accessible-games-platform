@@ -10,7 +10,7 @@ import "primereact/resources/themes/lara-dark-indigo/theme.css";
 
 
 function BrowsePage() {
-    const [games, setGames] = useState(null);
+    const [games, setGames] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
@@ -47,8 +47,6 @@ function BrowsePage() {
         });
     }, [selectedAccessibilityTags]);
 
-    if (loading) return <p>Loading...</p>;
-    if (error) return <p>Error loading game data.</p>;
     if (!games) return <p>No games data found.</p>;
 
     return (
