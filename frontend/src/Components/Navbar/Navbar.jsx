@@ -23,6 +23,7 @@ function Navbar(){
 
       const handleMessage = (event) => {
         if (event.data.type === 'LOGIN_SUCCESS') {
+          window.location.reload()
           fetchInfo();
         }
       };
