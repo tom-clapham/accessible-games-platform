@@ -12,7 +12,16 @@ class GameViewSet(viewsets.ModelViewSet):
 
     @action(detail=False, methods=['get'])
     def browse(self, request):
-        games = Game.objects.all()[:12]
-        serializer = self.get_serializer(games, many=True)
+        games = Game.objects.all()
 
+        selected_accessibility_tags = request.query_params.getlist('accessibility_tags[]')
+
+        if selected_accessibility_tags:
+            games = games.filter(accessibility_tags__name__in=selected_accessibility_tags)
+
+        print("ACCESSIBILITY PARAMS:", request.query_params)
+        print("SELECTED TAGS:", selected_accessibility_tags)
+
+
+        serializer = self.get_serializer(games, many=True)
         return Response(serializer.data)

@@ -14,7 +14,7 @@ function BrowsePage() {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
-    const [selectedAccessibilityTags, setSelectedAccessibilityTags] = useState(null);
+    const [selectedAccessibilityTags, setSelectedAccessibilityTags] = useState();
 
     const accessibilityTagsOptions = [
         { label: "Vision", value: "Vision Accessibility"},
@@ -25,17 +25,27 @@ function BrowsePage() {
     ]
     
     useEffect(() => {
-        axios.get(`http://127.0.0.1:8000/app/games/games/browse`)
+        setLoading(true); 
+
+        const filter_parameters = {}
+
+        if (selectedAccessibilityTags && selectedAccessibilityTags.length > 0) {
+            filter_parameters.accessibility_tags = selectedAccessibilityTags
+        }
+
+        console.log("Filter parameters being sent:", filter_parameters);
+
+        axios.get("http://127.0.0.1:8000/app/games/games/browse", { params: filter_parameters })
         .then(response => {
             setGames(response.data);
             setLoading(false);
         })
         .catch(error => {
             console.error(error);
-            setError[error];
-            setLoading[false];
+            setError(error);
+            setLoading(false);
         });
-    }, []);
+    }, [selectedAccessibilityTags]);
 
     if (loading) return <p>Loading...</p>;
     if (error) return <p>Error loading game data.</p>;
