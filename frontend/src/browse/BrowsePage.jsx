@@ -5,10 +5,24 @@ import GameCard from './GameCard';
 
 import "./browse_page_styles.css";
 
+import { MultiSelect } from 'primereact/multiselect';
+import "primereact/resources/themes/lara-dark-indigo/theme.css";
+
+
 function BrowsePage() {
     const [games, setGames] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+
+    const [selectedAccessibilityTags, setSelectedAccessibilityTags] = useState(null);
+
+    const accessibilityTagsOptions = [
+        { label: "Vision", value: "Vision Accessibility"},
+        { label: "Hearing", value: "Hearing Accessibility"},
+        { label: "Speech", value: "Speech Accessibility"},
+        { label: "Motor", value: "Motor Accessibility"},
+        { label: "Cognitive", value: "Cognitive Accessibility"}
+    ]
     
     useEffect(() => {
         axios.get(`http://127.0.0.1:8000/app/games/games/browse`)
@@ -32,7 +46,7 @@ function BrowsePage() {
             <div className="browse-page">
                 <h1>Browse</h1>
                 <div className="browse-page-headings">
-                    <div className="heading">Filter Results</div>
+                    <div className="heading">Results</div>
                     <div className="heading">Filters</div>
                 </div>
                 <div className="browse-page-grid">
@@ -47,9 +61,14 @@ function BrowsePage() {
                         ))}
                     </div>
                     <div className="filter-options-container">
-                        <div>filter 1</div>
-                        <div>filter 2</div>
-                        <div>filter 3</div>
+                        <MultiSelect 
+                            value={selectedAccessibilityTags} 
+                            onChange={(e) => setSelectedAccessibilityTags(e.value)}
+                            placeholder="Select Accessibility Tags" 
+                            options={accessibilityTagsOptions}
+                            display="chip"
+                            className="accessibility-tags-multiselect"
+                        />
                     </div>
                 </div>
             </div>

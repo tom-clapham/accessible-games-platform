@@ -13,8 +13,8 @@ body {
 
 .browse-page-headings {
   display: grid;
-  grid-template-columns: 3fr 1fr;
-  gap: 24px;
+  grid-template-columns: 1fr 320px;
+    gap: 30px;
 }
 
 .heading {
@@ -24,8 +24,8 @@ body {
 
 .browse-page-grid {
   display: grid;
-  grid-template-columns: 3fr 1fr;
-  gap: 24px;
+  grid-template-columns: 1fr 320px;
+  gap: 30px;
 }
 
 .filter-results-container {
@@ -62,3 +62,38 @@ body {
     padding-top: 6px;
     font-size: 14px;
 }
+
+.p-multiselect {
+  width: 100%;
+  box-sizing: border-box;
+  background-color: #0c0c0c;
+  border: 1px solid #2a2a2a;
+}
+
+.p-multiselect-label-container {
+  background-color: #0c0c0c;
+  padding: 4px 8px;
+  white-space: normal;
+  width: 320px;
+}
+
+.p-multiselect-trigger {
+  background-color: #0c0c0c;
+  border-left: 1px solid #2a2a2a;
+}
+
+.p-multiselect-panel {
+  background-color: #050505;
+  border: 1px solid #2a2a2a;
+}
+
+.p-multiselect-item.p-highlight {
+  background-color: #1d1d1d;  
+}
+
+.p-multiselect-token {
+  background-color: #1a1a1a;
+  padding: 2px 6px;
+  margin: 2px;
+}
+

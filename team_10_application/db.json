@@ -2,32 +2,27 @@
   {
     "model": "games.accessibilitytag",
     "pk": 1,
-    "fields": { "name": "Subtitles" }
+    "fields": { "name": "Vision Accessibility" }
   },
   {
     "model": "games.accessibilitytag",
     "pk": 2,
-    "fields": { "name": "Colourblind options" }
+    "fields": { "name": "Hearing Accessibility" }
   },
   {
     "model": "games.accessibilitytag",
     "pk": 3,
-    "fields": { "name": "Remappable controls" }
+    "fields": { "name": "Speech Accessibility" }
   },
   {
     "model": "games.accessibilitytag",
     "pk": 4,
-    "fields": { "name": "Difficulty options" }
+    "fields": { "name": "Motor Accessibility" }
   },
   {
     "model": "games.accessibilitytag",
     "pk": 5,
-    "fields": { "name": "High contrast mode" }
-  },
-  {
-    "model": "games.accessibilitytag",
-    "pk": 6,
-    "fields": { "name": "Audio descriptions" }
+    "fields": { "name": "Cognitive Accessibility" }
   },
 
   {
@@ -115,7 +110,7 @@
       "trailer_url": "https://youtu.be/u5rWBgBjDsc?si=7ux35bVaNjWnMO28",
       "trending": true,
       "on_sale": false,
-      "accessibility_tags": [1, 3, 4],
+      "accessibility_tags": [1, 2, 3, 5],
       "genre_tags": [1, 6],
       "platform_tags": [1, 2, 3]
     }
@@ -134,7 +129,7 @@
       "trailer_url": "https://youtu.be/u5rWBgBjDsc?si=7ux35bVaNjWnMO28",
       "trending": true,
       "on_sale": false,
-      "accessibility_tags": [1, 3, 4],
+      "accessibility_tags": [2, 5],
       "genre_tags": [2, 3, 4],
       "platform_tags": [1, 2, 3]
     }
@@ -152,7 +147,7 @@
       "trailer_url": "https://youtu.be/u5rWBgBjDsc?si=7ux35bVaNjWnMO28",
       "trending": true,
       "on_sale": true,
-      "accessibility_tags": [1, 3, 4],
+      "accessibility_tags": [1, 2, 3, 5],
       "genre_tags": [3, 4],
       "platform_tags": [1, 2, 3]
     }
@@ -170,7 +165,7 @@
       "trailer_url": "https://youtu.be/u5rWBgBjDsc?si=7ux35bVaNjWnMO28",
       "trending": false,
       "on_sale": true,
-      "accessibility_tags": [1, 3, 4],
+      "accessibility_tags": [1, 5],
       "genre_tags": [2, 3, 4],
       "platform_tags": [1, 2, 3]
     }
@@ -188,7 +183,7 @@
       "trailer_url": "https://youtu.be/u5rWBgBjDsc?si=7ux35bVaNjWnMO28",
       "trending": false,
       "on_sale": true,
-      "accessibility_tags": [1, 3, 4],
+      "accessibility_tags": [1, 2],
       "genre_tags": [3, 4],
       "platform_tags": [1, 2, 3]
     }
@@ -206,7 +201,7 @@
       "trailer_url": "https://youtu.be/u5rWBgBjDsc?si=7ux35bVaNjWnMO28",
       "trending": true,
       "on_sale": false,
-      "accessibility_tags": [1, 3, 4],
+      "accessibility_tags": [1, 2, 4, 5],
       "genre_tags": [3, 4],
       "platform_tags": [1, 2, 3]
     }
@@ -224,7 +219,7 @@
       "trailer_url": "https://youtu.be/u5rWBgBjDsc?si=7ux35bVaNjWnMO28",
       "trending": true,
       "on_sale": true,
-      "accessibility_tags": [1, 3, 4],
+      "accessibility_tags": [1, 2, 3, 4],
       "genre_tags": [2, 3],
       "platform_tags": [1, 2, 3]
     }
@@ -242,7 +237,7 @@
       "trailer_url": "https://youtu.be/u5rWBgBjDsc?si=7ux35bVaNjWnMO28",
       "trending": true,
       "on_sale": false,
-      "accessibility_tags": [1, 3, 4, 5],
+      "accessibility_tags": [1, 2, 3],
       "genre_tags": [3, 4],
       "platform_tags": [4]
     }
@@ -260,7 +255,7 @@
       "trailer_url": "https://youtu.be/u5rWBgBjDsc?si=7ux35bVaNjWnMO28",
       "trending": true,
       "on_sale": false,
-      "accessibility_tags": [1, 3, 4],
+      "accessibility_tags": [1, 2, 5],
       "genre_tags": [2, 3],
       "platform_tags": [2]
     }
@@ -278,7 +273,7 @@
       "trailer_url": "https://youtu.be/u5rWBgBjDsc?si=7ux35bVaNjWnMO28",
       "trending": false,
       "on_sale": true,
-      "accessibility_tags": [1, 3, 4],
+      "accessibility_tags": [3, 5],
       "genre_tags": [3, 4],
       "platform_tags": [2]
     }
@@ -296,7 +291,7 @@
       "trailer_url": "https://youtu.be/u5rWBgBjDsc?si=7ux35bVaNjWnMO28",
       "trending": true,
       "on_sale": false,
-      "accessibility_tags": [1, 3, 4],
+      "accessibility_tags": [1, 2, 3, 5],
       "genre_tags": [2, 3],
       "platform_tags": [2]
     }
@@ -314,7 +309,7 @@
       "trailer_url": "https://youtu.be/u5rWBgBjDsc?si=7ux35bVaNjWnMO28",
       "trending": true,
       "on_sale": true,
-      "accessibility_tags": [1, 3, 4],
+      "accessibility_tags": [1, 2, 4, 5],
       "genre_tags": [2, 4],
       "platform_tags": [1, 2, 3, 4]
     }
@@ -350,7 +345,7 @@
       "trailer_url": "https://youtu.be/u5rWBgBjDsc?si=7ux35bVaNjWnMO28",
       "trending": false,
       "on_sale": true,
-      "accessibility_tags": [1, 3, 4],
+      "accessibility_tags": [1, 3, 4, 5],
       "genre_tags": [2, 7],
       "platform_tags": [1, 2, 3, 4]
     }
@@ -368,7 +363,7 @@
       "trailer_url": "https://youtu.be/u5rWBgBjDsc?si=7ux35bVaNjWnMO28",
       "trending": true,
       "on_sale": false,
-      "accessibility_tags": [1, 3, 4, 5],
+      "accessibility_tags": [1, 2, 5],
       "genre_tags": [7],
       "platform_tags": [1, 2, 3, 4]
     }
@@ -386,7 +381,7 @@
       "trailer_url": "https://youtu.be/u5rWBgBjDsc?si=7ux35bVaNjWnMO28",
       "trending": true,
       "on_sale": true,
-      "accessibility_tags": [1, 3, 4],
+      "accessibility_tags": [3, 4, 5],
       "genre_tags": [5],
       "platform_tags": [1, 2, 3, 4]
     }
@@ -404,7 +399,7 @@
       "trailer_url": "https://youtu.be/u5rWBgBjDsc?si=7ux35bVaNjWnMO28",
       "trending": false,
       "on_sale": true,
-      "accessibility_tags": [1, 3],
+      "accessibility_tags": [2, 3, 5],
       "genre_tags": [2, 3],
       "platform_tags": [1, 2, 3]
     }
@@ -440,7 +435,7 @@
       "trailer_url": "https://youtu.be/u5rWBgBjDsc?si=7ux35bVaNjWnMO28",
       "trending": false,
       "on_sale": true,
-      "accessibility_tags": [1, 3],
+      "accessibility_tags": [1, 2, 4, 5],
       "genre_tags": [2, 4],
       "platform_tags": [1, 2, 3]
     }
@@ -458,7 +453,7 @@
       "trailer_url": "https://youtu.be/u5rWBgBjDsc?si=7ux35bVaNjWnMO28",
       "trending": true,
       "on_sale": false,
-      "accessibility_tags": [1, 3],
+      "accessibility_tags": [2, 3, 5],
       "genre_tags": [2, 4],
       "platform_tags": [1, 2, 3]
     }
@@ -476,7 +471,7 @@
       "trailer_url": "https://youtu.be/u5rWBgBjDsc?si=7ux35bVaNjWnMO28",
       "trending": true,
       "on_sale": true,
-      "accessibility_tags": [1, 2, 3, 4],
+      "accessibility_tags": [1, 2, 5],
       "genre_tags": [9],
       "platform_tags": [1, 2, 3]
     }
@@ -494,7 +489,7 @@
       "trailer_url": "https://youtu.be/u5rWBgBjDsc?si=7ux35bVaNjWnMO28",
       "trending": true,
       "on_sale": false,
-      "accessibility_tags": [1, 2, 3, 4],
+      "accessibility_tags": [1, 3, 4],
       "genre_tags": [9],
       "platform_tags": [1, 2, 3]
     }
@@ -512,7 +507,7 @@
       "trailer_url": "https://youtu.be/u5rWBgBjDsc?si=7ux35bVaNjWnMO28",
       "trending": true,
       "on_sale": false,
-      "accessibility_tags": [1, 2, 3, 4],
+      "accessibility_tags": [3, 5],
       "genre_tags": [2, 9],
       "platform_tags": [1, 2, 3, 4]
     }
@@ -530,7 +525,7 @@
       "trailer_url": "https://youtu.be/u5rWBgBjDsc?si=7ux35bVaNjWnMO28",
       "trending": true,
       "on_sale": true,
-      "accessibility_tags": [1, 3],
+      "accessibility_tags": [4, 5],
       "genre_tags": [2, 4],
       "platform_tags": [1]
     }
@@ -548,7 +543,7 @@
       "trailer_url": "https://youtu.be/u5rWBgBjDsc?si=7ux35bVaNjWnMO28",
       "trending": false,
       "on_sale": true,
-      "accessibility_tags": [1, 3, 4],
+      "accessibility_tags": [1, 2, 4, 5],
       "genre_tags": [6],
       "platform_tags": [1, 2, 3, 4]
     }
@@ -566,7 +561,7 @@
       "trailer_url": "https://youtu.be/u5rWBgBjDsc?si=7ux35bVaNjWnMO28",
       "trending": true,
       "on_sale": true,
-      "accessibility_tags": [1, 3],
+      "accessibility_tags": [3, 5],
       "genre_tags": [10],
       "platform_tags": [1, 2, 3, 4]
     }
@@ -584,7 +579,7 @@
       "trailer_url": "https://youtu.be/u5rWBgBjDsc?si=7ux35bVaNjWnMO28",
       "trending": false,
       "on_sale": true,
-      "accessibility_tags": [1, 3],
+      "accessibility_tags": [2, 3, 4, 5],
       "genre_tags": [2, 7],
       "platform_tags": [1, 2, 3, 4]
     }
@@ -602,7 +597,7 @@
       "trailer_url": "https://youtu.be/u5rWBgBjDsc?si=7ux35bVaNjWnMO28",
       "trending": true,
       "on_sale": false,
-      "accessibility_tags": [1, 3, 5],
+      "accessibility_tags": [2, 3, 5],
       "genre_tags": [3, 7],
       "platform_tags": [1, 2, 3, 4]
     }
@@ -620,7 +615,7 @@
       "trailer_url": "https://youtu.be/u5rWBgBjDsc?si=7ux35bVaNjWnMO28",
       "trending": true,
       "on_sale": false,
-      "accessibility_tags": [1, 3],
+      "accessibility_tags": [1, 4, 5],
       "genre_tags": [2, 3],
       "platform_tags": [2]
     }
@@ -638,7 +633,7 @@
       "trailer_url": "https://youtu.be/u5rWBgBjDsc?si=7ux35bVaNjWnMO28",
       "trending": false,
       "on_sale": true,
-      "accessibility_tags": [1, 3],
+      "accessibility_tags": [2, 4],
       "genre_tags": [4],
       "platform_tags": [1, 2, 3]
     }
@@ -656,7 +651,7 @@
       "trailer_url": "https://youtu.be/u5rWBgBjDsc?si=7ux35bVaNjWnMO28",
       "trending": false,
       "on_sale": true,
-      "accessibility_tags": [1, 3],
+      "accessibility_tags": [1, 2, 3, 4],
       "genre_tags": [2, 3, 4],
       "platform_tags": [1, 2, 3]
     }
@@ -674,7 +669,7 @@
       "trailer_url": "https://youtu.be/u5rWBgBjDsc?si=7ux35bVaNjWnMO28",
       "trending": true,
       "on_sale": false,
-      "accessibility_tags": [1, 3],
+      "accessibility_tags": [1, 3, 4, 5],
       "genre_tags": [3, 4, 5],
       "platform_tags": [1, 2, 3]
     }
@@ -692,7 +687,7 @@
       "trailer_url": "https://youtu.be/u5rWBgBjDsc?si=7ux35bVaNjWnMO28",
       "trending": false,
       "on_sale": true,
-      "accessibility_tags": [1, 3],
+      "accessibility_tags": [2, 3, 4, 5],
       "genre_tags": [5],
       "platform_tags": [1, 2, 3, 4]
     }
@@ -710,7 +705,7 @@
       "trailer_url": "https://youtu.be/u5rWBgBjDsc?si=7ux35bVaNjWnMO28",
       "trending": false,
       "on_sale": true,
-      "accessibility_tags": [1, 3],
+      "accessibility_tags": [3, 4],
       "genre_tags": [3, 4],
       "platform_tags": [1, 2, 3]
     }
@@ -728,7 +723,7 @@
       "trailer_url": "https://youtu.be/u5rWBgBjDsc?si=7ux35bVaNjWnMO28",
       "trending": false,
       "on_sale": true,
-      "accessibility_tags": [1, 3],
+      "accessibility_tags": [1, 4],
       "genre_tags": [3, 4],
       "platform_tags": [1, 2, 3]
     }
@@ -746,7 +741,7 @@
       "trailer_url": "https://youtu.be/u5rWBgBjDsc?si=7ux35bVaNjWnMO28",
       "trending": true,
       "on_sale": false,
-      "accessibility_tags": [1, 3],
+      "accessibility_tags": [1, 2, 3, 5],
       "genre_tags": [2, 9],
       "platform_tags": [1, 2, 3]
     }
@@ -764,7 +759,7 @@
       "trailer_url": "https://youtu.be/u5rWBgBjDsc?si=7ux35bVaNjWnMO28",
       "trending": false,
       "on_sale": true,
-      "accessibility_tags": [1, 3],
+      "accessibility_tags": [1, 2, 3, 4],
       "genre_tags": [2, 9, 4],
       "platform_tags": [2]
     }
@@ -782,7 +777,7 @@
       "trailer_url": "https://youtu.be/u5rWBgBjDsc?si=7ux35bVaNjWnMO28",
       "trending": false,
       "on_sale": true,
-      "accessibility_tags": [1, 3],
+      "accessibility_tags": [1, 5],
       "genre_tags": [2, 3],
       "platform_tags": [1, 2, 3]
     }
@@ -800,7 +795,7 @@
       "trailer_url": "https://youtu.be/u5rWBgBjDsc?si=7ux35bVaNjWnMO28",
       "trending": true,
       "on_sale": false,
-      "accessibility_tags": [1, 3],
+      "accessibility_tags": [1, 3, 4, 5],
       "genre_tags": [2, 4],
       "platform_tags": [1, 2, 3]
     }
@@ -818,7 +813,7 @@
       "trailer_url": "https://youtu.be/u5rWBgBjDsc?si=7ux35bVaNjWnMO28",
       "trending": false,
       "on_sale": true,
-      "accessibility_tags": [1, 3],
+      "accessibility_tags": [1, 2, 3],
       "genre_tags": [2, 4],
       "platform_tags": [1, 2, 3]
     }
@@ -836,7 +831,7 @@
       "trailer_url": "https://youtu.be/u5rWBgBjDsc?si=7ux35bVaNjWnMO28",
       "trending": true,
       "on_sale": false,
-      "accessibility_tags": [1, 3],
+      "accessibility_tags": [1, 5],
       "genre_tags": [2, 7],
       "platform_tags": [1, 2, 3, 4]
     }
@@ -854,7 +849,7 @@
       "trailer_url": "https://youtu.be/u5rWBgBjDsc?si=7ux35bVaNjWnMO28",
       "trending": false,
       "on_sale": true,
-      "accessibility_tags": [1, 3],
+      "accessibility_tags": [1, 4],
       "genre_tags": [10],
       "platform_tags": [1, 2, 3, 4]
     }
@@ -872,7 +867,7 @@
       "trailer_url": "https://youtu.be/u5rWBgBjDsc?si=7ux35bVaNjWnMO28",
       "trending": true,
       "on_sale": true,
-      "accessibility_tags": [1, 3],
+      "accessibility_tags": [2, 3, 4, 5],
       "genre_tags": [5],
       "platform_tags": [1, 2, 3, 4]
     }
@@ -890,7 +885,7 @@
       "trailer_url": "https://youtu.be/u5rWBgBjDsc?si=7ux35bVaNjWnMO28",
       "trending": true,
       "on_sale": false,
-      "accessibility_tags": [1, 3],
+      "accessibility_tags": [2, 3, 4, 5],
       "genre_tags": [3, 4],
       "platform_tags": [1, 2, 3, 4]
     }
@@ -908,7 +903,7 @@
       "trailer_url": "https://youtu.be/u5rWBgBjDsc?si=7ux35bVaNjWnMO28",
       "trending": true,
       "on_sale": true,
-      "accessibility_tags": [1, 3],
+      "accessibility_tags": [2, 5],
       "genre_tags": [3, 8],
       "platform_tags": [1, 2, 3]
     }
@@ -926,7 +921,7 @@
       "trailer_url": "https://youtu.be/u5rWBgBjDsc?si=7ux35bVaNjWnMO28",
       "trending": false,
       "on_sale": true,
-      "accessibility_tags": [1, 3, 4],
+      "accessibility_tags": [2, 3, 4, 5],
       "genre_tags": [1, 6],
       "platform_tags": [1, 3]
     }
@@ -944,7 +939,7 @@
       "trailer_url": "https://youtu.be/u5rWBgBjDsc?si=7ux35bVaNjWnMO28",
       "trending": true,
       "on_sale": false,
-      "accessibility_tags": [1, 3, 4],
+      "accessibility_tags": [1, 4, 5],
       "genre_tags": [1, 6],
       "platform_tags": [2]
     }
@@ -962,7 +957,7 @@
       "trailer_url": "https://youtu.be/u5rWBgBjDsc?si=7ux35bVaNjWnMO28",
       "trending": true,
       "on_sale": true,
-      "accessibility_tags": [1, 3],
+      "accessibility_tags": [1, 2],
       "genre_tags": [2],
       "platform_tags": [1, 2, 3]
     }
@@ -980,7 +975,7 @@
       "trailer_url": "https://youtu.be/u5rWBgBjDsc?si=7ux35bVaNjWnMO28",
       "trending": true,
       "on_sale": false,
-      "accessibility_tags": [1, 3],
+      "accessibility_tags": [1, 2, 3],
       "genre_tags": [2],
       "platform_tags": [1, 2, 3]
     }
@@ -998,7 +993,7 @@
       "trailer_url": "https://youtu.be/u5rWBgBjDsc?si=7ux35bVaNjWnMO28",
       "trending": true,
       "on_sale": true,
-      "accessibility_tags": [1, 3],
+      "accessibility_tags": [1, 5],
       "genre_tags": [3, 4],
       "platform_tags": [1]
     }
