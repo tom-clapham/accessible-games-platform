@@ -1,6 +1,6 @@
 import {useState, useEffect} from 'react'
-import styles from './Account.module.css'
 import { user_info } from '../endpoints/api'
+import styles from './Account.module.css'
 
 const Account = () => {
 

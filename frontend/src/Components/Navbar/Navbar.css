@@ -145,6 +145,10 @@
   color: #60cdff;
 }
 
+.account:hover {
+  cursor: pointer;
+}
+
 .email {
   color: rgb(255, 255, 255, 0.784);
   font-size: 15px;

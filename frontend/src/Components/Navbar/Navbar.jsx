@@ -23,6 +23,7 @@ function Navbar(){
 
       const handleMessage = (event) => {
         if (event.data.type === 'LOGIN_SUCCESS') {
+          console.log("success")
           fetchInfo();
         }
       };
@@ -50,7 +51,7 @@ function Navbar(){
 
   function navAccount(){
       nav('/account')
-  } 
+  }
 
   function navGames(){
       nav('/discover')
