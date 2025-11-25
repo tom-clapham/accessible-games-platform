@@ -10,10 +10,13 @@ import { IoAccessibilityOutline } from "react-icons/io5";
 import { FaRegHeart } from "react-icons/fa";
 import { FaRegCommentDots } from "react-icons/fa";
 import { IoIosWarning } from "react-icons/io";
+import SearchBarGenres from '../Components/SearchBars/SearchBarGenres'
+import SearchBarAccessibility from '../Components/SearchBars/SearchBarAccessibility'
+import { TiDelete } from "react-icons/ti";
 
 const Account = () => {
 
-    const [info, setInfo] = useState(false);
+    const [info, setInfo] = useState({accessibility_tags: [], genre_tags: []})
     const [generalInfo, setGeneralInfo] = useState(true);
     const [passwordSecurity, setpasswordSecurity] = useState(false);
     const [accessibilityAndGenre, setaccessibilityAndGenre] = useState(false);
@@ -136,8 +139,26 @@ const Account = () => {
                     <div className={styles.section}>
                         <h2 className={styles.title}>Accessibility & Genres</h2>
                         <h3>Manage your accessibility needs and favourite game genres here, this helps us tailor your experience.</h3>
-                        <span>Accessibility Preferences: {info.accessibility_tags}</span>
-                        <span>Game Genre Preferences: {info.genre_tags}</span>
+                        <div className={styles.accessibility_section}>
+                            <span>Accessibility Preferences</span>
+                            <ul className={styles.accessibility_list}>
+                                {info.accessibility_tags?.map((tag, i) => (
+                                <li key={i + 1}>
+                                    {tag}<TiDelete className={styles.cross}/>
+                                </li>))}
+                            </ul>
+                            <SearchBarAccessibility/>
+                        </div>
+                        <div className={styles.genres_section}>
+                            <span>Game Genre Preferences</span>
+                            <ul className={styles.genre_list}>
+                                {info.genre_tags?.map((tag, i) => (
+                                <li key={i + 1}>
+                                    {tag}<TiDelete className={styles.cross}/>
+                                </li>))}
+                            </ul>
+                            <SearchBarGenres/>
+                        </div>
                         <button className={styles.save}>Save Changes</button>
                     </div>
                     <hr/>

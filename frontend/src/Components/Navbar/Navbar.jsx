@@ -1,7 +1,7 @@
 import {useState, useEffect} from 'react';
 import './Navbar.css';
 import logoPicture from '../../assets/platform_logo.jpg';
-import SearchBar from '../Elements/SearchBar.jsx'
+import SearchBar from '../SearchBars/SearchBarNav.jsx'
 import { useNavigate } from 'react-router-dom';
 import { MdAccountCircle } from "react-icons/md";
 import { CgGames } from "react-icons/cg";

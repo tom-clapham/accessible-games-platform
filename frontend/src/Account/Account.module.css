@@ -171,3 +171,36 @@ label {
     flex-direction: column;
     width: 35%;
 }
+
+.accessibility_list li, .genre_list li {
+    background-color: rgba(219, 210, 210, 0.788);
+    margin-right: 10px;
+    font-size: 15px;
+    padding: 2px;
+    padding-left: 5px;
+    border-radius: 3px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.accessibility_list, .genre_list {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 5px 0px;
+}
+
+.cross {
+    font-size: 23px;
+    color: black;
+    margin-left: 3px;
+}
+
+.cross:hover {
+    cursor: pointer;
+}
+
+.accessibility_section {
+    margin-bottom: 20px;
+}
