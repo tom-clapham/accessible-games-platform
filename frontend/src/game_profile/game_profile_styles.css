@@ -144,9 +144,12 @@ body {
   letter-spacing: 0.5px;
 }
 
-.gp-info-value {
-  color: #ffffff;
-  font-size: 15px;
-  font-weight: 500;
-  text-align: right;
+.gp-reviews {
+  width: fit-content
+}
+
+.gp-reviews:hover {
+  cursor: pointer;
+  color: hsl(201, 100%, 50%);
+  text-decoration: underline;
 }
