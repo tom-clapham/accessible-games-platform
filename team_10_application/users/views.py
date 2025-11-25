@@ -85,10 +85,12 @@ def get_user(request):
     user = request.user
     try:
         info = CustomUser.objects.get(pk=user.pk)
+        print(info)
     except CustomUser.DoesNotExist:
         return Response({"detail": "User not found"}, status=404)
 
     serializer = UserRegistrationSerializer(info)
+    print(serializer.data)
     return Response(serializer.data)
         
 @api_view(['POST'])

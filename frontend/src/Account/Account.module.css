@@ -1,0 +1,74 @@
+.settings_container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: start;
+    width: 45%;
+}
+
+.account_list, .community_list, .favourites_list {
+    list-style: none;
+    width: 100%;
+    padding: 0px 30px;
+    padding-top: 25px;
+    padding-bottom: 10px;
+}
+
+.nav_list {
+    list-style: none;
+    width: 100%;
+}
+
+.favourite_games_nav, .community_posts_nav, .list_header {
+    color: white;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.nav_container{
+    background-color: #202024;
+    border-radius: 15px;
+    width: 45%;
+    display: flex;
+}
+
+.list_settings, .list_details, .list_security, .list_preferences, .list_delete, .list_community, .list_favourited {
+    padding: 10px 0px;
+    padding-left: 10px;
+    color: rgba(219, 210, 210, 0.788);
+    width: 80%;
+    border-radius: 7px;
+}
+
+.list_settings:hover, .list_details:hover, .list_security:hover, .list_preferences:hover, .list_delete:hover, .list_community:hover, .list_favourited:hover {
+    background-color: #303034;
+    color: white;
+    cursor: pointer;
+}
+
+li {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.icon {
+    margin-right: 10px;
+    font-size: 23px;
+}
+
+.icon2 {
+    margin-right: 12px;
+    font-size: 18px;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.24);
+  margin: 0px;
+  width: 95%;
+}
+
+h3 {
+    font-size: 17px;
+}
