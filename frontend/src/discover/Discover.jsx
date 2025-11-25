@@ -28,12 +28,15 @@ function Discover() {
                 
                 <div className="carousel">
                     <h2>Trending</h2>
-                    {games.trending_games.map((game) => (
+                    {games.trending_games.length > 0
+                    ? games.trending_games.map((game) => (
                         // Links: https://api.reactrouter.com/v7/functions/react_router.Link.html
                         <Link key={game.id} to={`/gameprofile/${game.id}`}>
                         <GameCard game={game}/>
                         </Link>
-                    ))}
+                    ))
+                    : <p>No games are currently trending...</p>
+                    }
                 </div>
 
                 <div className="carousel">
