@@ -1,4 +1,142 @@
 [
+{
+    "model": "threads.users",
+    "pk": 1,
+    "fields": {
+        "firstname": "Daiyan",
+        "surname": "Khan",
+        "age": 21,
+        "username": "@founder_001"
+    }
+},
+{
+    "model": "threads.users",
+    "pk": 2,
+    "fields": {
+        "firstname": "Szymon",
+        "surname": "Wodkiewicz",
+        "age": 20,
+        "username": "@founder_002"
+    }
+},
+{
+    "model": "threads.users",
+    "pk": 3,
+    "fields": {
+        "firstname": "Oscar",
+        "surname": "Webster",
+        "age": 20,
+        "username": "@founder_003"
+    }
+},
+{
+    "model": "threads.users",
+    "pk": 4,
+    "fields": {
+        "firstname": "Tom",
+        "surname": "Clapham",
+        "age": 20,
+        "username": "@founder_004"
+    }
+},
+{
+    "model": "threads.posts",
+    "pk": 1,
+    "fields": {
+        "title": "F1 is phenmoneal!",
+        "message": "This is a big moment everyone, can we get some cheers please!!!!",
+        "date": "2025-11-11T13:36:31.111Z",
+        "gameId": 1,
+        "userId": 1,
+        "parent": null
+    }
+},
+{
+    "model": "threads.posts",
+    "pk": 2,
+    "fields": {
+        "title": "CHEER",
+        "message": "WOOP WOOP!!",
+        "date": "2025-11-11T13:36:48.862Z",
+        "gameId": 1,
+        "userId": 2,
+        "parent": 1
+    }
+},
+{
+    "model": "threads.posts",
+    "pk": 3,
+    "fields": {
+        "title": "THREE BIG BOOMS!",
+        "message": "BOOM BOOM BOOM!",
+        "date": "2025-11-11T13:37:02.632Z",
+        "gameId": 1,
+        "userId": 3,
+        "parent": 1
+    }
+},
+{
+    "model": "threads.posts",
+    "pk": 4,
+    "fields": {
+        "title": "YANITED!",
+        "message": "ryan was here",
+        "date": "2025-11-11T13:37:16.564Z",
+        "gameId": 1,
+        "userId": 4,
+        "parent": 1
+    }
+},
+{
+    "model": "threads.posts",
+    "pk": 5,
+    "fields": {
+        "title": "This is the second new post for this site!!",
+        "message": "Hello there my name is founder and I am the goat!",
+        "date": "2025-11-12T15:02:41.698Z",
+        "gameId": 1,
+        "userId": 4,
+        "parent": null
+    }
+},
+{
+    "model": "threads.posts",
+    "pk": 6,
+    "fields": {
+        "title": "asdfasdf",
+        "message": "asdfasdf",
+        "date": "2025-11-14T23:02:38.760Z",
+        "gameId": 1,
+        "userId": 1,
+        "parent": null
+    }
+},
+{
+    "model": "threads.posts",
+    "pk": 7,
+    "fields": {
+        "title": "Hello there",
+        "message": "asdfasdffkalsjdhfklasjdhf",
+        "date": "2025-11-14T23:03:50.844Z",
+        "gameId": 1,
+        "userId": 1,
+        "parent": null
+    }
+},
+{
+    "model": "threads.posts",
+    "pk": 8,
+    "fields": {
+        "title": null,
+        "message": "asdfasdf",
+        "date": "2025-11-15T11:57:13.983Z",
+        "gameId": 1,
+        "userId": 2,
+        "parent": 1
+    }
+},
+
+[
   {
     "model": "games.accessibilitytag",
     "pk": 1,
@@ -998,4 +1136,89 @@
       "platform_tags": [1]
     }
   }
+],
+{
+"model": "users.GenreTag",
+"fields": {
+    "name": "RPG"
+}
+},
+{
+"model": "users.GenreTag",
+"fields": {
+    "name": "Shooter"
+}
+},
+{
+"model": "users.GenreTag",
+"fields": {
+    "name": "Action"
+}
+},
+{
+"model": "users.GenreTag",
+"fields": {
+    "name": "Adventure"
+}
+},
+{
+"model": "users.GenreTag",
+"fields": {
+    "name": "Horror"
+}
+},
+{
+"model": "users.GenreTag",
+"fields": {
+    "name": "Educational"
+}
+},
+{
+"model": "users.GenreTag",
+"fields": {
+    "name": "Sport"
+}
+},
+{
+"model": "users.GenreTag",
+"fields": {
+    "name": "Simulation"
+}
+},
+{
+"model": "users.GenreTag",
+"fields": {
+    "name": "Puzzle"
+}
+},
+{
+"model": "users.AccessibilityTag",
+"fields": {
+    "name": "Hearing"
+}
+},
+{
+"model": "users.AccessibilityTag",
+"fields": {
+    "name": "Speech"
+}
+},
+{
+"model": "users.AccessibilityTag",
+"fields": {
+    "name": "Visual"
+}
+},
+{
+"model": "users.AccessibilityTag",
+"fields": {
+    "name": "Dexterity"
+}
+},
+{
+"model": "users.AccessibilityTag",
+"fields": {
+    "name": "Cognitive"
+}
+}
 ]

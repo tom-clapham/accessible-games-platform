@@ -1,10 +1,10 @@
 # team-10-application
 
 ## Name
-Accessible games site
+Accessible Games Platform
 
 ## Description
-Application that will transform the way individual with disabilities find games that accomodate for them
+This application will open up a whole new world for people with disabilities when it comes to finding accessible games that they can enjoy
 
 ## Badges
 On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
@@ -33,7 +33,8 @@ Depending on what you are making, it can be a good idea to include screenshots o
 Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
 
 ## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
+Contact the team:
+khand6@cardiff.ac.uk - Daiyan
 
 ## Roadmap
 If you have ideas for releases in the future, it is a good idea to list them in the README.

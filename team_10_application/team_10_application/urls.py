@@ -16,9 +16,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.http import HttpResponse
+
+def home(request):
+    return HttpResponse("Welcome to the backend!")
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('app/users/', include('users.urls')),
     path('app/threads/', include('threads.urls')),
     path('app/games/', include('games.urls')),
 ]

@@ -1,0 +1,20 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 998
+}
+
+.container {
+  padding-top: var(--navbar-height);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;       
+}
+
