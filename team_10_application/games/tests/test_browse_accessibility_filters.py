@@ -75,7 +75,7 @@ class TestBrowsePageAccessibilityFilters(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         returned_game_names = {game["name"] for game in response.data}
 
-        # All games with motor accessibility tag should be returned
+        # All games with hearing accessibility tag should be returned
         self.assertSetEqual(returned_game_names, 
                             {
                                 "Game with all accessibility tags",
@@ -85,12 +85,12 @@ class TestBrowsePageAccessibilityFilters(APITestCase):
     def test_browsing_with_vision_accessibility_tag_should_return_matching_games(self):
         response = self.client.get(
             self.url, 
-            {"accessibility_tags[]": ["Hearing Accessibility"]})
+            {"accessibility_tags[]": ["Vision Accessibility"]})
 
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         returned_game_names = {game["name"] for game in response.data}
 
-        # All games with motor accessibility tag should be returned
+        # All games with vision accessibility tag should be returned
         self.assertSetEqual(returned_game_names, 
                             {
                                 "Game with all accessibility tags",
@@ -105,7 +105,7 @@ class TestBrowsePageAccessibilityFilters(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         returned_game_names = {game["name"] for game in response.data}
 
-        # All games with motor accessibility tag should be returned
+        # All games with vision and hearing accessibility tag should be returned
         self.assertSetEqual(returned_game_names, 
                             {
                                 "Game with all accessibility tags",
@@ -120,7 +120,7 @@ class TestBrowsePageAccessibilityFilters(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         returned_game_names = {game["name"] for game in response.data}
 
-        # All games with motor accessibility tag should be returned
+        # All games with all accessibility tags should be returned
         self.assertSetEqual(returned_game_names, 
                             {
                                 "Game with all accessibility tags"
