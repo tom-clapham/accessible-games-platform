@@ -1,9 +1,14 @@
 .settings_container {
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: start;
     justify-content: start;
     width: 45%;
+}
+
+.account_content {
+    margin-top: 15px;
+    margin-left: 40px;
 }
 
 .account_list, .community_list, .favourites_list {
@@ -28,7 +33,7 @@
 .nav_container{
     background-color: #202024;
     border-radius: 15px;
-    width: 45%;
+    width: 100%;
     display: flex;
 }
 
@@ -64,11 +69,105 @@ li {
 
 hr {
   border: none;
-  border-top: 1px solid rgba(255, 255, 255, 0.24);
+  border-top: 1px solid rgba(219, 210, 210, 0.788);
   margin: 0px;
-  width: 95%;
+  width: 94.5%;
 }
 
 h3 {
     font-size: 17px;
+    padding-bottom: 25px;
+    color: rgba(219, 210, 210, 0.788);
+}
+
+h2 {
+    font-size: 23px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.section {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.input {
+    padding: 13px;
+    font-size: 17px;
+    background-color: #303034;
+    border-radius: 10px;
+    border: 1px solid ;
+    cursor: pointer;
+    color: white;
+    margin-bottom: 15px;
+    width: 85%;
+    margin-top: 5px;
+}
+
+.input::placeholder {
+    color: rgba(219, 210, 210, 0.788);
+    font-size: 17px;
+}
+
+.nameContainer, .accountContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 10px;
+}
+
+label {
+    color: rgba(219, 210, 210, 0.788);
+    font-size: 13px;
+}
+
+.dropdown {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 98%;
+}
+
+.dropdown select {
+    margin-right: 10px;
+}
+
+.elements {
+    margin-top: 15px;
+}
+
+.save:hover {
+    background-color: #2d6ca3;
+}
+
+.save {
+    padding: 15px;
+    border-radius: 7px;
+    font-size: 15px;
+    border: none;
+    color: #fff;
+    background-color:#115ea3;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.delete:hover {
+    background-color: rgb(163, 4, 4);
+}
+
+.delete {
+    padding: 15px;
+    border-radius: 7px;
+    font-size: 15px;
+    border: none;
+    color: #fff;
+    background-color: rgb(192, 4, 4);
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.securityButtons {
+    display: flex;
+    flex-direction: column;
+    width: 35%;
 }
