@@ -30,8 +30,8 @@ function Discover() {
                     <h2>Trending</h2>
                     {games.trending_games.map((game) => (
                         // Links: https://api.reactrouter.com/v7/functions/react_router.Link.html
-                        <Link to={`/gameprofile/${game.id}`}>
-                        <GameCard key={game.id} game={game}/>
+                        <Link key={game.id} to={`/gameprofile/${game.id}`}>
+                        <GameCard game={game}/>
                         </Link>
                     ))}
                 </div>
@@ -39,8 +39,8 @@ function Discover() {
                 <div className="carousel">
                     <h2>On-Sale</h2>
                     {games.on_sale_games.map((game) => (
-                        <Link to={`/gameprofile/${game.id}`}>
-                        <GameCard key={game.id} game={game}/>
+                        <Link key={game.id} to={`/gameprofile/${game.id}`}>
+                        <GameCard game={game}/>
                         </Link>
                     ))}
                 </div>
@@ -48,8 +48,8 @@ function Discover() {
                 <div className="carousel">
                     <h2>Latest Releases</h2>
                     {games.recently_released_games.map((game) => (
-                        <Link to={`/gameprofile/${game.id}`}>
-                        <GameCard key={game.id} game={game}/>
+                        <Link key={game.id} to={`/gameprofile/${game.id}`}>
+                        <GameCard game={game}/>
                         </Link>
                     ))}
                 </div>
