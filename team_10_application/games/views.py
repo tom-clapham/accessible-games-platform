@@ -21,7 +21,6 @@ class GameViewSet(viewsets.ModelViewSet):
 
         print("ACCESSIBILITY PARAMS:", request.query_params)
         print("SELECTED TAGS:", selected_accessibility_tags)
-
-
+    
         serializer = self.get_serializer(games, many=True)
         return Response(serializer.data)
