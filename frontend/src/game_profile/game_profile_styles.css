@@ -38,7 +38,7 @@ body {
 
 .gp-grid {
   display: grid;
-  grid-template-columns: 7fr 2fr;
+  grid-template-columns: 4fr 1fr;
   gap: 24px;
 }
 
@@ -95,7 +95,8 @@ body {
 .gp-name {
   font-size: 20px;
   font-weight: 700;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
+  padding-top: 8px;
 }
 
 .gp-price {
@@ -123,3 +124,28 @@ body {
   font-size: 14px;
 }
 
+.gp-info-row, .gp-info-row-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+  padding-bottom: 8px;
+}
+
+.gp-info-row-top {
+  border-bottom: 1px solid #2f2f2f;
+  padding-top: 12px;
+}
+
+.gp-info-label {
+  color: #a1a1a1;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+}
+
+.gp-info-value {
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 500;
+  text-align: right;
+}

@@ -8,6 +8,16 @@ import GameTag from './GameTag';
 
 import "./game_profile_styles.css";
 
+function formatDate(dateString) {
+  const date = new Date(dateString);
+
+  const day = String(date.getDate()).padStart(2, "0");
+  const month = String(date.getMonth() + 1).padStart(2, "0");
+  const year = String(date.getFullYear());
+
+  return `${day}/${month}/${year}`;
+}
+
 function GameProfile() {
     const {id} = useParams(); // get ID of game from the URL, will change this to name/slug later 
     const [game, setGame] = useState(null);
@@ -81,9 +91,16 @@ function GameProfile() {
                             <div className="gp-metadata">
                                 <h2 className="gp-name">{game.name}</h2>
                                 <div className="gp-price">£{game.price}</div>
-                                <button className="gp-button">Add to favourites</button>
-                                <div className="gp-publisher">PUBLISHER: {game.publisher}</div>
-                                <div className="gp-releasedate">RELEASE DATE: {game.release_date}</div>
+                                
+                                <div className="gp-info-row-top">
+                                    <div className="gp-info-label">PUBLISHER</div>
+                                    <div className="gp-info-value">{game.publisher}</div>
+                                </div>
+
+                                <div className="gp-info-row">
+                                    <div className="gp-info-label">RELEASE DATE</div>
+                                    <div className="gp-info-value">{formatDate(game.release_date)}</div>
+                                </div>
                             </div>
                         </div>
                     </div>
