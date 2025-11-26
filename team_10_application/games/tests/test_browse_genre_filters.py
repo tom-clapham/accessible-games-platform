@@ -6,7 +6,7 @@ from django.urls import reverse
 from datetime import date
 
 # Create your tests here.
-class TestBrowsePageAccessibilityFilters(APITestCase):
+class TestBrowsePageGenreFilters(APITestCase):
     @classmethod
     def setUpTestData(cls):
         cls.url = reverse("game-browse")
