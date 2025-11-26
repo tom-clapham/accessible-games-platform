@@ -5,6 +5,7 @@ import styles from './Reviews.module.css'
 import { user_info } from '../endpoints/api';
 import comment_img from '../assets/chat.png';
 import report_img from '../assets/red-flag.png'; 
+import arrow from '../assets/Arrow up-right.svg';
 
 function Replies() {
     const { reviewId } = useParams();
@@ -31,46 +32,68 @@ function Replies() {
         .catch(err => console.log(err))
     }, [reviewId, user]);
 
-    function updateUserVote(idx, upvote) {
+    function updateUserVote(idx, upvote, parent) {
         // if upvote and current is nothing, set vote to true - post votes + 1
         // if downvote and current is nothing, set vote to false - post votes - 1
         // if upvote and current is upvote, set vote to null - post votes - 1
         // if downvote and current is downvote, set vote to null - post votes + 1
         // if downvote and current is upvote, set vote to false - post votes - 2
         // if upvote and current is downvote, set vote to true - post votes + 2
-
-        setThread(current => ({...current,
-            replies: current.replies.map((parent, i) => {
-            if (idx !== i) {
-                return parent
-            }
-            let new_userVote;
-            let new_voteValue;
-            if (parent.userVote == null) {
-                new_userVote = upvote
-                new_voteValue = upvote ? 1 : -1 
-            } else if (parent.userVote == upvote) {
-                new_userVote = null
-                new_voteValue = upvote ? -1 : 1
-            } else {
-                new_userVote = upvote
-                new_voteValue = upvote ? 2 : -2
-            }
-            return {...parent, userVote: new_userVote, votes:parent.votes + new_voteValue}
-
-        })}))
+        console.log(parent)
+        if (parent) {
+            setThread(current => ({...current,
+                parent: current.parent.map((parent, i) => {
+                if (idx !== i) {
+                    return parent
+                }
+                let new_userVote;
+                let new_voteValue;
+                if (parent.userVote == null) {
+                    new_userVote = upvote
+                    new_voteValue = upvote ? 1 : -1 
+                } else if (parent.userVote == upvote) {
+                    new_userVote = null
+                    new_voteValue = upvote ? -1 : 1
+                } else {
+                    new_userVote = upvote
+                    new_voteValue = upvote ? 2 : -2
+                }
+                return {...parent, userVote: new_userVote, votes:parent.votes + new_voteValue}
+            })}))
+        } else {
+            setThread(current => ({...current,
+                replies: current.replies.map((parent, i) => {
+                if (idx !== i) {
+                    return parent
+                }
+                let new_userVote;
+                let new_voteValue;
+                if (parent.userVote == null) {
+                    new_userVote = upvote
+                    new_voteValue = upvote ? 1 : -1 
+                } else if (parent.userVote == upvote) {
+                    new_userVote = null
+                    new_voteValue = upvote ? -1 : 1
+                } else {
+                    new_userVote = upvote
+                    new_voteValue = upvote ? 2 : -2
+                }
+                return {...parent, userVote: new_userVote, votes:parent.votes + new_voteValue}
+            })}))
+        }
 
         
     }
 
     useEffect(() => {
-        console.log(thread.replies)
+        console.log("parents", thread.parent)
+        console.log("threads", thread.replies)
     }, [thread])
 
-    const upVote = (e, id, idx) => {
+    const upVote = (e, id, idx, parents=false) => {
         // console.log(id)
         if (user) {
-            updateUserVote(idx, true)
+            updateUserVote(idx, true, parents)
             // window.getComputedStyle(e.target).color === 'rgb(255, 255, 255)' ? e.target.style.color = '#00a6ff' : e.target.style.color = 'white'
             axios.post("http://localhost:8000/app/threads/reviews/votes/", {
                 "vote": true,
@@ -83,9 +106,9 @@ function Replies() {
         // console.log(votes)
     }
 
-    const downVote = (e, id, idx) => {
+    const downVote = (e, id, idx, parents=false) => {
         if (user) {
-            updateUserVote(idx, false)
+            updateUserVote(idx, false, parents)
             // window.getComputedStyle(e.target).color === 'rgb(255, 255, 255)' ? e.target.style.color = '#ed0000' : e.target.style.color = 'white'
             axios.post("http://localhost:8000/app/threads/reviews/votes/", {
                 "vote": false,
@@ -101,26 +124,28 @@ function Replies() {
     const displayParent = () => {
         return thread['parent'].map((item, idx) => (
             <Fragment key={idx}>
-            <div className={styles.parentBox}>
-                <h2>{item.title}</h2>
-            {/* profile picture */}
-                <h3>{item.firstname} {item.surname}</h3>
-                <h5>{item.username}</h5>
-                <h3>{item.message}</h3>
-                <div className={styles.postStats}>
-                    <p>votes</p>
-                    <p>comments</p>
-                    <p>{new Date(item.date).toLocaleDateString('en-GB', {
-                    year: 'numeric',
-                    month: 'long',
-                    day: '2-digit',
-                    hour: '2-digit',
-                    minute: '2-digit'
-                    })}</p>
-                </div>
-                {/* upvotes */}
-                {/* downvotes */}
-                {/* comments */}
+                <div className={styles.parentBox}>
+                    <h2 className={styles.rpTitle}>{item.title}</h2>
+                {/* profile picture */}
+                    <h3 className={styles.rpName}>{item.firstname} {item.surname}</h3>
+                    <h5 className={styles.rpUsername}>@{item.username}</h5>
+                    <h3 className={styles.rpMessage}>{item.message}</h3>
+                    <div className={styles.postStats}>
+                            {/* <p>votes</p> */}
+                            <p className={styles.postDate}>{new Date(item.date).toLocaleDateString('en-GB', {
+                            year: 'numeric',
+                            month: 'long',
+                            day: '2-digit',
+                            hour: '2-digit',
+                            minute: '2-digit'
+                            })}</p>
+                            <button className={styles.rpVoteBtn} onClick={(e) => upVote(e, item.id, idx, true)} style={item.userVote != null ? item.userVote ? {color:"#00a6ff"} : null : null}>&uarr;</button>
+                            <h3 className={styles.voteCount}>{item.votes}</h3>
+                            <button className={styles.rpVoteBtn} onClick={(e) => downVote(e, item.id, idx, true)} style={item.userVote != null ? item.userVote ? null : {color: "red"} : null}>&darr;</button>
+                            <img className={styles.rpCommentImg} src={comment_img}></img>
+                            <p>{item.comments}</p>
+                            <img className={styles.reportImg} src={report_img}></img>
+                        </div>
             </div>
             </Fragment>
         ))

@@ -68,6 +68,71 @@ h2, h3 {
     flex-direction: column;
 }
 
+.parentBox {
+    display: flex;
+    flex-direction: column;
+    border-style: solid;
+    border-color: hsl(0, 0%, 40%);
+    border-radius: 5px;
+    border-width: 1px;
+    margin-bottom: 5px;
+    margin-left: 5%;
+    padding-top: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    width: 80vw;
+    min-height: fit-content;
+}
+
+.rpTitle {
+    margin-top: 0;
+    margin-bottom: 2px;
+    font-size: 35px;
+}
+
+.rpName {
+    font-size: 17px;
+    margin: 0;
+}
+
+.rpUsername {
+    margin: 0;
+    font-size: 15px;
+    font-weight: lighter;
+    color:grey
+}
+
+.rpMessage {
+    display: flex;
+    margin-top: 10px;
+    font-size: 25px;
+    max-width: auto;
+    overflow-wrap: break-word;
+    /* overflow:auto; */
+}
+
+.rpVoteBtn {
+    background: none;
+    color: white;
+    border: none;
+    font-size: 30px;
+    font-family: "Inter", "Segoe UI", Arial, sans-serif;
+    font-weight:900;
+    padding-bottom: 5px;
+    padding-top: 0px;
+    margin-right: 0px;
+}
+
+.rpVoteBtn:hover {
+    cursor: pointer
+}
+
+.rpCommentImg {
+    width:25px;
+    height: 25px;
+    filter: invert(100%);
+}
+
 .parentTitle {
     height: 3vh;
     background-color: hsl(0, 0%, 15%);
