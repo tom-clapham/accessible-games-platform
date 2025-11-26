@@ -14,7 +14,6 @@ class GameViewSet(viewsets.ModelViewSet):
     queryset = Game.objects.all()
     serializer_class = GameSerializer
 
-<<<<<<< HEAD
     def addGameClick(self, request, game_id):
         # Get the object for the game_id requested
         game = Game.objects.get(pk=game_id)
@@ -35,7 +34,6 @@ class GameViewSet(viewsets.ModelViewSet):
         self.addGameClick(request, instance.id)
         return super().retrieve(request, *args, **kwargs)
     
-=======
     @action(detail=False, methods=['get'])
     def browse(self, request):
         games = Game.objects.all()
@@ -60,4 +58,3 @@ class GameViewSet(viewsets.ModelViewSet):
 
         serializer = self.get_serializer(games, many=True)
         return Response(serializer.data)
->>>>>>> f67180d01bb1dea2a77454e6b9546e68b0f5a8f0
