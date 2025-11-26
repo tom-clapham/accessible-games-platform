@@ -20,10 +20,11 @@ class PostsListCreate(generics.ListCreateAPIView): # This is a class based view
 def getFirstPost(request, game_id):
     user = request.GET.get('userEmail')
     game_exists = (Game.objects.filter(id=game_id).values('name'))
-    # print(game_exists)
+    if not game_exists:
+        return Response(status.HTTP_404_NOT_FOUND)
+
     if user:
         user_id = CustomUser.objects.filter(email=user).values('id')
-        print(user_id)
         if user_id:
             posts = (
                 Posts.objects
@@ -50,7 +51,7 @@ def getFirstPost(request, game_id):
                     username=F('userId__username')
                 )
             )
-            return Response({"parents": posts, "game": game_exists[0].get('name')}) if game_exists else Response(status.HTTP_404_NOT_FOUND)
+            return Response({"parents": posts, "game": game_exists[0].get('name')})
     posts = (
         Posts.objects
         .select_related('userId')
@@ -68,7 +69,7 @@ def getFirstPost(request, game_id):
             username=F('userId__username')
         )
     )
-    return Response({"parents": posts, "game": game_exists[0].get('name')}) if game_exists else Response(status.HTTP_404_NOT_FOUND)
+    return Response({"parents": posts, "game": game_exists[0].get('name')})
 
 @api_view()
 @permission_classes([AllowAny])
@@ -76,7 +77,6 @@ def getThread(request, post_id):
     user = request.GET.get('userEmail')
     if user:
         user_id = CustomUser.objects.filter(email=user).values('id')
-        print(user_id)
         if user_id:
             parent = (
             Posts.objects
@@ -178,6 +178,9 @@ def createNewParentPost(request):
     '''
     This function will create a new top-level post
     '''
+    game_exists = (Game.objects.filter(id=request.data['gameId']).values('name'))
+    if not game_exists:
+        Response(status.HTTP_400_BAD_REQUEST)
     # This should create a new post with 0 comments and votes
     user_id = CustomUser.objects.filter(email=request.data['userEmail']).values('id')
     if not user_id:
@@ -199,7 +202,6 @@ def createNewReply(request):
     This function will create a new post, but with reference to a parent that will be specified in the payload
     '''
     # This should also create a new post with 0 comment and votes and increase parent comments by 1
-    print(request.data)
     user_id = CustomUser.objects.filter(email=request.data['userEmail']).values('id')
     if not user_id:
         return Response(status.HTTP_400_BAD_REQUEST)
@@ -223,21 +225,17 @@ def create_update_delete_vote(request):
     - Any changes made in postVotes table will be reflected in the original posts likes
     '''
     # Check whether post actually exists
-    print(request.data)
     # print(bool(request.data['vote']))
     if not Posts.objects.filter(id=request.data['postId']).values('id') or not type(request.data['vote']) == bool:
-        print("hello world")
         return Response(status.HTTP_400_BAD_REQUEST)
     
     # Check whether the user has already voted for this post
-    print("past the initial checks")
     user_id = CustomUser.objects.filter(email=request.data['userEmail']).values('id') # WRAP IN FUNCTION
     if not user_id:
         return Response(status.HTTP_400_BAD_REQUEST)
     request.data.pop('userEmail')
     request.data['userId'] = user_id[0]['id']
     user_vote = ReviewsVotes.objects.filter(postId=request.data['postId'], userId=request.data['userId']).values('id', 'vote')
-    print(user_vote)
 
     # If user has not voted for this post yet
     if not user_vote:
@@ -250,22 +248,16 @@ def create_update_delete_vote(request):
             else: # downvote
                 Posts.objects.filter(id=request.data['postId']).update(votes=F('votes') - 1)
     else: # If user has already voted for this post before
-        print("deleting post vote")
-        print(user_vote)
-        print(request.data['vote'])
-        
+
         # If user has voted the same thing that they already voted before - removing their vote
         # updated_vote = True if request.data['vote'] else False
-        print(request.data['vote'])
         if request.data['vote'] == user_vote[0]['vote']:
             if request.data['vote']:
                 Posts.objects.filter(id=request.data['postId']).update(votes=F('votes') - 1)
             else:
                 Posts.objects.filter(id=request.data['postId']).update(votes=F('votes') + 1)
             ReviewsVotes.objects.filter(id=user_vote[0]['id']).delete()
-            print("deleted vote")
         else:
-            print('changed minds')
             # if user is now upvoting instead of downvoting
             if request.data['vote']:
                 Posts.objects.filter(id=request.data['postId']).update(votes=F('votes') + 2)

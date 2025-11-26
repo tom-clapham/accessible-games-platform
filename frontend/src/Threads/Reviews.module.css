@@ -38,6 +38,7 @@ h2, h3 {
     margin-top: 10px;
     height: 30px;
     cursor: pointer;
+    filter: invert(100%);
 }
 
 .modalHidden {
