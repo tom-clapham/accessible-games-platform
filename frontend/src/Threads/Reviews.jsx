@@ -3,7 +3,8 @@ import axios from 'axios'
 import styles from './Reviews.module.css'
 import { useNavigate, useParams } from 'react-router-dom'
 import { user_info } from '../endpoints/api';
-import comment_img from '../assets/chat.png'
+import comment_img from '../assets/chat.png';
+import report_img from '../assets/red-flag.png'; 
 
 
 function Reviews() {
@@ -181,6 +182,7 @@ function Reviews() {
                     })}</p>
                     <img className={styles.commentImg} src={comment_img}></img>
                     <p>{item.comments}</p>
+                    <img className={styles.reportImg} src={report_img}></img>
                 </div>
             </div>
         </div>

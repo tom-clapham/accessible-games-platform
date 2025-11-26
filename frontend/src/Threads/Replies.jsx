@@ -4,6 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import styles from './Reviews.module.css'
 import { user_info } from '../endpoints/api';
 import comment_img from '../assets/chat.png';
+import report_img from '../assets/red-flag.png'; 
 
 function Replies() {
     const { reviewId } = useParams();
@@ -154,6 +155,7 @@ function Replies() {
                             })}</p>
                             <img className={styles.commentImg} src={comment_img}></img>
                             <p>{item.comments}</p>
+                            <img className={styles.reportImg} src={report_img}></img>
                         </div>
                     </div>
                 </div>

@@ -147,6 +147,13 @@ h2, h3 {
     margin-left: 10px;
 }
 
+.reportImg {
+    width:25px;
+    height: 19px;
+    filter: invert(100%);
+    margin-left: 5px
+}
+
 .postTitle {
     margin-top: 0;
     margin-bottom: 2px;
