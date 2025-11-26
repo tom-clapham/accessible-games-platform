@@ -16,6 +16,7 @@ function BrowsePage() {
 
     const [selectedAccessibilityTags, setSelectedAccessibilityTags] = useState();
     const [selectedGenreTags, setSelectedGenreTags] = useState();
+    const [selectedPlatformTags, setSelectedPlatformTags] = useState();
 
     const accessibilityTagsOptions = [
         { label: "Vision", value: "Vision Accessibility"},
@@ -36,7 +37,15 @@ function BrowsePage() {
         { label: "Horror", value: "Horror"},
         { label: "Shooter", value: "Shooter"},
         { label: "Puzzle", value: "Puzzle"},
+    ]
 
+    const platformTagsOptions = [
+        { label: "PC", value: "PC"},
+        { label: "PlayStation", value: "PlayStation"},
+        { label: "Xbox", value: "Xbox"},
+        { label: "Nintendo Switch", value: "Nintendo Switch"},
+        { label: "iOS", value: "iOS"},
+        { label: "Android", value: "Android"},
     ]
     
     useEffect(() => {
@@ -52,6 +61,10 @@ function BrowsePage() {
             filter_parameters.genre_tags = selectedGenreTags
         }
 
+        if (selectedPlatformTags?.length > 0) {
+            filter_parameters.platform_tags = selectedPlatformTags
+        }
+
         console.log("Filter parameters being sent:", filter_parameters);
 
         axios.get("http://127.0.0.1:8000/app/games/games/browse", { params: filter_parameters })
@@ -64,7 +77,7 @@ function BrowsePage() {
             setError(error);
             setLoading(false);
         });
-    }, [selectedAccessibilityTags, selectedGenreTags]);
+    }, [selectedAccessibilityTags, selectedGenreTags, selectedPlatformTags]);
 
     if (!games) return <p>No games data found.</p>;
 
@@ -106,6 +119,16 @@ function BrowsePage() {
                                 options={genreTagsOptions}
                                 display="chip"
                                 className="genre-tags-multiselect"
+                            />
+                        </div>
+                        <div className="tags-filter-container">
+                            <MultiSelect 
+                                value={selectedPlatformTags} 
+                                onChange={(e) => setSelectedPlatformTags(e.value)}
+                                placeholder="Select Platforms" 
+                                options={platformTagsOptions}
+                                display="chip"
+                                className="platform-tags-multiselect"
                             />
                         </div>
                     </div>
