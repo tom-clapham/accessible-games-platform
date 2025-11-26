@@ -53,6 +53,10 @@ function Navbar(){
       nav('/discover')
   }
 
+  function navBrowse(){
+      nav('/browse')
+  }
+
   const handleLogout = async () => {
       const success = await logout();
       if(success){
@@ -65,8 +69,8 @@ function Navbar(){
       <div className='navbar'>
         <img className='logo' src={logoPicture} alt='Logo Picture' onClick={navHome}></img>
           <ul className='list'>
-            <li className='home-link' onClick={navHome}>Home</li>
-            <li className='games-link' onClick={navGames}>Games</li>
+            <li className='discover-link' onClick={navGames}>Discover</li>
+            <li className='browse-link' onClick={navBrowse}>Browse</li>
             <li className='community-link'>Community</li>
             <li className='about-link'>About us</li>
           </ul>
