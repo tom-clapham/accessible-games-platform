@@ -15,6 +15,7 @@ function BrowsePage() {
     const [error, setError] = useState(null);
 
     const [selectedAccessibilityTags, setSelectedAccessibilityTags] = useState();
+    const [selectedGenreTags, setSelectedGenreTags] = useState();
 
     const accessibilityTagsOptions = [
         { label: "Vision", value: "Vision Accessibility"},
@@ -22,6 +23,20 @@ function BrowsePage() {
         { label: "Speech", value: "Speech Accessibility"},
         { label: "Motor", value: "Motor Accessibility"},
         { label: "Cognitive", value: "Cognitive Accessibility"}
+    ]
+
+    const genreTagsOptions = [
+        { label: "Racing", value: "Racing"},
+        { label: "Action", value: "Action"},
+        { label: "Action-Adventure", value: "Action-Adventure"},
+        { label: "RPG", value: "RPG"},
+        { label: "Simulation", value: "Simulation"},
+        { label: "Sports", value: "Sports"},
+        { label: "Platformer", value: "Platformer"},
+        { label: "Horror", value: "Horror"},
+        { label: "Shooter", value: "Shooter"},
+        { label: "Puzzle", value: "Puzzle"},
+
     ]
     
     useEffect(() => {
@@ -31,6 +46,7 @@ function BrowsePage() {
 
         if (selectedAccessibilityTags && selectedAccessibilityTags.length > 0) {
             filter_parameters.accessibility_tags = selectedAccessibilityTags
+            filter_parameters.genre_tags = selectedGenreTags
         }
 
         console.log("Filter parameters being sent:", filter_parameters);
@@ -45,7 +61,7 @@ function BrowsePage() {
             setError(error);
             setLoading(false);
         });
-    }, [selectedAccessibilityTags]);
+    }, [selectedAccessibilityTags], [selectedGenreTags]);
 
     if (!games) return <p>No games data found.</p>;
 
@@ -69,14 +85,26 @@ function BrowsePage() {
                         ))}
                     </div>
                     <div className="filter-options-container">
-                        <MultiSelect 
-                            value={selectedAccessibilityTags} 
-                            onChange={(e) => setSelectedAccessibilityTags(e.value)}
-                            placeholder="Select Accessibility Tags" 
-                            options={accessibilityTagsOptions}
-                            display="chip"
-                            className="accessibility-tags-multiselect"
-                        />
+                        <div className="tags-filter-container">
+                            <MultiSelect 
+                                value={selectedAccessibilityTags} 
+                                onChange={(e) => setSelectedAccessibilityTags(e.value)}
+                                placeholder="Select Accessibility Tags" 
+                                options={accessibilityTagsOptions}
+                                display="chip"
+                                className="accessibility-tags-multiselect"
+                            />
+                        </div>
+                        <div className="tags-filter-container">
+                            <MultiSelect 
+                                value={selectedGenreTags} 
+                                onChange={(e) => setSelectedGenreTags(e.value)}
+                                placeholder="Select Genres" 
+                                options={genreTagsOptions}
+                                display="chip"
+                                className="genre-tags-multiselect"
+                            />
+                        </div>
                     </div>
                 </div>
             </div>
