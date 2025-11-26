@@ -18,6 +18,16 @@ function formatDate(dateString) {
   return `${day}/${month}/${year}`;
 }
 
+function formatPrice(price) {
+  if (price === "0" || price === "0.00") {
+    price = 'Free';
+  } else {
+    price = `£${price}`
+  }
+
+  return price;
+}
+
 function GameProfile() {
     const {id} = useParams(); // get ID of game from the URL, will change this to name/slug later 
     const [game, setGame] = useState(null);
@@ -90,7 +100,7 @@ function GameProfile() {
                             </div>
                             <div className="gp-metadata">
                                 <h2 className="gp-name">{game.name}</h2>
-                                <div className="gp-price">£{game.price}</div>
+                                <div className="gp-price">{formatPrice(game.price)}</div>
                                 
                                 <div className="gp-info-row-top">
                                     <div className="gp-info-label">PUBLISHER</div>
