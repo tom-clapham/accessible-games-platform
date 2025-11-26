@@ -37,7 +37,7 @@
     cursor: pointer;
 }
 
-.home-link:hover, .games-link:hover, .community-link:hover, .about-link:hover {
+.discover-link:hover, .browse-link:hover, .community-link:hover, .about-link:hover {
     color: #60cdff;
 }
 

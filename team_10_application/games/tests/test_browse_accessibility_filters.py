@@ -134,7 +134,7 @@ class TestBrowsePageAccessibilityFilters(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         returned_game_names = {game["name"] for game in response.data}
 
-        # All games with no accessibility tags should be returned
+        # All games should be returned
         self.assertSetEqual(returned_game_names, 
                             {
                                 "Game with all accessibility tags",
