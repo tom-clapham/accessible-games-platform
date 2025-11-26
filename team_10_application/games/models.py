@@ -40,3 +40,8 @@ class Game(models.Model):
 
     def __str__(self):
         return self.name
+    
+class GameClicks(models.Model):
+    gameId = models.ForeignKey(Game, on_delete=models.CASCADE)
+    date = models.DateField()
+    clicks = models.IntegerField(default=0)
