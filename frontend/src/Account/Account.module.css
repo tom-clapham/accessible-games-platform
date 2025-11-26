@@ -3,12 +3,12 @@
     flex-direction: row;
     align-items: start;
     justify-content: start;
-    width: 45%;
+    width: 60%;
 }
 
 .account_content {
-    margin-top: 15px;
     margin-left: 40px;
+    width: 50%;
 }
 
 .account_list, .community_list, .favourites_list {
@@ -33,7 +33,7 @@
 .nav_container{
     background-color: #202024;
     border-radius: 15px;
-    width: 100%;
+    width: 30%;
     display: flex;
 }
 
@@ -68,27 +68,35 @@ li {
 }
 
 hr {
-  border: none;
-  border-top: 1px solid rgba(219, 210, 210, 0.788);
+  border: 1px solid rgba(219, 210, 210, 0.788);
   margin: 0px;
+  margin-top: 25px;
   width: 94.5%;
+}
+
+.line {
+    border: none;
+    border: 1px solid rgba(219, 210, 210, 0.788);
+    margin: 0px;
+    width: 94.5%;
 }
 
 h3 {
     font-size: 17px;
-    padding-bottom: 25px;
     color: rgba(219, 210, 210, 0.788);
+    margin-bottom: 30px;
 }
 
 h2 {
     font-size: 23px;
     font-weight: 600;
     margin-bottom: 20px;
+    margin-top: 20px;
 }
 
 .section {
-    margin-top: 50px;
-    margin-bottom: 50px;
+    margin-top: 15px;
+    min-height: 500px;
 }
 
 .input {
@@ -175,7 +183,9 @@ label {
 .accessibility_list li, .genre_list li {
     background-color: rgba(219, 210, 210, 0.788);
     margin-right: 10px;
+    color: #303034;
     font-size: 15px;
+    font-weight: 600;
     padding: 2px;
     padding-left: 5px;
     border-radius: 3px;
@@ -203,4 +213,13 @@ label {
 
 .accessibility_section {
     margin-bottom: 20px;
+}
+
+.hidden {
+  display: none;
+}
+
+.navActive {
+    background-color: #5c5b5bff;
+    color: white;
 }
