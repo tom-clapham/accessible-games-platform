@@ -44,7 +44,12 @@ function GameProfile() {
                             <GameTrailer url={game.trailer_url} name={game.name}/><br/>
                         </div>
 
-                        <h2>Accessibility tags</h2>
+                        <h2>Description</h2>
+                        <div className="gp-description">
+                            {game.description}
+                        </div>
+
+                        <h2>Accessibility Tags</h2>
                         <div className="tag_container">
                             {game.accessibility_tags?.map((name) => (
                                 <GameTag name={name}/>
@@ -65,18 +70,17 @@ function GameProfile() {
                             ))}
                         </div>
 
-            <h2>Reviews</h2>
+                        <h2>Reviews</h2>
                     </div>
 
                     <div className="gp-sideinfo">
                         <div className="gp-infocard">
-                            <GameThumbnail className="gp-thumbnail" url={game.thumbnail_url} name={game.name}/>
+                            <div className="gp-thumbnail-container">
+                                <GameThumbnail url={game.thumbnail_url} name={game.name}/>
+                            </div>
                             <div className="gp-metadata">
                                 <h2 className="gp-name">{game.name}</h2>
                                 <div className="gp-price">£{game.price}</div>
-
-                                <p className="gp-description">{game.description}</p>
-
                                 <button className="gp-button">Add to favourites</button>
                                 <div className="gp-publisher">PUBLISHER: {game.publisher}</div>
                                 <div className="gp-releasedate">RELEASE DATE: {game.release_date}</div>

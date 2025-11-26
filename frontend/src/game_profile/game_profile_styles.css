@@ -20,6 +20,12 @@ body {
     padding-bottom: 30px;
 }
 
+.gp-description {
+  line-height: 1.6;
+  color: #ccc;
+  padding-bottom: 30px;
+}
+
 .gp-page {
   max-width: 1500px;
   margin: 0 auto;
@@ -32,7 +38,7 @@ body {
 
 .gp-grid {
   display: grid;
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: 7fr 2fr;
   gap: 24px;
 }
 
@@ -49,7 +55,7 @@ body {
 .gp-video-wrap {
   position: relative;
   width: 100%;
-  padding-bottom: 56.25%; /* 16:9 ratio */
+  padding-bottom: 56.25%;
   border-radius: 12px;
   overflow: hidden;
   background: #000;
@@ -65,26 +71,25 @@ body {
   border-radius: 12px;
 }
 
-.gp-description {
-  line-height: 1.6;
-  color: #ccc;
-}
-
 .gp-sideinfo {
   min-width: 0;
 }
 
 .gp-infocard {
   border-radius: 12px;
-  padding: 16px;
+  padding-left: 20px;
+}
+
+.gp-thumbnail-container {
+  width: 280px;         
+  flex: 0 0 200px;
 }
 
 .gp-thumbnail {
   width: 100%;
-  aspect-ratio: 1 / 1;
+  height: 360px;   
   object-fit: cover;
-  border-radius: 12px;
-  margin-bottom: 12px;
+  border-radius: 6px;
 }
 
 .gp-name {
@@ -116,6 +121,5 @@ body {
 
 .gp-publisher, .gp-releasedate {
   font-size: 14px;
-  color: #aaa;
 }
 

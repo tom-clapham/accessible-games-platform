@@ -36,8 +36,8 @@ body {
 }
 
 .game-card {
-    width: 200px;          /* fixed card width */
-    flex: 0 0 200px;       /* don’t grow or shrink */
+    width: 200px;         
+    flex: 0 0 200px;       
     display: flex;
     flex-direction: column;
 }   
