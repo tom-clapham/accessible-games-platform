@@ -4,8 +4,8 @@ import { useNavigate, useParams } from 'react-router-dom'
 import styles from './Reviews.module.css'
 import { user_info } from '../endpoints/api';
 import comment_img from '../assets/chat.png';
-import report_img from '../assets/red-flag.png'; 
-import arrow from '../assets/Arrow up-right.svg';
+import report_img from '../assets/red-flag.png';
+import profile_img from '../assets/user.png';
 
 function Replies() {
     const { reviewId } = useParams();
@@ -102,14 +102,11 @@ function Replies() {
             },
             { withCredentials: true })
         };
-        // Mock what the api calls would do (assuming everything works and nothing fails)
-        // console.log(votes)
     }
 
     const downVote = (e, id, idx, parents=false) => {
         if (user) {
             updateUserVote(idx, false, parents)
-            // window.getComputedStyle(e.target).color === 'rgb(255, 255, 255)' ? e.target.style.color = '#ed0000' : e.target.style.color = 'white'
             axios.post("http://localhost:8000/app/threads/reviews/votes/", {
                 "vote": false,
                 "postId": id,
@@ -117,8 +114,6 @@ function Replies() {
             },
             { withCredentials: true })
         };
-        // Mock what the api calls would do (assuming everything works and nothing fails)
-        // console.log(votes)
     }
 
     const displayParent = () => {
@@ -212,12 +207,11 @@ function Replies() {
     const submitReply = () => {
         axios.post("http://localhost:8000/app/threads/reviews/new-reply/", {
             gameId: reviewId,
-            userEmail: user.email, // THIS WILL BE BASED ON THE AUTHENTICATED USER WHEN THAT IS PUSHED
+            userEmail: user.email, 
             message: reply,
             parent: thread['parent'][0].id
         },
         {withCredentials:true})
-        // .then(response => console.log(response.data))
         setReply("")
         window.location.reload()
     }
@@ -225,16 +219,20 @@ function Replies() {
     return(
         <>
         <div>
-            <button className={styles.backButton} onClick={() => navigate(-1)}>&larr;</button>
+            <button className={styles.backBtn} onClick={() => navigate(-1)}>Back</button>
             {loading ? (<h2 className={styles.loadingIcon}>Loading...</h2>) : displayParent()}
-            <hr/>
-            {user ? (<div className={styles.createReply}>
-                {/* profile picture */}
-                &lt;Profile picture&gt;
-                <textarea className={styles.createReplyMessage} value={reply} placeholder="Create reply here..." onChange={replyChange}/>
-                <button className={styles.createReplyBtn} onClick={submitReply}>Reply</button>
-            </div>) : null}
-            <hr/>
+            
+            {user ? (
+            <>
+            <hr className={styles.replyHr}/>
+            <div className={styles.createReply}>
+                    <img className={styles.profileImg} src={profile_img}/>
+                    <textarea className={styles.createReplyMessage} value={reply} placeholder="Create reply here..." onChange={replyChange}/>
+                    <button className={styles.createReplyBtn} onClick={submitReply}>Reply</button>
+            </div>
+            <hr className={styles.replyHr}/>
+            </>) : <hr className={styles.replyHr}/>}
+            {/* <hr/> */}
             {loading ? (<h2 className={styles.loadingIcon}>Loading...</h2>) : (<div className={styles.reply}></div>)}
             {loading ? (<h2 className={styles.loadingIcon}>Loading...</h2>) : displayReplies()}
         </div>

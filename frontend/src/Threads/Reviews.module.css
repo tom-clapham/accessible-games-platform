@@ -32,6 +32,14 @@ h2, h3 {
     background-color: rgba(0, 0, 0, 0.8);
 }
 
+.clostModalBtn {
+    margin-left: 0; 
+    margin-right: auto;
+    margin-top: 10px;
+    height: 30px;
+    cursor: pointer;
+}
+
 .modalHidden {
     display: none;
 }
@@ -66,6 +74,7 @@ h2, h3 {
 .titleMessage {
     display: flex;
     flex-direction: column;
+    margin-top: 10px
 }
 
 .parentBox {
@@ -167,7 +176,8 @@ h2, h3 {
 }
 
 .postButton {
-    margin:5px;
+    margin:10px;
+    
     padding: 5px 10px;
     background-color: hsl(201, 100%, 50%);
     border-width:0;
@@ -179,14 +189,20 @@ h2, h3 {
     background-color: hsl(201, 100%, 60%);
 }
 
-.backButton {
-    font-size:xx-large;
+.backBtn {
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-bottom: 20px;
+    padding: 5px 10px;
     background: none;
-    border:0;
-    color:hsl(0, 0%, 90%);   
+    color: hsl(0, 0%, 90%);
+    border-width:1px;
+    border-style: solid;
+    border-color: hsl(0, 0%, 40%);
+    border-radius:5px
 }
 
-.backButton:hover, .newPost:hover, .postBox:hover {
+.backBtn:hover, .newPost:hover, .postBox:hover {
     cursor: pointer;
 }
 
@@ -284,7 +300,7 @@ h2, h3 {
     flex-direction: row;
     align-items: center;
     gap: 15px;
-    margin-left: 10px;
+    margin-left: 7%;
 }
 
 .createReplyMessage {
@@ -318,6 +334,17 @@ h2, h3 {
     padding: 10px;
 }
 
+.profileImg {
+    filter: invert(100%);
+    height:40px
+}
+
+.replyHr {
+    margin-left:6%;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    width: 79vw;
+}
 .postStats {
     display: flex;
     flex-direction: row;

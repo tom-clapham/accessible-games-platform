@@ -1,10 +1,11 @@
-import { useState,useEffect,Fragment } from 'react'
-import axios from 'axios'
-import styles from './Reviews.module.css'
-import { useNavigate, useParams } from 'react-router-dom'
+import { useState,useEffect,Fragment } from 'react';
+import axios from 'axios';
+import styles from './Reviews.module.css';
+import { useNavigate, useParams } from 'react-router-dom';
 import { user_info } from '../endpoints/api';
 import comment_img from '../assets/chat.png';
 import report_img from '../assets/red-flag.png'; 
+import close_modal from '../assets/delete.png';
 
 
 function Reviews() {
@@ -198,12 +199,7 @@ function Reviews() {
             <div id='modal-overlay' className={modal ? styles.modalBox : styles.modalHidden} onClick={() => setModal(false)}>
                 {/* need to get user details from JWT token? */}
                 <div className={styles.modalActual} onClick={e => e.stopPropagation()}>
-                    <div className={styles.postNameBlock}>
-                        <h3>Firstname</h3>
-                        <br/>
-                        <h3>Surname</h3>
-                    </div>
-                    <h3 className={styles.username}>@username</h3>
+                    <img className={styles.clostModalBtn} src={close_modal} onClick={() => setModal(false)}/>
                     <div className={styles.titleMessage}>
                         <input className={styles.parentTitle} placeholder='Create title...' value={newTitle} onChange={titleChange}/>
                         <textarea className={styles.parentMessage} value={newMessage} placeholder='Write your message here...' onChange={messageChange}></textarea>
