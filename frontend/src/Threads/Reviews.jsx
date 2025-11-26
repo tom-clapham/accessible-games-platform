@@ -11,11 +11,10 @@ import close_modal from '../assets/delete.png';
 function Reviews() {
     const { reviewId } = useParams();
     const [parents, setParents] = useState({});
-    const [userVotes, setUserVotes] = useState({});
     const [loading, setLoading] = useState(true);
+    const [noGame, setNoGame] = useState(false);
     const [newTitle, setNewTitle] = useState("");
     const [newMessage, setNewMessage] = useState("");
-    const [votes, setVotes] = useState([]);
     const [game, setGame] = useState("");
     const [modal, setModal] = useState(false);
     const navigate = useNavigate();
@@ -26,25 +25,19 @@ function Reviews() {
     }, [])
 
     useEffect(() => {
-        console.log(user)
+        // console.log(user)
         axios.get(`http://localhost:8000/app/threads/reviews/${reviewId}/`, {params: user ? {"userEmail": user.email} : {}})
         .then(res => {
-            console.log(res.data)
             if (!Number.isInteger(res.data)) {
             setParents(res.data.parents)
             setGame(res.data.game)
-            setUserVotes(res.data.userVotes)
             setLoading(false)
             } else {
-                console.log("nothing to display!")
+                setNoGame(true);
             }
         })
         .catch(error => console.log(error))
-    }, [user]); // This also needs to be re-run when the user leaves a thread of messages - or just store it? Undecided.
-
-    // useEffect(() => {
-    //     console.log(parents)
-    // }, [parents]);
+    }, [user]);
 
     const titleChange = (event) => {
         setNewTitle(event.target.value)
@@ -53,15 +46,11 @@ function Reviews() {
     const messageChange = (event) => {
         setNewMessage(event.target.value)
     }
-
-    const openModal = () => {
-        document.getElementById("modal-overlay").style.display="block"
-    };
     
     const createNewPost = () => {
         axios.post("http://localhost:8000/app/threads/reviews/new-post/", {
             gameId: reviewId,
-            userEmail: user.email, // THIS WILL BE BASED ON THE AUTHENTICATED USER WHEN THAT IS PUSHED
+            userEmail: user.email,
             title: newTitle,
             message: newMessage
         },
@@ -103,15 +92,13 @@ function Reviews() {
         
     }
 
-    useEffect(() => {
-        console.log(parents)
-    }, [parents])
+    // useEffect(() => {
+    //     console.log(parents)
+    // }, [parents])
 
-    const upVote = (e, id, idx) => {
-        // console.log(id)
+    const upVote = (id, idx) => {
         if (user) {
             updateUserVote(idx, true)
-            // window.getComputedStyle(e.target).color === 'rgb(255, 255, 255)' ? e.target.style.color = '#00a6ff' : e.target.style.color = 'white'
             axios.post("http://localhost:8000/app/threads/reviews/votes/", {
                 "vote": true,
                 "postId": id,
@@ -119,14 +106,11 @@ function Reviews() {
             },
             { withCredentials: true })
         };
-        // Mock what the api calls would do (assuming everything works and nothing fails)
-        // console.log(votes)
     }
 
-    const downVote = (e, id, idx) => {
+    const downVote = (id, idx) => {
         if (user) {
             updateUserVote(idx, false)
-            // window.getComputedStyle(e.target).color === 'rgb(255, 255, 255)' ? e.target.style.color = '#ed0000' : e.target.style.color = 'white'
             axios.post("http://localhost:8000/app/threads/reviews/votes/", {
                 "vote": false,
                 "postId": id,
@@ -134,15 +118,12 @@ function Reviews() {
             },
             { withCredentials: true })
         };
-        // Mock what the api calls would do (assuming everything works and nothing fails)
-        // console.log(votes)
     }
 
     useEffect(() => {
         const fetch_info = async() => {
             const current_user = await user_info()
             setUser(current_user)
-            console.log("I am the user: " + user)
         }
         fetch_info()
     }, [])
@@ -160,9 +141,9 @@ function Reviews() {
         <Fragment key={idx}>
         <div className={styles.vpBox}>
             <div className={styles.votesBox}>
-                <button className={styles.voteBtn} onClick={(e) => upVote(e, item.id, idx)} style={item.userVote != null ? item.userVote ? {color:"#00a6ff"} : null : null}>&uarr;</button>
+                <button className={styles.voteBtn} onClick={(e) => upVote(item.id, idx)} style={item.userVote != null ? item.userVote ? {color:"#00a6ff"} : null : null}>&uarr;</button>
                 <h3 className={styles.voteCount}>{item.votes}</h3>
-                <button className={styles.voteBtn} onClick={(e) => downVote(e, item.id, idx)} style={item.userVote != null ? item.userVote ? null : {color: "red"} : null}>&darr;</button>
+                <button className={styles.voteBtn} onClick={(e) => downVote(item.id, idx)} style={item.userVote != null ? item.userVote ? null : {color: "red"} : null}>&darr;</button>
             </div>
             <div className={styles.postBox} onClick={() => navigate(`/replies/${item.id}`)}>
                 <h2 className={styles.postTitle}>{item.title}</h2>
@@ -192,9 +173,11 @@ function Reviews() {
 
     return(
         <>
+            <button className={styles.backBtn} onClick={() => navigate(`/gameprofile/${reviewId}`)}>Back</button>
             <h1 className={styles.gameName}>{game}</h1>
             {user ? <button className={styles.newPost} onClick={() => setModal(true)}>&#10010;</button> : null}
-            {loading ? (<h2 className={styles.loadingIcon}>Loading...</h2>) : null}
+            {loading ? noGame ? (<h2 className={styles.loadingIcon}>Unfortunately, we don't have that here :/</h2>): (<h2 className={styles.loadingIcon}>Loading...</h2>) : null}
+            
             {loading == false ? displayParents() : null}
             <div id='modal-overlay' className={modal ? styles.modalBox : styles.modalHidden} onClick={() => setModal(false)}>
                 {/* need to get user details from JWT token? */}

@@ -60,6 +60,7 @@ h2, h3 {
 }
 
 .gameName {
+    margin-top: 0;
     margin-left: 5%;
     margin-bottom: 50px;
     font-family: "Roboto", sans-serif;
@@ -191,6 +192,7 @@ h2, h3 {
 }
 
 .backBtn {
+    width: fit-content;
     margin-top: 10px;
     margin-left: 10px;
     margin-bottom: 20px;
@@ -200,7 +202,8 @@ h2, h3 {
     border-width:1px;
     border-style: solid;
     border-color: hsl(0, 0%, 40%);
-    border-radius:5px
+    border-radius:5px;
+    z-index: 3;
 }
 
 .backBtn:hover, .newPost:hover, .postBox:hover {

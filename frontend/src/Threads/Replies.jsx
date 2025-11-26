@@ -15,9 +15,9 @@ function Replies() {
     const [user, setUser] = useState(false)
     const navigate = useNavigate();
 
-    useEffect(() => {
-        console.log(user);
-    }, [user]);
+    // useEffect(() => {
+    //     console.log(user);
+    // }, [user]);
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -39,7 +39,7 @@ function Replies() {
         // if downvote and current is downvote, set vote to null - post votes + 1
         // if downvote and current is upvote, set vote to false - post votes - 2
         // if upvote and current is downvote, set vote to true - post votes + 2
-        console.log(parent)
+        // console.log(parent)
         if (parent) {
             setThread(current => ({...current,
                 parent: current.parent.map((parent, i) => {
@@ -85,16 +85,15 @@ function Replies() {
         
     }
 
-    useEffect(() => {
-        console.log("parents", thread.parent)
-        console.log("threads", thread.replies)
-    }, [thread])
+    // useEffect(() => {
+    //     console.log("parents", thread.parent)
+    //     console.log("threads", thread.replies)
+    // }, [thread])
 
-    const upVote = (e, id, idx, parents=false) => {
+    const upVote = (id, idx, parents=false) => {
         // console.log(id)
         if (user) {
             updateUserVote(idx, true, parents)
-            // window.getComputedStyle(e.target).color === 'rgb(255, 255, 255)' ? e.target.style.color = '#00a6ff' : e.target.style.color = 'white'
             axios.post("http://localhost:8000/app/threads/reviews/votes/", {
                 "vote": true,
                 "postId": id,
@@ -104,7 +103,7 @@ function Replies() {
         };
     }
 
-    const downVote = (e, id, idx, parents=false) => {
+    const downVote = (id, idx, parents=false) => {
         if (user) {
             updateUserVote(idx, false, parents)
             axios.post("http://localhost:8000/app/threads/reviews/votes/", {
@@ -134,9 +133,9 @@ function Replies() {
                             hour: '2-digit',
                             minute: '2-digit'
                             })}</p>
-                            <button className={styles.rpVoteBtn} onClick={(e) => upVote(e, item.id, idx, true)} style={item.userVote != null ? item.userVote ? {color:"#00a6ff"} : null : null}>&uarr;</button>
+                            <button className={styles.rpVoteBtn} onClick={(e) => upVote(item.id, idx, true)} style={item.userVote != null ? item.userVote ? {color:"#00a6ff"} : null : null}>&uarr;</button>
                             <h3 className={styles.voteCount}>{item.votes}</h3>
-                            <button className={styles.rpVoteBtn} onClick={(e) => downVote(e, item.id, idx, true)} style={item.userVote != null ? item.userVote ? null : {color: "red"} : null}>&darr;</button>
+                            <button className={styles.rpVoteBtn} onClick={(e) => downVote(item.id, idx, true)} style={item.userVote != null ? item.userVote ? null : {color: "red"} : null}>&darr;</button>
                             <img className={styles.rpCommentImg} src={comment_img}></img>
                             <p>{item.comments}</p>
                             <img className={styles.reportImg} src={report_img}></img>
@@ -152,9 +151,9 @@ function Replies() {
             <Fragment key={idx}>
                 <div className={styles.vpBox}>
                     <div className={styles.votesBox}>
-                        <button className={styles.voteBtn} onClick={(e) => upVote(e, item.id, idx)} style={item.userVote != null ? item.userVote ? {color:"#00a6ff"} : null : null}>&uarr;</button>
+                        <button className={styles.voteBtn} onClick={(e) => upVote(item.id, idx)} style={item.userVote != null ? item.userVote ? {color:"#00a6ff"} : null : null}>&uarr;</button>
                         <h3 className={styles.voteCount}>{item.votes}</h3>
-                        <button className={styles.voteBtn} onClick={(e) => downVote(e, item.id, idx)} style={item.userVote != null ? item.userVote ? null : {color: "red"} : null}>&darr;</button>
+                        <button className={styles.voteBtn} onClick={(e) => downVote(item.id, idx)} style={item.userVote != null ? item.userVote ? null : {color: "red"} : null}>&darr;</button>
                     </div>
                     <div className={styles.postBox} onClick={() => navigate(`/replies/${item.id}`)}>
                         <h2 className={styles.postTitle}>{item.title}</h2>
@@ -182,7 +181,7 @@ function Replies() {
             </Fragment>
         ))} else {
             return (
-                <p className={styles.emptyReplies}>Nothing to display</p>
+                <p className={styles.emptyReplies}>Nothing to display... yet...</p>
             )
         }};
 
@@ -190,14 +189,14 @@ function Replies() {
         const fetch_info = async() => {
             const current_user = await user_info()
             setUser(current_user)
-            console.log("I am the user: " + user)
+            // console.log("I am the user: " + user)
         }
         fetch_info()
     }, [])
 
-    useEffect(() => {
-        console.log(user)
-    }, [user])
+    // useEffect(() => {
+    //     console.log(user)
+    // }, [user])
     
 
     const replyChange = (event) => {
@@ -221,7 +220,6 @@ function Replies() {
         <div>
             <button className={styles.backBtn} onClick={() => navigate(-1)}>Back</button>
             {loading ? (<h2 className={styles.loadingIcon}>Loading...</h2>) : displayParent()}
-            
             {user ? (
             <>
             <hr className={styles.replyHr}/>
@@ -232,7 +230,6 @@ function Replies() {
             </div>
             <hr className={styles.replyHr}/>
             </>) : <hr className={styles.replyHr}/>}
-            {/* <hr/> */}
             {loading ? (<h2 className={styles.loadingIcon}>Loading...</h2>) : (<div className={styles.reply}></div>)}
             {loading ? (<h2 className={styles.loadingIcon}>Loading...</h2>) : displayReplies()}
         </div>
