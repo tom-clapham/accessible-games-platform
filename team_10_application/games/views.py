@@ -19,6 +19,7 @@ class GameViewSet(viewsets.ModelViewSet):
 
         selected_accessibility_tags = request.query_params.getlist('accessibility_tags[]')
         selected_genre_tags = request.query_params.getlist('genre_tags[]')
+        selected_platform_tags = request.query_params.getlist('platform_tags[]')
 
         if selected_accessibility_tags:
             for accessibility_tag in selected_accessibility_tags:
@@ -27,6 +28,10 @@ class GameViewSet(viewsets.ModelViewSet):
         if selected_genre_tags:
             for genre_tag in selected_genre_tags:
                 games = games.filter(genre_tags__name=genre_tag).distinct()
+
+        if selected_platform_tags:
+            for platform_tag in selected_platform_tags:
+                games = games.filter(platform_tags__name=platform_tag).distinct()
 
         print("REQUEST PARAMS:", request.query_params)
 
