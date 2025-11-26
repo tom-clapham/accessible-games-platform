@@ -113,6 +113,7 @@ function GameProfile() {
                                 </div>
 
                                 <button className="gp-button">Add to favourite games</button>
+                                <button className="gp-button-report">Report</button>
                             </div>
                         </div>
                     </div>
