@@ -17,6 +17,7 @@ function BrowsePage() {
     const [selectedAccessibilityTags, setSelectedAccessibilityTags] = useState();
     const [selectedGenreTags, setSelectedGenreTags] = useState();
     const [selectedPlatformTags, setSelectedPlatformTags] = useState();
+    const [sortOption, setSortOption] = useState("nameAscending"); // Sort by name by default
 
     const accessibilityTagsOptions = [
         { label: "Vision", value: "Vision Accessibility"},
@@ -48,6 +49,39 @@ function BrowsePage() {
         { label: "Android", value: "Android"},
     ]
     
+    const sortGames = (gamesToSort, sortOption) => {
+        const sortedGames = [...gamesToSort];
+
+        switch (sortOption) {
+            case "nameAscending":
+                // https://www.w3schools.com/jsref/jsref_localecompare.asp
+                sortedGames.sort((a, b) => a.name.localeCompare(b.name));
+                break;
+
+            case "nameDescending":
+                sortedGames.sort((a, b) => b.name.localeCompare(a.name));
+                break;
+
+            case "priceLowestToHighest":
+                sortedGames.sort((a, b) => a.price - b.price);
+                break;
+
+            case "priceHighestToLowest":
+                sortedGames.sort((a, b) => b.price - a.price);
+                break;
+
+            case "releaseNewestToOldest":
+                sortedGames.sort((a, b) => new Date(b.release_date) - new Date(a.release_date));
+                break;
+
+            case "releaseOldestToNewest":
+                sortedGames.sort((a, b) => new Date(a.release_date) - new Date(b.release_date));
+                break;
+        }   
+
+        return sortedGames;
+    }
+
     useEffect(() => {
         setLoading(true); 
 
@@ -69,7 +103,8 @@ function BrowsePage() {
 
         axios.get("http://127.0.0.1:8000/app/games/games/browse", { params: filter_parameters })
         .then(response => {
-            setGames(response.data);
+            const sortedGames = sortGames(response.data, sortOption)
+            setGames(sortedGames);
             setLoading(false);
         })
         .catch(error => {
@@ -77,7 +112,7 @@ function BrowsePage() {
             setError(error);
             setLoading(false);
         });
-    }, [selectedAccessibilityTags, selectedGenreTags, selectedPlatformTags]);
+    }, [selectedAccessibilityTags, selectedGenreTags, selectedPlatformTags, sortOption]);
 
     if (!games) return <p>No games data found.</p>;
 
