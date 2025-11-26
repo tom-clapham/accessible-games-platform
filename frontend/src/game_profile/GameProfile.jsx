@@ -8,6 +8,26 @@ import GameTag from './GameTag';
 
 import "./game_profile_styles.css";
 
+function formatDate(dateString) {
+  const date = new Date(dateString);
+
+  const day = String(date.getDate()).padStart(2, "0");
+  const month = String(date.getMonth() + 1).padStart(2, "0");
+  const year = String(date.getFullYear());
+
+  return `${day}/${month}/${year}`;
+}
+
+function formatPrice(price) {
+  if (price === "0" || price === "0.00") {
+    price = 'Free';
+  } else {
+    price = `£${price}`
+  }
+
+  return price;
+}
+
 function GameProfile() {
     const {id} = useParams(); // get ID of game from the URL, will change this to name/slug later 
     const [game, setGame] = useState(null);
@@ -44,7 +64,12 @@ function GameProfile() {
                             <GameTrailer url={game.trailer_url} name={game.name}/><br/>
                         </div>
 
-                        <h2>Accessibility tags</h2>
+                        <h2>Description</h2>
+                        <div className="gp-description">
+                            {game.description}
+                        </div>
+
+                        <h2>Accessibility Tags</h2>
                         <div className="tag_container">
                             {game.accessibility_tags?.map((name) => (
                                 <GameTag name={name}/>
@@ -65,21 +90,29 @@ function GameProfile() {
                             ))}
                         </div>
 
-            <h2>Reviews</h2>
+                        <h2>Reviews</h2>
                     </div>
 
                     <div className="gp-sideinfo">
                         <div className="gp-infocard">
-                            <GameThumbnail className="gp-thumbnail" url={game.thumbnail_url} name={game.name}/>
+                            <div className="gp-thumbnail-container">
+                                <GameThumbnail url={game.thumbnail_url} name={game.name}/>
+                            </div>
                             <div className="gp-metadata">
                                 <h2 className="gp-name">{game.name}</h2>
-                                <div className="gp-price">£{game.price}</div>
+                                <div className="gp-price">{formatPrice(game.price)}</div>
+                                
+                                <div className="gp-info-row-top">
+                                    <div className="gp-info-label">PUBLISHER</div>
+                                    <div className="gp-info-value">{game.publisher}</div>
+                                </div>
 
-                                <p className="gp-description">{game.description}</p>
+                                <div className="gp-info-row">
+                                    <div className="gp-info-label">RELEASE DATE</div>
+                                    <div className="gp-info-value">{formatDate(game.release_date)}</div>
+                                </div>
 
-                                <button className="gp-button">Add to favourites</button>
-                                <div className="gp-publisher">PUBLISHER: {game.publisher}</div>
-                                <div className="gp-releasedate">RELEASE DATE: {game.release_date}</div>
+                                <button className="gp-button">Add to favourite games</button>
                             </div>
                         </div>
                     </div>
