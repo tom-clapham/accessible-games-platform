@@ -235,6 +235,11 @@ h2, h3 {
     margin-left: 5px
 }
 
+.emptyReplies {
+    text-align: center;
+    margin-right:5%;
+}
+
 .postTitle {
     margin-top: 0;
     margin-bottom: 2px;

@@ -182,7 +182,7 @@ function Replies() {
             </Fragment>
         ))} else {
             return (
-                <p>Nothing to display</p>
+                <p className={styles.emptyReplies}>Nothing to display</p>
             )
         }};
 

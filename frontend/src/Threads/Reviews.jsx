@@ -151,7 +151,7 @@ function Reviews() {
         if (parents.length < 1) {
             // console.log("nothing here!")
             return(
-                <h3>Seems like there is nothing here... Why don't you be the first to share your thoughts?!</h3>
+                <h3 className={styles.emptyReplies}>Seems like it's pretty empty in here... Why not be the first to Comment!</h3>
             )
         }
         // setupVotes()
