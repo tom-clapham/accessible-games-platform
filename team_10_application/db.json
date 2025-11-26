@@ -176,7 +176,7 @@
   {
     "model": "games.genretag",
     "pk": 3,
-    "fields": { "name": "Action-Adventure" }
+    "fields": { "name": "Adventure" }
   },
   {
     "model": "games.genretag",
@@ -233,6 +233,16 @@
     "model": "games.platformtag",
     "pk": 4,
     "fields": { "name": "Nintendo Switch" }
+  },
+  {
+  "model": "games.platformtag",
+  "pk": 5,
+  "fields": { "name": "iOS" }
+  },
+  {
+    "model": "games.platformtag",
+    "pk": 6,
+    "fields": { "name": "Android" }
   },
 
   {
@@ -449,7 +459,7 @@
       "on_sale": true,
       "accessibility_tags": [1, 2, 4, 5],
       "genre_tags": [2, 4],
-      "platform_tags": [1, 2, 3, 4]
+      "platform_tags": [1, 2, 3, 4, 5]
     }
   },
   {
@@ -467,7 +477,7 @@
       "on_sale": false,
       "accessibility_tags": [1, 3, 4, 5],
       "genre_tags": [4, 5],
-      "platform_tags": [1, 2, 3, 4]
+      "platform_tags": [1, 2, 3, 4, 5, 6]
     }
   },
   {
@@ -521,7 +531,7 @@
       "on_sale": true,
       "accessibility_tags": [3, 4, 5],
       "genre_tags": [5],
-      "platform_tags": [1, 2, 3, 4]
+      "platform_tags": [1, 2, 3, 4, 5, 6]
     }
   },
   {
@@ -647,7 +657,7 @@
       "on_sale": false,
       "accessibility_tags": [3, 5],
       "genre_tags": [2, 9],
-      "platform_tags": [1, 2, 3, 4]
+      "platform_tags": [1, 2, 3, 4, 5, 6]
     }
   },
   {
@@ -719,7 +729,7 @@
       "on_sale": true,
       "accessibility_tags": [2, 3, 4, 5],
       "genre_tags": [2, 7],
-      "platform_tags": [1, 2, 3, 4]
+      "platform_tags": [1, 2, 3, 4, 5, 6]
     }
   },
   {
@@ -989,7 +999,7 @@
       "on_sale": true,
       "accessibility_tags": [1, 4],
       "genre_tags": [10],
-      "platform_tags": [1, 2, 3, 4]
+      "platform_tags": [1, 2, 3, 4, 5, 6]
     }
   },
   {
@@ -1007,7 +1017,7 @@
       "on_sale": true,
       "accessibility_tags": [2, 3, 4, 5],
       "genre_tags": [5],
-      "platform_tags": [1, 2, 3, 4]
+      "platform_tags": [1, 2, 3, 4, 5, 6]
     }
   },
   {
@@ -1025,7 +1035,7 @@
       "on_sale": false,
       "accessibility_tags": [2, 3, 4, 5],
       "genre_tags": [3, 4],
-      "platform_tags": [1, 2, 3, 4]
+      "platform_tags": [1, 2, 3, 4, 5, 6]
     }
   },
   {
@@ -1136,6 +1146,457 @@
       "platform_tags": [1]
     }
   },
+  {
+  "model": "games.game",
+  "pk": 51,
+  "fields": {
+    "name": "Clash Royale",
+    "description": "Real-time PvP strategy game where you deploy troops and spells to destroy your opponent's towers.",
+    "publisher": "Supercell",
+    "price": 0.00,
+    "release_date": "2016-03-02",
+    "thumbnail_url": "https://cdna.artstation.com/p/assets/covers/images/027/736/046/large/mar-studio-mar-studio-thumbnail.jpg?1592402346",
+    "trailer_url": "https://www.youtube.com/watch?v=1RC1yxqTTd8",
+    "trending": true,
+    "on_sale": false,
+    "accessibility_tags": [1, 3, 5],
+    "genre_tags": [2, 4],
+    "platform_tags": [5, 6]
+  }
+},
+{
+  "model": "games.game",
+  "pk": 52,
+  "fields": {
+    "name": "Clash of Clans",
+    "description": "Build a village, raise a clan and battle other players in strategic raids.",
+    "publisher": "Supercell",
+    "price": 0.00,
+    "release_date": "2012-08-02",
+    "thumbnail_url": "https://m.media-amazon.com/images/M/MV5BZTEyNjE0OGEtYmIwNS00NjQ4LTgzNTEtYWVmMzBkMmYxMGI0XkEyXkFqcGc@._V1_.jpg",
+    "trailer_url": "https://www.youtube.com/watch?v=KE6j5YsPC9k",
+    "trending": true,
+    "on_sale": false,
+    "accessibility_tags": [1, 5],
+    "genre_tags": [4, 5],
+    "platform_tags": [5, 6]
+  }
+},
+{
+  "model": "games.game",
+  "pk": 53,
+  "fields": {
+    "name": "Brawl Stars",
+    "description": "Fast-paced 3v3 and battle royale shooter with a cast of quirky brawlers.",
+    "publisher": "Supercell",
+    "price": 0.00,
+    "release_date": "2018-12-12",
+    "thumbnail_url": "https://m.media-amazon.com/images/M/MV5BMzVkNDFkNjEtZDE1OC00MTJmLWIxNjQtYWM1MWQxNThiODI0XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
+    "trailer_url": "https://www.youtube.com/watch?v=CaryjOdYFa0",
+    "trending": true,
+    "on_sale": false,
+    "accessibility_tags": [1, 2, 5],
+    "genre_tags": [2, 9],
+    "platform_tags": [5, 6]
+  }
+},
+{
+  "model": "games.game",
+  "pk": 54,
+  "fields": {
+    "name": "Candy Crush Saga",
+    "description": "Match-3 puzzle game where you swap colourful candies across hundreds of levels.",
+    "publisher": "King",
+    "price": 0.00,
+    "release_date": "2012-11-14",
+    "thumbnail_url": "https://us.v-cdn.net/6030983/uploads/TLR037R07Z6E/candycrushsaga-wp-lullabylake-portrait.png",
+    "trailer_url": "https://www.youtube.com/watch?v=gJjCGmMkAIw",
+    "trending": true,
+    "on_sale": true,
+    "accessibility_tags": [1, 5],
+    "genre_tags": [10],
+    "platform_tags": [5, 6]
+  }
+},
+{
+  "model": "games.game",
+  "pk": 55,
+  "fields": {
+    "name": "Subway Surfers",
+    "description": "Endless runner where you dodge trains and obstacles while surfing the subways.",
+    "publisher": "Kiloo / SYBO",
+    "price": 0.00,
+    "release_date": "2012-05-24",
+    "thumbnail_url": "https://m.media-amazon.com/images/M/MV5BNWRkNGNmMDgtMmU5MC00MjgzLWFmZTQtNTdhZDYzMGUzN2I0XkEyXkFqcGc@._V1_.jpg",
+    "trailer_url": "https://www.youtube.com/watch?v=fGy-x3H-nxU",
+    "trending": true,
+    "on_sale": false,
+    "accessibility_tags": [1, 5],
+    "genre_tags": [2, 7],
+    "platform_tags": [5, 6]
+  }
+},
+{
+  "model": "games.game",
+  "pk": 56,
+  "fields": {
+    "name": "Jetpack Joyride",
+    "description": "Side-scrolling action game where you dodge hazards with a jetpack in a secret lab.",
+    "publisher": "Halfbrick Studios",
+    "price": 1.99,
+    "release_date": "2011-09-01",
+    "thumbnail_url": "https://m.media-amazon.com/images/M/MV5BYzI3NTc2ZWUtNTU1ZS00M2E3LTlhMzctYjFmN2Q0YTEzNWFjXkEyXkFqcGc@._V1_.jpg",
+    "trailer_url": "https://www.youtube.com/watch?v=Jzxi8nid9BQ",
+    "trending": false,
+    "on_sale": true,
+    "accessibility_tags": [1, 4, 5],
+    "genre_tags": [2, 7],
+    "platform_tags": [2, 5, 6]
+  }
+},
+{
+  "model": "games.game",
+  "pk": 57,
+  "fields": {
+    "name": "Angry Birds 2",
+    "description": "Physics-based puzzle game where you fling birds to topple pig-built structures.",
+    "publisher": "Rovio Entertainment",
+    "price": 0.00,
+    "release_date": "2015-07-30",
+    "thumbnail_url": "https://www.angrybirds.com/wp-content/uploads/2022/08/AB2_202208_1920x1080_KeyArt_KeyArt_Flying.jpg",
+    "trailer_url": "https://www.youtube.com/watch?v=FSWoUGxGNEg",
+    "trending": true,
+    "on_sale": true,
+    "accessibility_tags": [1, 5],
+    "genre_tags": [2, 10],
+    "platform_tags": [5, 6]
+  }
+},
+{
+  "model": "games.game",
+  "pk": 58,
+  "fields": {
+    "name": "Plants vs. Zombies 2",
+    "description": "Tower defense game where you plant defensive plants to stop waves of zombies.",
+    "publisher": "PopCap / Electronic Arts",
+    "price": 0.00,
+    "release_date": "2013-07-09",
+    "thumbnail_url": "https://static-cdn.jtvnw.net/ttv-boxart/67719_IGDB-272x380.jpg",
+    "trailer_url": "https://www.youtube.com/watch?v=gbcBYs0ljI0",
+    "trending": true,
+    "on_sale": false,
+    "accessibility_tags": [1, 3, 5],
+    "genre_tags": [5, 10],
+    "platform_tags": [5, 6]
+  }
+},
+{
+  "model": "games.game",
+  "pk": 59,
+  "fields": {
+    "name": "Call of Duty: Mobile",
+    "description": "First-person shooter bringing classic Call of Duty modes and maps to mobile.",
+    "publisher": "Activision",
+    "price": 0.00,
+    "release_date": "2019-10-01",
+    "thumbnail_url": "https://wallpapers.com/images/hd/call-of-duty-mobile-full-mask-5okyfcebv82jlv6p.jpg",
+    "trailer_url": "https://www.youtube.com/watch?v=n4b8FRUDNZo",
+    "trending": true,
+    "on_sale": false,
+    "accessibility_tags": [1, 2, 5],
+    "genre_tags": [2, 9],
+    "platform_tags": [5, 6]
+  }
+},
+{
+  "model": "games.game",
+  "pk": 60,
+  "fields": {
+    "name": "PUBG Mobile",
+    "description": "Battle royale shooter where 100 players fight to be the last one standing.",
+    "publisher": "Tencent Games",
+    "price": 0.00,
+    "release_date": "2018-03-19",
+    "thumbnail_url": "https://m.media-amazon.com/images/M/MV5BODQzNzJjY2QtY2Y2YS00OWJmLTlkZWMtMmNmMmE2NTg1MjQzXkEyXkFqcGc@._V1_.jpg",
+    "trailer_url": "https://www.youtube.com/watch?v=uCd6tbUAy6o",
+    "trending": true,
+    "on_sale": false,
+    "accessibility_tags": [1, 2, 5],
+    "genre_tags": [2, 9],
+    "platform_tags": [5, 6]
+  }
+},
+{
+  "model": "games.game",
+  "pk": 61,
+  "fields": {
+    "name": "Mobile Legends: Bang Bang",
+    "description": "5v5 MOBA with short matches and touchscreen-optimized controls.",
+    "publisher": "Moonton",
+    "price": 0.00,
+    "release_date": "2016-07-14",
+    "thumbnail_url": "https://m.media-amazon.com/images/M/MV5BODhlZDk5Y2EtMGFhOS00MTQ5LTgwNjgtYTI2ZmE1Y2ZjMDE2XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
+    "trailer_url": "https://www.youtube.com/watch?v=WKZNtIrYM-o",
+    "trending": true,
+    "on_sale": false,
+    "accessibility_tags": [1, 3, 5],
+    "genre_tags": [2, 4],
+    "platform_tags": [5, 6]
+  }
+},
+{
+  "model": "games.game",
+  "pk": 62,
+  "fields": {
+    "name": "Arena of Valor",
+    "description": "Mobile MOBA featuring 5v5 battles with a large roster of heroes.",
+    "publisher": "TiMi Studio / Level Infinite",
+    "price": 0.00,
+    "release_date": "2016-10-14",
+    "thumbnail_url": "https://m.media-amazon.com/images/M/MV5BZTc5Nzk2MGItY2MwNy00NDVkLWJkZGItNTU3YjlkMWVjMjc4XkEyXkFqcGc@._V1_.jpg",
+    "trailer_url": "https://www.youtube.com/watch?v=JM_UdSUW1ao",
+    "trending": false,
+    "on_sale": true,
+    "accessibility_tags": [1, 3, 5],
+    "genre_tags": [2, 4],
+    "platform_tags": [4, 5, 6]
+  }
+},
+{
+  "model": "games.game",
+  "pk": 63,
+  "fields": {
+    "name": "Asphalt 9: Legends",
+    "description": "Arcade racing game with licensed cars and flashy nitro-fueled tracks.",
+    "publisher": "Gameloft",
+    "price": 0.00,
+    "release_date": "2018-07-25",
+    "thumbnail_url": "https://m.media-amazon.com/images/M/MV5BNGViOTZhNWUtNzk0Ni00NDJjLThjMmItZmRhNDEwYWIzZTA4XkEyXkFqcGc@._V1_.jpg",
+    "trailer_url": "https://www.youtube.com/watch?v=ot63S91Ihwk",
+    "trending": true,
+    "on_sale": true,
+    "accessibility_tags": [1, 2, 5],
+    "genre_tags": [1, 2],
+    "platform_tags": [1, 3, 4, 5, 6]
+  }
+},
+{
+  "model": "games.game",
+  "pk": 64,
+  "fields": {
+    "name": "Pokémon GO",
+    "description": "Location-based AR game where you catch Pokémon in the real world.",
+    "publisher": "Niantic",
+    "price": 0.00,
+    "release_date": "2016-07-06",
+    "thumbnail_url": "https://m.media-amazon.com/images/M/MV5BYTJkNDRhMzAtMzVmOS00ZTE2LTllNzAtOTRiN2M2ZTA4OTI0XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
+    "trailer_url": "https://www.youtube.com/watch?v=yQCREgz4tQY",
+    "trending": true,
+    "on_sale": false,
+    "accessibility_tags": [1, 4, 5],
+    "genre_tags": [3, 4],
+    "platform_tags": [5, 6]
+  }
+},
+{
+  "model": "games.game",
+  "pk": 65,
+  "fields": {
+    "name": "Marvel Snap",
+    "description": "Fast-paced collectible card game with Marvel heroes and villains.",
+    "publisher": "Second Dinner",
+    "price": 0.00,
+    "release_date": "2022-10-18",
+    "thumbnail_url": "https://upload.wikimedia.org/wikipedia/en/3/3b/Marvel_Snap.png",
+    "trailer_url": "https://www.youtube.com/watch?v=GNuq6E3enZQ",
+    "trending": true,
+    "on_sale": false,
+    "accessibility_tags": [1, 2, 5],
+    "genre_tags": [4, 10],
+    "platform_tags": [1, 5, 6]
+  }
+},
+{
+  "model": "games.game",
+  "pk": 66,
+  "fields": {
+    "name": "Hearthstone",
+    "description": "Digital card game set in the Warcraft universe with deck-building and ranked play.",
+    "publisher": "Blizzard Entertainment",
+    "price": 0.00,
+    "release_date": "2014-04-02",
+    "thumbnail_url": "https://wallpapers.com/images/hd/hearthstone-desktop-oj0ztwtqp07f51l6.jpg",
+    "trailer_url": "https://www.youtube.com/watch?v=j8pVHFIe-EA",
+    "trending": false,
+    "on_sale": true,
+    "accessibility_tags": [1, 2, 5],
+    "genre_tags": [4, 10],
+    "platform_tags": [1, 5, 6]
+  }
+},
+{
+  "model": "games.game",
+  "pk": 67,
+  "fields": {
+    "name": "Monument Valley 2",
+    "description": "Artful puzzle game about guiding a mother and child through impossible architecture.",
+    "publisher": "ustwo games",
+    "price": 4.99,
+    "release_date": "2017-06-05",
+    "thumbnail_url": "https://m.media-amazon.com/images/M/MV5BYzI1NWM0YWMtZjhmMy00YTEwLTgwNDQtODMwOTgwMTVkOTM3XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
+    "trailer_url": "https://www.youtube.com/watch?v=tW2KUxyq8Vg",
+    "trending": true,
+    "on_sale": false,
+    "accessibility_tags": [1, 5],
+    "genre_tags": [3, 10],
+    "platform_tags": [1, 5, 6]
+  }
+},
+{
+  "model": "games.game",
+  "pk": 68,
+  "fields": {
+    "name": "Alto's Odyssey",
+    "description": "Endless sandboarding journey across beautiful desert landscapes.",
+    "publisher": "Snowman",
+    "price": 4.99,
+    "release_date": "2018-02-21",
+    "thumbnail_url": "https://assets1.ignimgs.com/2016/12/09/altos-odyssey-button-1481322373876.jpg",
+    "trailer_url": "https://www.youtube.com/watch?v=PaZsrAi6iJg",
+    "trending": false,
+    "on_sale": true,
+    "accessibility_tags": [1, 4, 5],
+    "genre_tags": [2, 7],
+    "platform_tags": [2, 4, 5, 6]
+  }
+},
+{
+  "model": "games.game",
+  "pk": 69,
+  "fields": {
+    "name": "Sky: Children of the Light",
+    "description": "Social adventure game where you explore dreamlike realms and help lost spirits.",
+    "publisher": "thatgamecompany",
+    "price": 0.00,
+    "release_date": "2019-07-18",
+    "thumbnail_url": "https://e.snmc.io/lk/o/x/6c6047385de5db03806f2aaeaca799e8/9210399",
+    "trailer_url": "https://www.youtube.com/watch?v=g3r1KbzSiT8",
+    "trending": true,
+    "on_sale": false,
+    "accessibility_tags": [1, 3, 5],
+    "genre_tags": [3, 4],
+    "platform_tags": [2, 4, 5, 6]
+  }
+},
+{
+  "model": "games.game",
+  "pk": 70,
+  "fields": {
+    "name": "AFK Arena",
+    "description": "Idle RPG where heroes battle automatically while you collect loot and progress.",
+    "publisher": "Lilith Games",
+    "price": 0.00,
+    "release_date": "2019-04-09",
+    "thumbnail_url": "https://afkarena.lilith.com/m/images/slogimg2_no_m.jpg?v=0208",
+    "trailer_url": "https://www.youtube.com/watch?v=o63fPWyezNs",
+    "trending": false,
+    "on_sale": false,
+    "accessibility_tags": [1, 3, 5],
+    "genre_tags": [4],
+    "platform_tags": [5, 6]
+  }
+},
+{
+  "model": "games.game",
+  "pk": 71,
+  "fields": {
+    "name": "RAID: Shadow Legends",
+    "description": "Hero-collector RPG with turn-based battles and a dark fantasy setting.",
+    "publisher": "Plarium",
+    "price": 0.00,
+    "release_date": "2019-02-28",
+    "thumbnail_url": "https://e.snmc.io/lk/f/x/79143bd36989585d14e93ec0e042cc65/9177538",
+    "trailer_url": "https://www.youtube.com/watch?v=gmwbHdJLadE",
+    "trending": true,
+    "on_sale": false,
+    "accessibility_tags": [1, 5],
+    "genre_tags": [4],
+    "platform_tags": [1, 5, 6]
+  }
+},
+{
+  "model": "games.game",
+  "pk": 72,
+  "fields": {
+    "name": "Arknights",
+    "description": "Strategic tower-defense RPG with anime art and deep unit synergies.",
+    "publisher": "Yostar",
+    "price": 0.00,
+    "release_date": "2020-01-16",
+    "thumbnail_url": "https://m.media-amazon.com/images/M/MV5BNTRkZDIyMjktZjc0Ni00Y2FjLTkyNTgtZWFhOWExNTgzYmUzXkEyXkFqcGc@._V1_.jpg",
+    "trailer_url": "https://www.youtube.com/watch?v=AbDo2QSW460",
+    "trending": false,
+    "on_sale": true,
+    "accessibility_tags": [1, 3, 5],
+    "genre_tags": [4, 5],
+    "platform_tags": [5, 6]
+  }
+},
+{
+  "model": "games.game",
+  "pk": 73,
+  "fields": {
+    "name": "Roblox",
+    "description": "User-generated game platform where players create and play millions of experiences.",
+    "publisher": "Roblox Corporation",
+    "price": 0.00,
+    "release_date": "2012-12-11",
+    "thumbnail_url": "https://m.media-amazon.com/images/M/MV5BYmZkNzAyNjYtZWNhYy00YjE2LTk2NTgtMTkxZjAwNDg0YWFmXkEyXkFqcGc@._V1_.jpg",
+    "trailer_url": "https://www.youtube.com/watch?v=sme76WoJ_-U",
+    "trending": true,
+    "on_sale": false,
+    "accessibility_tags": [1, 3, 5],
+    "genre_tags": [5],
+    "platform_tags": [1, 2, 3, 5, 6]
+  }
+},
+{
+  "model": "games.game",
+  "pk": 74,
+  "fields": {
+    "name": "Gacha Life",
+    "description": "Character creator and mini-game collection with anime-style avatars and skits.",
+    "publisher": "Lunime",
+    "price": 0.00,
+    "release_date": "2018-10-20",
+    "thumbnail_url": "https://img.itch.zone/aW1hZ2UvMzI5MDIwLzE2Mjc4NzMucG5n/original/J2N9FM.png",
+    "trailer_url": "https://www.youtube.com/watch?v=svS6lmQQLOw",
+    "trending": false,
+    "on_sale": true,
+    "accessibility_tags": [1, 5],
+    "genre_tags": [4, 5],
+    "platform_tags": [1, 5, 6]
+  }
+},
+{
+  "model": "games.game",
+  "pk": 75,
+  "fields": {
+    "name": "Homescapes",
+    "description": "Match-3 puzzle game where you renovate a mansion by completing levels.",
+    "publisher": "Playrix",
+    "price": 0.00,
+    "release_date": "2017-09-19",
+    "thumbnail_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSCLwWUmq6P8zL7lDD3wY5QWu3SJ8FoAkPUQ&s",
+    "trailer_url": "https://www.youtube.com/watch?v=MU4ER3EHCSE",
+    "trending": true,
+    "on_sale": false,
+    "accessibility_tags": [1, 3, 5],
+    "genre_tags": [5, 10],
+    "platform_tags": [1, 5, 6]
+  }
+},
+
 
 {
 "model": "users.GenreTag",

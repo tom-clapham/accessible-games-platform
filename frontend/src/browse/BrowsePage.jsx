@@ -28,7 +28,7 @@ function BrowsePage() {
     const genreTagsOptions = [
         { label: "Racing", value: "Racing"},
         { label: "Action", value: "Action"},
-        { label: "Action-Adventure", value: "Action-Adventure"},
+        { label: "Adventure", value: "Adventure"},
         { label: "RPG", value: "RPG"},
         { label: "Simulation", value: "Simulation"},
         { label: "Sports", value: "Sports"},
