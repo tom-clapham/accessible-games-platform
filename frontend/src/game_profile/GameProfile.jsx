@@ -101,6 +101,8 @@ function GameProfile() {
                                     <div className="gp-info-label">RELEASE DATE</div>
                                     <div className="gp-info-value">{formatDate(game.release_date)}</div>
                                 </div>
+
+                                <button className="gp-button">Add to favourite games</button>
                             </div>
                         </div>
                     </div>
