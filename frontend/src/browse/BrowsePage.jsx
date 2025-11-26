@@ -6,6 +6,7 @@ import GameCard from './GameCard';
 import "./browse_page_styles.css";
 
 import { MultiSelect } from 'primereact/multiselect';
+import { Dropdown } from 'primereact/dropdown';
 import "primereact/resources/themes/lara-dark-indigo/theme.css";
 
 
@@ -47,6 +48,15 @@ function BrowsePage() {
         { label: "Nintendo Switch", value: "Nintendo Switch"},
         { label: "iOS", value: "iOS"},
         { label: "Android", value: "Android"},
+    ]
+
+    const sortOptions = [
+        { label: "Name (A → Z)", value: "nameAscending"},
+        { label: "Name (Z → A)", value: "nameDescending"},
+        { label: "Price (Lowest → Highest)", value: "priceLowestToHighest"},
+        { label: "Price (Highest → Lowest)", value: "priceHighestToLowest"},
+        { label: "Release Date (Newest → Oldest)", value: "releaseNewestToOldest"},
+        { label: "Release Date (Oldest → Newest)", value: "releaseOldestToNewest"},
     ]
     
     const sortGames = (gamesToSort, sortOption) => {
@@ -121,7 +131,19 @@ function BrowsePage() {
             <div className="browse-page">
                 <h1>Browse</h1>
                 <div className="browse-page-headings">
-                    <div className="heading">Results</div>
+                    <div className="heading-sort-by">
+                        <span className="heading-label">Sort by:</span>
+                        <div className="sort-option-container">
+                            <Dropdown 
+                                value={sortOption} 
+                                onChange={(e) => setSortOption(e.value)} 
+                                options={sortOptions} 
+                                optionLabel="label" 
+                                placeholder="Select an option" 
+                                className="sort-option-select" 
+                            />
+                        </div>
+                    </div>
                     <div className="heading">Filters</div>
                 </div>
                 <div className="browse-page-grid">
