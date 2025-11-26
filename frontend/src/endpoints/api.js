@@ -14,6 +14,9 @@ const  STEP4_URL = `${BASE_URL}step4/`
 const  STEP5_URL = `${BASE_URL}step5/`
 const  FORGOT_URL = `${BASE_URL}forgot-credentials/`
 const  RESET_URL = `${BASE_URL}reset-password/`
+const UPDATE_PERSONAL_URL = `${BASE_URL}update-personal/`
+const UPDATE_DETAILS_URL = `${BASE_URL}update-details/`
+const UPDATE_PREFERENCES_URL = `${BASE_URL}update-preferences/`
 
 export const user_info = async () => {
     try {
@@ -180,3 +183,41 @@ export const step_5 = async (array) => {
         console.log(error);
     }
 }
+
+export const updatePersonal = async (first, last, date) => {
+    try{
+        const response = await axios.post(UPDATE_PERSONAL_URL,
+        { first_name, last_name, dob: date},
+        { withCredentials: true }
+        )
+        return response.data.success;
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+export const updateDetails = async (username, email) => {
+    try{
+        const response = await axios.post(UPDATE_DETAILS_URL,
+        { username:username, email:email},
+        { withCredentials: true }
+        )
+        return response.data.success;
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+export const updatePreferences = async (genre_array, accessibility_array) => {
+    try{
+        const response = await axios.post(UPDATE_PREFERENCES_URL,
+        { genre_arr:genre_array, accessibility_arr:accessibility_array},
+        { withCredentials: true }
+        )
+        return response.data.success;
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+

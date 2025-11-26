@@ -13,6 +13,7 @@ import { IoIosWarning } from "react-icons/io";
 import SearchBarGenres from '../Components/SearchBars/SearchBarGenres'
 import SearchBarAccessibility from '../Components/SearchBars/SearchBarAccessibility'
 import { TiDelete } from "react-icons/ti";
+import { MdOutlineEdit } from "react-icons/md";
 
 const Account = () => {
 
@@ -20,22 +21,66 @@ const Account = () => {
     const location = useLocation();
     const { message } = location.state || {};
     const [activeSection, setActiveSection] = useState("details");
+    const [first, setFirst] = useState("");
+    const [last, setLast] = useState("");
+    const [day, setDay] = useState("");
+    const [month, setMonth] = useState("");
+    const [year, setYear] = useState("");
 
     const handleSectionChange = (section) => {
         setActiveSection(section);
     };
 
+    const handleEdit = (id) => {
+        const input = document.getElementById(id);
+        input.disabled = false;
+        input.focus();
+
+        input.addEventListener("blur", function onBlur() {
+            input.disabled = true;
+            input.removeEventListener("blur", onBlur);
+        });
+    }
+
+    const handleEditDob = (day, month, year) => {
+
+        const ids = [day, month, year];
+        ids.forEach(id => {
+        const input = document.getElementById(id);
+        input.disabled = false;
+        input.addEventListener("blur", function onBlur() {
+            input.disabled = true;
+            input.removeEventListener("blur", onBlur);
+        });
+        });
+    }
+
+    const handlePersonalSave = (first, last, day, month, year) => {
+        const d = new Date(year, month - 1 , day + 1);
+        const isoString = d.toISOString();        
+        const dateOnly = isoString.split('T')[0];
+        console.log(dateOnly)
+    }
+
+
     useEffect(() => {
         const fetchInfo = async () => {
         const info = await user_info();
             setInfo(info);
+            setFirst(info.first_name)
+            setLast(info.last_name);
+            const [y, m, d] = info.date_of_birth.split("-");
+            setDay(d);
+            setMonth(m);
+            setYear(y);
         }
 
         if(message){
             fetchInfo();
         }
-    }, []);
+    }, [first, info]);
 
+  
     
 
     return (
@@ -69,24 +114,26 @@ const Account = () => {
                     <div className={styles.nameContainer}>
                         <div className={styles.firstContainer}>
                             <label className={styles.label}>First Name</label>
-                            <input className={styles.input} required maxLength='100' type='text' placeholder={info.first_name} onChange={(e) => setFirst(e.target.value)}></input>
+                            <input id="first" className={styles.input} required disabled maxLength='100' value={first} type='text' placeholder={info.first_name} onChange={(e) => setFirst(e.target.value)}></input>
                         </div>
+                        <button className={styles.edit} onClick={() => handleEdit("first")}><MdOutlineEdit value={last} className={styles.edit_icon}/></button>
                         <div className={styles.lastContainer}>
                             <label className={styles.label}>Last Name</label>
-                            <input className={styles.input} required maxLength='100' type='text' placeholder={info.last_name} onChange={(e) => setLast(e.target.value)}></input>
+                            <input id="last" className={styles.input} required disabled maxLength='100' type='text' placeholder={info.last_name} onChange={(e) => setLast(e.target.value)}></input>
                         </div>
+                        <button className={styles.edit} onClick={() => handleEdit("last")}><MdOutlineEdit className={styles.edit_icon}/></button>
                     </div>
                     <div className={styles.elements}>
                         <label className={styles.label}>Date of birth</label>
                         <div className={styles.dropdown}>
-                            <select className={styles.input} required onChange={(e) => setDay(e.target.value)}>
+                            <select id="day" className={styles.input} value={day} disabled required onChange={(e) => setDay(e.target.value)}>
                             <option value="">Day</option>
                             {[...Array(31)].map((_, i) => (
                             <option key={i + 1} value={i + 1}>
                                 {i + 1}
                             </option>))}
                             </select>
-                            <select className={styles.input} required onChange={(e) => setMonth(e.target.value)}>
+                            <select id="month" className={styles.input} value={month} required disabled onChange={(e) => setMonth(e.target.value)}>
                                 <option value="" disabled>Month</option>
                                 <option value='01'>Jan</option>
                                 <option value='02'>Feb</option>
@@ -101,10 +148,11 @@ const Account = () => {
                                 <option value='11'>Nov</option>
                                 <option value='12'>Dec</option>
                             </select>
-                            <input className={styles.input} type='text' placeholder='Year' maxLength='4' onChange={(e) => setYear(e.target.value)}></input>
+                            <input id="year" className={styles.input} type='text' disabled placeholder={year} maxLength='4' onChange={(e) => setYear(e.target.value)}></input>
+                            <button className={styles.edit_dob} onClick={() => handleEditDob("day", "month", "year")}><MdOutlineEdit className={styles.edit_icon}/></button>
                         </div>
                     </div>
-                    <button className={styles.save}>Save Changes</button>
+                    <button className={styles.save_personal} onClick={() => handlePersonalSave(first, last, Number(day), Number(month), Number(year))}>Save Changes</button>
                     <hr/>
                 </div>
                 )}
@@ -116,10 +164,12 @@ const Account = () => {
                             <label className={styles.label}>Username</label>
                             <input className={styles.input} required maxLength='100' type='text' placeholder={info.username} onChange={(e) => setFirst(e.target.value)}></input>
                         </div>
+                        <button className={styles.edit}><MdOutlineEdit className={styles.edit_icon}/></button>
                         <div className={styles.emailContainer}>
                             <label className={styles.label}>Email</label>
                             <input className={styles.input} required maxLength='100' type='text' placeholder={info.email} onChange={(e) => setLast(e.target.value)}></input>
                         </div>
+                        <button className={styles.edit}><MdOutlineEdit className={styles.edit_icon}/></button>
                     </div>
                     <button className={styles.save}>Save Changes</button>
                     <hr/>

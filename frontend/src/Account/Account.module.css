@@ -108,7 +108,7 @@ h2 {
     cursor: pointer;
     color: white;
     margin-bottom: 15px;
-    width: 85%;
+    width: 83%;
     margin-top: 5px;
 }
 
@@ -144,19 +144,48 @@ label {
     margin-top: 15px;
 }
 
-.save:hover {
+.save_personal:hover, .edit:hover, .edit_dob:hover {
     background-color: #2d6ca3;
 }
 
-.save {
+.save_personal {
     padding: 15px;
+    border-radius: 7px;
+    font-size: 15px;
+    border: none;
+    color: #fff;
+    background-color: #115ea3;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.edit {
+    padding: 12px;
+    border-radius: 7px;
+    font-size: 15px;
+    border: none;
+    color: #fff;
+    background-color: #115ea3;
+    cursor: pointer;
+    margin-top: 10px;
+    margin-right: 10px;
+}
+
+.edit_dob {
+    padding: 12px;
     border-radius: 7px;
     font-size: 15px;
     border: none;
     color: #fff;
     background-color:#115ea3;
     cursor: pointer;
-    margin-top: 10px;
+    margin-top: 5px;
+    margin-left: 10px;
+    margin-bottom: 15px;
+}
+
+.edit_icon{
+    font-size: 20px;
 }
 
 .delete:hover {
