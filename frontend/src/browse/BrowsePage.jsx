@@ -44,8 +44,11 @@ function BrowsePage() {
 
         const filter_parameters = {}
 
-        if (selectedAccessibilityTags && selectedAccessibilityTags.length > 0) {
+        if (selectedAccessibilityTags?.length > 0) {
             filter_parameters.accessibility_tags = selectedAccessibilityTags
+        }
+
+        if (selectedGenreTags?.length > 0) {
             filter_parameters.genre_tags = selectedGenreTags
         }
 
@@ -61,7 +64,7 @@ function BrowsePage() {
             setError(error);
             setLoading(false);
         });
-    }, [selectedAccessibilityTags], [selectedGenreTags]);
+    }, [selectedAccessibilityTags, selectedGenreTags]);
 
     if (!games) return <p>No games data found.</p>;
 

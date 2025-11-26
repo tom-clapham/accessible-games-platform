@@ -18,13 +18,17 @@ class GameViewSet(viewsets.ModelViewSet):
         games = Game.objects.all()
 
         selected_accessibility_tags = request.query_params.getlist('accessibility_tags[]')
+        selected_genre_tags = request.query_params.getlist('genre_tags[]')
 
         if selected_accessibility_tags:
             for accessibility_tag in selected_accessibility_tags:
                 games = games.filter(accessibility_tags__name=accessibility_tag).distinct()
 
-        print("ACCESSIBILITY PARAMS:", request.query_params)
-        print("SELECTED TAGS:", selected_accessibility_tags)
+        if selected_genre_tags:
+            for genre_tag in selected_genre_tags:
+                games = games.filter(genre_tags__name=genre_tag).distinct()
+
+        print("REQUEST PARAMS:", request.query_params)
 
         serializer = self.get_serializer(games, many=True)
         return Response(serializer.data)
