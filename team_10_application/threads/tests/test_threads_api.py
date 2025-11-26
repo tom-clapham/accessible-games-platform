@@ -4,7 +4,7 @@ import pdb
 
 class TestThreadsAPI(ThreadsTestSetup):
     def test_can_get_posts_from_game_that_exists(self):
-        response = self.client.get('/app/threads/reviews/1/')
+        response = self.client.get(f'/app/threads/reviews/{self.games_1.pk}/')
         # Ensures that the parent Id is 1 (first item in response json)
         self.assertEqual(response.data['parents'][0]['id'], 1)
     
@@ -39,7 +39,7 @@ class TestThreadsAPI(ThreadsTestSetup):
         self.assertEqual(response_3.data, 201)
         # Ensure that the new post is now visible when looking at all posts in the new list
         response = self.client.get(f'/app/threads/reviews/{self.games_1.pk}/')
-        self.assertEquals(response.data['parents'][1]['title'], 'This is a test to see if posts are made!')
+        self.assertEqual(response.data['parents'][1]['title'], 'This is a test to see if posts are made!')
 
     def test_logged_in_user_can_create_replies(self):
         response_1 = self.client.post('/app/users/token/', {'username': self.user_1.username, 'password':'password123'})

@@ -1545,6 +1545,122 @@
 }
 },
 {
+    "model": "users.customuser",
+    "pk": 1,
+    "fields": {
+        "password": "pbkdf2_sha256$1000000$Q7M67pXrlSlBKpJZwNF4Dr$wNrxofoYFjE6SWLNGJBwtJs0NHt4A+rBAGruCt86pZA=",
+        "last_login": null,
+        "is_superuser": false,
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2025-11-26T19:30:12.247Z",
+        "date_of_birth": "2004-07-01",
+        "last_name": "Khan",
+        "first_name": "Daiyan",
+        "email": "daiyankhan63@hotmail.com",
+        "username": "dzam07",
+        "groups": [],
+        "user_permissions": [],
+        "genre_tags": [
+            21,
+            22,
+            27
+        ],
+        "accessibility_tags": [
+            12,
+            13,
+            14
+        ]
+    }
+},
+{
+    "model": "users.customuser",
+    "pk": 2,
+    "fields": {
+        "password": "pbkdf2_sha256$1000000$Q7M67pXrlSlBKpJZwNF4Dr$wNrxofoYFjE6SWLNGJBwtJs0NHt4A+rBAGruCt86pZA=",
+        "last_login": null,
+        "is_superuser": false,
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2025-11-26T19:30:12.247Z",
+        "date_of_birth": "2004-07-01",
+        "last_name": "Webster",
+        "first_name": "Oscar",
+        "email": "Webster01@cardiff.ac.uk",
+        "username": "oscar",
+        "groups": [],
+        "user_permissions": [],
+        "genre_tags": [
+            21,
+            22,
+            27
+        ],
+        "accessibility_tags": [
+            12,
+            13,
+            14
+        ]
+    }
+},
+{
+    "model": "users.customuser",
+    "pk": 3,
+    "fields": {
+        "password": "pbkdf2_sha256$1000000$Q7M67pXrlSlBKpJZwNF4Dr$wNrxofoYFjE6SWLNGJBwtJs0NHt4A+rBAGruCt86pZA=",
+        "last_login": null,
+        "is_superuser": false,
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2025-11-26T19:30:12.247Z",
+        "date_of_birth": "2004-07-01",
+        "last_name": "Clapham",
+        "first_name": "Tom",
+        "email": "Tclapham@hotmail.com",
+        "username": "Tclaps001",
+        "groups": [],
+        "user_permissions": [],
+        "genre_tags": [
+            21,
+            22,
+            27
+        ],
+        "accessibility_tags": [
+            12,
+            13,
+            14
+        ]
+    }
+},
+{
+    "model": "users.customuser",
+    "pk": 4,
+    "fields": {
+        "password": "pbkdf2_sha256$1000000$Q7M67pXrlSlBKpJZwNF4Dr$wNrxofoYFjE6SWLNGJBwtJs0NHt4A+rBAGruCt86pZA=",
+        "last_login": null,
+        "is_superuser": false,
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2025-11-26T19:30:12.247Z",
+        "date_of_birth": "2004-07-01",
+        "last_name": "Wodkiewicz",
+        "first_name": "Szymon",
+        "email": "szymon030405@gmail.com",
+        "username": "szymoney",
+        "groups": [],
+        "user_permissions": [],
+        "genre_tags": [
+            21,
+            22,
+            27
+        ],
+        "accessibility_tags": [
+            12,
+            13,
+            14
+        ]
+    }
+},
+{
     "model": "threads.posts",
     "pk": 1,
     "fields": {
