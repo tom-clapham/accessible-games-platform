@@ -41,11 +41,14 @@ function Discover() {
 
                 <div className="carousel">
                     <h2>On-Sale</h2>
-                    {games.on_sale_games.map((game) => (
+                    {games.on_sale_games.length > 0
+                    ? games.on_sale_games.map((game) => (
                         <Link key={game.id} to={`/gameprofile/${game.id}`}>
-                        <GameCard game={game}/>
+                        <GameCard game={game}/>                       
                         </Link>
-                    ))}
+                    ))
+                    : <p>No games are currently on sale...</p>
+                    }
                 </div>
 
                 <div className="carousel">
