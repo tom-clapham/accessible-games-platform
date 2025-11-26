@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from rest_framework.decorators import action
+from rest_framework.response import Response
 from rest_framework import viewsets
 from .models import Game, GameClicks
 from .serializers import GameSerializer
@@ -12,6 +14,7 @@ class GameViewSet(viewsets.ModelViewSet):
     queryset = Game.objects.all()
     serializer_class = GameSerializer
 
+<<<<<<< HEAD
     def addGameClick(self, request, game_id):
         # Get the object for the game_id requested
         game = Game.objects.get(pk=game_id)
@@ -32,3 +35,29 @@ class GameViewSet(viewsets.ModelViewSet):
         self.addGameClick(request, instance.id)
         return super().retrieve(request, *args, **kwargs)
     
+=======
+    @action(detail=False, methods=['get'])
+    def browse(self, request):
+        games = Game.objects.all()
+
+        selected_accessibility_tags = request.query_params.getlist('accessibility_tags[]')
+        selected_genre_tags = request.query_params.getlist('genre_tags[]')
+        selected_platform_tags = request.query_params.getlist('platform_tags[]')
+
+        if selected_accessibility_tags:
+            for accessibility_tag in selected_accessibility_tags:
+                games = games.filter(accessibility_tags__name=accessibility_tag).distinct()
+
+        if selected_genre_tags:
+            for genre_tag in selected_genre_tags:
+                games = games.filter(genre_tags__name=genre_tag).distinct()
+
+        if selected_platform_tags:
+            for platform_tag in selected_platform_tags:
+                games = games.filter(platform_tags__name=platform_tag).distinct()
+
+        print("REQUEST PARAMS:", request.query_params)
+
+        serializer = self.get_serializer(games, many=True)
+        return Response(serializer.data)
+>>>>>>> f67180d01bb1dea2a77454e6b9546e68b0f5a8f0

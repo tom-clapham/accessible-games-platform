@@ -1,5 +1,4 @@
 body {
-    font-family: "Inter", sans-serif;
     font-size: 16px;
     color: #fff;          
     background-color: #121212;
@@ -20,16 +19,25 @@ body {
     padding-bottom: 30px;
 }
 
+.gp-description {
+  line-height: 1.6;
+  color: #ccc;
+  padding-bottom: 30px;
+}
+
 .gp-page {
-  padding: 24px;
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 0 24px;
   color: #fff;
   min-height: 100vh;
   font-family: "Inter", sans-serif;
+  
 }
 
 .gp-grid {
   display: grid;
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: 4fr 1fr;
   gap: 24px;
 }
 
@@ -46,7 +54,7 @@ body {
 .gp-video-wrap {
   position: relative;
   width: 100%;
-  padding-bottom: 56.25%; /* 16:9 ratio */
+  padding-bottom: 56.25%;
   border-radius: 12px;
   overflow: hidden;
   background: #000;
@@ -62,49 +70,51 @@ body {
   border-radius: 12px;
 }
 
-.gp-description {
-  line-height: 1.6;
-  color: #ccc;
-}
-
 .gp-sideinfo {
   min-width: 0;
 }
 
 .gp-infocard {
   border-radius: 12px;
-  padding: 16px;
+  padding-left: 20px;
+}
+
+.gp-thumbnail-container {
+  width: 280px;         
+  flex: 0 0 200px;
 }
 
 .gp-thumbnail {
   width: 100%;
-  aspect-ratio: 1 / 1;
+  height: 360px;   
   object-fit: cover;
-  border-radius: 12px;
-  margin-bottom: 12px;
+  border-radius: 6px;
 }
 
 .gp-name {
   font-size: 20px;
   font-weight: 700;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
+  padding-top: 8px;
 }
 
 .gp-price {
-  font-weight: 700;
   color: #ddd;
   margin-bottom: 12px;
 }
 
 .gp-button {
-  background: #27c46b;
+  width: 100%;
+  background: #26BBFF;
   color: #0c0c0c;
+  margin-top: 12px;
   border: none;
   padding: 10px 14px;
-  border-radius: 999px;
+  border-radius: 9px;
   font-weight: 600;
+  font-size: 14px;
   cursor: pointer;
-  margin-bottom: 10px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 .gp-button:hover {
@@ -113,6 +123,30 @@ body {
 
 .gp-publisher, .gp-releasedate {
   font-size: 14px;
-  color: #aaa;
 }
 
+.gp-info-row, .gp-info-row-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+  padding-bottom: 8px;
+}
+
+.gp-info-row-top {
+  border-bottom: 1px solid #2f2f2f;
+  padding-top: 12px;
+}
+
+.gp-info-label {
+  color: #a1a1a1;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+}
+
+.gp-info-value {
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 500;
+  text-align: right;
+}
