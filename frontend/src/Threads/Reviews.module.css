@@ -50,6 +50,13 @@ h2, h3 {
     align-items: center;
 }
 
+.gameName {
+    margin-left: 5%;
+    margin-bottom: 50px;
+    font-family: "Roboto", sans-serif;
+    font-size: xx-large;
+}
+
 .postNameBlock {
     display: flex;
     flex-direction: row;
@@ -126,7 +133,63 @@ h2, h3 {
     border-radius: 5px;
     border-width: 1px;
     margin-bottom: 5px;
-    padding: 10px;
+    padding-top: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    width: 70vw;
+    height: 20vh;
+}
+
+.commentImg {
+    width:25px;
+    height: 25px;
+    filter: invert(100%);
+    margin-left: 10px;
+}
+
+.postTitle {
+    margin-top: 0;
+    margin-bottom: 2px;
+}
+
+.postUsername {
+    margin: 0;
+    font-size: 13px;
+    font-weight: lighter;
+    color:grey
+}
+
+.postName {
+    font-size: 15px;
+    margin: 0;
+}
+
+.postMessage {
+    display: flex;
+    margin-top: 10px;
+    max-width: auto;
+    overflow-wrap: break-word;
+    /* overflow:auto; */
+}
+
+.vpBox {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10%;
+    gap: 3%;
+}
+
+.voteBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.voteCount {
+    text-align: center;
+    margin: 0
 }
 
 .voteBtn {
@@ -135,7 +198,9 @@ h2, h3 {
     border: none;
     font-size: 50px;
     font-family: "Inter", "Segoe UI", Arial, sans-serif;
-    font-weight: bolder
+    font-weight: bolder;
+    padding-bottom: 5px;
+    padding-top: 0px;
 }
 
 .voteBtn:hover {
@@ -184,14 +249,17 @@ h2, h3 {
 .postStats {
     display: flex;
     flex-direction: row;
-    gap: 20px;
+    align-items: center;
+    gap: 5px;
+    margin-top: auto;
+    margin-bottom: 0;
 }
 
 .newPost {
     z-index: 1;
     position: fixed;
-    bottom: 50px;
-    right: 50px;
+    bottom: 8%;
+    right: 5%;
     background-color: hsl(201, 100%, 50%);
     border-width: 0;
     border-radius: 50%;

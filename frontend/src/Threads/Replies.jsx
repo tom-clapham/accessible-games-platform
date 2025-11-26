@@ -1,28 +1,106 @@
 import axios from 'axios'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, Fragment } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import styles from './Reviews.module.css'
+import { user_info } from '../endpoints/api';
+import comment_img from '../assets/chat.png';
 
 function Replies() {
     const { reviewId } = useParams();
     const [thread, setThread] = useState([]);
     const [loading, setLoading] = useState(true);
     const [reply, setReply] = useState("");
+    const [user, setUser] = useState(false)
     const navigate = useNavigate();
 
     useEffect(() => {
-        axios.get(`http://localhost:8000/app/threads/reviews/replies/${reviewId}`)
+        console.log(user);
+    }, [user]);
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+
+    useEffect(() => {
+        axios.get(`http://localhost:8000/app/threads/reviews/replies/${reviewId}/`, {params: user ? {"userEmail": user.email} : {}})
         .then(res => {
             setThread(res.data)
             setLoading(false)
         })
         .catch(err => console.log(err))
-    }, [reviewId]);
+    }, [reviewId, user]);
+
+    function updateUserVote(idx, upvote) {
+        // if upvote and current is nothing, set vote to true - post votes + 1
+        // if downvote and current is nothing, set vote to false - post votes - 1
+        // if upvote and current is upvote, set vote to null - post votes - 1
+        // if downvote and current is downvote, set vote to null - post votes + 1
+        // if downvote and current is upvote, set vote to false - post votes - 2
+        // if upvote and current is downvote, set vote to true - post votes + 2
+
+        setThread(current => ({...current,
+            replies: current.replies.map((parent, i) => {
+            if (idx !== i) {
+                return parent
+            }
+            let new_userVote;
+            let new_voteValue;
+            if (parent.userVote == null) {
+                new_userVote = upvote
+                new_voteValue = upvote ? 1 : -1 
+            } else if (parent.userVote == upvote) {
+                new_userVote = null
+                new_voteValue = upvote ? -1 : 1
+            } else {
+                new_userVote = upvote
+                new_voteValue = upvote ? 2 : -2
+            }
+            return {...parent, userVote: new_userVote, votes:parent.votes + new_voteValue}
+
+        })}))
+
+        
+    }
+
+    useEffect(() => {
+        console.log(thread.replies)
+    }, [thread])
+
+    const upVote = (e, id, idx) => {
+        // console.log(id)
+        if (user) {
+            updateUserVote(idx, true)
+            // window.getComputedStyle(e.target).color === 'rgb(255, 255, 255)' ? e.target.style.color = '#00a6ff' : e.target.style.color = 'white'
+            axios.post("http://localhost:8000/app/threads/reviews/votes/", {
+                "vote": true,
+                "postId": id,
+                "userEmail": user.email
+            },
+            { withCredentials: true })
+        };
+        // Mock what the api calls would do (assuming everything works and nothing fails)
+        // console.log(votes)
+    }
+
+    const downVote = (e, id, idx) => {
+        if (user) {
+            updateUserVote(idx, false)
+            // window.getComputedStyle(e.target).color === 'rgb(255, 255, 255)' ? e.target.style.color = '#ed0000' : e.target.style.color = 'white'
+            axios.post("http://localhost:8000/app/threads/reviews/votes/", {
+                "vote": false,
+                "postId": id,
+                "userEmail": user.email
+            },
+            { withCredentials: true })
+        };
+        // Mock what the api calls would do (assuming everything works and nothing fails)
+        // console.log(votes)
+    }
 
     const displayParent = () => {
         return thread['parent'].map((item, idx) => (
-            <>
-            <div className={styles.parentBox} key={idx}>
+            <Fragment key={idx}>
+            <div className={styles.parentBox}>
                 <h2>{item.title}</h2>
             {/* profile picture */}
                 <h3>{item.firstname} {item.surname}</h3>
@@ -43,40 +121,62 @@ function Replies() {
                 {/* downvotes */}
                 {/* comments */}
             </div>
-            </>
+            </Fragment>
         ))
     }
 
     function displayReplies() { 
         if (thread['replies'].length) {
         return thread['replies'].map((item, idx) => (
-            <>
-            <div className={styles.replyBox} key={idx} onClick={() => navigate(`/replies/${item.id}`)}>
-                <h3>{item.firstname} {item.surname}</h3>
-            {/* profile picture */}
-                <h5>{item.username}</h5>
-                <h3>{item.message}</h3>
-                <div className={styles.postStats}>
-                    <p>votes</p>
-                    <p>comments</p>
-                    <p>{new Date(item.date).toLocaleDateString('en-GB', {
-                    year: 'numeric',
-                    month: 'long',
-                    day: '2-digit',
-                    hour: '2-digit',
-                    minute: '2-digit'
-                    })}</p>
+            <Fragment key={idx}>
+                <div className={styles.vpBox}>
+                    <div className={styles.votesBox}>
+                        <button className={styles.voteBtn} onClick={(e) => upVote(e, item.id, idx)} style={item.userVote != null ? item.userVote ? {color:"#00a6ff"} : null : null}>&uarr;</button>
+                        <h3 className={styles.voteCount}>{item.votes}</h3>
+                        <button className={styles.voteBtn} onClick={(e) => downVote(e, item.id, idx)} style={item.userVote != null ? item.userVote ? null : {color: "red"} : null}>&darr;</button>
+                    </div>
+                    <div className={styles.postBox} onClick={() => navigate(`/replies/${item.id}`)}>
+                        <h2 className={styles.postTitle}>{item.title}</h2>
+                        {/* profile picture */}
+                        <div className={styles.postOwner}>
+                            <h3 className={styles.postName}>{item.firstname} {item.surname}</h3>
+                            <h5 className={styles.postUsername}>@{item.username}</h5>
+                        </div>
+                        <h3 className={styles.postMessage}>{item.message}</h3>
+                        <div className={styles.postStats}>
+                            {/* <p>votes</p> */}
+                            <p className={styles.postDate}>{new Date(item.date).toLocaleDateString('en-GB', {
+                            year: 'numeric',
+                            month: 'long',
+                            day: '2-digit',
+                            hour: '2-digit',
+                            minute: '2-digit'
+                            })}</p>
+                            <img className={styles.commentImg} src={comment_img}></img>
+                            <p>{item.comments}</p>
+                        </div>
+                    </div>
                 </div>
-                {/* upvotes */}
-                {/* downvotes */}
-                {/* comments */}
-            </div>
-            </>
+            </Fragment>
         ))} else {
             return (
                 <p>Nothing to display</p>
             )
         }};
+
+    useEffect(() => {
+        const fetch_info = async() => {
+            const current_user = await user_info()
+            setUser(current_user)
+            console.log("I am the user: " + user)
+        }
+        fetch_info()
+    }, [])
+
+    useEffect(() => {
+        console.log(user)
+    }, [user])
+    
 
     const replyChange = (event) => {
         setReply(event.target.value)
@@ -85,10 +185,11 @@ function Replies() {
     const submitReply = () => {
         axios.post("http://localhost:8000/app/threads/reviews/new-reply/", {
             gameId: reviewId,
-            userId: 2, // THIS WILL BE BASED ON THE AUTHENTICATED USER WHEN THAT IS PUSHED
+            userEmail: user.email, // THIS WILL BE BASED ON THE AUTHENTICATED USER WHEN THAT IS PUSHED
             message: reply,
             parent: thread['parent'][0].id
-        })
+        },
+        {withCredentials:true})
         // .then(response => console.log(response.data))
         setReply("")
         window.location.reload()
@@ -100,12 +201,12 @@ function Replies() {
             <button className={styles.backButton} onClick={() => navigate(-1)}>&larr;</button>
             {loading ? (<h2 className={styles.loadingIcon}>Loading...</h2>) : displayParent()}
             <hr/>
-            <div className={styles.createReply}>
+            {user ? (<div className={styles.createReply}>
                 {/* profile picture */}
                 &lt;Profile picture&gt;
                 <textarea className={styles.createReplyMessage} value={reply} placeholder="Create reply here..." onChange={replyChange}/>
                 <button className={styles.createReplyBtn} onClick={submitReply}>Reply</button>
-            </div>
+            </div>) : null}
             <hr/>
             {loading ? (<h2 className={styles.loadingIcon}>Loading...</h2>) : (<div className={styles.reply}></div>)}
             {loading ? (<h2 className={styles.loadingIcon}>Loading...</h2>) : displayReplies()}

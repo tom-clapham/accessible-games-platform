@@ -2,31 +2,43 @@ import { useState,useEffect,Fragment } from 'react'
 import axios from 'axios'
 import styles from './Reviews.module.css'
 import { useNavigate, useParams } from 'react-router-dom'
+import { user_info } from '../endpoints/api';
+import comment_img from '../assets/chat.png'
+
 
 function Reviews() {
     const { reviewId } = useParams();
     const [parents, setParents] = useState({});
+    const [userVotes, setUserVotes] = useState({});
     const [loading, setLoading] = useState(true);
     const [newTitle, setNewTitle] = useState("");
     const [newMessage, setNewMessage] = useState("");
-    const [game, setGame] = useState("")
+    const [votes, setVotes] = useState([]);
+    const [game, setGame] = useState("");
     const [modal, setModal] = useState(false);
     const navigate = useNavigate();
+    const [user, setUser] = useState(false)
 
     useEffect(() => {
-        axios.get(`http://localhost:8000/app/threads/reviews/${reviewId}`)
+        window.scrollTo(0,0);
+    }, [])
+
+    useEffect(() => {
+        console.log(user)
+        axios.get(`http://localhost:8000/app/threads/reviews/${reviewId}/`, {params: user ? {"userEmail": user.email} : {}})
         .then(res => {
             console.log(res.data)
             if (!Number.isInteger(res.data)) {
-            setParents(res.data)
+            setParents(res.data.parents)
             setGame(res.data.game)
+            setUserVotes(res.data.userVotes)
             setLoading(false)
             } else {
                 console.log("nothing to display!")
             }
         })
         .catch(error => console.log(error))
-    }, []); // This also needs to be re-run when the user leaves a thread of messages - or just store it? Undecided.
+    }, [user]); // This also needs to be re-run when the user leaves a thread of messages - or just store it? Undecided.
 
     // useEffect(() => {
     //     console.log(parents)
@@ -47,61 +59,138 @@ function Reviews() {
     const createNewPost = () => {
         axios.post("http://localhost:8000/app/threads/reviews/new-post/", {
             gameId: reviewId,
-            userId: 1, // THIS WILL BE BASED ON THE AUTHENTICATED USER WHEN THAT IS PUSHED
+            userEmail: user.email, // THIS WILL BE BASED ON THE AUTHENTICATED USER WHEN THAT IS PUSHED
             title: newTitle,
             message: newMessage
-        })
+        },
+        {withCredentials: true})
         .then(response => console.log(response))
         setNewTitle("")
         setNewMessage("")
         window.location.reload()
     };
 
+    function updateUserVote(idx, upvote) {
+        // if upvote and current is nothing, set vote to true - post votes + 1
+        // if downvote and current is nothing, set vote to false - post votes - 1
+        // if upvote and current is upvote, set vote to null - post votes - 1
+        // if downvote and current is downvote, set vote to null - post votes + 1
+        // if downvote and current is upvote, set vote to false - post votes - 2
+        // if upvote and current is downvote, set vote to true - post votes + 2
+
+        setParents(current => current.map((parent, i) => {
+            if (idx !== i) {
+                return parent
+            }
+            let new_userVote;
+            let new_voteValue;
+            if (parent.userVote == null) {
+                new_userVote = upvote
+                new_voteValue = upvote ? 1 : -1 
+            } else if (parent.userVote == upvote) {
+                new_userVote = null
+                new_voteValue = upvote ? -1 : 1
+            } else {
+                new_userVote = upvote
+                new_voteValue = upvote ? 2 : -2
+            }
+            return {...parent, userVote: new_userVote, votes:parent.votes + new_voteValue}
+
+        }))
+
+        
+    }
+
+    useEffect(() => {
+        console.log(parents)
+    }, [parents])
+
+    const upVote = (e, id, idx) => {
+        // console.log(id)
+        if (user) {
+            updateUserVote(idx, true)
+            // window.getComputedStyle(e.target).color === 'rgb(255, 255, 255)' ? e.target.style.color = '#00a6ff' : e.target.style.color = 'white'
+            axios.post("http://localhost:8000/app/threads/reviews/votes/", {
+                "vote": true,
+                "postId": id,
+                "userEmail": user.email
+            },
+            { withCredentials: true })
+        };
+        // Mock what the api calls would do (assuming everything works and nothing fails)
+        // console.log(votes)
+    }
+
+    const downVote = (e, id, idx) => {
+        if (user) {
+            updateUserVote(idx, false)
+            // window.getComputedStyle(e.target).color === 'rgb(255, 255, 255)' ? e.target.style.color = '#ed0000' : e.target.style.color = 'white'
+            axios.post("http://localhost:8000/app/threads/reviews/votes/", {
+                "vote": false,
+                "postId": id,
+                "userEmail": user.email
+            },
+            { withCredentials: true })
+        };
+        // Mock what the api calls would do (assuming everything works and nothing fails)
+        // console.log(votes)
+    }
+
+    useEffect(() => {
+        const fetch_info = async() => {
+            const current_user = await user_info()
+            setUser(current_user)
+            console.log("I am the user: " + user)
+        }
+        fetch_info()
+    }, [])
+
     const displayParents = () =>  {
-        if (parents['parents'].length < 1) {
+        if (parents.length < 1) {
             // console.log("nothing here!")
             return(
                 <h3>Seems like there is nothing here... Why don't you be the first to share your thoughts?!</h3>
             )
         }
-        return parents['parents'].map((item, idx) => (
+        // setupVotes()
+        // need to add items to the useState so that they can be recorded and requests are only made when there is actually a change
+        return parents.map((item, idx) => (
         <Fragment key={idx}>
-        <div className={styles.votesBox}>
-            <button className={styles.voteBtn}>&uarr;</button>
-            <h3>count</h3>
-            <button className={styles.voteBtn}>&darr;</button>
-            {/* downvotes */}
-        </div>
-        <div className={styles.postBox} onClick={() => navigate(`/replies/${item.id}`)}>
-            <h2>{item.title}</h2>
-            {/* profile picture */}
-            <div className={styles.postOwner}>
-                <h3>{item.firstname} {item.surname}</h3>
-                <h5>{item.username}</h5>
+        <div className={styles.vpBox}>
+            <div className={styles.votesBox}>
+                <button className={styles.voteBtn} onClick={(e) => upVote(e, item.id, idx)} style={item.userVote != null ? item.userVote ? {color:"#00a6ff"} : null : null}>&uarr;</button>
+                <h3 className={styles.voteCount}>{item.votes}</h3>
+                <button className={styles.voteBtn} onClick={(e) => downVote(e, item.id, idx)} style={item.userVote != null ? item.userVote ? null : {color: "red"} : null}>&darr;</button>
             </div>
-            <h3>{item.message}</h3>
-            <div className={styles.postStats}>
-                <p>votes</p>
-                <p>comments</p>
-                <p>{new Date(item.date).toLocaleDateString('en-GB', {
-                year: 'numeric',
-                month: 'long',
-                day: '2-digit',
-                hour: '2-digit',
-                minute: '2-digit'
-                })}</p>
+            <div className={styles.postBox} onClick={() => navigate(`/replies/${item.id}`)}>
+                <h2 className={styles.postTitle}>{item.title}</h2>
+                {/* profile picture */}
+                <div className={styles.postOwner}>
+                    <h3 className={styles.postName}>{item.firstname} {item.surname}</h3>
+                    <h5 className={styles.postUsername}>@{item.username}</h5>
+                </div>
+                <h3 className={styles.postMessage}>{item.message}</h3>
+                <div className={styles.postStats}>
+                    {/* <p>votes</p> */}
+                    <p className={styles.postDate}>{new Date(item.date).toLocaleDateString('en-GB', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: '2-digit',
+                    hour: '2-digit',
+                    minute: '2-digit'
+                    })}</p>
+                    <img className={styles.commentImg} src={comment_img}></img>
+                    <p>{item.comments}</p>
+                </div>
             </div>
-            {/* upvotes */}
-            {/* downvotes */}
-            {/* comments */}
         </div>
         </Fragment>
     ))};
 
     return(
         <>
-            <h1>{game}</h1>
-            {loading ? null : <button className={styles.newPost} onClick={() => setModal(true)}>&#10010;</button>}
+            <h1 className={styles.gameName}>{game}</h1>
+            {user ? <button className={styles.newPost} onClick={() => setModal(true)}>&#10010;</button> : null}
             {loading ? (<h2 className={styles.loadingIcon}>Loading...</h2>) : null}
             {loading == false ? displayParents() : null}
             <div id='modal-overlay' className={modal ? styles.modalBox : styles.modalHidden} onClick={() => setModal(false)}>

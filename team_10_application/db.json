@@ -1,45 +1,5 @@
 [
 {
-    "model": "threads.users",
-    "pk": 1,
-    "fields": {
-        "firstname": "Daiyan",
-        "surname": "Khan",
-        "age": 21,
-        "username": "@founder_001"
-    }
-},
-{
-    "model": "threads.users",
-    "pk": 2,
-    "fields": {
-        "firstname": "Szymon",
-        "surname": "Wodkiewicz",
-        "age": 20,
-        "username": "@founder_002"
-    }
-},
-{
-    "model": "threads.users",
-    "pk": 3,
-    "fields": {
-        "firstname": "Oscar",
-        "surname": "Webster",
-        "age": 20,
-        "username": "@founder_003"
-    }
-},
-{
-    "model": "threads.users",
-    "pk": 4,
-    "fields": {
-        "firstname": "Tom",
-        "surname": "Clapham",
-        "age": 20,
-        "username": "@founder_004"
-    }
-},
-{
     "model": "threads.posts",
     "pk": 1,
     "fields": {

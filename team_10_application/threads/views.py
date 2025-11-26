@@ -21,23 +21,6 @@ def getFirstPost(request, game_id):
     user = request.GET.get('userEmail')
     game_exists = (Game.objects.filter(id=game_id).values('name'))
     # print(game_exists)
-    posts = (
-        Posts.objects
-        .select_related('userId')
-        .filter(parent=None, gameId=game_id)
-        .values(
-            'id',
-            'title',
-            'message',
-            'votes',
-            'comments',
-            'date',
-            'gameId',
-            firstname=F('userId__first_name'),
-            surname=F('userId__last_name'),
-            username=F('userId__username')
-        )
-    )
     if user:
         user_id = CustomUser.objects.filter(email=user).values('id')
         print(user_id)
@@ -67,11 +50,89 @@ def getFirstPost(request, game_id):
                     username=F('userId__username')
                 )
             )
+            return Response({"parents": posts, "game": game_exists[0].get('name')}) if game_exists else Response(status.HTTP_404_NOT_FOUND)
+    posts = (
+        Posts.objects
+        .select_related('userId')
+        .filter(parent=None, gameId=game_id)
+        .values(
+            'id',
+            'title',
+            'message',
+            'votes',
+            'comments',
+            'date',
+            'gameId',
+            firstname=F('userId__first_name'),
+            surname=F('userId__last_name'),
+            username=F('userId__username')
+        )
+    )
     return Response({"parents": posts, "game": game_exists[0].get('name')}) if game_exists else Response(status.HTTP_404_NOT_FOUND)
 
 @api_view()
 @permission_classes([AllowAny])
 def getThread(request, post_id):
+    user = request.GET.get('userEmail')
+    if user:
+        user_id = CustomUser.objects.filter(email=user).values('id')
+        print(user_id)
+        if user_id:
+            parent = (
+            Posts.objects
+            .select_related('userId')
+            .filter(id=post_id)
+            .annotate(
+                    userVote=Subquery(
+                        ReviewsVotes.objects
+                        .filter(postId=OuterRef('pk'), userId=user_id[0]['id'])
+                        .values('vote')[:1]
+                    )
+                )
+            .values(
+                'id',
+                'title',
+                'message',
+                'votes',
+                'comments',
+                'date',
+                'gameId',
+                'userVote',
+                firstname=F('userId__first_name'),
+                surname=F('userId__last_name'),
+                username=F('userId__username')
+            )
+            )
+            replies = (
+                Posts.objects
+                .select_related('userId')
+                .filter(parent=post_id)
+                .annotate(
+                    userVote=Subquery(
+                        ReviewsVotes.objects
+                        .filter(postId=OuterRef('pk'), userId=user_id[0]['id'])
+                        .values('vote')[:1]
+                    )
+                )
+                .values(
+                    'id',
+                    'title',
+                    'message',
+                    'votes',
+                    'comments',
+                    'date',
+                    'gameId',
+                    'userVote',
+                    firstname=F('userId__first_name'),
+                    surname=F('userId__last_name'),
+                    username=F('userId__username')
+                )
+            )
+            return Response({
+                "parent": parent,
+                "replies": replies
+            })
+
     parent = (
         Posts.objects
         .select_related('userId')
@@ -152,7 +213,7 @@ def createNewReply(request):
     return Response(status.HTTP_400_BAD_REQUEST)
 
 @api_view(['POST'])
-@permission_classes([AllowAny])
+@permission_classes([IsAuthenticated])
 def create_update_delete_vote(request):
     '''
     Function used to create or update user votes
