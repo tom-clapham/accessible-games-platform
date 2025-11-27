@@ -1,4 +1,5 @@
 import { useEffect, useState} from 'react';
+import { useSearchParams } from 'react-router-dom';
 import axios from 'axios';
 
 import GameCard from './GameCard';
@@ -15,10 +16,13 @@ function BrowsePage() {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
-    const [selectedAccessibilityTags, setSelectedAccessibilityTags] = useState();
-    const [selectedGenreTags, setSelectedGenreTags] = useState();
-    const [selectedPlatformTags, setSelectedPlatformTags] = useState();
-    const [sortOption, setSortOption] = useState("nameAscending"); // Sort by name by default
+    const [searchParams, setSearchParams] = useSearchParams();
+
+    const [selectedAccessibilityTags, setSelectedAccessibilityTags] = useState(searchParams.getAll("accessibility"));
+    const [selectedGenreTags, setSelectedGenreTags] = useState(searchParams.getAll("genre"));
+    const [selectedPlatformTags, setSelectedPlatformTags] = useState(searchParams.getAll("platform"));
+    const [sortOption, setSortOption] = useState(searchParams.get("sort")) || "nameAscending"; // Sort by name by default
+
 
     const accessibilityTagsOptions = [
         { label: "Vision", value: "Vision Accessibility"},
@@ -59,6 +63,8 @@ function BrowsePage() {
         { label: "Release Date (Oldest → Newest)", value: "releaseOldestToNewest"},
     ]
     
+
+    // Sort games based on selected sorting option
     const sortGames = (gamesToSort, sortOption) => {
         const sortedGames = [...gamesToSort];
 
@@ -92,24 +98,46 @@ function BrowsePage() {
         return sortedGames;
     }
 
+
+    // Update filter params in URL to keep state
+    useEffect(() => {
+        const url_parameters = {};
+
+        if (selectedAccessibilityTags?.length > 0) {
+            url_parameters.accessibility = selectedAccessibilityTags;
+        }
+
+        if (selectedGenreTags?.length > 0) {
+            url_parameters.genre = selectedGenreTags;
+        }
+
+        if (selectedPlatformTags?.length > 0) {
+            url_parameters.platform = selectedPlatformTags 
+        }
+
+        url_parameters.sort = sortOption;
+
+        setSearchParams(url_parameters);
+    }, [selectedAccessibilityTags, selectedGenreTags, selectedPlatformTags, sortOption, setSearchParams])
+
+
+    // Fetch games from backend based on filters
     useEffect(() => {
         setLoading(true); 
 
         const filter_parameters = {}
 
         if (selectedAccessibilityTags?.length > 0) {
-            filter_parameters.accessibility_tags = selectedAccessibilityTags
+            filter_parameters.accessibility_tags = selectedAccessibilityTags;
         }
 
         if (selectedGenreTags?.length > 0) {
-            filter_parameters.genre_tags = selectedGenreTags
+            filter_parameters.genre_tags = selectedGenreTags;
         }
 
         if (selectedPlatformTags?.length > 0) {
-            filter_parameters.platform_tags = selectedPlatformTags
+            filter_parameters.platform_tags = selectedPlatformTags;
         }
-
-        console.log("Filter parameters being sent:", filter_parameters);
 
         axios.get("http://127.0.0.1:8000/app/games/games/browse", { params: filter_parameters })
         .then(response => {
@@ -124,8 +152,10 @@ function BrowsePage() {
         });
     }, [selectedAccessibilityTags, selectedGenreTags, selectedPlatformTags, sortOption]);
 
+
     if (!games) return <p>No games data found.</p>;
 
+    
     return (
         <div>
             <div className="browse-page">
