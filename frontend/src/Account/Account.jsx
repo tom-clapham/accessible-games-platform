@@ -1,19 +1,14 @@
 import {useState, useEffect} from 'react'
-import { updateDetails, updatePreferences, updatePersonal, user_info, deleteAccount } from '../endpoints/api'
+import { updateDetails, updatePreferences, updatePersonal, user_info, deleteAccount, getAccessibility, getGenres } from '../endpoints/api'
 import styles from './Account.module.css'
 import { useLocation } from 'react-router-dom'
-import { CiUser } from "react-icons/ci";
+import { CiUser, CiSettings } from "react-icons/ci";
 import { TbLockPassword } from "react-icons/tb";
-import { MdDeleteOutline } from "react-icons/md";
-import { CiSettings } from "react-icons/ci";
+import { MdDeleteOutline, MdOutlineEdit } from "react-icons/md";
 import { IoAccessibilityOutline } from "react-icons/io5";
-import { FaRegHeart } from "react-icons/fa";
-import { FaRegCommentDots } from "react-icons/fa";
+import { FaRegHeart, FaRegCommentDots } from "react-icons/fa";
 import { IoIosWarning } from "react-icons/io";
-import SearchBarGenres from '../Components/SearchBars/SearchBarGenres'
-import SearchBarAccessibility from '../Components/SearchBars/SearchBarAccessibility'
 import { TiDelete } from "react-icons/ti";
-import { MdOutlineEdit } from "react-icons/md";
 
 const Account = () => {
 
@@ -28,6 +23,12 @@ const Account = () => {
     const [year, setYear] = useState("");
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
+    const [showAccessibility , setShowAccessibility] = useState(false)
+    const [showGenre , setShowGenre] = useState(false)
+    const [allGenres , setAllGenres] = useState([])
+    const [allAccessibility , setAllAccessibility] = useState([])
+    const [userGenres, setUserGenres] = useState([])
+    const [userAccessibility, setUserAccessibility] = useState([])
 
     const [updateSuccess, setUpdateSuccess] = useState(false)
     const [errorUsername, setErrorUsername] = useState(false);
@@ -72,6 +73,7 @@ const Account = () => {
         const dateOnly = isoString.split('T')[0];
         const success = await updatePersonal(first, last, dateOnly);
         if(success){
+            setErrorDate(false)
             setUpdateSuccess(true)
             const timeout = setTimeout(() => {
                 window.location.reload();
@@ -99,10 +101,14 @@ const Account = () => {
     }
 
     const handlePreferencesSave = async (genres, accessibilities) => {
+        console.log(genres)
+        console.log(accessibilities)
         const success = await updatePreferences(genres, accessibilities);
-        console.log(success)
         if(success){
-            console.log("success");
+            setUpdateSuccess(true)
+            const timeout = setTimeout(() => {
+                window.location.reload();
+            }, 3000);
         }
     }
 
@@ -130,6 +136,8 @@ const Account = () => {
             setYear(y);
             setUsername(info.username);
             setEmail(info.email);
+            setUserGenres(info.genre_tags);
+            setUserAccessibility(info.accessibility_tags);
         }
 
         if(message){
@@ -137,8 +145,67 @@ const Account = () => {
         }
     }, []);
 
-  
+    useEffect(() => {
+        const fetchAccessibility = async () => {
+        const success = await getAccessibility();
+        const namesArray = success.map(item => item.name);
+        setAllAccessibility(namesArray)
+    }
+    fetchAccessibility();
+
+    }, [])
     
+    useEffect(() => {
+        const fetchGenres = async () => {
+        const success = await getGenres();
+        const namesArray = success.map(item => item.name);
+        setAllGenres(namesArray)
+    }
+    fetchGenres();
+
+    }, [])
+
+    function handleShowAccessibility(){
+        if(showAccessibility){
+            setShowAccessibility(false)
+        } else {
+            setShowAccessibility(true)
+            console.log(allAccessibility)
+        }
+    }
+
+    function handleShowGenres(){
+        if(showGenre){
+            setShowGenre(false)
+        } else {
+            setShowGenre(true)
+            console.log(allGenres)
+        }
+    }
+
+    const handleDeleteAccessibility = (id) => {
+        const updatedTags = userAccessibility.filter(tag => tag !== id);
+        setUserAccessibility(updatedTags);
+        allAccessibility.push(id)
+    }
+    
+    const handleDeleteGenres = (id) => {
+        const updatedTags = userGenres.filter(tag => tag !== id);
+        setUserGenres(updatedTags);
+        allGenres.push(id)
+    }
+
+    const handleAddAccessibility = (item) => {
+        const updatedTags = allAccessibility.filter(tag => tag !== item);
+        setAllAccessibility(updatedTags);
+        userAccessibility.push(item)
+    }
+
+    const handleAddGenres = (item) => {
+        const updatedTags = allGenres.filter(tag => tag !== item);
+        setAllGenres(updatedTags);
+        userGenres.push(item)
+    }    
 
     return (
         <div className={styles.settings_container}>
@@ -209,7 +276,7 @@ const Account = () => {
                             <button className={styles.edit_dob} onClick={() => handleEditDob("day", "month", "year")}><MdOutlineEdit className={styles.edit_icon}/></button>
                         </div>
                     </div>
-                    {errorDate &&(<div className={styles.error}><IoIosWarning/>Please enter your real birthday.</div>)}
+                    {errorDate &&(<div className={styles.error}><IoIosWarning className={styles.warning} />Please enter your real birthday.</div>)}
                     {updateSuccess &&(<div className={styles.success}>Your details have been updated successfully. The page will automatically reload in <b>3 seconds</b></div>)}
                     <button className={styles.save} onClick={() => handlePersonalSave(first, last, Number(day), Number(month), Number(year))}>Save Changes</button>
                     <hr/>
@@ -230,9 +297,9 @@ const Account = () => {
                         </div>
                         <button className={styles.edit} type='button' onClick={() => handleEdit("email")}><MdOutlineEdit className={styles.edit_icon}/></button>
                     </form>
-                    {errorEmail &&(<div className={styles.error}><IoIosWarning/>This email has already been taken.</div>)}
-                    {invalidEmail &&(<div className={styles.error}><IoIosWarning/>Please enter a real email address.</div>)}
-                    {errorUsername &&(<div className={styles.error}><IoIosWarning/>This username has already been taken.</div>)}
+                    {errorEmail &&(<div className={styles.error}><IoIosWarning className={styles.warning}/>This email has already been taken.</div>)}
+                    {invalidEmail &&(<div className={styles.error}><IoIosWarning className={styles.warning}/>Please enter a real email address.</div>)}
+                    {errorUsername &&(<div className={styles.error}><IoIosWarning className={styles.warning}/>This username has already been taken.</div>)}
                     {updateSuccess &&(<div className={styles.success}>Your details have been updated successfully. The page will automatically reload in <b>3 seconds</b></div>)}
                     <button className={styles.save} onClick={() => handleDetailsSave(username, email)}>Save Changes</button>
                     <hr/>
@@ -240,10 +307,9 @@ const Account = () => {
                 )}
                 {activeSection === "security" &&(<div className={styles.section}>
                     <h2 className={styles.title}>Password & Security</h2>
-                    <h3>Change your password and enable 2FA. We recommend doing this, it keeps your account more secure.</h3>
+                    <h3>Change your password here. We recommend doing this frequently, it helps keep your account more secure.</h3>
                     <div className={styles.securityButtons}>
-                        <button className={styles.save}>Change password</button>
-                        <button className={styles.save}>Enable 2FA</button>
+                        <button className={styles.regular_button}>Change password</button>
                     </div>
                     <hr/>
                 </div>
@@ -254,24 +320,45 @@ const Account = () => {
                     <div className={styles.accessibility_section}>
                         <span>Accessibility Preferences</span>
                         <ul className={styles.accessibility_list}>
-                            {info.accessibility_tags?.map((tag, i) => (
-                            <li key={i + 1}>
-                                {tag}<TiDelete className={styles.cross}/>
+                            {userAccessibility?.map((tag, i) => (
+                            <li id={tag} key={i + 1}>
+                                {tag}<TiDelete className={styles.cross} onClick={() => handleDeleteAccessibility(tag)}/>
                             </li>))}
                         </ul>
-                        <SearchBarAccessibility/>
+                        <div className={styles.searchContainer}>
+                            <button className={styles.regular_button} onClick={handleShowAccessibility}>{showAccessibility ? 'Hide available genre tags' : 'Show available genre tags'}</button>
+                            {showAccessibility ?(<ul className={styles.accessibilityList}>
+                                {allAccessibility.map(item => (
+                                <li key={item.id} className={styles.item}>{item}<button className={styles.add} onClick={() => handleAddAccessibility(item)}>Add</button></li>
+                                ))}
+                            </ul>
+                            ) : (
+                                <ul></ul>
+                            )}
+                        </div>
                     </div>
                     <div className={styles.genres_section}>
                         <span>Game Genre Preferences</span>
                         <ul className={styles.genre_list}>
-                            {info.genre_tags?.map((tag, i) => (
-                            <li key={i + 1}>
-                                {tag}<TiDelete className={styles.cross}/>
+                            {userGenres?.map((tag, i) => (
+                            <li id={tag} key={i + 1}>
+                                {tag}<TiDelete className={styles.cross} onClick={() => handleDeleteGenres(tag)}/>
                             </li>))}
                         </ul>
-                        <SearchBarGenres/>
+                        <div className={styles.searchContainer}>
+                            <button className={styles.regular_button} onClick={handleShowGenres}>{showGenre ? 'Hide available accessibility tags' : 'Show available accessibility tags'}</button>
+                            {showGenre ?(<ul className={styles.genreList}>
+                                {allGenres.map(item => (
+                                <li key={item.id} className={styles.item}>{item}<button className={styles.add} onClick={() => handleAddGenres(item)}>Add</button></li>
+                                ))}
+                            </ul>
+                            ) : (
+                                <ul></ul>
+                            )}
+                        </div>
                     </div>
-                    <button className={styles.save}>Save Changes</button>
+                    {updateSuccess &&(<div className={styles.success}>Your details have been updated successfully. The page will automatically reload in <b>3 seconds</b></div>)}
+                    <button className={styles.save} onClick={() => handlePreferencesSave(userGenres, userAccessibility)}>Save Changes</button>
                     <hr/>
                 </div>
                 )}

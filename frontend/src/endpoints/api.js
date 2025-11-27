@@ -18,6 +18,8 @@ const UPDATE_PERSONAL_URL = `${BASE_URL}update-personal/`
 const UPDATE_DETAILS_URL = `${BASE_URL}update-details/`
 const UPDATE_PREFERENCES_URL = `${BASE_URL}update-preferences/`
 const DELETE_URL = `${BASE_URL}delete-account/`
+const ACCESSIBILITY_URL = `${BASE_URL}get-accessibility/`
+const GENRES_URL = `${BASE_URL}get-genres/`
 
 export const user_info = async () => {
     try {
@@ -233,6 +235,31 @@ export const deleteAccount = async () => {
         console.log(error);
     }
 }
+
+export const getAccessibility = async () => {
+    try{
+        const response = await axios.post(ACCESSIBILITY_URL,
+        {},
+        { withCredentials: true }
+        )
+        return response.data.success;
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+export const getGenres = async () => {
+    try{
+        const response = await axios.post(GENRES_URL,
+        {},
+        { withCredentials: true }
+        )
+        return response.data.success;
+    } catch (error) {
+        console.log(error);
+    }
+}
+
 
 
 

@@ -2,7 +2,7 @@ from rest_framework.response import Response
 from rest_framework import viewsets, serializers
 from rest_framework.decorators import api_view, permission_classes, action
 from rest_framework.permissions import IsAuthenticated, AllowAny
-from .serializer import UserRegistrationSerializer
+from .serializer import UserRegistrationSerializer, AccessibilityTagSerializer, GenreTagSerializer
 from .models import CustomUser, GenreTag, AccessibilityTag
 from django.core.mail import send_mail
 from django.contrib.auth import logout
@@ -328,6 +328,43 @@ def delete(request):
         return res
     except:
         return Response({'success':False})
+    
+@api_view(['POST'])
+@permission_classes([AllowAny])
+def get_accessibility(request):
+    user = request.user
+    user_tag = user.accessibility_tags.values_list('id', flat=True)
+    tags = AccessibilityTag.objects.exclude(id__in=user_tag)
+    serializer = AccessibilityTagSerializer(tags, many=True)
+    return Response({'success':serializer.data})
+
+@api_view(['POST'])
+@permission_classes([AllowAny])
+def get_genres(request):
+    user = request.user
+    user_tag = user.genre_tags.values_list('id', flat=True)
+    tags = GenreTag.objects.exclude(id__in=user_tag)
+    serializer = GenreTagSerializer(tags, many=True)
+    return Response({'success':serializer.data})
+
+@api_view(['POST'])
+@permission_classes([AllowAny])
+def update_preferences(request):
+    user = request.user
+
+    genres = request.data.get('genre_arr')
+    accessibility = request.data.get('accessibility_arr')
+
+    genres_qs = GenreTag.objects.filter(name__in=genres)
+    access_qs = AccessibilityTag.objects.filter(name__in=accessibility)
+
+    user.genre_tags.set(genres_qs)
+    user.accessibility_tags.set(access_qs)
+
+    user.save()
+    print("NEW USER: ", user)
+    return Response({'success':True})
+
     
 
 

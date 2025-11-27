@@ -17,6 +17,7 @@ urlpatterns = [
     path('update-personal/', views.update_personal),
     path('update-details/', views.update_details),
     path('delete-account/', views.delete),
-
-    #path('update-preferences/'),
+    path('get-accessibility/', views.get_accessibility),
+    path('get-genres/', views.get_genres),
+    path('update-preferences/', views.update_preferences),
 ]

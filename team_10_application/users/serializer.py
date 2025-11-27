@@ -36,3 +36,12 @@ class UserEmailsSerializer(serializers.ModelSerializer):
         model = CustomUser
         fields = ('username', 'email')
         
+class AccessibilityTagSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = AccessibilityTag
+        fields = '__all__'  
+
+class GenreTagSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = GenreTag
+        fields = '__all__'
