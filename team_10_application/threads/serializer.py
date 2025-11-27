@@ -9,4 +9,9 @@ class PostsSerializer(serializers.ModelSerializer):
             'userId': {"write_only": True},
             'gameId': {"write_only": True}
                     }
+    
+class ReviewsVotesSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ReviewsVotes
+        fields = ['vote', 'postId', 'userId']
         

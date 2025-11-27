@@ -3,6 +3,7 @@ pyproject.toml
 team_10_application/games/__init__.py
 team_10_application/games/admin.py
 team_10_application/games/apps.py
+team_10_application/games/discover_serializers.py
 team_10_application/games/discover_views.py
 team_10_application/games/models.py
 team_10_application/games/serializers.py

@@ -1,0 +1,131 @@
+body {
+    font-family: "Inter", sans-serif;
+    font-size: 16px;
+    color: #fff;          
+    background-color: #121212;
+}
+
+.browse-page {
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+.browse-page-headings {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 30px;
+}
+
+.heading {
+    font-size: 20px;
+    padding-top: 12px;
+    padding-bottom: 20px;
+}
+
+.browse-page-grid {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 30px;
+}
+
+.filter-results-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    padding-bottom: 30px;
+}
+
+.game-card {
+    width: 200px;         
+    flex: 0 0 200px;       
+    display: flex;
+    flex-direction: column;
+}   
+
+.game-image {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+    border-radius: 6px;
+}
+
+.game-name {
+    width: 100%;
+    max-width: 200px;
+    padding-top: 10px;
+    font-weight: bold;
+    white-space: normal;
+    word-wrap: break-word;
+}
+
+.game-price {
+    padding-top: 6px;
+    font-size: 14px;
+}
+
+.p-multiselect {
+  width: 100%;
+  box-sizing: border-box;
+  background-color: #0c0c0c;
+  border: 1px solid #2a2a2a;
+}
+
+
+.p-multiselect-trigger {
+  background-color: #0c0c0c;
+  border-left: 1px solid #2a2a2a;
+}
+
+.p-multiselect-panel {
+  background-color: #050505;
+  border: 1px solid #2a2a2a;
+}
+
+.p-multiselect-item.p-highlight {
+  background-color: #1d1d1d;  
+}
+
+.p-multiselect-token {
+  background-color: #1a1a1a;
+  padding: 2px 6px;
+  margin: 2px;
+}
+
+.p-multiselect-header {
+  background-color: #0C0C0C;
+  display: none;
+}
+
+.p-multiselect-items-wrapper {
+  background-color: #0c0c0c;
+}
+
+.tags-filter-container {
+  padding-bottom: 35px;
+}
+
+.heading-sort-by {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  padding-bottom: 20px;
+}
+
+.heading-label {
+  font-size: 20px;      
+  padding-bottom: 0;            
+}
+
+.sort-option-select {
+  background-color: #0c0c0c;
+  border: 1px solid #2a2a2a;
+}
+
+.p-dropdown-items {
+  background-color: #0c0c0c;
+}
+
+.p-dropdown-item.p-highlight {
+  background-color: #1d1d1d;  
+}

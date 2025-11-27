@@ -9,10 +9,12 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    position: sticky;
     max-width: 100%;
     background: #000;
     padding: 10px 7%;
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.25);
+    z-index: 999;
 }
 
 .list {
@@ -35,7 +37,7 @@
     cursor: pointer;
 }
 
-.home-link:hover, .games-link:hover, .community-link:hover, .about-link:hover {
+.discover-link:hover, .browse-link:hover, .community-link:hover, .about-link:hover {
     color: #60cdff;
 }
 
@@ -85,6 +87,7 @@
   position: absolute; 
   top: 80px; 
   right: 155px;
+  z-index: 999;
 }
 
 .logo-small {

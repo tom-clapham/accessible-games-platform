@@ -4,7 +4,6 @@ h2, h3 {
     /* background-color: hsl(0, 0%, 15%); */
 }
 
-
 .loadingIcon {
     font-weight: 100;
     position: fixed;
@@ -33,6 +32,15 @@ h2, h3 {
     background-color: rgba(0, 0, 0, 0.8);
 }
 
+.clostModalBtn {
+    margin-left: 0; 
+    margin-right: auto;
+    margin-top: 10px;
+    height: 30px;
+    cursor: pointer;
+    filter: invert(100%);
+}
+
 .modalHidden {
     display: none;
 }
@@ -51,6 +59,14 @@ h2, h3 {
     align-items: center;
 }
 
+.gameName {
+    margin-top: 0;
+    margin-left: 5%;
+    margin-bottom: 50px;
+    font-family: "Roboto", sans-serif;
+    font-size: xx-large;
+}
+
 .postNameBlock {
     display: flex;
     flex-direction: row;
@@ -60,6 +76,72 @@ h2, h3 {
 .titleMessage {
     display: flex;
     flex-direction: column;
+    margin-top: 10px
+}
+
+.parentBox {
+    display: flex;
+    flex-direction: column;
+    border-style: solid;
+    border-color: hsl(0, 0%, 40%);
+    border-radius: 5px;
+    border-width: 1px;
+    margin-bottom: 5px;
+    margin-left: 5%;
+    padding-top: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    width: 80vw;
+    min-height: fit-content;
+}
+
+.rpTitle {
+    margin-top: 0;
+    margin-bottom: 2px;
+    font-size: 35px;
+}
+
+.rpName {
+    font-size: 17px;
+    margin: 0;
+}
+
+.rpUsername {
+    margin: 0;
+    font-size: 15px;
+    font-weight: lighter;
+    color:grey
+}
+
+.rpMessage {
+    display: flex;
+    margin-top: 10px;
+    font-size: 25px;
+    max-width: auto;
+    overflow-wrap: break-word;
+    /* overflow:auto; */
+}
+
+.rpVoteBtn {
+    background: none;
+    color: white;
+    border: none;
+    font-size: 30px;
+    font-family: "Inter", "Segoe UI", Arial, sans-serif;
+    font-weight:900;
+    padding-bottom: 5px;
+    padding-top: 0px;
+    margin-right: 0px;
+}
+
+.rpVoteBtn:hover {
+    cursor: pointer
+}
+
+.rpCommentImg {
+    width:25px;
+    height: 25px;
+    filter: invert(100%);
 }
 
 .parentTitle {
@@ -96,7 +178,8 @@ h2, h3 {
 }
 
 .postButton {
-    margin:5px;
+    margin:10px;
+    
     padding: 5px 10px;
     background-color: hsl(201, 100%, 50%);
     border-width:0;
@@ -108,14 +191,22 @@ h2, h3 {
     background-color: hsl(201, 100%, 60%);
 }
 
-.backButton {
-    font-size:xx-large;
+.backBtn {
+    width: fit-content;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-bottom: 20px;
+    padding: 5px 10px;
     background: none;
-    border:0;
-    color:hsl(0, 0%, 90%);   
+    color: hsl(0, 0%, 90%);
+    border-width:1px;
+    border-style: solid;
+    border-color: hsl(0, 0%, 40%);
+    border-radius:5px;
+    z-index: 3;
 }
 
-.backButton:hover, .newPost:hover, .postBox:hover {
+.backBtn:hover, .newPost:hover, .postBox:hover {
     cursor: pointer;
 }
 
@@ -125,21 +216,100 @@ h2, h3 {
     border-style: solid;
     border-color: hsl(0, 0%, 40%);
     border-radius: 5px;
-    border-width: 2px;
+    border-width: 1px;
     margin-bottom: 5px;
-    padding: 10px;
+    padding-top: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    width: 70vw;
+    height: 20vh;
 }
 
-/* .parentBox {
-    
-} */
+.commentImg {
+    width:25px;
+    height: 25px;
+    filter: invert(100%);
+    margin-left: 10px;
+}
+
+.reportImg {
+    width:25px;
+    height: 19px;
+    filter: invert(100%);
+    margin-left: 5px
+}
+
+.emptyReplies {
+    text-align: center;
+    margin-right:5%;
+}
+
+.postTitle {
+    margin-top: 0;
+    margin-bottom: 2px;
+}
+
+.postUsername {
+    margin: 0;
+    font-size: 13px;
+    font-weight: lighter;
+    color:grey
+}
+
+.postName {
+    font-size: 15px;
+    margin: 0;
+}
+
+.postMessage {
+    display: flex;
+    margin-top: 10px;
+    max-width: auto;
+    overflow-wrap: break-word;
+    /* overflow:auto; */
+}
+
+.vpBox {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10%;
+    gap: 3%;
+}
+
+.voteBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.voteCount {
+    text-align: center;
+    margin: 0
+}
+
+.voteBtn {
+    background: none;
+    color: white;
+    border: none;
+    font-size: 50px;
+    font-family: "Inter", "Segoe UI", Arial, sans-serif;
+    font-weight: bolder;
+    padding-bottom: 5px;
+    padding-top: 0px;
+}
+
+.voteBtn:hover {
+    cursor: pointer
+}
 
 .createReply {
     display: flex;
     flex-direction: row;
     align-items: center;
     gap: 15px;
-    margin-left: 10px;
+    margin-left: 7%;
 }
 
 .createReplyMessage {
@@ -168,22 +338,36 @@ h2, h3 {
     border-style: solid;
     border-color: hsl(0, 0%, 40%);
     border-radius: 5px;
-    border-width: 2px;
+    border-width: 1px;
     margin-bottom: 5px;
     padding: 10px;
 }
 
+.profileImg {
+    filter: invert(100%);
+    height:40px
+}
+
+.replyHr {
+    margin-left:6%;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    width: 79vw;
+}
 .postStats {
     display: flex;
     flex-direction: row;
-    gap: 20px;
+    align-items: center;
+    gap: 5px;
+    margin-top: auto;
+    margin-bottom: 0;
 }
 
 .newPost {
     z-index: 1;
     position: fixed;
-    bottom: 50px;
-    right: 50px;
+    bottom: 8%;
+    right: 5%;
     background-color: hsl(201, 100%, 50%);
     border-width: 0;
     border-radius: 50%;

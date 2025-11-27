@@ -1,17 +1,28 @@
 import { Outlet } from "react-router-dom";
-import Navbar from "../Components/Navbar/Navbar";
+import { useEffect } from 'react';
+import Navbar from "../Components/Navbar/Navbar"
 import styles from './Layout.module.css';
 
 function LayoutWithNav() {
+  useEffect(() => {
+    const nav = document.querySelector(`.${styles.navbar}`);
+    if (nav) {
+      document.documentElement.style.setProperty(
+        "--navbar-height",
+        nav.offsetHeight + "px"
+      );
+    }
+  }, [])
+
   return (
-    <div className={styles.container}>
-      <div>
-        <Navbar />
-      </div>
-      <main className={styles.outlet}>
-        <Outlet />
-      </main>
+    <>
+    <div className={styles.navbar}>
+      <Navbar />
     </div>
+    <main className={styles.container}>
+      <Outlet />
+    </main>
+    </>
   );
 }
 

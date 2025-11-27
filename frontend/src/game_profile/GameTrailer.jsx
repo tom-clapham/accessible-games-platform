@@ -22,13 +22,25 @@ export default GameTrailer;
 
 function toEmbed(url) {
   try {
+    // Get url of video
     const u = new URL(url);
+
+    // Get the ID of the video to turn it into embed
+    let videoId = null;
+
     if (u.hostname.includes("youtube.com") && u.pathname === "/watch") {
-      return `https://www.youtube.com/embed/${u.searchParams.get("v")}`;
+      videoId = u.searchParams.get("v");
     }
+
     if (u.hostname === "youtu.be") {
-      return `https://www.youtube.com/embed/${u.pathname.slice(1)}`;
+      videoId = u.pathname.slice(1);
     }
+
+    // Make the video play by default, and mute by default
+    if (videoId) {
+      return `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1`;
+    }
+
     return url;
   } catch {
     return url;

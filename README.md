@@ -29,12 +29,22 @@ Depending on what you are making, it can be a good idea to include screenshots o
 - `npm install`
 - `npm run dev`
 
+## Testing
+### Running JS & JSX tests (Client-side logic)
+- `cd frontend`
+- `npm test`
+### Running Django tests (Server-side logic)
+- First, set up environment following the instructions above
+- `cd team_10_application`
+- `python manage.py test`
+
 ## Usage
 Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
 
 ## Support
 Contact the team:
 khand6@cardiff.ac.uk - Daiyan
+wodkiewiczs@cardiff.ac.uk - Szymon
 
 ## Roadmap
 If you have ideas for releases in the future, it is a good idea to list them in the README.
