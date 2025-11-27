@@ -35,6 +35,7 @@ Depending on what you are making, it can be a good idea to include screenshots o
 - `npm test`
 ### Running Django tests (Server-side logic)
 - First, set up environment following the instructions above
+- `cd team_10_application`
 - `python manage.py test`
 
 ## Usage
