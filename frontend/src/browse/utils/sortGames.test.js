@@ -22,8 +22,33 @@ const testGames = [
 ];
 
 describe("sortGames", () => {
-    test("testCorrectlySortedByNameAscending", () => {
+    test("testCorrectlySortsByNameAscending", () => {
         const result = sortGames(testGames, "nameAscending").map((game) => game.name);
         expect(result).toEqual(["Among Us", "Football Manager", "League of Legends"]);
+    });
+
+    test("testCorrectlySortsByNameDescending", () => {
+        const result = sortGames(testGames, "nameDescending").map((game) => game.name);
+        expect(result).toEqual(["League of Legends", "Football Manager", "Among Us"]);
+    });
+
+    test("testCorrectlySortsByPriceHighestToLowest", () => {
+        const result = sortGames(testGames, "priceHighestToLowest").map((game) => game.name);
+        expect(result).toEqual(["Football Manager", "Among Us", "League of Legends"]);
+    });
+
+    test("testCorrectlySortsByPriceLowestToHighest", () => {
+        const result = sortGames(testGames, "priceLowestToHighest").map((game) => game.name);
+        expect(result).toEqual(["League of Legends", "Among Us", "Football Manager"]);
+    });
+
+    test("testCorrectlySortsByReleaseDateNewestToOldest", () => {
+        const result = sortGames(testGames, "releaseNewestToOldest").map((game) => game.name);
+        expect(result).toEqual(["Among Us", "Football Manager", "League of Legends"]);
+    });
+
+    test("testCorrectlySortsByReleaseDateOldestToNewest", () => {
+        const result = sortGames(testGames, "releaseOldestToNewest").map((game) => game.name);
+        expect(result).toEqual(["League of Legends", "Football Manager", "Among Us"]);
     });
 })
