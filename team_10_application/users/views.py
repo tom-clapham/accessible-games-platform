@@ -5,6 +5,8 @@ from rest_framework.permissions import IsAuthenticated, AllowAny
 from .serializer import UserRegistrationSerializer
 from .models import CustomUser, GenreTag, AccessibilityTag
 from django.core.mail import send_mail
+from django.contrib.auth import logout
+
 from rest_framework_simplejwt.views import (
     TokenObtainPairView,
     TokenRefreshView,
@@ -94,7 +96,7 @@ def get_user(request):
     return Response(serializer.data)
         
 @api_view(['POST'])
-def logout(request):
+def logout_user(request):
     try:
         res = Response()
         res.data = {'success':True}
@@ -151,7 +153,6 @@ class RegistrationViewSet(viewsets.ViewSet):
         try:
             email = email_field.run_validation(data)
         except serializers.ValidationError as e:
-            print(e.detail)
             return Response({'success': False})
         
         request.session['reg_email'] = data
@@ -213,7 +214,6 @@ class RegistrationViewSet(viewsets.ViewSet):
             access_qs = AccessibilityTag.objects.filter(name__in=accessibility)
             user.genre_tags.set(genres_qs)
             user.accessibility_tags.set(access_qs)
-            print("User:", user)
             return Response({'success': True})
         return Response({'success':False})
 
@@ -245,7 +245,6 @@ def forgot_credentials(request):
                 return Response({"success": True})
     return Response({"success": False})
 
-
 @api_view(['POST'])
 @permission_classes([AllowAny])
 def password_reset(request):
@@ -269,4 +268,70 @@ def password_reset(request):
     user.save()
     
     return Response({'success':True})
-        
+
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def update_personal(request): 
+    user = request.user
+    first = request.data.get('first_name')
+    last = request.data.get('last_name')
+
+    date_field = serializers.DateField(input_formats=['%Y-%m-%d'])
+    try:
+        dob = date_field.run_validation(request.data.get('dob'))
+    except serializers.ValidationError as e:
+        return Response({'success': False})
+    
+    year = dob.year
+    if year > 2012 or year < 1960:
+        return Response({'success': False})
+    
+    month = dob.month
+    if month == 'month':
+        return Response({'success': False})
+    
+    user.first_name = first
+    user.last_name = last
+    user.date_of_birth = dob
+    user.save()
+    return Response({'success':True})
+    
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def update_details(request): 
+    user = request.user
+    username = request.data.get('username')
+    email = request.data.get('email')
+    
+    if CustomUser.objects.filter(email=email).exists() and CustomUser.objects.get(email=email) != user:
+        return Response({'success': 'email'})
+    else:
+        if CustomUser.objects.filter(username=username).exists() and CustomUser.objects.get(username=username) != user:
+            return Response({'success': 'username'})
+
+    user.username = username
+    user.email = email
+    user.save()
+    return Response({'success': True})
+
+@api_view(['POST'])
+@permission_classes([AllowAny])
+def delete(request):
+    user = request.user
+    try:
+        res = Response()
+        res.data = {'success':True}
+        res.delete_cookie('access_token', path='/', samesite='None')
+        res.delete_cookie('refresh_token', path='/', samesite='None')
+        user.delete()
+
+        return res
+    except:
+        return Response({'success':False})
+    
+
+
+
+    
+
+

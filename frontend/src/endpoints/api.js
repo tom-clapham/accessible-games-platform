@@ -17,6 +17,7 @@ const  RESET_URL = `${BASE_URL}reset-password/`
 const UPDATE_PERSONAL_URL = `${BASE_URL}update-personal/`
 const UPDATE_DETAILS_URL = `${BASE_URL}update-details/`
 const UPDATE_PREFERENCES_URL = `${BASE_URL}update-preferences/`
+const DELETE_URL = `${BASE_URL}delete-account/`
 
 export const user_info = async () => {
     try {
@@ -187,7 +188,7 @@ export const step_5 = async (array) => {
 export const updatePersonal = async (first, last, date) => {
     try{
         const response = await axios.post(UPDATE_PERSONAL_URL,
-        { first_name, last_name, dob: date},
+        { first_name:first, last_name:last, dob: date},
         { withCredentials: true }
         )
         return response.data.success;
@@ -202,6 +203,7 @@ export const updateDetails = async (username, email) => {
         { username:username, email:email},
         { withCredentials: true }
         )
+        console.log(response.data.success)
         return response.data.success;
     } catch (error) {
         console.log(error);
@@ -219,5 +221,18 @@ export const updatePreferences = async (genre_array, accessibility_array) => {
         console.log(error);
     }
 }
+
+export const deleteAccount = async () => {
+    try{
+        const response = await axios.post(DELETE_URL,
+        {},
+        { withCredentials: true }
+        )
+        return response.data.success;
+    } catch (error) {
+        console.log(error);
+    }
+}
+
 
 

@@ -1,5 +1,5 @@
 import {useState, useEffect} from 'react'
-import { user_info } from '../endpoints/api'
+import { updateDetails, updatePreferences, updatePersonal, user_info, deleteAccount } from '../endpoints/api'
 import styles from './Account.module.css'
 import { useLocation } from 'react-router-dom'
 import { CiUser } from "react-icons/ci";
@@ -26,6 +26,17 @@ const Account = () => {
     const [day, setDay] = useState("");
     const [month, setMonth] = useState("");
     const [year, setYear] = useState("");
+    const [username, setUsername] = useState("");
+    const [email, setEmail] = useState("");
+
+    const [updateSuccess, setUpdateSuccess] = useState(false)
+    const [errorUsername, setErrorUsername] = useState(false);
+    const [errorEmail, setErrorEmail] = useState(false);
+    const [errorDate, setErrorDate] = useState(false);
+    const [invalidEmail, setInvalidEmail] = useState(false);
+    const [sure, setSure] = useState(false);
+    
+    
 
     const handleSectionChange = (section) => {
         setActiveSection(section);
@@ -40,7 +51,7 @@ const Account = () => {
             input.disabled = true;
             input.removeEventListener("blur", onBlur);
         });
-    }
+    };
 
     const handleEditDob = (day, month, year) => {
 
@@ -53,16 +64,60 @@ const Account = () => {
             input.removeEventListener("blur", onBlur);
         });
         });
-    }
+    };
 
-    const handlePersonalSave = (first, last, day, month, year) => {
-        const d = new Date(year, month - 1 , day + 1);
+    const handlePersonalSave = async (first, last, day, month, year) => {
+        const d = new Date(year, month - 1 , day);
         const isoString = d.toISOString();        
         const dateOnly = isoString.split('T')[0];
-        console.log(dateOnly)
+        const success = await updatePersonal(first, last, dateOnly);
+        if(success){
+            setUpdateSuccess(true)
+            const timeout = setTimeout(() => {
+                window.location.reload();
+            }, 3000);
+        } else {
+            setErrorDate(true)
+            setUpdateSuccess(false)
+        }
+    } 
+
+    const handleDetailsSave = async (username, email) => {
+        const success = await updateDetails(username, email);
+        if(success){
+            setUpdateSuccess(true)
+            const timeout = setTimeout(() => {
+                window.location.reload();
+            }, 3000);
+        } else if(success === "email"){
+            setErrorEmail(true)
+            setUpdateSuccess(false)
+        } else if(success === "username"){
+            setErrorUsername(true)
+            setUpdateSuccess(false)
+        }
     }
 
+    const handlePreferencesSave = async (genres, accessibilities) => {
+        const success = await updatePreferences(genres, accessibilities);
+        console.log(success)
+        if(success){
+            console.log("success");
+        }
+    }
 
+    const handleDeletePopup = () => {
+        setSure(true);
+    };
+
+    const handleDeleteAccount = () => {
+        deleteAccount();
+        const timeout = setTimeout(() => {
+                window.location.reload();
+        }, 1000);
+
+    }
+    
     useEffect(() => {
         const fetchInfo = async () => {
         const info = await user_info();
@@ -73,12 +128,14 @@ const Account = () => {
             setDay(d);
             setMonth(m);
             setYear(y);
+            setUsername(info.username);
+            setEmail(info.email);
         }
 
         if(message){
             fetchInfo();
         }
-    }, [first, info]);
+    }, []);
 
   
     
@@ -114,12 +171,12 @@ const Account = () => {
                     <div className={styles.nameContainer}>
                         <div className={styles.firstContainer}>
                             <label className={styles.label}>First Name</label>
-                            <input id="first" className={styles.input} required disabled maxLength='100' value={first} type='text' placeholder={info.first_name} onChange={(e) => setFirst(e.target.value)}></input>
+                            <input id="first" className={styles.input} required disabled value={first} maxLength='100' type='text' placeholder={info.first_name} onChange={(e) => setFirst(e.target.value)}></input>
                         </div>
-                        <button className={styles.edit} onClick={() => handleEdit("first")}><MdOutlineEdit value={last} className={styles.edit_icon}/></button>
+                        <button className={styles.edit} onClick={() => handleEdit("first")}><MdOutlineEdit className={styles.edit_icon}/></button>
                         <div className={styles.lastContainer}>
                             <label className={styles.label}>Last Name</label>
-                            <input id="last" className={styles.input} required disabled maxLength='100' type='text' placeholder={info.last_name} onChange={(e) => setLast(e.target.value)}></input>
+                            <input id="last" className={styles.input} required disabled value={last} maxLength='100' type='text' placeholder={info.last_name} onChange={(e) => setLast(e.target.value)}></input>
                         </div>
                         <button className={styles.edit} onClick={() => handleEdit("last")}><MdOutlineEdit className={styles.edit_icon}/></button>
                     </div>
@@ -152,26 +209,32 @@ const Account = () => {
                             <button className={styles.edit_dob} onClick={() => handleEditDob("day", "month", "year")}><MdOutlineEdit className={styles.edit_icon}/></button>
                         </div>
                     </div>
-                    <button className={styles.save_personal} onClick={() => handlePersonalSave(first, last, Number(day), Number(month), Number(year))}>Save Changes</button>
+                    {errorDate &&(<div className={styles.error}><IoIosWarning/>Please enter your real birthday.</div>)}
+                    {updateSuccess &&(<div className={styles.success}>Your details have been updated successfully. The page will automatically reload in <b>3 seconds</b></div>)}
+                    <button className={styles.save} onClick={() => handlePersonalSave(first, last, Number(day), Number(month), Number(year))}>Save Changes</button>
                     <hr/>
                 </div>
                 )}
                 {activeSection === "account" &&(<div className={styles.section}>
                     <h2 className={styles.title}>Account Information</h2>
                     <h3>Manage your username and email. Your username is unique to you, so get creative!</h3>
-                    <div className={styles.accountContainer}>
+                    <form className={styles.accountContainer}>
                         <div className={styles.usernameContainer}>
                             <label className={styles.label}>Username</label>
-                            <input className={styles.input} required maxLength='100' type='text' placeholder={info.username} onChange={(e) => setFirst(e.target.value)}></input>
+                            <input id="username" className={styles.input} disabled maxLength='100' type='text' placeholder={info.username} onChange={(e) => setUsername(e.target.value)}></input>
                         </div>
-                        <button className={styles.edit}><MdOutlineEdit className={styles.edit_icon}/></button>
+                        <button className={styles.edit} type='button' onClick={() => handleEdit("username")}><MdOutlineEdit className={styles.edit_icon}/></button>
                         <div className={styles.emailContainer}>
                             <label className={styles.label}>Email</label>
-                            <input className={styles.input} required maxLength='100' type='text' placeholder={info.email} onChange={(e) => setLast(e.target.value)}></input>
+                            <input id="email" className={styles.input} disabled maxLength='100' type='email' placeholder={info.email} onChange={(e) => setEmail(e.target.value)}></input>
                         </div>
-                        <button className={styles.edit}><MdOutlineEdit className={styles.edit_icon}/></button>
-                    </div>
-                    <button className={styles.save}>Save Changes</button>
+                        <button className={styles.edit} type='button' onClick={() => handleEdit("email")}><MdOutlineEdit className={styles.edit_icon}/></button>
+                    </form>
+                    {errorEmail &&(<div className={styles.error}><IoIosWarning/>This email has already been taken.</div>)}
+                    {invalidEmail &&(<div className={styles.error}><IoIosWarning/>Please enter a real email address.</div>)}
+                    {errorUsername &&(<div className={styles.error}><IoIosWarning/>This username has already been taken.</div>)}
+                    {updateSuccess &&(<div className={styles.success}>Your details have been updated successfully. The page will automatically reload in <b>3 seconds</b></div>)}
+                    <button className={styles.save} onClick={() => handleDetailsSave(username, email)}>Save Changes</button>
                     <hr/>
                 </div>
                 )}
@@ -213,10 +276,23 @@ const Account = () => {
                 </div>
                 )}
                 {activeSection === "delete" &&(<div className={styles.section}>
-                    <h2 className={styles.title}>Delete Account</h2>
-                    <h3>Permanently delete your account including all personal information, favourite games,
+                    <div>
+                        <div className={sure ? styles.backdrop : ''}></div>
+                        <h2 className={styles.title}>Delete Account</h2>
+                        <h3>Permanently delete your account including all personal information, favourite games,
                         accessibility preferences and genre preferences. You will not be able to recover it thereafter.</h3>
-                    <button className={styles.delete}>Delete Account</button>
+                        <button className={styles.delete} onClick={handleDeletePopup}>Delete Account</button>
+                    </div>
+                    {sure &&(<div className={styles.modalBox}>
+                        <div>
+                            <h2 className={styles.sure}>Are you sure you want to delete your account?</h2>
+                        </div>
+                        <div>
+                            <button className={styles.delete_popup} onClick={handleDeleteAccount}>Delete</button>
+                            <button className={styles.save_popup} onClick={() => setSure(false)} >Cancel</button>
+                        </div>
+                    </div>
+                    )}
                     <hr/>
                 </div>
                 )}

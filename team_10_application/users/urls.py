@@ -5,7 +5,7 @@ urlpatterns = [
     path('user/', views.get_user),
     path('token/', views.CustomTokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('token/refresh/', views.CustomRefreshTokenView.as_view(), name='token_refresh'),
-    path('logout/', views.logout),
+    path('logout/', views.logout_user),
     path('authenticated/', views.is_authenticated),
     path('step1/', views.RegistrationViewSet.as_view({'post': 'step1'}), name='step1'),
     path('step2/', views.RegistrationViewSet.as_view({'post': 'step2'}), name='step2'),
@@ -14,4 +14,9 @@ urlpatterns = [
     path('step5/', views.RegistrationViewSet.as_view({'post': 'step5'}), name='step5'),
     path('forgot-credentials/', views.forgot_credentials),
     path('reset-password/', views.password_reset),
+    path('update-personal/', views.update_personal),
+    path('update-details/', views.update_details),
+    path('delete-account/', views.delete),
+
+    #path('update-preferences/'),
 ]
