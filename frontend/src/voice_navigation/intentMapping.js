@@ -116,7 +116,7 @@ export const INTENT_PATTERNS = [
         keywords: ["android", "samsung"]
     },
 
-    // Accessibility tag intent patterns
+    // Accessibility tag filtering intent patterns
     {
         intent: INTENTS.FILTER_BY_ACCESSIBILITY,
         accessibility: "Vision Accessibility",
@@ -141,6 +141,38 @@ export const INTENT_PATTERNS = [
         intent: INTENTS.FILTER_BY_ACCESSIBILITY,
         accessibility: "Cognitive Accessibility",
         keywords: ["cognitive"]
+    },
+
+    // Sorting intent patterns
+    {
+        intent: INTENTS.SET_SORT_ORDER,
+        sort: "nameAscending",
+        keywords: ["ascending"]
+    },
+    {
+        intent: INTENTS.SET_SORT_ORDER,
+        sort: "nameDescending",
+        keywords: ["descending"]
+    },
+    {
+        intent: INTENTS.SET_SORT_ORDER,
+        sort: "priceLowestToHighest",
+        keywords: ["lowest", "cheapest"]
+    },
+    {
+        intent: INTENTS.SET_SORT_ORDER,
+        sort: "priceHighestToLowest",
+        keywords: ["highest", "expensive"]
+    },
+    {
+        intent: INTENTS.SET_SORT_ORDER,
+        sort: "releaseNewestToOldest",
+        keywords: ["newest"]
+    },
+    {
+        intent: INTENTS.SET_SORT_ORDER,
+        sort: "releaseOldestToNewest",
+        keywords: ["oldest"]
     },
 ]
 
@@ -185,7 +217,7 @@ const normaliseTranscript = (text) => {
 export const detectIntent = (transcript, context = {}) => {
     const normalisedTranscript = normaliseTranscript(transcript);
 
-    // Pattern based intents: navigation & filtering
+    // Pattern based intents: navigation, filtering, sorting
     for (const pattern of INTENT_PATTERNS) {
         if (transcriptMatchesIntentKeywords(normalisedTranscript, pattern.keywords)) {
             const { intent, keywords, ...rest } = pattern;

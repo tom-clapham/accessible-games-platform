@@ -81,6 +81,7 @@ function VoiceController() {
     const handleCommandTranscript = (commandTranscript) => {
         const trimmedCommandTranscript = commandTranscript.trim();
 
+        // Update the current location to get most up to date context, such as the currently applied filters
         const currentLocation = locationRef.current;
         const context = { route: currentLocation.pathname }
 
@@ -141,6 +142,12 @@ function VoiceController() {
             });
         }
 
+        // Sort order
+        if (params.sort) {
+            searchParams.set("sort", params.sort)
+        }
+
+        // Navigate with new queryString containing previous and new query params
         const queryString = searchParams.toString();
         navigate(`/browse${queryString ? `?${queryString}` : ""}`);
     };
@@ -191,6 +198,9 @@ function VoiceController() {
             case INTENTS.RESET_FILTERS:
                 resetFilters({ genre: params. genre, platform: params.platform, accessibility: params.accessibility});
                 break;
+
+            case INTENTS.SET_SORT_ORDER:
+                applyFilterParamsAndNavigate({ sort: params.sort });
         }
     }
 
