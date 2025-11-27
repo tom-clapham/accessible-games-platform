@@ -1,0 +1,33 @@
+.report-form-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 50px;
+}
+
+.report-form {
+    display: flex;
+    flex-direction: column;
+    width: 75%;
+}
+
+.report-dropdown {
+    width: 25%;
+    height: 20%;
+}
+
+.text-field {
+    resize: none;
+    font-size: large;
+}
+
+.text-field::placeholder {
+    font-size: large;
+}
+
+.report-title {
+    text-align: left;
+    width: 75%;
+}
+

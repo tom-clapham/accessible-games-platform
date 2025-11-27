@@ -2,9 +2,11 @@ from django.db import models
 
 # Create your models here.
 class Report(models.Model):
+    # Validate choices for report_type in database
     REPORT_TYPE_CHOICES = {
         "INAPP": "Inappropriate Content",
         "INACC": "Inaccurate Information",
+        "MALIC": "Malicious",
         "SPAM": "Spam",
         "OTHR": "Other",
     }
