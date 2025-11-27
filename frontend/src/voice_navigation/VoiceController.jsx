@@ -146,6 +146,20 @@ function VoiceController() {
     };
 
 
+    const resetFilters = (params) => {
+        const current_location = locationRef.current;
+        const searchParams = new URLSearchParams(current_location);
+
+        // Remove all filters
+        searchParams.delete("genre");
+        searchParams.delete("platform");
+        searchParams.delete("accessibility");
+
+        const queryString = params.toString();
+        navigate(`/browse${queryString ? `?${queryString}` : ""}`);
+    }
+
+
     const performIntentAction = (intent, params) => {
         console.log("Intent:", intent, "Params:", params);
 
@@ -172,6 +186,11 @@ function VoiceController() {
 
             case INTENTS.FILTER_BY_ACCESSIBILITY:
                 applyFilterParamsAndNavigate({ accessibility: params.accessibility});
+                break;
+            
+            case INTENTS.RESET_FILTERS:
+                resetFilters({ genre: params. genre, platform: params.platform, accessibility: params.accessibility});
+                break;
         }
     }
 

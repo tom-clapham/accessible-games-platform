@@ -8,7 +8,7 @@ export const INTENTS = {
     FILTER_BY_GENRE: "FILTER_BY_GENRE",
     FILTER_BY_PLATFORM: "FILTER_BY_PLATFORM",
     FILTER_BY_ACCESSIBILITY: "FILTER_BY_ACCESSIBILITY",
-    CLEAR_FILTERS: "CLEAR_FILTERS",
+    RESET_FILTERS: "RESET_FILTERS",
 }
 
 
@@ -29,6 +29,11 @@ export const INTENT_PATTERNS = [
 
     // Genre filtering intent patterns
     {
+        intent: INTENTS.RESET_FILTERS,
+        keywords: ["reset", "clear", "remove", "delete"]
+    },
+
+    {
         intent: INTENTS.FILTER_BY_GENRE,
         genre: "Racing",
         keywords: ["racing", "racer"]
@@ -46,7 +51,7 @@ export const INTENT_PATTERNS = [
     {
         intent: INTENTS.FILTER_BY_GENRE,
         genre: "RPG",
-        keywords: ["rpg", "roleplaying", "role-playing"]
+        keywords: ["rpg", "role", "role-playing"]
     },
     {
         intent: INTENTS.FILTER_BY_GENRE,
@@ -120,7 +125,7 @@ export const INTENT_PATTERNS = [
     {
         intent: INTENTS.FILTER_BY_ACCESSIBILITY,
         accessibility: "Hearing Accessibility",
-        keywords: ["hearing", "audio"]
+        keywords: ["hearing", "audio", "deaf"]
     },
     {
         intent: INTENTS.FILTER_BY_ACCESSIBILITY,
