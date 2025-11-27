@@ -13,17 +13,82 @@ export const INTENTS = {
 
 
 export const INTENT_PATTERNS = [
+    // Navigation intent patterns
     {
         intent: INTENTS.OPEN_DISCOVER,
         keywords: ["discover", "recommended", "recommendation", "recommendations"]
     },
     {
         intent: INTENTS.OPEN_BROWSE,
-        keywords: ["browse"]
+        keywords: ["browse", "all games"]
     },
     {
         intent: INTENTS.OPEN_COMMUNITY,
         keywords: ["community", "communities"]
+    },
+
+    // Genre filtering intent patterns
+    {
+        intent: INTENTS.FILTER_BY_GENRE,
+        genre: "Racing",
+        keywords: ["racing", "racer"]
+    },
+    {
+        intent: INTENTS.FILTER_BY_GENRE,
+        genre: "Action",
+        keywords: ["action"]
+    },
+    {
+        intent: INTENTS.FILTER_BY_GENRE,
+        genre: "Adventure",
+        keywords: ["adventure"]
+    },
+    {
+        intent: INTENTS.FILTER_BY_GENRE,
+        genre: "RPG",
+        keywords: ["rpg", "roleplaying", "role-playing"]
+    },
+    {
+        intent: INTENTS.FILTER_BY_GENRE,
+        genre: "Simulation",
+        keywords: ["simulation", "simulator"]
+    },
+    {
+        intent: INTENTS.FILTER_BY_GENRE,
+        genre: "Sports",
+        keywords: ["sports", "sport"]
+    },
+    {
+        intent: INTENTS.FILTER_BY_GENRE,
+        genre: "Platformer",
+        keywords: ["platformer", "platform"]
+    },
+    {
+        intent: INTENTS.FILTER_BY_GENRE,
+        genre: "Horror",
+        keywords: ["horror"]
+    },
+    {
+        intent: INTENTS.FILTER_BY_GENRE,
+        genre: "Shooter",
+        keywords: ["shooter", "shooting"]
+    },
+    {
+        intent: INTENTS.FILTER_BY_GENRE,
+        genre: "Puzzle",
+        keywords: ["puzzle"]
+    },
+
+    // Platform filtering intent patterns
+    {
+        intent: INTENTS.FILTER_BY_PLATFORM,
+        platform: "PC",
+        keywords: ["pc", "computer", "laptop"]
+    },
+    {
+        intent: INTENTS.FILTER_BY_PLATFORM,
+        platform: "PlayStation",
+        keywords: ["playstation", "ps3", "ps4", "ps5"]
     },
 ]
 
@@ -68,7 +133,7 @@ const normaliseTranscript = (text) => {
 export const detectIntent = (transcript, context = {}) => {
     const normalisedTranscript = normaliseTranscript(transcript);
 
-    // Check if command transcript matches ANY intent patterns
+    // Pattern based intents: navigation & filtering
     for (const pattern of INTENT_PATTERNS) {
         if (transcriptMatchesIntentKeywords(normalisedTranscript, pattern.keywords)) {
             const { intent, keywords, ...rest } = pattern;
