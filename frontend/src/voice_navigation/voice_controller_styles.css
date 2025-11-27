@@ -1,0 +1,31 @@
+.voice-controller-container {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.5rem;
+}
+
+.voice-command-button {
+    background: #3b82f6;
+    font-size: 28px;
+    color: white;
+    border: none;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+    transition: background 0.15s ease, transform 0.15s ease;
+}
+
+.voice-command-button:hover {
+    background: #2563eb;
+    transform: translateY(-2px);
+}

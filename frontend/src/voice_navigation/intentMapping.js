@@ -17,12 +17,12 @@ function normaliseCommand(text) {
     console.log("Text before normalisation:", text)
 
     if (!text) return "";
-    let text = text.toLowerCase().trim();
+    let normalisedText = text.toLowerCase().trim();
 
     // Remove any filler phrases
     FILLER_PHRASES.forEach((phrase) => {
-        text = text.replace(phrase, "").trim();
+        normalisedText = normalisedText.replace(phrase, "").trim();
     })
 
-    console.log("Text after normalisation:", text)
+    console.log("Text after normalisation:", normalisedText);
 }
