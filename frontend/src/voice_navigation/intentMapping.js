@@ -110,6 +110,33 @@ export const INTENT_PATTERNS = [
         platform: "Android",
         keywords: ["android", "samsung"]
     },
+
+    // Accessibility tag intent patterns
+    {
+        intent: INTENTS.FILTER_BY_ACCESSIBILITY,
+        accessibility: "Vision Accessibility",
+        keywords: ["vision", "visual"]
+    },
+    {
+        intent: INTENTS.FILTER_BY_ACCESSIBILITY,
+        accessibility: "Hearing Accessibility",
+        keywords: ["hearing", "audio"]
+    },
+    {
+        intent: INTENTS.FILTER_BY_ACCESSIBILITY,
+        accessibility: "Speech Accessibility",
+        keywords: ["speech", "speaking"]
+    },
+    {
+        intent: INTENTS.FILTER_BY_ACCESSIBILITY,
+        accessibility: "Motor Accessibility",
+        keywords: ["motor", "dexterity"]
+    },
+    {
+        intent: INTENTS.FILTER_BY_ACCESSIBILITY,
+        accessibility: "Cognitive Accessibility",
+        keywords: ["cognitive"]
+    },
 ]
 
 

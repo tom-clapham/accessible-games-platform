@@ -169,6 +169,9 @@ function VoiceController() {
             case INTENTS.FILTER_BY_PLATFORM:
                 applyFilterParamsAndNavigate({ platform: params.platform});
                 break;
+
+            case INTENTS.FILTER_BY_ACCESSIBILITY:
+                applyFilterParamsAndNavigate({ accessibility: params.accessibility});
         }
     }
 
