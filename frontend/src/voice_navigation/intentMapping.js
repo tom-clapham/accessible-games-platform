@@ -26,6 +26,10 @@ export const INTENT_PATTERNS = [
         intent: INTENTS.OPEN_COMMUNITY,
         keywords: ["community", "communities"]
     },
+    {
+        intent: INTENTS.OPEN_GAME,
+        keywords: ["open", "go"],
+    },
 
     // Genre filtering intent patterns
     {
@@ -120,7 +124,7 @@ export const INTENT_PATTERNS = [
     {
         intent: INTENTS.FILTER_BY_ACCESSIBILITY,
         accessibility: "Vision Accessibility",
-        keywords: ["vision", "visual"]
+        keywords: ["vision", "visual", "blind"]
     },
     {
         intent: INTENTS.FILTER_BY_ACCESSIBILITY,

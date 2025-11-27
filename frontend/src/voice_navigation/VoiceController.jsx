@@ -86,7 +86,23 @@ function VoiceController() {
         const context = { route: currentLocation.pathname }
 
         const { intent, params } = detectIntent(trimmedCommandTranscript, context);
-        performIntentAction(intent, params);
+
+        let finalParams = params || {};
+
+        // Special case for voice commands for opening game pages
+        if (intent === INTENTS.OPEN_GAME) {
+            const lower = commandTranscript.trim();
+            const keyword = "open ";
+
+            if (lower.startsWith(keyword)) {
+                const gameName = trimmedCommandTranscript.slice(keyword.length).trim();
+                if (gameName) {
+                    finalParams = { ...finalParams, gameName };
+                }
+            }
+        }
+
+        performIntentAction(intent, finalParams);
     }
 
 
@@ -166,6 +182,38 @@ function VoiceController() {
         navigate(`/browse${queryString ? `?${queryString}` : ""}`);
     }
 
+    const openGameByName = async (commandGameName) => {
+        try {
+            // Fetch all games
+            const response = await fetch("http://127.0.0.1:8000/app/games/games");
+            const allGames = await response.json();
+
+            const targetGameName = commandGameName.toLowerCase();
+
+            // Try find a game fully matching to command's game name
+            let game = allGames.find(
+                (game) => game.name.toLowerCase() === targetGameName
+            );
+
+            // Try find a game partially matching the command's game name
+            if (!game) {
+                game = allGames.find(
+                    (game) => game.name.toLowerCase().includes(targetGameName)
+                )
+            }
+
+            if (!game) {
+                console.warn("No game found for spoken command:", commandGameName)
+                return;
+            }
+
+            navigate(`/gameprofile/${game.id}`);
+
+        } catch (error) {
+            console.error("Voice Controller failed to open game:", error)
+        }
+    }
+
 
     const performIntentAction = (intent, params) => {
         console.log("Intent:", intent, "Params:", params);
@@ -181,6 +229,12 @@ function VoiceController() {
 
             case INTENTS.OPEN_COMMUNITY:
                 navigate("/community")
+                break;
+
+            case INTENTS.OPEN_GAME:
+                if (params.gameName) {
+                    openGameByName(params.gameName);
+                }
                 break;
 
             case INTENTS.FILTER_BY_GENRE:
@@ -201,6 +255,7 @@ function VoiceController() {
 
             case INTENTS.SET_SORT_ORDER:
                 applyFilterParamsAndNavigate({ sort: params.sort });
+                break;
         }
     }
 
