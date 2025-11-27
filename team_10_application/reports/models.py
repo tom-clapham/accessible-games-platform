@@ -10,10 +10,11 @@ class Report(models.Model):
         "SPAM": "Spam",
         "OTHR": "Other",
     }
-    userId = models.ForeignKey("users.CustomUser", on_delete=models.CASCADE)
+    userId = models.ForeignKey("users.CustomUser", on_delete=models.CASCADE, blank=True, null=True)
     gameId = models.ForeignKey("games.Game", on_delete=models.CASCADE, blank=True, null=True)
     report_type = models.CharField(max_length=30, choices=REPORT_TYPE_CHOICES)
     description = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.report_type

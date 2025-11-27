@@ -31,3 +31,8 @@
     width: 75%;
 }
 
+.report-button {
+    width: 25%;
+    align-self: flex-end;
+}
+

@@ -1,15 +1,22 @@
 import { useEffect, useState} from 'react';
-import { useParams} from 'react-router-dom';
+import { useParams, useNavigate} from 'react-router-dom';
 
 import ReportForm from './ReportForm.jsx';
 
+import {OpenLogin} from '../Login/Login.js';
+
 import axios from 'axios';
+
+
+
 
 function Report() {
     const{gameId} = useParams();
     const[game, setGame] = useState(null);
     const[loading, setLoading] = useState(true);
     const[error, setError] = useState(null);
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         axios.get(`http://127.0.0.1:8000/app/reports/report/game/${gameId}/`)
@@ -18,6 +25,12 @@ function Report() {
             setLoading(false);
         })
         .catch(error => {
+            // Check for validation in the backend
+            if(error.response?.status == 401){
+                OpenLogin();
+                navigate(`/gameprofile/${gameId}`); 
+                return;
+            }
             console.error(error);
             setLoading(false);
             setError(error);
@@ -33,7 +46,7 @@ function Report() {
     return (
         <div className="report-form-container">
         <h1 className="report-title">Report for {game.name}</h1>
-        <ReportForm/>
+        <ReportForm gameId={game.id}/>
         </div>
     )
 }
