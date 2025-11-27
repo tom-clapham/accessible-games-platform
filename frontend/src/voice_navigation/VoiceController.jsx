@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import { INTENTS } from "./intentMapping";
+import { INTENTS, detectIntent } from "./intentMapping";
 
 import "./voice_controller_styles.css";
 import { FiMic } from "react-icons/fi";
@@ -19,8 +19,6 @@ function VoiceController() {
 
     const [isSupported, setIsSupported] = useState(true);
     const [isListening, setIsListening] = useState(false);
-    const [lastTranscript, setLastTranscript] = useState("");
-    const [lastAction, setLastAction] = useState("");
     const [error, setError] = useState("");
 
     useEffect(() => {
@@ -36,8 +34,6 @@ function VoiceController() {
         speechRecognition.onstart = () => {
             setIsListening(true);
             setError("");
-            setLastTranscript("");
-            setLastAction("");
         };
 
         speechRecognition.onerror = (errorMessage) => {
@@ -55,12 +51,11 @@ function VoiceController() {
 
             for (let i = result.resultIndex; i < result.results.length; i++) {
                 const transcript = result.results[i][0].transcript;
-                if (result.results[i].isFinal) {
-                    commandTranscript += transcript;
-                }
+                commandTranscript += transcript;
             };
 
             if (commandTranscript) {
+                console.log(commandTranscript);
                 handleCommandTranscript(commandTranscript);
             }
         }
@@ -80,9 +75,31 @@ function VoiceController() {
 
     const handleCommandTranscript = (commandTranscript) => {
         const trimmedCommandTranscript = commandTranscript.trim();
+
+        const context = { route: location.pathname }
+
+        const { intent, params } = detectIntent(trimmedCommandTranscript, context);
+        performIntentAction(intent, params);
     }
 
 
+    const performIntentAction = (intent, params) => {
+        switch (intent) {
+            case INTENTS.OPEN_DISCOVER:
+                navigate("/discover")
+                break;
+
+            case INTENTS.OPEN_BROWSE:
+                navigate("/browse")
+                break;
+
+            case INTENTS.OPEN_COMMUNITY:
+                navigate("/community")
+                break;
+        }
+    }
+
+    
     return (
         <div className="voice-controller-container">
             <button type="button" className="voice-command-button" onClick={startListening}><FiMic/></button>
