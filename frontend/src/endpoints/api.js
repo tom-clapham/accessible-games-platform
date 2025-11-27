@@ -20,6 +20,8 @@ const UPDATE_PREFERENCES_URL = `${BASE_URL}update-preferences/`
 const DELETE_URL = `${BASE_URL}delete-account/`
 const ACCESSIBILITY_URL = `${BASE_URL}get-accessibility/`
 const GENRES_URL = `${BASE_URL}get-genres/`
+const CHANGE_PASSWORD_URL = `${BASE_URL}change-password/`
+
 
 export const user_info = async () => {
     try {
@@ -252,6 +254,18 @@ export const getGenres = async () => {
     try{
         const response = await axios.post(GENRES_URL,
         {},
+        { withCredentials: true }
+        )
+        return response.data.success;
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+export const changePassword = async (oldPass, newPass, confirmPass) => {
+    try{
+        const response = await axios.post(CHANGE_PASSWORD_URL,
+        {oldPass:oldPass, newPass:newPass, confirmPass:confirmPass},
         { withCredentials: true }
         )
         return response.data.success;

@@ -5,7 +5,7 @@ from rest_framework.permissions import IsAuthenticated, AllowAny
 from .serializer import UserRegistrationSerializer, AccessibilityTagSerializer, GenreTagSerializer
 from .models import CustomUser, GenreTag, AccessibilityTag
 from django.core.mail import send_mail
-from django.contrib.auth import logout
+from django.contrib.auth.hashers import check_password
 
 from rest_framework_simplejwt.views import (
     TokenObtainPairView,
@@ -87,12 +87,10 @@ def get_user(request):
     user = request.user
     try:
         info = CustomUser.objects.get(pk=user.pk)
-        print(info)
     except CustomUser.DoesNotExist:
         return Response({"detail": "User not found"}, status=404)
 
     serializer = UserRegistrationSerializer(info)
-    print(serializer.data)
     return Response(serializer.data)
         
 @api_view(['POST'])
@@ -362,7 +360,28 @@ def update_preferences(request):
     user.accessibility_tags.set(access_qs)
 
     user.save()
-    print("NEW USER: ", user)
+    return Response({'success':True})
+
+@api_view(['POST'])
+@permission_classes([AllowAny])
+def change_password(request):
+    user = request.user
+
+    oldPass = request.data.get('oldPass')
+    newPass = request.data.get('newPass')
+    confirmPass = request.data.get('confirmPass')
+
+    if not(two_digits(newPass)) or (len(newPass) < 8):
+        return Response({'success':'invalidNewPassword'})
+    
+    if(newPass != confirmPass):
+        return Response({'success':'passwordMatch'})
+    
+    if not check_password(oldPass, user.password):
+        return Response({'success':'oldPasswordWrong'})
+
+    user.set_password(newPass)
+    user.save()
     return Response({'success':True})
 
     

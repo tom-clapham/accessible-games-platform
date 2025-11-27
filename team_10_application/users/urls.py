@@ -20,4 +20,5 @@ urlpatterns = [
     path('get-accessibility/', views.get_accessibility),
     path('get-genres/', views.get_genres),
     path('update-preferences/', views.update_preferences),
+    path('change-password/', views.change_password),
 ]

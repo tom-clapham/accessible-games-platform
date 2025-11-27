@@ -1,9 +1,9 @@
 import {useState, useEffect} from 'react'
-import { updateDetails, updatePreferences, updatePersonal, user_info, deleteAccount, getAccessibility, getGenres } from '../endpoints/api'
+import { updateDetails, updatePreferences, updatePersonal, user_info, deleteAccount, getAccessibility, getGenres, changePassword, logout } from '../endpoints/api'
 import styles from './Account.module.css'
 import { useLocation } from 'react-router-dom'
 import { CiUser, CiSettings } from "react-icons/ci";
-import { TbLockPassword } from "react-icons/tb";
+import { TbCongruentTo, TbLockPassword } from "react-icons/tb";
 import { MdDeleteOutline, MdOutlineEdit } from "react-icons/md";
 import { IoAccessibilityOutline } from "react-icons/io5";
 import { FaRegHeart, FaRegCommentDots } from "react-icons/fa";
@@ -29,6 +29,9 @@ const Account = () => {
     const [allAccessibility , setAllAccessibility] = useState([])
     const [userGenres, setUserGenres] = useState([])
     const [userAccessibility, setUserAccessibility] = useState([])
+    const [oldPassword, setOldPassword] = useState("")
+    const [newPassword, setNewPassword] = useState("")
+    const [confirmNewPassword, setConfirmNewPassword] = useState("")
 
     const [updateSuccess, setUpdateSuccess] = useState(false)
     const [errorUsername, setErrorUsername] = useState(false);
@@ -36,6 +39,10 @@ const Account = () => {
     const [errorDate, setErrorDate] = useState(false);
     const [invalidEmail, setInvalidEmail] = useState(false);
     const [sure, setSure] = useState(false);
+    const [password, setPassword] = useState(false)
+    const [match, setMatch] = useState(false)
+    const [invalid, setInvalid] = useState(false)
+    const [oldPasswordMatch, setOldPasswordMatch] = useState(false)
     
     
 
@@ -114,6 +121,18 @@ const Account = () => {
 
     const handleDeletePopup = () => {
         setSure(true);
+    };
+
+    const handlePasswordPopup = () => {
+        if(password){
+            setPassword(false)
+            setInvalid(false)
+            setMatch(false)
+            setOldPasswordMatch(false)
+        } else [
+            setPassword(true)
+        ]
+            
     };
 
     const handleDeleteAccount = () => {
@@ -205,7 +224,35 @@ const Account = () => {
         const updatedTags = allGenres.filter(tag => tag !== item);
         setAllGenres(updatedTags);
         userGenres.push(item)
-    }    
+    } 
+    
+    const handleChangePassword = async (oldPass, newPass, confirmPass) => {
+        const success = await changePassword(oldPass, newPass, confirmPass);
+        if(success == 'invalidNewPassword'){
+            setInvalid(true)
+            setMatch(false)
+            setOldPasswordMatch(false)
+        } else if(success == 'passwordMatch'){
+            setInvalid(false)
+            setMatch(true)
+            setOldPasswordMatch(false)
+        } else if (success == 'oldPasswordWrong'){
+            setInvalid(false)
+            setMatch(false)
+            setOldPasswordMatch(true)
+        } else {
+            setUpdateSuccess(true)
+            setInvalid(false)
+            setMatch(false)
+            setOldPasswordMatch(false)
+            const timeout = setTimeout(async () => {
+                const success = await logout();
+                if(success){
+                    window.location.reload();
+                }
+            }, 3000);
+        }
+    }
 
     return (
         <div className={styles.settings_container}>
@@ -309,8 +356,42 @@ const Account = () => {
                     <h2 className={styles.title}>Password & Security</h2>
                     <h3>Change your password here. We recommend doing this frequently, it helps keep your account more secure.</h3>
                     <div className={styles.securityButtons}>
-                        <button className={styles.regular_button}>Change password</button>
+                        <button className={styles.regular_button} onClick={handlePasswordPopup}>Change password</button>
                     </div>
+                    {password &&(<div className={styles.passwordBox}>
+                        <div>
+                            <h2 className={styles.passwordText}>Change your password</h2>
+                        </div>
+                        <div className={styles.changePassword}>
+                            
+                            <label className={styles.labelPassword}>Old password</label>
+                            <input className={styles.inputPassword} type='password' maxLength='100' placeholder='Enter your old password' onChange={(e) => setOldPassword(e.target.value)}></input>
+                            
+                            <label className={styles.labelPassword}>New password</label>
+                            <input className={styles.inputPassword} type='password' maxLength='100' placeholder='Enter your new password' onChange={(e) => setNewPassword(e.target.value)}></input>
+
+                            <label className={styles.labelPassword}>Confirm new password </label>
+                            <input className={styles.inputPassword} type='password' maxLength='100' placeholder='Re-enter you new password' onChange={(e) => setConfirmNewPassword(e.target.value)}></input>
+
+                            {match &&(<div className={styles.errorPassword}><IoIosWarning className={styles.warningPassword}/>The new passwords don't match.</div>)}
+                            {invalid &&(<div className={styles.errorPassword}><IoIosWarning className={styles.warningPassword}/>
+                                <div>
+                                    Your password must contain:
+                                    <ul>
+                                        <li>A minimum of 8 characters</li>
+                                        <li>At least 2 numbers</li>
+                                        <li>One upper case character</li>
+                                    </ul>
+                                </div>
+                            </div>)}
+                            {oldPasswordMatch &&(<div className={styles.errorPassword}><IoIosWarning className={styles.warningPassword}/>Your current password doesn't match.</div>)}
+                            {updateSuccess &&(<div className={styles.successPassword}>Your password has been updated. You will be redirected to login again.</div>)}
+
+                            <button className={styles.confirmPasswordBtn} onClick={() => handleChangePassword(oldPassword, newPassword, confirmNewPassword)}>Confirm new password</button>
+                            <button className={styles.confirmPasswordBtn} onClick={handlePasswordPopup}>Cancel</button>
+                        </div>
+                    </div>
+                    )}
                     <hr/>
                 </div>
                 )}

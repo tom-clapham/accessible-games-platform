@@ -72,14 +72,12 @@ const Register_Stage_3 = () => {
             </div>
             )}
             {isPassword=="false" &&(<div className={styles.error}><IoIosWarning className={styles.warning}/>
-                <div>
                     Your password must contain:
                     <ul>
                         <li>A minimum of 8 characters</li>
                         <li>At least 2 numbers</li>
                         <li>One upper case character</li>
                     </ul>
-                </div>
             </div>
             )}
             <button className={styles.continue3} type="submit">Continue</button>
