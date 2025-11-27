@@ -1,0 +1,200 @@
+.logo {
+    width: 70px;
+    height: 70px;
+    border-radius: 200px;
+    cursor: pointer;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    max-width: 100%;
+    background: #000;
+    padding: 10px 7%;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.25);
+    z-index: 999;
+}
+
+.list {
+    list-style: none;
+    text-align: left;
+    padding-left: 20px;
+    padding-right: 20px;
+    color: white;
+}
+
+.login {
+    padding-left: 20px;
+    color: white;
+}
+
+.list li, .login li {
+    display: inline-block;
+    margin: 10px 20px;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.discover-link:hover, .browse-link:hover, .community-link:hover, .about-link:hover {
+    color: #60cdff;
+}
+
+.login {
+  padding-left: 20px;
+  color: white;
+  list-style: none; 
+  margin: 0;
+  display: flex;   
+  align-items: center;
+}
+
+.login li {
+  display: inline-flex;       
+  align-items: center;  
+  margin: 10px 20px;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.profile_signin {
+  font-size: 55px;            
+  vertical-align: middle;  
+  margin-left: 5px;
+}
+
+.user_profile {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background-color: white;
+    color: black;
+    border-radius: 200px;
+    padding: 10px;
+    font-size: 18px !important;
+    font-weight: 700;
+    max-width: 44px;
+    max-height: 41px;
+}
+
+.profile-popup {
+  background-color: #242428;
+  color: white;
+  width: 300px;
+  border-radius: 7px;
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  position: absolute; 
+  top: 80px; 
+  right: 155px;
+  z-index: 999;
+}
+
+.logo-small {
+    width: 25px;
+    height: 25px;
+    border-radius: 200px;
+    cursor: pointer;
+}
+
+.logo-signout {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 15px;
+  padding-top: 15px;
+  padding-bottom: 10px;
+}
+
+.initials {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background-color: rgb(28, 28, 28);
+    color: white;
+    border-radius: 200px;
+    padding: 10px;
+    font-size: 15px !important;
+    font-weight: 500;
+    margin-right: 15px;
+    max-width: 55px;
+    max-height: 37px;
+    
+}
+
+.signout {
+  color: #60cdff;
+  font-size: 15px;
+  padding-right: 15px;
+}
+
+.signout:hover{
+  cursor: pointer;
+}
+
+.account-info {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-left: 15px;
+  height: 100%;
+}
+
+.account {
+  padding-bottom: 15px;
+  margin-left: 70px;
+  font-size: 15px;
+  color: #60cdff;
+}
+
+.email {
+  color: rgb(255, 255, 255, 0.784);
+  font-size: 15px;
+  margin-bottom: 10px;
+}
+
+.name {
+  font-weight: 600;
+  font-size: 15px;
+  margin-bottom: 5px;
+}
+
+.user-info {
+  padding-top: 15px;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.24);
+  padding-left: 15px;
+  margin-left: 20px;
+  width: 260px;
+}
+
+.favourite-games {
+  display: inline-flex;       
+  margin: 10px 20px;
+  align-items: center;  
+  cursor: pointer;
+  color: rgb(255, 255, 255, 0.784);
+  font-size: 15px;
+  margin: 20px 20px;
+}
+
+.favourite-container {
+  color: white;
+  margin: 0;
+  display: flex; 
+}
+
+.games-icon {
+  font-size: 25px;
+  margin-right: 7px;
+}
+
+.favourite-games:hover, .games-icon:hover {
+  cursor: pointer;
+  color: white;
+}
+

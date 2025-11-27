@@ -1,0 +1,19 @@
+/* *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+} */
+
+.navbar-container {
+    width: 100vw;
+    min-height: 100vh;
+    background: grey;
+}
+
+/* body, html { */
+    /* font-family: "Roboto", sans-serif;
+    font-weight:400;
+    color:hsl(0, 0%, 90%); */
+    /* background-color: hsl(0, 0%, 15%); */
+/* } */
