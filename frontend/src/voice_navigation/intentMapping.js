@@ -1,10 +1,32 @@
 export const INTENTS = {
-    OPEN_DISCOVER: "OPEN_HOME",
+    OPEN_DISCOVER: "OPEN_DISCOVER",
     OPEN_BROWSE: "OPEN_BROWSE",
     OPEN_COMMUNITY: "OPEN_COMMUNITY",
-    SEARCH_GAME: "SEARCH_GAME",
-    SET_SORT_ORDER: "SET_SORT_ORDER"
+    OPEN_GAME: "OPEN_GAME",
+
+    SET_SORT_ORDER: "SET_SORT_ORDER",
+    FILTER_BY_GENRE: "FILTER_BY_GENRE",
+    FILTER_BY_PLATFORM: "FILTER_BY_PLATFORM",
+    FILTER_BY_ACCESSIBILITY: "FILTER_BY_ACCESSIBILITY",
+    CLEAR_FILTERS: "CLEAR_FILTERS",
 }
+
+
+export const INTENT_PATTERNS = [
+    {
+        intent: INTENTS.OPEN_DISCOVER,
+        keywords: ["discover", "recommended", "recommendation", "recommendations"]
+    },
+    {
+        intent: INTENTS.OPEN_BROWSE,
+        keywords: ["browse"]
+    },
+    {
+        intent: INTENTS.OPEN_COMMUNITY,
+        keywords: ["community", "communities"]
+    },
+]
+
 
 const FILLER_PHRASES = [
     "please", 
@@ -13,6 +35,18 @@ const FILLER_PHRASES = [
     "would you", 
     "will you",
 ];
+
+
+const transcriptMatchesIntentKeywords = (transcript, keywords) => {
+    // Check if transcript has any of the provided intent's keywords
+    for (const keyword of keywords) {
+        if (transcript.includes(keyword)) {
+            return true;
+        }
+    }
+    
+    return false;
+}
 
 
 const normaliseTranscript = (text) => {
@@ -34,25 +68,15 @@ const normaliseTranscript = (text) => {
 export const detectIntent = (transcript, context = {}) => {
     const normalisedTranscript = normaliseTranscript(transcript);
 
-    // Navigation to different pages
-    if (normalisedTranscript.includes("browse")) {
-        return {
-            intent: INTENTS.OPEN_BROWSE,
-            params: {}
-        };
-    }
+    // Check if command transcript matches ANY intent patterns
+    for (const pattern of INTENT_PATTERNS) {
+        if (transcriptMatchesIntentKeywords(normalisedTranscript, pattern.keywords)) {
+            const { intent, keywords, ...rest } = pattern;
 
-    if (normalisedTranscript.includes("discover") || normalisedTranscript.includes("recommended" || normalisedTranscript.includes("recommendations") || normalisedTranscript.includes("recommendation"))) {
-        return {
-            intent: INTENTS.OPEN_DISCOVER,
-            params: {}
-        }
-    }
-
-    if (normalisedTranscript.includes("community") || normalisedTranscript.includes("communities")) {
-        return {
-            intent: INTENTS.OPEN_COMMUNITY,
-            params: {}
+            return {
+                intent,
+                params: { ...rest }
+            };
         }
     }
 }
