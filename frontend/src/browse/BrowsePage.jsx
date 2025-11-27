@@ -18,10 +18,10 @@ function BrowsePage() {
 
     const [searchParams, setSearchParams] = useSearchParams();
 
-    const [selectedAccessibilityTags, setSelectedAccessibilityTags] = useState(searchParams.getAll("accessibility"));
-    const [selectedGenreTags, setSelectedGenreTags] = useState(searchParams.getAll("genre"));
-    const [selectedPlatformTags, setSelectedPlatformTags] = useState(searchParams.getAll("platform"));
-    const [sortOption, setSortOption] = useState(searchParams.get("sort")) || "nameAscending"; // Sort by name by default
+    const [selectedAccessibilityTags, setSelectedAccessibilityTags] = useState(() => searchParams.getAll("accessibility") || []);
+    const [selectedGenreTags, setSelectedGenreTags] = useState(() => searchParams.getAll("genre") || []);
+    const [selectedPlatformTags, setSelectedPlatformTags] = useState(() => searchParams.getAll("platform") || []);
+    const [sortOption, setSortOption] = useState(() => searchParams.get("sort") || "releaseNewestToOldest") // Sort by newest games by default
 
 
     const accessibilityTagsOptions = [
@@ -57,10 +57,10 @@ function BrowsePage() {
     const sortOptions = [
         { label: "Name (A → Z)", value: "nameAscending"},
         { label: "Name (Z → A)", value: "nameDescending"},
-        { label: "Price (Lowest → Highest)", value: "priceLowestToHighest"},
-        { label: "Price (Highest → Lowest)", value: "priceHighestToLowest"},
-        { label: "Release Date (Newest → Oldest)", value: "releaseNewestToOldest"},
-        { label: "Release Date (Oldest → Newest)", value: "releaseOldestToNewest"},
+        { label: "Price (Lowest)", value: "priceLowestToHighest"},
+        { label: "Price (Highest)", value: "priceHighestToLowest"},
+        { label: "Release Date (Newest)", value: "releaseNewestToOldest"},
+        { label: "Release Date (Oldest)", value: "releaseOldestToNewest"},
     ]
     
 
@@ -155,7 +155,7 @@ function BrowsePage() {
 
     if (!games) return <p>No games data found.</p>;
 
-    
+
     return (
         <div>
             <div className="browse-page">
