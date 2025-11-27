@@ -90,6 +90,26 @@ export const INTENT_PATTERNS = [
         platform: "PlayStation",
         keywords: ["playstation", "ps3", "ps4", "ps5"]
     },
+    {
+        intent: INTENTS.FILTER_BY_PLATFORM,
+        platform: "Xbox",
+        keywords: ["xbox"]
+    },
+    {
+        intent: INTENTS.FILTER_BY_PLATFORM,
+        platform: "Nintendo Switch",
+        keywords: ["switch", "nintendo switch", "nintendo"]
+    },
+    {
+        intent: INTENTS.FILTER_BY_PLATFORM,
+        platform: "iOS",
+        keywords: ["ios", "apple"]
+    },
+    {
+        intent: INTENTS.FILTER_BY_PLATFORM,
+        platform: "Android",
+        keywords: ["android", "samsung"]
+    },
 ]
 
 
