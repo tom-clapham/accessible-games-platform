@@ -4,6 +4,7 @@ import { INTENTS, detectIntent } from "./intentMapping";
 
 import "./voice_controller_styles.css";
 import { FiMic } from "react-icons/fi";
+import Fuse from "fuse.js";
 
 // https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API/Using_the_Web_Speech_API
 const getSpeechRecognition = () => {
@@ -188,26 +189,23 @@ function VoiceController() {
             const response = await fetch("http://127.0.0.1:8000/app/games/games");
             const allGames = await response.json();
 
-            const targetGameName = commandGameName.toLowerCase();
+            // Use fuse library to find closest game to spoken game name
+            const fuse = new Fuse(allGames, {
+                keys: ['name'],
+                threshold: 0.4,
+            })
 
-            // Try find a game fully matching to command's game name
-            let game = allGames.find(
-                (game) => game.name.toLowerCase() === targetGameName
-            );
+            // Search using fuse library
+            const results = fuse.search(commandGameName)
 
-            // Try find a game partially matching the command's game name
-            if (!game) {
-                game = allGames.find(
-                    (game) => game.name.toLowerCase().includes(targetGameName)
-                )
-            }
-
-            if (!game) {
-                console.warn("No game found for spoken command:", commandGameName)
+            if (results.length == 0) {
+                console.warn("Voice Controller could not find any games called", commandGameName);
                 return;
             }
 
-            navigate(`/gameprofile/${game.id}`);
+            // Use closest game match
+            const closestMatchGame = results[0].item;
+            navigate(`/gameprofile/${closestMatchGame.id}`);
 
         } catch (error) {
             console.error("Voice Controller failed to open game:", error)
