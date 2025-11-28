@@ -50,20 +50,6 @@ export const INTENT_PATTERNS = [
         keywords: ["back", "previous"]
     },
 
-    // Scrolling intent patterns
-    {
-        intent: INTENTS.SCROLL_UP,
-        keywords: ["up"],
-    },
-    {
-        intent: INTENTS.SCROLL_DOWN,
-        keywords: ["down"],
-    },
-    {
-        intent: INTENTS.GO_TO_TOP,
-        keywords: ["top"],
-    },
-
     // Genre filtering intent patterns
     {
         intent: INTENTS.RESET_FILTERS,
@@ -210,6 +196,20 @@ export const INTENT_PATTERNS = [
         intent: INTENTS.SET_SORT_ORDER,
         sort: "releaseOldestToNewest",
         keywords: ["oldest"]
+    },
+
+        // Scrolling intent patterns
+    {
+        intent: INTENTS.SCROLL_UP,
+        keywords: ["up"],
+    },
+    {
+        intent: INTENTS.SCROLL_DOWN,
+        keywords: ["down"],
+    },
+    {
+        intent: INTENTS.GO_TO_TOP,
+        keywords: ["top"],
     },
 ]
 
