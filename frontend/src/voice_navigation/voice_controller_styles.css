@@ -1,14 +1,3 @@
-.voice-controller-container {
-    position: fixed;
-    bottom: 1.5rem;
-    right: 1.5rem;
-    z-index: 9999;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 0.5rem;
-}
-
 .voice-command-button {
     background: #3b82f6;
     font-size: 28px;
@@ -38,4 +27,72 @@
 .voice-command-button.listening:hover {
     background: #c52e2e;
     transform: translateY(-2px);
+}
+
+.voice-controller-container {
+    position: fixed;
+    bottom: 16px;
+    right: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 8px;
+    z-index: 9999;
+}
+
+.command-feedback-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 6px;
+}
+
+.command-feedback-toggle {
+    background: #222;
+    color: #f0f0f0;
+    border: 1px solid #555;
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.command-feedback-toggle:hover {
+    background: #333;
+}
+
+.command-feedback-panel {
+    background: #111;
+    color: #f0f0f0;
+    border: 1px solid #444;
+    border-radius: 8px;
+    padding: 8px 10px;
+    max-width: 260px;
+    font-size: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+}
+
+.command-feedback-row {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 4px;
+}
+
+.command-feedback-label {
+    font-weight: 600;
+}
+
+.command-feedback-value {
+    flex: 1;
+    word-wrap: break-word;
+}
+
+.command-feedback-json {
+    margin: 0;
+    font-size: 11px;
+    background: #181818;
+    padding: 4px;
+    border-radius: 4px;
+    max-height: 100px;
+    overflow: auto;
 }

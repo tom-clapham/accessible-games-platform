@@ -5,6 +5,7 @@ import { INTENTS, detectIntent } from "./intentMapping";
 import "./voice_controller_styles.css";
 import { FiMic, FiMicOff } from "react-icons/fi";
 import Fuse from "fuse.js";
+import CommandFeedbackPanel from "./CommandFeedbackPanel";
 
 // https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API/Using_the_Web_Speech_API
 const getSpeechRecognition = () => {
@@ -19,6 +20,10 @@ function VoiceController() {
     const speechRecognitionRef = useRef(null);
     const locationRef = useRef(location);
     const keepListeningRef = useRef(false);
+
+    const [commandFeedbackVisible, setCommandFeedbackVisible] = useState(false);
+    const [lastTranscript, setLastTranscript] = useState(null);
+    const [lastCommand, setLastCommand] = useState(null);
 
     const [isSupported, setIsSupported] = useState(true);
     const [isListening, setIsListening] = useState(false);
@@ -81,15 +86,6 @@ function VoiceController() {
     }, []);
 
 
-    // const startListening = () => {
-    //     try {
-    //         speechRecognitionRef.current.start();
-    //     } catch (error) {
-    //         console.warn("Failed to start recognition of voice message:",)
-    //     }
-    // }
-
-
     const toggleListening = () => {
         const speechRecognition = speechRecognitionRef.current;
 
@@ -121,7 +117,42 @@ function VoiceController() {
         const currentLocation = locationRef.current;
         const context = { route: currentLocation.pathname }
 
-        const { intent, params } = detectIntent(trimmedCommandTranscript, context);
+        let intent = null;
+        let params = {};
+
+        // Try to detect the intent providing the command transcript
+        try {
+            const result = detectIntent(trimmedCommandTranscript, context) || {};
+            intent = result.intent || null;
+            params = result.params || {};
+
+        } catch (error) {
+            console.error("detectIntent failed:", error)
+
+            setLastCommand({
+                transcript: trimmedCommandTranscript,
+                intent: "NO_COMMAND_FOUND",
+                params: {}
+            });
+
+            return;
+        }
+
+        // If no intent could be detected, say no command found
+        if (!intent) {
+            setLastCommand({
+                transcript: trimmedCommandTranscript,
+                intent: "NO_COMMAND_FOUND",
+                params: {},
+            });
+            return;
+        }
+
+        setLastCommand({
+            transcript: trimmedCommandTranscript,
+            intent,
+            params,
+        });
 
         let finalParams = params || {};
 
@@ -355,6 +386,20 @@ function VoiceController() {
             >
             {isListening ? <FiMic /> : <FiMicOff />}
             </button>
+
+            <div className="command-feedback-container">
+                <button
+                    type="button"
+                    className="command-feedback-toggle"
+                    onClick={() => setCommandFeedbackVisible((v) => !v)}
+                >
+                    {commandFeedbackVisible ? "Hide Command Feedback" : "Show Command Feedback"}
+                </button>
+
+                {commandFeedbackVisible && (
+                    <CommandFeedbackPanel lastCommand={lastCommand}/>
+                )}
+            </div>
         </div>
     )
 }
