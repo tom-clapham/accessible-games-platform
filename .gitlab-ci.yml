@@ -2,17 +2,23 @@ stages:
   - build
   - test-backend
 
+workflow:
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+    - if: $CI_COMMIT_BRANCH == "main"
+    - if: $CI_COMMIT_BRANCH == "development"
+    - when: never
+
 variables:
   MYSQL_DATABASE: $DB_NAME
   MYSQL_ROOT_PASSWORD: $DB_PASSWORD
-  # MYSQL_USER: $DB_USERNAME
-  # MYSQL_PASSWORD: $PASSWORD
 
 default:
   image: python:3.10
   services:
     - name: mysql:8.0
       alias: mysql
+  
 
 build-project:
   stage: build
@@ -23,12 +29,7 @@ build-project:
     - source env/bin/activate
     - echo "Installing dependencies"
     - pip install -e .
-    - echo "Dependencies installed. Creating migrations..."
-    # - cd team_10_application
-    # - python manage.py makemigrations
-    # - python manage.py migrate
-    - cd ..
-    - echo "Deactivating..."
+    - echo "Dependencies installed. Deactivating..."
     - deactivate
     - echo "Build successful!"
 
