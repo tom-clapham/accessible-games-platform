@@ -9,12 +9,12 @@ variables:
   MYSQL_PASSWORD: $PASSWORD
 
 default:
+  image: python:3.10
   services:
     - name: mysql:8.0
       alias: mysql
 
 build-project:
-  image: python:3.10
   stage: build
   script:
     - echo "Creating env..."
@@ -37,7 +37,6 @@ build-project:
       - env/
 
 test-project:
-  image: python:3.10
   stage: test-backend
   script:
     - echo "activating virtual env..."
