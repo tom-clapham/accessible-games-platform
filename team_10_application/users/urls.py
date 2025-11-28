@@ -1,5 +1,7 @@
 from django.urls import path
 from . import views
+from threads.views import getUserPosts
+
 
 urlpatterns = [
     path('user/', views.get_user),
@@ -21,4 +23,5 @@ urlpatterns = [
     path('get-genres/', views.get_genres),
     path('update-preferences/', views.update_preferences),
     path('change-password/', views.change_password),
+    path('get-user-posts/', getUserPosts),
 ]

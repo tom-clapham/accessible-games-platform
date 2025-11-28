@@ -384,7 +384,8 @@ def change_password(request):
     user.save()
     return Response({'success':True})
 
-    
+#add a function to add the game to a user profile to indiacte faovuiret
+# add a function which will return all games realted to a user  
 
 
 

@@ -45,3 +45,5 @@ class GenreTagSerializer(serializers.ModelSerializer):
     class Meta:
         model = GenreTag
         fields = '__all__'
+
+#create a serializer class here ready to return games related to a user i.e favourites

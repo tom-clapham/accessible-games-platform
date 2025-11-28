@@ -7,7 +7,6 @@ class AccessibilityTag(models.Model):
     def __str__(self):
         return self.name
 
-
 class GenreTag(models.Model):
     name = models.CharField(max_length=200)
 
@@ -26,6 +25,9 @@ class CustomUser(AbstractUser):
 
     genre_tags = models.ManyToManyField(GenreTag, blank=True, related_name="users")
     accessibility_tags = models.ManyToManyField(AccessibilityTag, blank=True, related_name="users")
+
+#add a new model class above for storing gmaes(favourites)
+#add it as a manu to many field belowe genre_tags and accessibity_tags
 
    
     def __str__(self):

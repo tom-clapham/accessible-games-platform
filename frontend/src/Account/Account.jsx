@@ -1,5 +1,5 @@
 import {useState, useEffect} from 'react'
-import { updateDetails, updatePreferences, updatePersonal, user_info, deleteAccount, getAccessibility, getGenres, changePassword, logout } from '../endpoints/api'
+import { updateDetails, updatePreferences, updatePersonal, user_info, deleteAccount, getAccessibility, getGenres, changePassword, logout, getUserPosts } from '../endpoints/api'
 import styles from './Account.module.css'
 import { useLocation } from 'react-router-dom'
 import { CiUser, CiSettings } from "react-icons/ci";
@@ -163,6 +163,15 @@ const Account = () => {
             fetchInfo();
         }
     }, []);
+
+    useEffect(() => {
+        const fetchUserPosts = async () => {
+        const success = await getUserPosts();
+        console.log(success)
+    }
+    fetchUserPosts();
+
+    },[])
 
     useEffect(() => {
         const fetchAccessibility = async () => {

@@ -21,6 +21,8 @@ const DELETE_URL = `${BASE_URL}delete-account/`
 const ACCESSIBILITY_URL = `${BASE_URL}get-accessibility/`
 const GENRES_URL = `${BASE_URL}get-genres/`
 const CHANGE_PASSWORD_URL = `${BASE_URL}change-password/`
+const USER_POSTS_URL = `${BASE_URL}get-user-posts/`
+const USER_GAMES_URL = `${BASE_URL}get-user-games/`
 
 
 export const user_info = async () => {
@@ -273,6 +275,21 @@ export const changePassword = async (oldPass, newPass, confirmPass) => {
         console.log(error);
     }
 }
+
+export const getUserPosts = async () => {
+    try{
+        const response = await axios.get(USER_POSTS_URL,
+        { withCredentials: true }
+        )
+        return response.data.parents;
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+
+
+
 
 
 
