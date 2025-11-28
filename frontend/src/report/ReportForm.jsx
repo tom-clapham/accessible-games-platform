@@ -10,7 +10,7 @@ import "./Report.css";
 
 import axios from "axios";
 
-function ReportForm({gameId}) {
+function ReportForm({ gameId, postId }) {
 
     const [selectedReportType, setselectedReportType] = useState();
     const [description, setDescription] = useState("");
@@ -28,7 +28,12 @@ function ReportForm({gameId}) {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        axios.post(`http://localhost:8000/app/reports/report/game/${gameId}/`,
+        const gameOrPostUrl = gameId 
+            ? `http://localhost:8000/app/reports/report/game/${gameId}/`
+            : `http://localhost:8000/app/reports/report/post/${postId}/`;
+            
+
+        axios.post(gameOrPostUrl,
             {report_type: selectedReportType,
             description: description
             },

@@ -7,6 +7,8 @@ import comment_img from '../assets/chat.png';
 import report_img from '../assets/red-flag.png'; 
 import close_modal from '../assets/delete.png';
 
+import { Link } from 'react-router-dom';
+
 
 function Reviews() {
     const { reviewId } = useParams();
@@ -164,7 +166,9 @@ function Reviews() {
                     })}</p>
                     <img className={styles.commentImg} src={comment_img}></img>
                     <p>{item.comments}</p>
-                    <img className={styles.reportImg} src={report_img}></img>
+                    <Link to={`/report/post/${item.id}`} onClick={(e) => { e.stopPropagation(); }}>
+                        <button>Report</button>
+                    </Link>
                 </div>
             </div>
         </div>

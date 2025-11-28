@@ -18,6 +18,7 @@ import Reviews from './Threads/Reviews.jsx'
 import Replies from './Threads/Replies.jsx'
 import BrowsePage from './browse/BrowsePage.jsx'
 import Report from './report/Report.jsx'
+import PostsReport from './report/PostsReport.jsx'
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
             <Route path="/discover" element={<Discover/>}/>
             <Route path="/browse" element={<BrowsePage/>}/>
             <Route path="/report/game/:gameId" element={<Report/>}/>
+            <Route path="/report/post/:postId" element={<PostsReport/>}/>
           </Route>
           <Route path="/login" element={<Login/>}/>
           <Route path="/forgot-credentials" element={<Forgot_Information/>}/>

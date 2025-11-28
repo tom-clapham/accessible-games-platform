@@ -49,10 +49,10 @@ function Report() {
     return (
         <div className="report-form-container">
             <div className="report-header">
-                <Link to={`/gameprofile/${gameId}`}>
-                    <button className="back-button">Back</button>
+                <Link to={`/discover`}>
+                    <button className="back-button">Exit Report Menu</button>
                 </Link>
-                <h1 className="report-title">Report for {game.name}</h1>
+                <h1 className="report-title">Report For: {game.name}</h1>
             </div>
             <ReportForm gameId={game.id}/>
         </div>
