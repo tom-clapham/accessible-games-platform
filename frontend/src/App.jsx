@@ -17,6 +17,8 @@ import Discover from './discover/Discover.jsx'
 import Reviews from './Threads/Reviews.jsx'
 import Replies from './Threads/Replies.jsx'
 import BrowsePage from './browse/BrowsePage.jsx'
+import Report from './report/Report.jsx'
+import PostsReport from './report/PostsReport.jsx'
 import VoiceController from './voice_navigation/VoiceController.jsx'
 
 function App() {
@@ -38,6 +40,8 @@ function App() {
             <Route path="/gameprofile/:id" element={<GameProfile/>}/>
             <Route path="/discover" element={<Discover/>}/>
             <Route path="/browse" element={<BrowsePage/>}/>
+            <Route path="/report/game/:gameId" element={<Report/>}/>
+            <Route path="/report/post/:postId" element={<PostsReport/>}/>
           </Route>
           <Route path="/login" element={<Login/>}/>
           <Route path="/forgot-credentials" element={<Forgot_Information/>}/>

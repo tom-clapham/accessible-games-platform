@@ -117,8 +117,26 @@ body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
+.gp-button-report {
+  width: 100%;
+  background: #ff2626;
+  color: #f7f7f7;
+  margin-top: 12px;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 9px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
 .gp-button:hover {
   filter: brightness(1.1);
+}
+
+.gp-button-report:hover {
+  filter: brightness(0.9);
 }
 
 .gp-publisher, .gp-releasedate {

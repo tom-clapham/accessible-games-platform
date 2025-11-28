@@ -8,6 +8,8 @@ import GameTag from './GameTag';
 
 import "./game_profile_styles.css";
 
+import { Link } from 'react-router-dom';
+
 function formatDate(dateString) {
   const date = new Date(dateString);
 
@@ -114,6 +116,9 @@ function GameProfile() {
                                 </div>
 
                                 <button className="gp-button">Add to favourite games</button>
+                                <Link to={`/report/game/${game.id}`}>
+                                <button className="gp-button-report">Report</button>
+                                </Link>
                             </div>
                         </div>
                     </div>
