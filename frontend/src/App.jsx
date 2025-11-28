@@ -19,11 +19,14 @@ import Replies from './Threads/Replies.jsx'
 import BrowsePage from './browse/BrowsePage.jsx'
 import Report from './report/Report.jsx'
 import PostsReport from './report/PostsReport.jsx'
+import VoiceController from './voice_navigation/VoiceController.jsx'
 
 function App() {
   return (
     <Router>
       <AuthProvider>
+        <VoiceController />
+
         <Routes>
           <Route element={<LayoutWithNav/>}>
             <Route path="/" element={<Home/>}/>

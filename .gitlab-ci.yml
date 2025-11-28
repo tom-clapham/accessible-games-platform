@@ -1,0 +1,48 @@
+stages:
+  - build
+  - test-backend
+
+workflow:
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+    - if: $CI_COMMIT_BRANCH == "main"
+    - if: $CI_COMMIT_BRANCH == "development"
+    - when: never
+
+variables:
+  MYSQL_DATABASE: $DB_NAME
+  MYSQL_ROOT_PASSWORD: $DB_PASSWORD
+
+default:
+  image: python:3.10
+  services:
+    - name: mysql:8.0
+      alias: mysql
+  
+
+build-project:
+  stage: build
+  script:
+    - echo "Creating env..."
+    - python -m venv env
+    - echo "Created env. Activating env..."
+    - source env/bin/activate
+    - echo "Installing dependencies"
+    - pip install -e .
+    - echo "Dependencies installed. Deactivating..."
+    - deactivate
+    - echo "Build successful!"
+
+  artifacts:
+    paths:
+      - env/
+
+test-project:
+  stage: test-backend
+  script:
+    - echo "activating virtual env..."
+    - source env/bin/activate
+    - cd team_10_application
+    - echo "Running tests..."
+    - python manage.py test
+    - echo "Django tests complete!"

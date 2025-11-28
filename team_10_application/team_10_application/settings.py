@@ -145,9 +145,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': os.environ.get('DB_NAME'),
-        'USER':os.environ.get('USER'),
-        'PASSWORD':os.environ.get('PASSWORD'),
-        'HOST':'localhost',
+        'USER':os.environ.get('DB_USERNAME'),
+        'PASSWORD':os.environ.get('DB_PASSWORD'),
+        'HOST':os.environ.get('HOST'),
         'PORT':'3306',
         'OPTIONS': {"charset": "utf8mb4"}
     }
