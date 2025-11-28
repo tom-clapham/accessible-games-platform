@@ -36,3 +36,38 @@
     align-self: flex-end;
 }
 
+.submit-message-success {
+    align-self: flex-end;
+    color: rgb(166, 255, 166);
+}
+
+.submit-message-error {
+    align-self: flex-end;
+    color: rgb(255, 148, 148);
+}
+
+
+.back-button-wrapper {
+    align-self: flex-start;
+}
+
+.report-header {
+    width: 75%;           /* same width as h1 */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* left-align all children */
+    gap: 12px;              /* space between button and heading */
+}
+
+.back-button {
+    width: auto;            /* button sizes to content */
+    padding: 10px 14px;
+    border-radius: 9px;
+    background: #cfcfcf;
+    color: #0c0c0c;
+    border: none;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+}
+

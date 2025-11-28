@@ -1,5 +1,6 @@
 import { useEffect, useState} from 'react';
 import { useParams, useNavigate} from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 import ReportForm from './ReportForm.jsx';
 
@@ -47,9 +48,17 @@ function Report() {
 
     return (
         <div className="report-form-container">
-        <h1 className="report-title">Report for {game.name}</h1>
-        <ReportForm gameId={game.id}/>
+            <div className="report-header">
+                <Link to={`/gameprofile/${gameId}`}>
+                    <button className="back-button">Back</button>
+                </Link>
+                <h1 className="report-title">Report for {game.name}</h1>
+            </div>
+            <ReportForm gameId={game.id}/>
         </div>
+
+
+        
     )
 }
 
