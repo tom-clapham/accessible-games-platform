@@ -13,6 +13,37 @@ const getSpeechRecognition = () => {
     return SpeechRecognition ? new SpeechRecognition() : null;
 };
 
+
+export const openGameByName = async (commandGameName, navigateFunction) => {
+        try {
+            // Fetch all games
+            const response = await fetch("http://127.0.0.1:8000/app/games/games");
+            const allGames = await response.json();
+
+            // Use fuse library to find closest game to spoken game name
+            const fuse = new Fuse(allGames, {
+                keys: ['name'],
+                threshold: 0.4,
+            })
+
+            // Search using fuse library
+            const results = fuse.search(commandGameName)
+
+            if (results.length == 0) {
+                console.warn("Voice Controller could not find any games called", commandGameName);
+                return;
+            }
+
+            // Use closest game match
+            const closestMatchGame = results[0].item;
+            navigateFunction(`/gameprofile/${closestMatchGame.id}`);
+
+        } catch (error) {
+            console.error("Voice Controller failed to open game:", error)
+        }
+    }
+
+
 function VoiceController() {
     const navigate = useNavigate();
     const location = useLocation();
@@ -266,35 +297,6 @@ function VoiceController() {
         navigate(`/browse${queryString ? `?${queryString}` : ""}`);
     }
 
-    const openGameByName = async (commandGameName) => {
-        try {
-            // Fetch all games
-            const response = await fetch("http://127.0.0.1:8000/app/games/games");
-            const allGames = await response.json();
-
-            // Use fuse library to find closest game to spoken game name
-            const fuse = new Fuse(allGames, {
-                keys: ['name'],
-                threshold: 0.4,
-            })
-
-            // Search using fuse library
-            const results = fuse.search(commandGameName)
-
-            if (results.length == 0) {
-                console.warn("Voice Controller could not find any games called", commandGameName);
-                return;
-            }
-
-            // Use closest game match
-            const closestMatchGame = results[0].item;
-            navigate(`/gameprofile/${closestMatchGame.id}`);
-
-        } catch (error) {
-            console.error("Voice Controller failed to open game:", error)
-        }
-    }
-
 
     // Perform action on screen according to provided intent and params (if any provided)
     const performIntentAction = (intent, params) => {
@@ -324,7 +326,7 @@ function VoiceController() {
 
             case INTENTS.OPEN_GAME:
                 if (params.gameName) {
-                    openGameByName(params.gameName);
+                    openGameByName(params.gameName, navigate);
                 }
                 break;
 
