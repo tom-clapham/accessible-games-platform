@@ -3,6 +3,7 @@ export const INTENTS = {
     OPEN_BROWSE: "OPEN_BROWSE",
     OPEN_LOGIN: "OPEN_LOGIN",
     OPEN_REGISTER: "OPEN_REGISTER",
+    OPEN_REVIEWS: "OPEN_REVIEWS",
     OPEN_GAME: "OPEN_GAME",
     GO_BACK: "GO_BACK",
 
@@ -35,6 +36,10 @@ export const INTENT_PATTERNS = [
     {
         intent: INTENTS.OPEN_REGISTER,
         keywords: ["register", "sign up"],
+    },
+    {
+        intent: INTENTS.OPEN_REVIEWS,
+        keywords: ["reviews", "go to reviews", "show reviews"]
     },
     {
         intent: INTENTS.OPEN_GAME,
@@ -162,7 +167,7 @@ export const INTENT_PATTERNS = [
     {
         intent: INTENTS.FILTER_BY_ACCESSIBILITY,
         accessibility: "Speech Accessibility",
-        keywords: ["speech", "speaking"]
+        keywords: ["speech", "speaking", "voice"]
     },
     {
         intent: INTENTS.FILTER_BY_ACCESSIBILITY,

@@ -205,6 +205,23 @@ function VoiceController() {
     };
 
 
+    const navigateToReviews = (urlPath) => {
+        const urlSegments = urlPath.split("/");
+        let gameId = null;
+
+        const gameProfileId = urlSegments.indexOf("gameprofile");
+        if (gameProfileId !== -1 && urlSegments[gameProfileId + 1]) {
+            gameId = urlSegments[gameProfileId + 1];
+        }
+
+        if (gameId) {
+            navigate(`/reviews/${gameId}`);
+        } else {
+            console.warn("Voice Controller could not find any games with ID to go to its reviews")
+        }
+    }
+
+
     const resetFilters = (params) => {
         const current_location = locationRef.current;
         const searchParams = new URLSearchParams(current_location);
@@ -267,6 +284,11 @@ function VoiceController() {
 
             case INTENTS.OPEN_REGISTER:
                 navigate("/register/step_1/")
+                break;
+
+            case INTENTS.OPEN_REVIEWS:
+                const urlPath = locationRef.current.pathname;
+                navigateToReviews(urlPath)
                 break;
 
             case INTENTS.OPEN_GAME:
