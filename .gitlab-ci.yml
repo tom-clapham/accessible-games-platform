@@ -24,9 +24,9 @@ build-project:
     - echo "Installing dependencies"
     - pip install -e .
     - echo "Dependencies installed. Creating migrations..."
-    - cd team_10_application
-    - python manage.py makemigrations
-    - python manage.py migrate
+    # - cd team_10_application
+    # - python manage.py makemigrations
+    # - python manage.py migrate
     - cd ..
     - echo "Deactivating..."
     - deactivate
