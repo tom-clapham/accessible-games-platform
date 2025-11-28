@@ -2,8 +2,15 @@ stages:
   - build
   - test-backend
 
-services:
-  - mysql:8.0
+variables:
+  MYSQL_DATABASE: $DB_NAME
+  MYSQL_ROOT_PASSWORD: $PASSWORD
+  MYSQL_USER: $USER
+  MYSQL_PASSWORD: $PASSWORD
+
+default:
+  services:
+    - mysql:8.0
 
 build-project:
   image: python:3.10
