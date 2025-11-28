@@ -23,7 +23,7 @@ export const INTENT_PATTERNS = [
     // Navigation intent patterns
     {
         intent: INTENTS.OPEN_DISCOVER,
-        keywords: ["discover", "recommended", "recommendation", "recommendations"]
+        keywords: ["discover", "recommended", "recommendation", "recommendations", "Hhome"]
     },
     {
         intent: INTENTS.OPEN_BROWSE,
@@ -31,11 +31,11 @@ export const INTENT_PATTERNS = [
     },
     {
         intent: INTENTS.OPEN_LOGIN,
-        keywords: ["login", "log"]
+        keywords: ["login", "log" , "sign in"]
     },
     {
         intent: INTENTS.OPEN_REGISTER,
-        keywords: ["register", "sign up"],
+        keywords: ["register", "sign up", "create account", "create an account"],
     },
     {
         intent: INTENTS.OPEN_REVIEWS,
