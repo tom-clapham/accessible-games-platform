@@ -10,7 +10,7 @@ variables:
 
 default:
   services:
-    - mysql:8.0
+    - name: mysql:8.0
       alias: mysql
 
 build-project:
