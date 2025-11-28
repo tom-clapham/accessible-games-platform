@@ -10,6 +10,8 @@ class DiscoverPageTests(APITestCase):
     def setUpTestData(cls):
         cls.url = reverse('discover')
 
+        today = timezone.now().date()
+
         # Set up test games
         for i in range(12):
             Game.objects.create(
@@ -27,7 +29,7 @@ class DiscoverPageTests(APITestCase):
         for i in range(6):
             GameClicks.objects.create(
                 gameId=Game.objects.get(name=f"Game {i}"),
-                date=date(2025, 11, 20),
+                date=today - timezone.timedelta(days=3),
                 clicks=20
             )
 
@@ -35,7 +37,7 @@ class DiscoverPageTests(APITestCase):
         for i in range(6):
             GameClicks.objects.create(
                 gameId=Game.objects.get(name=f"Game {i}"),
-                date=date(2025, 11, 21),
+                date=today - timezone.timedelta(days=2),
                 clicks=30
             )
 
@@ -43,7 +45,7 @@ class DiscoverPageTests(APITestCase):
         for i in range(6):
             GameClicks.objects.create(
                 gameId=Game.objects.get(name=f"Game {i}"),
-                date=date(2025, 11, 22),
+                date=today - timezone.timedelta(days=1),
                 clicks=50
             )
         
@@ -51,7 +53,7 @@ class DiscoverPageTests(APITestCase):
         for i in range(6):
             GameClicks.objects.create(
                 gameId=Game.objects.get(name=f"Game {i}"),
-                date=date(2025, 11, 23),
+                date=today,
                 clicks=40
             )
 
