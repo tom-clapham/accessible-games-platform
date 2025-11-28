@@ -1,0 +1,86 @@
+.voice-command-button {
+    background: #3b82f6;
+    font-size: 28px;
+    color: white;
+    border: none;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+    transition: background 0.15s ease, transform 0.15s ease;
+}
+
+.voice-command-button.listening {
+    background: #ff3b3b;     
+    box-shadow: 0 0 12px #ff3b3b; 
+}
+
+.voice-command-button:hover {
+    background: #2563eb;
+    transform: translateY(-2px);
+}
+
+.voice-command-button.listening:hover {
+    background: #c52e2e;
+    transform: translateY(-2px);
+}
+
+.voice-controller-container {
+    position: fixed;
+    bottom: 16px;
+    right: 16px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: flex-end;
+    gap: 8px;
+    z-index: 9999;
+}
+
+.command-feedback-toggle {
+    background: #3b82f6;
+    color: #f0f0f0;
+    border: 0px;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    font-size: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.command-feedback-toggle:hover {
+    background: #2563eb;
+}
+
+.command-feedback-panel {
+    background: #111;
+    color: #f0f0f0;
+    border: 1px solid #444;
+    border-radius: 8px;
+    padding: 8px 10px;
+    max-width: 260px;
+    font-size: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+}
+
+.command-feedback-row {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 4px;
+}
+
+.command-feedback-label {
+    font-weight: 600;
+}
+
+.command-feedback-value {
+    flex: 1;
+    word-wrap: break-word;
+}

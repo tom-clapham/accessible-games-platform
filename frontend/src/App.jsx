@@ -17,11 +17,14 @@ import Discover from './discover/Discover.jsx'
 import Reviews from './Threads/Reviews.jsx'
 import Replies from './Threads/Replies.jsx'
 import BrowsePage from './browse/BrowsePage.jsx'
+import VoiceController from './voice_navigation/VoiceController.jsx'
 
 function App() {
   return (
     <Router>
       <AuthProvider>
+        <VoiceController />
+
         <Routes>
           <Route element={<LayoutWithNav/>}>
             <Route path="/" element={<Home/>}/>

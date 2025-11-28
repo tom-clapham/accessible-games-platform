@@ -67,24 +67,28 @@ function BrowsePage() {
 
     // Update filter params in URL to keep state
     useEffect(() => {
-        const url_parameters = {};
+        const accessibilityFromUrl = searchParams.getAll("accessibility");
+        const genreFromUrl = searchParams.getAll("genre");
+        const platformFromUrl = searchParams.getAll("platform");
+        const sortFromUrl = searchParams.get("sort");
 
-        if (selectedAccessibilityTags?.length > 0) {
-            url_parameters.accessibility = selectedAccessibilityTags;
+        if (accessibilityFromUrl) {
+            setSelectedAccessibilityTags(accessibilityFromUrl);
         }
 
-        if (selectedGenreTags?.length > 0) {
-            url_parameters.genre = selectedGenreTags;
+        if (genreFromUrl) {
+            setSelectedGenreTags(genreFromUrl);
         }
 
-        if (selectedPlatformTags?.length > 0) {
-            url_parameters.platform = selectedPlatformTags 
+        if (platformFromUrl) {
+            setSelectedPlatformTags(platformFromUrl);
         }
 
-        url_parameters.sort = sortOption;
+        if (sortFromUrl) {
+            setSortOption(sortFromUrl);
+        }
 
-        setSearchParams(url_parameters);
-    }, [selectedAccessibilityTags, selectedGenreTags, selectedPlatformTags, sortOption, setSearchParams])
+    }, [searchParams]);
 
 
     // Fetch games from backend based on filters
@@ -92,18 +96,24 @@ function BrowsePage() {
         setLoading(true); 
 
         const filter_parameters = {}
+        const url_parameters = {}
 
         if (selectedAccessibilityTags?.length > 0) {
             filter_parameters.accessibility_tags = selectedAccessibilityTags;
+            url_parameters.accessibility = selectedAccessibilityTags;
         }
 
         if (selectedGenreTags?.length > 0) {
             filter_parameters.genre_tags = selectedGenreTags;
+            url_parameters.genre = selectedGenreTags;
         }
 
         if (selectedPlatformTags?.length > 0) {
             filter_parameters.platform_tags = selectedPlatformTags;
+            url_parameters.platform = selectedPlatformTags
         }
+
+        url_parameters.sort = sortOption;
 
         axios.get("http://127.0.0.1:8000/app/games/games/browse", { params: filter_parameters })
         .then(response => {
@@ -116,6 +126,9 @@ function BrowsePage() {
             setError(error);
             setLoading(false);
         });
+
+        setSearchParams(url_parameters);
+
     }, [selectedAccessibilityTags, selectedGenreTags, selectedPlatformTags, sortOption]);
 
 
