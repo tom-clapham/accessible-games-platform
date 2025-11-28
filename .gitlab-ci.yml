@@ -12,9 +12,11 @@ build-project:
     - source env/bin/activate
     - echo "Installing dependencies"
     - pip install -e .
-    - echo "Dependencies installed. Deactivating..."
+    - echo "Dependencies installed. Migrating databases..."
+    - ls
     - deactivate
     - echo "Build successful!"
+
   artifacts:
     paths:
       - $(pwd)/env
