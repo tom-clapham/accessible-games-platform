@@ -12,16 +12,17 @@ function PublisherNewGame() {
     // These will store all the details that need to be filled
     const [gameName, setGameName] = useState("");
     const [description, setDescription] = useState("");
-    const [trailerUrl, setTrailerUrl] = useState("https://youtu.be/7GGajk7cwYw");
-    const [thumbnailUrl, setThumbnailUrl] = useState("https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=612x612&w=0&k=20&c=rnCKVbdxqkjlcs3xH87-9gocETqpspHFXu5dIGB4wuM=");
-    const [price, setPrice] = useState(0.00);
+    const [trailerUrl, setTrailerUrl] = useState(""); // "youtube.com/watch?v=EoYF4VbD9cM&list=PLaTP_B8K0vdiUP8f3h6Y2930CJS4e_e4H&index=5"
+    const [thumbnailUrl, setThumbnailUrl] = useState(""); // "https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=612x612&w=0&k=20&c=rnCKVbdxqkjlcs3xH87-9gocETqpspHFXu5dIGB4wuM="
+    const [price, setPrice] = useState('');
+    const [displayPrice, setDisplayPrice] = useState('')
     const [releaseDate, setReleaseDate] = useState();
     const [preview, setPreview] = useState(false);
     const publisher = "default publisher"; // This will be taken from the authentication token from the user
     const [selectedAccessibilityTags, setSelectedAccessibilityTags] = useState();
     const [selectedGenreTags, setSelectedGenreTags] = useState();
     const [selectedPlatformTags, setSelectedPlatformTags] = useState();
-    const free = new RegExp("^(?:[0]+?(?:\.|\,)?0*?)?$")
+    const free = new RegExp("^(?:[0]+?(?:\\.|\\,)?0*?)?$")
 
     const accessibilityTagsOptions = [
         { label: "Vision", value: "Vision Accessibility"},
@@ -60,20 +61,24 @@ function PublisherNewGame() {
 
     // return the price
     function formatPrice(price) {
-        console.log(price)
+        // console.log('pre formatted: ', price)
         return free.test(price) ? 'Free' : `£${price}`
-    }
-
-    // format the date
-    function formatDate(date) {
-        console.log(date)
+        
     }
 
     useEffect(() => {
         console.log(releaseDate);
     }, [releaseDate]);
-    
 
+    useEffect(() => {
+        // console.log("useEffect: ", price)
+        setDisplayPrice(formatPrice(price))
+    }, [price])
+    
+    // format the date
+    function formatDate(date) {
+        console.log(date)
+    }
     return(
         <>
         { preview ? (<button onClick={() => setPreview(false)}>Edit</button>) : (<button onClick={() => setPreview(true)}>Preview</button>) }
@@ -97,7 +102,8 @@ function PublisherNewGame() {
             </div>
             <div className={styles.doubleAreas}>
                 <label className={styles.doubleLabels}>Price:<br/>
-                    <input className={styles.doubleInputs} onChange={(e) => setPrice(e.target.value.replaceAll(" ", ""))} value={price}/>
+                    <input className={styles.doubleInputs} onChange={(e) => {setPrice(e.target.value.replaceAll(" ", "")) 
+                        console.log("useState: ", price)}} value={price}/>
                 </label><br/>
                 <label className={styles.doubleTags}>
                     Genre tags:<br/>
@@ -135,7 +141,7 @@ function PublisherNewGame() {
                 <input className={styles.urlBox} type={'url'}/>
             </label>
             <label className={styles.urlArea}>Trailer URL:<br/>
-                <input className={styles.urlBox} type={'url'}/>
+                <input className={styles.urlBox} type={'url'} onChange={(e) => setTrailerUrl(e.target.value)} value={trailerUrl}/>
             </label>
             {/* <label>
                 On sale:
@@ -185,11 +191,11 @@ function PublisherNewGame() {
                     <div className="gp-sideinfo">
                         <div className="gp-infocard">
                             <div className="gp-thumbnail-container">
-                                <GameThumbnail url={thumbnailUrl} name={gameName}/>
+                                <GameThumbnail url={"https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=612x612&w=0&k=20&c=rnCKVbdxqkjlcs3xH87-9gocETqpspHFXu5dIGB4wuM="} name={gameName}/>
                             </div>
                             <div className="gp-metadata">
                                 <h2 className="gp-name">{gameName}</h2>
-                                <div className="gp-price">{formatPrice(price)}</div>
+                                <div className="gp-price">{displayPrice}</div>
                                 
                                 <div className="gp-info-row-top">
                                     <div className="gp-info-label">PUBLISHER</div>
@@ -198,7 +204,7 @@ function PublisherNewGame() {
 
                                 <div className="gp-info-row">
                                     <div className="gp-info-label">RELEASE DATE</div>
-                                    <div className="gp-info-value">{releaseDate}
+                                    <div className="gp-info-value">{releaseDate ? new Date(releaseDate).toLocaleDateString('en-US') : null}
                                     </div>
                                 </div>
 
