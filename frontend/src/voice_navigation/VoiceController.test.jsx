@@ -89,19 +89,19 @@ describe("VoiceController component", () => {
     });
 
     test("testShowsTranscriptAndIntentWhenLastCommandIsProvided", () => {
-    render(
-        <CommandFeedbackPanel
-            lastCommand={{
-                transcript: "open elden ring",
-                intent: "OPEN_GAME",
-                params: { gameName: "elden ring" },
-            }}
-        />
-    );
+        render(
+            <CommandFeedbackPanel
+                lastCommand={{
+                    transcript: "open elden ring",
+                    intent: "OPEN_GAME",
+                    params: { gameName: "elden ring" },
+                }}
+            />
+        );
 
-    expect(screen.getByText(/Heard:/i)).toBeInTheDocument();
-    expect(screen.getByText(/open elden ring/i)).toBeInTheDocument();
-    expect(screen.getByText(/Detected Command:/i)).toBeInTheDocument();
-    expect(screen.getByText(/OPEN_GAME/i)).toBeInTheDocument();
-});
+        expect(screen.getByText(/Heard:/i)).toBeInTheDocument();
+        expect(screen.getByText(/open elden ring/i)).toBeInTheDocument();
+        expect(screen.getByText(/Detected Command:/i)).toBeInTheDocument();
+        expect(screen.getByText(/OPEN_GAME/i)).toBeInTheDocument();
+    });
 });
