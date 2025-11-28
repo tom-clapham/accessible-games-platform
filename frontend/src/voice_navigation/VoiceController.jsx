@@ -387,6 +387,7 @@ function VoiceController() {
                 type="button"
                 className="command-feedback-toggle"
                 onClick={() => setCommandFeedbackVisible((v) => !v)}
+                aria-label="Show command feedback"
             >
                 {commandFeedbackVisible ? <FiChevronLeft/> : <FiChevronRight/> }
             </button>

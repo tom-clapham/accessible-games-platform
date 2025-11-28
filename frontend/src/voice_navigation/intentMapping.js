@@ -27,7 +27,7 @@ export const INTENT_PATTERNS = [
     },
     {
         intent: INTENTS.OPEN_BROWSE,
-        keywords: ["browse", "all games"]
+        keywords: ["browse", "all games", "brows"]
     },
     {
         intent: INTENTS.OPEN_LOGIN,
