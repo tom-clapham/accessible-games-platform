@@ -25,6 +25,11 @@
     transition: background 0.15s ease, transform 0.15s ease;
 }
 
+.voice-command-button.listening {
+    background: #ff3b3b;     
+    box-shadow: 0 0 12px #ff3b3b; 
+}
+
 .voice-command-button:hover {
     background: #2563eb;
     transform: translateY(-2px);

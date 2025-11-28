@@ -3,7 +3,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { INTENTS, detectIntent } from "./intentMapping";
 
 import "./voice_controller_styles.css";
-import { FiMic } from "react-icons/fi";
+import { FiMic, FiMicOff } from "react-icons/fi";
 import Fuse from "fuse.js";
 
 // https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API/Using_the_Web_Speech_API
@@ -18,6 +18,7 @@ function VoiceController() {
     
     const speechRecognitionRef = useRef(null);
     const locationRef = useRef(location);
+    const keepListeningRef = useRef(false);
 
     const [isSupported, setIsSupported] = useState(true);
     const [isListening, setIsListening] = useState(false);
@@ -34,7 +35,7 @@ function VoiceController() {
             return;
         }
 
-        speechRecognition.continuous = false;
+        speechRecognition.continuous = true;
         speechRecognition.language = "en-GB";
 
         speechRecognition.onstart = () => {
@@ -46,10 +47,20 @@ function VoiceController() {
             console.error("Speech recognition error:", errorMessage);
             setError("There was an error with the voice recognition, please try again.")
             setIsListening(false);
+            keepListeningRef.current = false;
         };
 
         speechRecognition.onend = () => {
             setIsListening(false);
+
+            if (keepListeningRef.current) {
+                try {
+                    speechRecognition.start();
+                } catch (error) {
+                    console.warn("Failed to start voice recognition:", error)
+                    keepListeningRef.current = false;
+                }
+            }
         }
 
         speechRecognition.onresult = (result) => {
@@ -70,11 +81,35 @@ function VoiceController() {
     }, []);
 
 
-    const startListening = () => {
-        try {
-            speechRecognitionRef.current.start();
-        } catch (error) {
-            console.warn("Failed to start recognition of voice message:",)
+    // const startListening = () => {
+    //     try {
+    //         speechRecognitionRef.current.start();
+    //     } catch (error) {
+    //         console.warn("Failed to start recognition of voice message:",)
+    //     }
+    // }
+
+
+    const toggleListening = () => {
+        const speechRecognition = speechRecognitionRef.current;
+
+        if (isListening || keepListeningRef.current ) {
+            // If already listening, then turn it off
+            keepListeningRef.current = false;
+            try {
+                speechRecognition.stop();
+            } catch(error) {
+                console.warn("Failed to stop voice recognition:", error)
+            }
+        } else {
+            // If not already listening, then turn it on
+            keepListeningRef.current = true;
+            try {
+                speechRecognition.start();
+            } catch(error) {
+                console.warn("Failed to start voice recognition:", error)
+                keepListeningRef.current = false;
+            }
         }
     }
 
@@ -260,7 +295,14 @@ function VoiceController() {
     
     return (
         <div className="voice-controller-container">
-            <button type="button" className="voice-command-button" onClick={startListening}><FiMic/></button>
+            <button 
+                type="button" 
+                className={`voice-command-button ${isListening ? "listening" : ""}`} 
+                onClick={toggleListening}
+                aria-label={isListening ? "Turn off voice navigation" : "Turn on voice navigation"}
+            >
+            {isListening ? <FiMic /> : <FiMicOff />}
+            </button>
         </div>
     )
 }
