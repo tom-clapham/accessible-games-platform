@@ -144,7 +144,7 @@ function VoiceController() {
 
 
     const handleCommandTranscript = (commandTranscript) => {
-        const trimmedCommandTranscript = commandTranscript.trim();
+        const trimmedCommandTranscript = commandTranscript.toLowerCase().trim();
 
         // Update the current location to get most up to date context, such as the currently applied filters
         const currentLocation = locationRef.current;
@@ -191,10 +191,9 @@ function VoiceController() {
 
         // Special case for voice commands for opening game pages
         if (intent === INTENTS.OPEN_GAME) {
-            const lower = commandTranscript.toLowerCase().trim();
             const keyword = "open ";
 
-            if (lower.startsWith(keyword)) {
+            if (trimmedCommandTranscript.startsWith(keyword)) {
                 const gameName = trimmedCommandTranscript.slice(keyword.length).trim();
                 if (gameName) {
                     finalParams = { ...finalParams, gameName };
