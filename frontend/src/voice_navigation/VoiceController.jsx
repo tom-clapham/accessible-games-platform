@@ -34,6 +34,8 @@ export const openGameByName = async (commandGameName, navigateFunction) => {
                 return;
             }
 
+            console.log("Closest game found:", results[0].item)
+
             // Use closest game match
             const closestMatchGame = results[0].item;
             navigateFunction(`/gameprofile/${closestMatchGame.id}`);
@@ -189,7 +191,7 @@ function VoiceController() {
 
         // Special case for voice commands for opening game pages
         if (intent === INTENTS.OPEN_GAME) {
-            const lower = commandTranscript.trim();
+            const lower = commandTranscript.toLowerCase().trim();
             const keyword = "open ";
 
             if (lower.startsWith(keyword)) {
