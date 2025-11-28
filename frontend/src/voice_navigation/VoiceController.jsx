@@ -3,7 +3,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { INTENTS, detectIntent } from "./intentMapping";
 
 import "./voice_controller_styles.css";
-import { FiMic, FiMicOff } from "react-icons/fi";
+import { FiMic, FiMicOff, FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import Fuse from "fuse.js";
 import CommandFeedbackPanel from "./CommandFeedbackPanel";
 
@@ -378,6 +378,19 @@ function VoiceController() {
     
     return (
         <div className="voice-controller-container">
+
+            {commandFeedbackVisible && (
+                <CommandFeedbackPanel lastCommand={lastCommand}/>
+            )}
+
+            <button
+                type="button"
+                className="command-feedback-toggle"
+                onClick={() => setCommandFeedbackVisible((v) => !v)}
+            >
+                {commandFeedbackVisible ? <FiChevronLeft/> : <FiChevronRight/> }
+            </button>
+            
             <button 
                 type="button" 
                 className={`voice-command-button ${isListening ? "listening" : ""}`} 
@@ -386,20 +399,6 @@ function VoiceController() {
             >
             {isListening ? <FiMic /> : <FiMicOff />}
             </button>
-
-            <div className="command-feedback-container">
-                <button
-                    type="button"
-                    className="command-feedback-toggle"
-                    onClick={() => setCommandFeedbackVisible((v) => !v)}
-                >
-                    {commandFeedbackVisible ? "Hide Command Feedback" : "Show Command Feedback"}
-                </button>
-
-                {commandFeedbackVisible && (
-                    <CommandFeedbackPanel lastCommand={lastCommand}/>
-                )}
-            </div>
         </div>
     )
 }
