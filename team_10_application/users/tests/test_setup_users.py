@@ -1,6 +1,9 @@
 from django.test import TestCase
 from rest_framework.test import APIClient
 from users.models import *
+from games.models import Game
+from datetime import date
+
 
 class UsersTestSetup(TestCase):
     def setUp(self):
@@ -21,11 +24,21 @@ class UsersTestSetup(TestCase):
             name = 'Action'
         )
         
+        self.game = Game.objects.create (
+            name = "Test game",
+            description = "This is a test game",
+            price = 9.99,
+            publisher = "Test Publisher",
+            release_date = date(2025, 1, 1),
+            trending=True,
+            on_sale=True
+        )
+
         self.user_1.set_password('password123')
+        self.user_1.save()
         self.user_1.accessibility_tags.set([self.accessibilityTag_deaf])
         self.user_1.genre_tags.set([self.genreTag_action])
-
-        self.user_1.save()
+        self.user_1.favourite_games.add(self.game.id)
 
 class RegisterTestSetup(TestCase):
     def setUp(self):
