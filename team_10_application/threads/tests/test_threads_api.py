@@ -6,7 +6,7 @@ class TestThreadsAPI(ThreadsTestSetup):
     def test_can_get_posts_from_game_that_exists(self):
         response = self.client.get(f'/app/threads/reviews/{self.games_1.pk}/')
         # Ensures that the parent Id is 1 (first item in response json)
-        self.assertEqual(response.data['parents'][0]['id'], 1)
+        self.assertEqual(response.data['parents'][0]['id'], self.posts_1.pk)
     
     def test_cant_get_posts_from_game_that_does_not_exists(self):
         response = self.client.get('/app/threads/reviews/100000/')
