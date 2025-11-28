@@ -2,6 +2,7 @@ export const INTENTS = {
     OPEN_DISCOVER: "OPEN_DISCOVER",
     OPEN_BROWSE: "OPEN_BROWSE",
     OPEN_GAME: "OPEN_GAME",
+    GO_BACK: "GO_BACK",
 
     SET_SORT_ORDER: "SET_SORT_ORDER",
     FILTER_BY_GENRE: "FILTER_BY_GENRE",
@@ -28,6 +29,10 @@ export const INTENT_PATTERNS = [
     {
         intent: INTENTS.OPEN_GAME,
         keywords: ["open"],
+    },
+    {
+        intent: INTENTS.GO_BACK,
+        keywords: ["back", "previous"]
     },
 
     // Scrolling intent patterns

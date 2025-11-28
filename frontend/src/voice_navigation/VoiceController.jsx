@@ -266,6 +266,10 @@ function VoiceController() {
                 }
                 break;
 
+            case INTENTS.GO_BACK:
+                navigate(-1);
+                break;
+
             case INTENTS.SCROLL_UP:
                 window.scrollBy({
                     top: -650,
