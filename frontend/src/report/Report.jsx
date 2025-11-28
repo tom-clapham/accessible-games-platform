@@ -19,7 +19,9 @@ function Report() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        axios.get(`http://127.0.0.1:8000/app/reports/report/game/${gameId}/`)
+        axios.get(`http://localhost:8000/app/reports/report/game/${gameId}/`, {
+            withCredentials: true,
+        })
         .then(response => {
             setGame(response.data);
             setLoading(false);
@@ -31,7 +33,7 @@ function Report() {
                 navigate(`/gameprofile/${gameId}`); 
                 return;
             }
-            console.error(error);
+            console.error("Error from get: ", error);
             setLoading(false);
             setError(error);
         });

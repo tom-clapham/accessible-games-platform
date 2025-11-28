@@ -25,7 +25,7 @@ function ReportForm({gameId}) {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        axios.post(`http://127.0.0.1:8000/app/reports/report/game/${gameId}/`,
+        axios.post(`http://localhost:8000/app/reports/report/game/${gameId}/`,
             {report_type: selectedReportType,
             description: description
             },

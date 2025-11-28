@@ -1,142 +1,4 @@
 [
-{
-    "model": "threads.users",
-    "pk": 1,
-    "fields": {
-        "firstname": "Daiyan",
-        "surname": "Khan",
-        "age": 21,
-        "username": "@founder_001"
-    }
-},
-{
-    "model": "threads.users",
-    "pk": 2,
-    "fields": {
-        "firstname": "Szymon",
-        "surname": "Wodkiewicz",
-        "age": 20,
-        "username": "@founder_002"
-    }
-},
-{
-    "model": "threads.users",
-    "pk": 3,
-    "fields": {
-        "firstname": "Oscar",
-        "surname": "Webster",
-        "age": 20,
-        "username": "@founder_003"
-    }
-},
-{
-    "model": "threads.users",
-    "pk": 4,
-    "fields": {
-        "firstname": "Tom",
-        "surname": "Clapham",
-        "age": 20,
-        "username": "@founder_004"
-    }
-},
-{
-    "model": "threads.posts",
-    "pk": 1,
-    "fields": {
-        "title": "F1 is phenmoneal!",
-        "message": "This is a big moment everyone, can we get some cheers please!!!!",
-        "date": "2025-11-11T13:36:31.111Z",
-        "gameId": 1,
-        "userId": 1,
-        "parent": null
-    }
-},
-{
-    "model": "threads.posts",
-    "pk": 2,
-    "fields": {
-        "title": "CHEER",
-        "message": "WOOP WOOP!!",
-        "date": "2025-11-11T13:36:48.862Z",
-        "gameId": 1,
-        "userId": 2,
-        "parent": 1
-    }
-},
-{
-    "model": "threads.posts",
-    "pk": 3,
-    "fields": {
-        "title": "THREE BIG BOOMS!",
-        "message": "BOOM BOOM BOOM!",
-        "date": "2025-11-11T13:37:02.632Z",
-        "gameId": 1,
-        "userId": 3,
-        "parent": 1
-    }
-},
-{
-    "model": "threads.posts",
-    "pk": 4,
-    "fields": {
-        "title": "YANITED!",
-        "message": "ryan was here",
-        "date": "2025-11-11T13:37:16.564Z",
-        "gameId": 1,
-        "userId": 4,
-        "parent": 1
-    }
-},
-{
-    "model": "threads.posts",
-    "pk": 5,
-    "fields": {
-        "title": "This is the second new post for this site!!",
-        "message": "Hello there my name is founder and I am the goat!",
-        "date": "2025-11-12T15:02:41.698Z",
-        "gameId": 1,
-        "userId": 4,
-        "parent": null
-    }
-},
-{
-    "model": "threads.posts",
-    "pk": 6,
-    "fields": {
-        "title": "asdfasdf",
-        "message": "asdfasdf",
-        "date": "2025-11-14T23:02:38.760Z",
-        "gameId": 1,
-        "userId": 1,
-        "parent": null
-    }
-},
-{
-    "model": "threads.posts",
-    "pk": 7,
-    "fields": {
-        "title": "Hello there",
-        "message": "asdfasdffkalsjdhfklasjdhf",
-        "date": "2025-11-14T23:03:50.844Z",
-        "gameId": 1,
-        "userId": 1,
-        "parent": null
-    }
-},
-{
-    "model": "threads.posts",
-    "pk": 8,
-    "fields": {
-        "title": null,
-        "message": "asdfasdf",
-        "date": "2025-11-15T11:57:13.983Z",
-        "gameId": 1,
-        "userId": 2,
-        "parent": 1
-    }
-},
-
-
   {
     "model": "games.accessibilitytag",
     "pk": 1,
@@ -1681,5 +1543,121 @@
 "fields": {
     "name": "Cognitive"
 }
+},
+{
+    "model": "users.customuser",
+    "pk": 1,
+    "fields": {
+        "password": "pbkdf2_sha256$1000000$Q7M67pXrlSlBKpJZwNF4Dr$wNrxofoYFjE6SWLNGJBwtJs0NHt4A+rBAGruCt86pZA=",
+        "last_login": null,
+        "is_superuser": false,
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2025-11-26T19:30:12.247Z",
+        "date_of_birth": "2004-07-01",
+        "last_name": "Khan",
+        "first_name": "Daiyan",
+        "email": "daiyankhan63@hotmail.com",
+        "username": "dzam07",
+        "groups": [],
+        "user_permissions": [],
+        "genre_tags": [
+            21,
+            22,
+            27
+        ],
+        "accessibility_tags": [
+            12,
+            13,
+            14
+        ]
+    }
+},
+{
+    "model": "users.customuser",
+    "pk": 2,
+    "fields": {
+        "password": "pbkdf2_sha256$1000000$Q7M67pXrlSlBKpJZwNF4Dr$wNrxofoYFjE6SWLNGJBwtJs0NHt4A+rBAGruCt86pZA=",
+        "last_login": null,
+        "is_superuser": false,
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2025-11-26T19:30:12.247Z",
+        "date_of_birth": "2004-07-01",
+        "last_name": "Webster",
+        "first_name": "Oscar",
+        "email": "Webster01@cardiff.ac.uk",
+        "username": "oscar",
+        "groups": [],
+        "user_permissions": [],
+        "genre_tags": [
+            21,
+            22,
+            27
+        ],
+        "accessibility_tags": [
+            12,
+            13,
+            14
+        ]
+    }
+},
+{
+    "model": "users.customuser",
+    "pk": 3,
+    "fields": {
+        "password": "pbkdf2_sha256$1000000$Q7M67pXrlSlBKpJZwNF4Dr$wNrxofoYFjE6SWLNGJBwtJs0NHt4A+rBAGruCt86pZA=",
+        "last_login": null,
+        "is_superuser": false,
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2025-11-26T19:30:12.247Z",
+        "date_of_birth": "2004-07-01",
+        "last_name": "Clapham",
+        "first_name": "Tom",
+        "email": "Tclapham@hotmail.com",
+        "username": "Tclaps001",
+        "groups": [],
+        "user_permissions": [],
+        "genre_tags": [
+            21,
+            22,
+            27
+        ],
+        "accessibility_tags": [
+            12,
+            13,
+            14
+        ]
+    }
+},
+{
+    "model": "users.customuser",
+    "pk": 4,
+    "fields": {
+        "password": "pbkdf2_sha256$1000000$Q7M67pXrlSlBKpJZwNF4Dr$wNrxofoYFjE6SWLNGJBwtJs0NHt4A+rBAGruCt86pZA=",
+        "last_login": null,
+        "is_superuser": false,
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2025-11-26T19:30:12.247Z",
+        "date_of_birth": "2004-07-01",
+        "last_name": "Wodkiewicz",
+        "first_name": "Szymon",
+        "email": "szymon030405@gmail.com",
+        "username": "szymoney",
+        "groups": [],
+        "user_permissions": [],
+        "genre_tags": [
+            21,
+            22,
+            27
+        ],
+        "accessibility_tags": [
+            12,
+            13,
+            14
+        ]
+    }
 }
 ]
