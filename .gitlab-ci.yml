@@ -1,6 +1,6 @@
 stages:
   - build
-  - test
+  - test-backend
 
 build-project:
   image: python:3.10
@@ -19,3 +19,11 @@ build-project:
   artifacts:
     paths:
       - env/
+
+test-project:
+  image: python:3.10
+  stage: test-backend
+  script:
+    - cd team_10_application
+    - python manage.py test
+    - echo "Django tests complete!"
