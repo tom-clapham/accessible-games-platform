@@ -260,14 +260,31 @@ function VoiceController() {
                 navigate("/browse")
                 break;
 
-            case INTENTS.OPEN_COMMUNITY:
-                navigate("/community")
-                break;
-
             case INTENTS.OPEN_GAME:
                 if (params.gameName) {
                     openGameByName(params.gameName);
                 }
+                break;
+
+            case INTENTS.SCROLL_UP:
+                window.scrollBy({
+                    top: -650,
+                    behavior: "smooth",
+                })
+                break;
+
+            case INTENTS.SCROLL_DOWN:
+                window.scrollBy({
+                    top: 650,
+                    behavior: "smooth",
+                })
+                break;
+
+            case INTENTS.GO_TO_TOP:
+                window.scrollTo({
+                    top: 0,
+                    behavior: "smooth",
+                })
                 break;
 
             case INTENTS.FILTER_BY_GENRE:

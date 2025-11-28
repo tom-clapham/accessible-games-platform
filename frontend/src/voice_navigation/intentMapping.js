@@ -1,7 +1,6 @@
 export const INTENTS = {
     OPEN_DISCOVER: "OPEN_DISCOVER",
     OPEN_BROWSE: "OPEN_BROWSE",
-    OPEN_COMMUNITY: "OPEN_COMMUNITY",
     OPEN_GAME: "OPEN_GAME",
 
     SET_SORT_ORDER: "SET_SORT_ORDER",
@@ -9,6 +8,10 @@ export const INTENTS = {
     FILTER_BY_PLATFORM: "FILTER_BY_PLATFORM",
     FILTER_BY_ACCESSIBILITY: "FILTER_BY_ACCESSIBILITY",
     RESET_FILTERS: "RESET_FILTERS",
+
+    SCROLL_UP: "SCROLL_UP",
+    SCROLL_DOWN: "SCROLL_DOWN",
+    GO_TO_TOP: "GO_TO_TOP",
 }
 
 
@@ -23,12 +26,22 @@ export const INTENT_PATTERNS = [
         keywords: ["browse", "all games"]
     },
     {
-        intent: INTENTS.OPEN_COMMUNITY,
-        keywords: ["community", "communities"]
+        intent: INTENTS.OPEN_GAME,
+        keywords: ["open"],
+    },
+
+    // Scrolling intent patterns
+    {
+        intent: INTENTS.SCROLL_UP,
+        keywords: ["up"],
     },
     {
-        intent: INTENTS.OPEN_GAME,
-        keywords: ["open", "go"],
+        intent: INTENTS.SCROLL_DOWN,
+        keywords: ["down"],
+    },
+    {
+        intent: INTENTS.GO_TO_TOP,
+        keywords: ["top"],
     },
 
     // Genre filtering intent patterns

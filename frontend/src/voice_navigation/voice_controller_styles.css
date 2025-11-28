@@ -34,3 +34,8 @@
     background: #2563eb;
     transform: translateY(-2px);
 }
+
+.voice-command-button.listening:hover {
+    background: #c52e2e;
+    transform: translateY(-2px);
+}
