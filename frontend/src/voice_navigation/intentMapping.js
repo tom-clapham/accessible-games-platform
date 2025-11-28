@@ -1,6 +1,8 @@
 export const INTENTS = {
     OPEN_DISCOVER: "OPEN_DISCOVER",
     OPEN_BROWSE: "OPEN_BROWSE",
+    OPEN_LOGIN: "OPEN_LOGIN",
+    OPEN_REGISTER: "OPEN_REGISTER",
     OPEN_GAME: "OPEN_GAME",
     GO_BACK: "GO_BACK",
 
@@ -25,6 +27,14 @@ export const INTENT_PATTERNS = [
     {
         intent: INTENTS.OPEN_BROWSE,
         keywords: ["browse", "all games"]
+    },
+    {
+        intent: INTENTS.OPEN_LOGIN,
+        keywords: ["login", "log"]
+    },
+    {
+        intent: INTENTS.OPEN_REGISTER,
+        keywords: ["register", "sign up"],
     },
     {
         intent: INTENTS.OPEN_GAME,

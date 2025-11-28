@@ -248,6 +248,7 @@ function VoiceController() {
     }
 
 
+    // Perform action on screen according to provided intent and params (if any provided)
     const performIntentAction = (intent, params) => {
         console.log("Intent:", intent, "Params:", params);
 
@@ -258,6 +259,14 @@ function VoiceController() {
 
             case INTENTS.OPEN_BROWSE:
                 navigate("/browse")
+                break;
+
+            case INTENTS.OPEN_LOGIN:
+                navigate("/login")
+                break;
+
+            case INTENTS.OPEN_REGISTER:
+                navigate("/register/step_1/")
                 break;
 
             case INTENTS.OPEN_GAME:
