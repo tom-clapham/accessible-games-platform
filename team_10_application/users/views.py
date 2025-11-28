@@ -4,6 +4,8 @@ from rest_framework.decorators import api_view, permission_classes, action
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from .serializer import UserRegistrationSerializer, AccessibilityTagSerializer, GenreTagSerializer
 from .models import CustomUser, GenreTag, AccessibilityTag
+from games.models import Game
+from games.serializers import GameSerializer
 from django.core.mail import send_mail
 from django.contrib.auth.hashers import check_password
 
@@ -313,7 +315,7 @@ def update_details(request):
     return Response({'success': True})
 
 @api_view(['POST'])
-@permission_classes([AllowAny])
+@permission_classes([IsAuthenticated])
 def delete(request):
     user = request.user
     try:
@@ -328,7 +330,7 @@ def delete(request):
         return Response({'success':False})
     
 @api_view(['POST'])
-@permission_classes([AllowAny])
+@permission_classes([IsAuthenticated])
 def get_accessibility(request):
     user = request.user
     user_tag = user.accessibility_tags.values_list('id', flat=True)
@@ -337,7 +339,7 @@ def get_accessibility(request):
     return Response({'success':serializer.data})
 
 @api_view(['POST'])
-@permission_classes([AllowAny])
+@permission_classes([IsAuthenticated])
 def get_genres(request):
     user = request.user
     user_tag = user.genre_tags.values_list('id', flat=True)
@@ -346,7 +348,7 @@ def get_genres(request):
     return Response({'success':serializer.data})
 
 @api_view(['POST'])
-@permission_classes([AllowAny])
+@permission_classes([IsAuthenticated])
 def update_preferences(request):
     user = request.user
 
@@ -363,7 +365,7 @@ def update_preferences(request):
     return Response({'success':True})
 
 @api_view(['POST'])
-@permission_classes([AllowAny])
+@permission_classes([IsAuthenticated])
 def change_password(request):
     user = request.user
 
@@ -384,8 +386,51 @@ def change_password(request):
     user.save()
     return Response({'success':True})
 
-#add a function to add the game to a user profile to indiacte faovuiret
-# add a function which will return all games realted to a user  
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def add_game_to_favourites(request):
+    game = request.data['game']
+    user = request.user
+    favourites = Game.objects.get(name=game)
+    user.favourite_games.add(favourites)
+    user.save()
+    return Response({'success':True})
+
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def remove_from_favourites(request):
+    game = request.data['game']
+    user = request.user
+    favourites = Game.objects.get(name=game)
+    user.favourite_games.remove(favourites)
+    user.save()
+    return Response({'success':True})
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def get_all_favourite_games(request):
+    user = request.user
+    if(user):
+        favourite_games = user.favourite_games.all()
+        serializer = GameSerializer(favourite_games, many=True)
+        return Response({'success':serializer.data})
+    
+    return Response({'success':False})
+
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def check_favourite_games(request):
+    user = request.user
+    game = request.data['game']
+    print(game)
+    object = Game.objects.get(name=game)
+    if(user):
+        if(user.favourite_games.filter(id=object.id).exists()):
+            return Response({'success':True})
+    
+    return Response({'success':False})
+
+
 
 
 

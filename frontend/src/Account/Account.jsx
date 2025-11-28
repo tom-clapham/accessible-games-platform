@@ -1,5 +1,5 @@
-import {useState, useEffect} from 'react'
-import { updateDetails, updatePreferences, updatePersonal, user_info, deleteAccount, getAccessibility, getGenres, changePassword, logout, getUserPosts } from '../endpoints/api'
+import {useState, useEffect, Fragment} from 'react'
+import { updateDetails, updatePreferences, updatePersonal, user_info, deleteAccount, getAccessibility, getGenres, changePassword, logout, getUserPosts, getAllFavouriteGames } from '../endpoints/api'
 import styles from './Account.module.css'
 import { useLocation } from 'react-router-dom'
 import { CiUser, CiSettings } from "react-icons/ci";
@@ -9,6 +9,9 @@ import { IoAccessibilityOutline } from "react-icons/io5";
 import { FaRegHeart, FaRegCommentDots } from "react-icons/fa";
 import { IoIosWarning } from "react-icons/io";
 import { TiDelete } from "react-icons/ti";
+import GameCard from '../browse/GameCard';
+import comment_img from '../assets/chat.png';
+import report_img from '../assets/red-flag.png'; 
 
 const Account = () => {
 
@@ -32,6 +35,7 @@ const Account = () => {
     const [oldPassword, setOldPassword] = useState("")
     const [newPassword, setNewPassword] = useState("")
     const [confirmNewPassword, setConfirmNewPassword] = useState("")
+    const [games, setGames] = useState([])
 
     const [updateSuccess, setUpdateSuccess] = useState(false)
     const [errorUsername, setErrorUsername] = useState(false);
@@ -43,6 +47,7 @@ const Account = () => {
     const [match, setMatch] = useState(false)
     const [invalid, setInvalid] = useState(false)
     const [oldPasswordMatch, setOldPasswordMatch] = useState(false)
+    const [posts, setPosts] = useState(false)
     
     
 
@@ -167,7 +172,7 @@ const Account = () => {
     useEffect(() => {
         const fetchUserPosts = async () => {
         const success = await getUserPosts();
-        console.log(success)
+        setPosts(success)
     }
     fetchUserPosts();
 
@@ -192,6 +197,58 @@ const Account = () => {
     fetchGenres();
 
     }, [])
+
+    useEffect(() => {
+        const fetchGames = async () => {
+        const success = await getAllFavouriteGames();
+        setGames(success)
+    }
+    fetchGames();
+
+    }, [])
+
+    const displayParents = () =>  {
+        if (posts.length < 1) {
+            // console.log("nothing here!")
+            return(
+                <h3 className={styles.emptyReplies}>Seems like it's pretty empty in here... Why not be the first to Comment!</h3>
+            )
+        }
+        // setupVotes()
+        // need to add items to the useState so that they can be recorded and requests are only made when there is actually a change
+        return posts.map((item, idx) => (
+        <Fragment key={idx}>
+        <div className={styles.vpBox}>
+            <div className={styles.votesBox}>
+                <button className={styles.voteBtn} onClick={(e) => upVote(item.id, idx)} style={item.userVote != null ? item.userVote ? {color:"#00a6ff"} : null : null}>&uarr;</button>
+                <h3 className={styles.voteCount}>{item.votes}</h3>
+                <button className={styles.voteBtn} onClick={(e) => downVote(item.id, idx)} style={item.userVote != null ? item.userVote ? null : {color: "red"} : null}>&darr;</button>
+            </div>
+            <div className={styles.postBox} onClick={() => navigate(`/replies/${item.id}`)}>
+                <h2 className={styles.postTitle}>{item.title}</h2>
+                {/* profile picture */}
+                <div className={styles.postOwner}>
+                    <h3 className={styles.postName}>{item.firstname} {item.surname}</h3>
+                    <h5 className={styles.postUsername}>@{item.username}</h5>
+                </div>
+                <h3 className={styles.postMessage}>{item.message}</h3>
+                <div className={styles.postStats}>
+                    {/* <p>votes</p> */}
+                    <p className={styles.postDate}>{new Date(item.date).toLocaleDateString('en-GB', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: '2-digit',
+                    hour: '2-digit',
+                    minute: '2-digit'
+                    })}</p>
+                    <img className={styles.commentImg} src={comment_img}></img>
+                    <p>{item.comments}</p>
+                    <img className={styles.reportImg} src={report_img}></img>
+                </div>
+            </div>
+        </div>
+        </Fragment>
+    ))};
 
     function handleShowAccessibility(){
         if(showAccessibility){
@@ -475,10 +532,21 @@ const Account = () => {
                 )}
                 {activeSection === "favourite" &&(<div className={styles.list_settings}>
                     <h2 className={styles.title}>My Favourite Games</h2>
+                    <div>
+                        {games.map((game) => (
+                            <GameCard 
+                                id={game.id} 
+                                name={game.name}
+                                price={game.price}
+                                image_url={game.thumbnail_url}
+                            />
+                        ))}
+                    </div>
                 </div>
                 )}
                 {activeSection === "community" &&(<div className={styles.list_settings}>
                     <h2 className={styles.title}>My Threads & Posts</h2>
+                    {displayParents()}
                 </div>
                 )}
             </div>

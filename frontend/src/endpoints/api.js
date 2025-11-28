@@ -22,7 +22,10 @@ const ACCESSIBILITY_URL = `${BASE_URL}get-accessibility/`
 const GENRES_URL = `${BASE_URL}get-genres/`
 const CHANGE_PASSWORD_URL = `${BASE_URL}change-password/`
 const USER_POSTS_URL = `${BASE_URL}get-user-posts/`
+const USER_FAVOURITES_URL = `${BASE_URL}add-favourites/`
+const USER_REMOVE_FAVOURITES_URL = `${BASE_URL}remove-favourites/`
 const USER_GAMES_URL = `${BASE_URL}get-user-games/`
+const CHECK_FAVOURITE_URL = `${BASE_URL}check-favourite/`
 
 
 export const user_info = async () => {
@@ -287,6 +290,52 @@ export const getUserPosts = async () => {
     }
 }
 
+export const addToFavourites = async (game) => {
+    try{
+        const response = await axios.post(USER_FAVOURITES_URL,
+        { game:game },
+        { withCredentials: true }
+        )
+        return response.data.sucess;
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+export const getAllFavouriteGames = async () => {
+    try{
+        const response = await axios.get(USER_GAMES_URL,
+        { withCredentials: true }
+        )
+        return response.data.success;
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+export const checkFavouriteGame = async (game) => {
+    try{
+        const response = await axios.post(CHECK_FAVOURITE_URL,
+        {game:game},
+        { withCredentials: true }
+        )
+        return response.data.success;
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+export const removeFromFavourites = async (game) => {
+    try{
+        const response = await axios.post(USER_REMOVE_FAVOURITES_URL,
+        {game:game},
+        { withCredentials: true }
+        )
+        return response.data.success;
+    } catch (error) {
+        console.log(error);
+    }
+}
 
 
 

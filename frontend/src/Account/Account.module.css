@@ -388,6 +388,20 @@ label {
     width: 25%;
 }
 
+.commentImg {
+    width:25px;
+    height: 25px;
+    filter: invert(100%);
+    margin-left: 10px;
+}
+
+.reportImg {
+    width:25px;
+    height: 19px;
+    filter: invert(100%);
+    margin-left: 5px
+}
+
 .success {
     background-color: #057c299f;
     color: #fff;

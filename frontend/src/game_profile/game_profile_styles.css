@@ -153,3 +153,13 @@ body {
   color: hsl(201, 100%, 50%);
   text-decoration: underline;
 }
+
+.gp-success {
+    background-color: #057c299f;
+    color: #fff;
+    font-weight: 500;
+    margin-top: 10px;
+    border-radius: 10px;
+    padding: 20px 10px;
+    font-size: 14px;
+}

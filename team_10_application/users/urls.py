@@ -24,4 +24,8 @@ urlpatterns = [
     path('update-preferences/', views.update_preferences),
     path('change-password/', views.change_password),
     path('get-user-posts/', getUserPosts),
+    path('add-favourites/', views.add_game_to_favourites),
+    path('remove-favourites/', views.remove_from_favourites),
+    path('get-user-games/', views.get_all_favourite_games),
+    path('check-favourite/', views.check_favourite_games),
 ]
