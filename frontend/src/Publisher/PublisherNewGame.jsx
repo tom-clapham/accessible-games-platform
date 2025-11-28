@@ -21,7 +21,7 @@ function PublisherNewGame() {
     const [selectedAccessibilityTags, setSelectedAccessibilityTags] = useState();
     const [selectedGenreTags, setSelectedGenreTags] = useState();
     const [selectedPlatformTags, setSelectedPlatformTags] = useState();
-    const free = new RegExp("^[0]+?(?:\.0*)?$")
+    const free = new RegExp("^(?:[0]+?(?:\.|\,)?0*?)?$")
 
     const accessibilityTagsOptions = [
         { label: "Vision", value: "Vision Accessibility"},
@@ -60,9 +60,18 @@ function PublisherNewGame() {
 
     // return the price
     function formatPrice(price) {
+        console.log(price)
         return free.test(price) ? 'Free' : `£${price}`
     }
 
+    // format the date
+    function formatDate(date) {
+        console.log(date)
+    }
+
+    useEffect(() => {
+        console.log(releaseDate);
+    }, [releaseDate]);
     
 
     return(
@@ -70,64 +79,64 @@ function PublisherNewGame() {
         { preview ? (<button onClick={() => setPreview(false)}>Edit</button>) : (<button onClick={() => setPreview(true)}>Preview</button>) }
         { !preview ? (<form onSubmit={createGame} className={styles.formArea}>
             {/* <div className={styles.horizontalSection}> */}
-                <div className={styles.doubleAreas}>
-                    <label className={styles.doubleLabels}>Game name:<br/>
-                        <input className={styles.doubleInputs} onChange={(e) => setGameName(e.target.value)} value={gameName} required/>
-                    </label><br/>
-                    <label className={styles.doubleTags}>
-                        Accessibility tags:<br/>
-                        <MultiSelect 
-                            value={selectedAccessibilityTags}
-                            onChange={(e) => setSelectedAccessibilityTags(e.value)}
-                            placeholder="Select Accessibility Tags" 
-                            options={accessibilityTagsOptions}
-                            display="chip"
-                            className="accessibility-tags-multiselect"
-                        />
-                    </label>
-                </div>
-                <div className={styles.doubleAreas}>
-                    <label className={styles.doubleLabels}>Price:<br/>
-                        <input className={styles.doubleInputs} onChange={(e) => setPrice(e.target.value)} value={price}/>
-                    </label><br/>
-                    <label className={styles.doubleTags}>
-                        Genre tags:<br/>
-                        <MultiSelect 
-                            value={selectedGenreTags} 
-                            onChange={(e) => setSelectedGenreTags(e.value)}
-                            placeholder="Select Genres" 
-                            options={genreTagsOptions}
-                            display="chip"
-                            className="genre-tags-multiselect"
-                        />
-                    </label>
-                </div>
-                <div className={styles.doubleAreas}>
-                    <label className={styles.doubleLabels}>Release date:<br/>
-                        <input className={styles.doubleInputs} type={'date'} onChange={(e) => setReleaseDate(e.target.value)} value={releaseDate} required/>
-                    </label><br/>
-                    <label className={styles.doubleTags}>
-                        Platform tags:<br/>
-                        <MultiSelect 
-                            value={selectedPlatformTags} 
-                            onChange={(e) => setSelectedPlatformTags(e.value)}
-                            placeholder="Select Platforms" 
-                            options={platformTagsOptions}
-                            display="chip"
-                            className="platform-tags-multiselect"
-                        />
-                    </label>
-                </div>
+            <div className={styles.doubleAreas}>
+                <label className={styles.doubleLabels}>Game name:<br/>
+                    <input className={styles.doubleInputs} onChange={(e) => setGameName(e.target.value)} value={gameName} required/>
+                </label><br/>
+                <label className={styles.doubleTags}>
+                    Accessibility tags:<br/>
+                    <MultiSelect 
+                        value={selectedAccessibilityTags}
+                        onChange={(e) => setSelectedAccessibilityTags(e.value)}
+                        placeholder="Select Accessibility Tags" 
+                        options={accessibilityTagsOptions}
+                        display="chip"
+                        className="accessibility-tags-multiselect"
+                    />
+                </label>
+            </div>
+            <div className={styles.doubleAreas}>
+                <label className={styles.doubleLabels}>Price:<br/>
+                    <input className={styles.doubleInputs} onChange={(e) => setPrice(e.target.value.replaceAll(" ", ""))} value={price}/>
+                </label><br/>
+                <label className={styles.doubleTags}>
+                    Genre tags:<br/>
+                    <MultiSelect 
+                        value={selectedGenreTags} 
+                        onChange={(e) => setSelectedGenreTags(e.value)}
+                        placeholder="Select Genres" 
+                        options={genreTagsOptions}
+                        display="chip"
+                        className="genre-tags-multiselect"
+                    />
+                </label>
+            </div>
+            <div className={styles.doubleAreas}>
+                <label className={styles.doubleLabels}>Release date:<br/>
+                    <input className={styles.doubleInputs} type={'date'} onChange={(e) => setReleaseDate(e.target.value)} value={releaseDate} required/>
+                </label><br/>
+                <label className={styles.doubleTags}>
+                    Platform tags:<br/>
+                    <MultiSelect
+                        value={selectedPlatformTags} 
+                        onChange={(e) => setSelectedPlatformTags(e.value)}
+                        placeholder="Select Platforms" 
+                        options={platformTagsOptions}
+                        display="chip"
+                        className="platform-tags-multiselect"
+                    />
+                </label>
+            </div>
             {/* </div>     */}
             <label className={styles.descriptionArea}>Description:<br/>
-                <input onChange={(e) => setDescription(e.target.value)} value={description} required/>
-            </label><br/>
-            <label className={styles.thumbnailArea}>Thumbnail image link:<br/>
-                <input type={'url'}/>
-            </label><br/>
-            <label className={styles.trailerArea}>Trailer URL:<br/>
-                <input type={'url'}/>
-            </label><br/>
+                <textarea className={styles.description} onChange={(e) => setDescription(e.target.value)} value={description} required/>
+            </label>
+            <label className={styles.urlArea}>Thumbnail image link:<br/>
+                <input className={styles.urlBox} type={'url'}/>
+            </label>
+            <label className={styles.urlArea}>Trailer URL:<br/>
+                <input className={styles.urlBox} type={'url'}/>
+            </label>
             {/* <label>
                 On sale:
                 <input type={'checkbox'}/>
@@ -189,7 +198,8 @@ function PublisherNewGame() {
 
                                 <div className="gp-info-row">
                                     <div className="gp-info-label">RELEASE DATE</div>
-                                    <div className="gp-info-value">{releaseDate}</div>
+                                    <div className="gp-info-value">{releaseDate}
+                                    </div>
                                 </div>
 
                                 <button className="gp-button">Add to favourite games</button>
