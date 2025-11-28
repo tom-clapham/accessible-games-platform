@@ -13,10 +13,13 @@ build-project:
     - echo "Installing dependencies"
     - pip install -e .
     - echo "Dependencies installed. Migrating databases..."
-    - ls
+    - cd team_10_application
+    - python manage.py makemigrations
+    - python manage.py migrate
+    - echo "Databases successfully migrated. Deactivating."
     - deactivate
     - echo "Build successful!"
 
   artifacts:
     paths:
-      - $(pwd)/env
+      - $(pwd)env
