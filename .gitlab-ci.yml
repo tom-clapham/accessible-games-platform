@@ -12,11 +12,7 @@ build-project:
     - source env/bin/activate
     - echo "Installing dependencies"
     - pip install -e .
-    - echo "Dependencies installed. Migrating databases..."
-    - cd team_10_application
-    - python manage.py makemigrations
-    - python manage.py migrate
-    - echo "Databases successfully migrated. Deactivating."
+    - echo "Dependencies installed. Deactivating..."
     - deactivate
     - echo "Build successful!"
 
