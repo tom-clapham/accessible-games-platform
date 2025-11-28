@@ -1,60 +1,41 @@
 .settings_container {
     display: flex;
-    flex-direction: row;
-    align-items: start;
-    justify-content: start;
-    width: 60%;
-}
-
-.account_content {
-    margin-left: 40px;
-    width: 50%;
-}
-
-.account_list, .community_list, .favourites_list {
-    list-style: none;
-    width: 100%;
-    padding: 0px 30px;
-    padding-top: 25px;
-    padding-bottom: 10px;
-}
-
-.nav_list {
-    list-style: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     width: 100%;
 }
 
-.favourite_games_nav, .community_posts_nav, .list_header {
-    color: white;
-    font-weight: 600;
-    margin-bottom: 5px;
-}
-
-.nav_container{
-    background-color: #202024;
-    border-radius: 15px;
-    width: 30%;
+.account_content, .community_section, .games_section {
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 86%;
 }
 
-.list_settings, .list_details, .list_security, .list_preferences, .list_delete, .list_community, .list_favourited {
-    padding: 10px 0px;
-    padding-left: 10px;
+.account_list {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    width: 40%;
+    margin-left: 30px;
+}
+
+.list_favourited, .list_community, .list_account {
     color: rgba(219, 210, 210, 0.788);
-    width: 80%;
+    width: 18%;
     border-radius: 7px;
-}
-
-.list_settings:hover, .list_details:hover, .list_security:hover, .list_preferences:hover, .list_delete:hover, .list_community:hover, .list_favourited:hover {
-    background-color: #303034;
-    color: white;
-    cursor: pointer;
-}
-
-li {
+    margin-right: 10px;
+    padding: 10px 5px;
+    padding-left: 5px;
     display: flex;
     flex-direction: row;
     align-items: center;
+}
+
+.list_account:hover, .list_community:hover, .list_favourited:hover {
+    color: white;
+    cursor: pointer;
 }
 
 .icon {
@@ -67,11 +48,18 @@ li {
     font-size: 18px;
 }
 
-hr {
+.line {
   border: 1px solid rgba(219, 210, 210, 0.788);
   margin: 0px;
-  margin-top: 25px;
+  margin-top: 50px;
+  margin-bottom: 50px;
   width: 94.5%;
+}
+
+.topLine {
+  border: 1px solid rgba(219, 210, 210, 0.788);
+  margin: 0px;
+  width: 100%;
 }
 
 .line {
@@ -91,13 +79,12 @@ h3 {
     font-size: 23px;
     font-weight: 600;
     margin-bottom: 20px;
-    margin-top: 20px;
+    margin-top: 50px;
 }
 
 .section {
     position: relative;
-    margin-top: 15px;
-    min-height: 800px;
+    width: 40%;
 }
 
 .input {
@@ -109,7 +96,7 @@ h3 {
     cursor: pointer;
     color: white;
     margin-bottom: 15px;
-    width: 83%;
+    width: 95%;
     margin-top: 5px;
 }
 
@@ -145,9 +132,12 @@ label {
     margin-top: 15px;
 }
 
-.save:hover, .edit:hover, .edit_dob:hover {
-    
+.save:hover {
     background-color: rgba(3, 59, 3, 0.747);
+}
+
+.edit:hover, .edit_dob:hover {
+    background-color: #2d6ca3;
 }
 
 .save {
@@ -159,6 +149,72 @@ label {
     background-color: rgba(4, 85, 4, 0.747);
     cursor: pointer;
     margin-top: 10px;
+    margin-bottom: 50px
+}
+
+.postBox {
+    display: flex;
+    flex-direction: column;
+    border-style: solid;
+    border-color: hsl(0, 0%, 40%);
+    border-radius: 5px;
+    border-width: 1px;
+    margin-bottom: 5px;
+    padding-top: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    width: 70vw;
+    height: 20vh;
+}
+
+.vpBox {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10%;
+    gap: 3%;
+}
+
+.filter_results_container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    padding-bottom: 30px;
+}
+
+.postStats {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
+    margin-top: auto;
+    margin-bottom: 0;
+}
+
+.postTitle {
+    margin-top: 0;
+    margin-bottom: 2px;
+}
+
+.postUsername {
+    margin: 0;
+    font-size: 13px;
+    font-weight: lighter;
+    color:grey
+}
+
+.postName {
+    font-size: 15px;
+    margin: 0;
+}
+
+.postMessage {
+    display: flex;
+    margin-top: 10px;
+    max-width: auto;
+    overflow-wrap: break-word;
+    /* overflow:auto; */
 }
 
 .regular_button:hover {
@@ -166,14 +222,16 @@ label {
 }
 
 .regular_button {
-    padding: 15px;
+    padding: 10px;
     border-radius: 7px;
     font-size: 15px;
     border: none;
     color: #fff;
     background-color: #115ea3;
     cursor: pointer;
-    margin: 10px 0px;
+    margin-top: 10px;
+    margin-bottom: 50px;
+    width: 95%;
 }
 
 .edit {
@@ -218,12 +276,7 @@ label {
     background-color: rgb(192, 4, 4);
     cursor: pointer;
     margin-top: 10px;
-}
-
-.securityButtons {
-    display: flex;
-    flex-direction: column;
-    width: 35%;
+    margin-bottom: 50px;
 }
 
 .accessibility_list li, .genre_list li {
@@ -245,6 +298,7 @@ label {
     flex-direction: row;
     align-items: center;
     margin: 5px 0px;
+    padding: 0px;
 }
 
 .cross {
@@ -275,7 +329,7 @@ label {
   top: 35px;
   left: 130px;
   width: 50%;
-  height: 20%;
+  height: 50%;
   background-color: #202024; 
   border: 2px solid black;
   border-radius: 15px;
@@ -307,6 +361,20 @@ label {
     color: rgba(219, 210, 210, 0.788);
     font-weight: 500;
     margin-bottom: 10px;
+}
+
+.accessibilityList li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 80%;
+}
+
+.genreList li{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 90%;
 }
 
 
@@ -349,17 +417,6 @@ label {
     margin-left: 20px;
 }
 
-.backdrop {
-  position: absolute;      
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 50%;
-  background-color: rgba(255,255,255, 0.3);  
-  backdrop-filter: blur(5px);    
-  z-index: 50;    
-}
-
 .add {
     background-color: rgba(219, 210, 210, 0.788);
     border-radius: 5px;
@@ -382,10 +439,14 @@ label {
 
 .genreList {
     width: 25%;
+    list-style: none;
+    padding: 0px;
 }
 
 .accessibilityList {
     width: 25%;
+    list-style: none;
+    padding: 0px;
 }
 
 .commentImg {
@@ -440,46 +501,6 @@ label {
     display: flex;
     flex-direction: column;
     width: 70%;
-}
-
-.inputPassword {
-    padding: 10px;
-    font-size: 13px;
-    background-color: #303034;
-    border-radius: 10px;
-    border: 1px solid ;
-    cursor: pointer;
-    color: white;
-    margin-bottom: 20px;
-    width: 90%;
-    margin-top: 5px;
-}
-
-.inputPassword::placeholder {
-    color: rgba(219, 210, 210, 0.788);
-    font-size: 13px;
-}
-
-.labelPassword {
-    color: rgba(219, 210, 210, 0.788);
-    font-size: 13px;
-}
-
-.confirmPasswordBtn {
-    padding: 10px 0px;
-    border-radius: 7px;
-    font-size: 15px;
-    border: none;
-    color: #fff;
-    background-color: #115ea3;
-    cursor: pointer;
-    width: 98%;
-    margin-bottom: 10px;
-}
-
-
-.confirmPasswordBtn:hover {
-    background-color: #2d6ca3;
 }
 
 .passwordText {

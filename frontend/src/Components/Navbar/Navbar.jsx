@@ -103,7 +103,7 @@ function Navbar(){
           </div>
         </div>
         <div className='account' onClick={navAccount}>My account</div>
-        <hr></hr>
+         <hr className='line'/>
         <div className='favourite-container'>
           <div className='favourite-games'><CgGames className='games-icon'/>View my favourite games</div>
         </div>

@@ -1,5 +1,5 @@
 from rest_framework import status
-from users.tests.test_setup import UsersTestSetup, RegisterTestSetup
+from users.tests.test_setup_users import UsersTestSetup, RegisterTestSetup
 
 #User creation method tests
 class TestUsersAPI(UsersTestSetup):
