@@ -3,7 +3,7 @@ stages:
   - test
 
 build-project:
-  image: python:3.10-alpine
+  image: python:3.10
   stage: build
   script:
     - echo "Creating env..."
