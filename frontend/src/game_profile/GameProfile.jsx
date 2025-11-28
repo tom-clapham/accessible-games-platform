@@ -1,5 +1,5 @@
 import { useEffect, useState} from 'react';
-import { useParams} from 'react-router-dom';
+import { useParams,useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 import GameThumbnail from './GameThumbnail';
@@ -35,6 +35,7 @@ function GameProfile() {
     const [game, setGame] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const navigate = useNavigate();
 
     useEffect(() => {
         axios.get(`http://127.0.0.1:8000/app/games/games/${id}`)
@@ -92,7 +93,7 @@ function GameProfile() {
                             ))}
                         </div>
 
-                        <h2>Reviews</h2>
+            <h2 className="gp-reviews" onClick={() => navigate(`/reviews/${id}`)}>Reviews</h2>
                     </div>
 
                     <div className="gp-sideinfo">

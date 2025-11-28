@@ -1,11 +1,14 @@
 import { useEffect, useState} from 'react';
+import { useSearchParams } from 'react-router-dom';
 import axios from 'axios';
 
 import GameCard from './GameCard';
+import { sortGames } from "./utils/sortGames";
 
 import "./browse_page_styles.css";
 
 import { MultiSelect } from 'primereact/multiselect';
+import { Dropdown } from 'primereact/dropdown';
 import "primereact/resources/themes/lara-dark-indigo/theme.css";
 
 
@@ -14,9 +17,13 @@ function BrowsePage() {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
-    const [selectedAccessibilityTags, setSelectedAccessibilityTags] = useState();
-    const [selectedGenreTags, setSelectedGenreTags] = useState();
-    const [selectedPlatformTags, setSelectedPlatformTags] = useState();
+    const [searchParams, setSearchParams] = useSearchParams();
+
+    const [selectedAccessibilityTags, setSelectedAccessibilityTags] = useState(() => searchParams.getAll("accessibility") || []);
+    const [selectedGenreTags, setSelectedGenreTags] = useState(() => searchParams.getAll("genre") || []);
+    const [selectedPlatformTags, setSelectedPlatformTags] = useState(() => searchParams.getAll("platform") || []);
+    const [sortOption, setSortOption] = useState(() => searchParams.get("sort") || "releaseNewestToOldest") // Sort by newest games by default
+
 
     const accessibilityTagsOptions = [
         { label: "Vision", value: "Vision Accessibility"},
@@ -47,29 +54,61 @@ function BrowsePage() {
         { label: "iOS", value: "iOS"},
         { label: "Android", value: "Android"},
     ]
+
+    const sortOptions = [
+        { label: "Name (A → Z)", value: "nameAscending"},
+        { label: "Name (Z → A)", value: "nameDescending"},
+        { label: "Price (Lowest)", value: "priceLowestToHighest"},
+        { label: "Price (Highest)", value: "priceHighestToLowest"},
+        { label: "Release Date (Newest)", value: "releaseNewestToOldest"},
+        { label: "Release Date (Oldest)", value: "releaseOldestToNewest"},
+    ]
     
+
+    // Update filter params in URL to keep state
+    useEffect(() => {
+        const url_parameters = {};
+
+        if (selectedAccessibilityTags?.length > 0) {
+            url_parameters.accessibility = selectedAccessibilityTags;
+        }
+
+        if (selectedGenreTags?.length > 0) {
+            url_parameters.genre = selectedGenreTags;
+        }
+
+        if (selectedPlatformTags?.length > 0) {
+            url_parameters.platform = selectedPlatformTags 
+        }
+
+        url_parameters.sort = sortOption;
+
+        setSearchParams(url_parameters);
+    }, [selectedAccessibilityTags, selectedGenreTags, selectedPlatformTags, sortOption, setSearchParams])
+
+
+    // Fetch games from backend based on filters
     useEffect(() => {
         setLoading(true); 
 
         const filter_parameters = {}
 
         if (selectedAccessibilityTags?.length > 0) {
-            filter_parameters.accessibility_tags = selectedAccessibilityTags
+            filter_parameters.accessibility_tags = selectedAccessibilityTags;
         }
 
         if (selectedGenreTags?.length > 0) {
-            filter_parameters.genre_tags = selectedGenreTags
+            filter_parameters.genre_tags = selectedGenreTags;
         }
 
         if (selectedPlatformTags?.length > 0) {
-            filter_parameters.platform_tags = selectedPlatformTags
+            filter_parameters.platform_tags = selectedPlatformTags;
         }
-
-        console.log("Filter parameters being sent:", filter_parameters);
 
         axios.get("http://127.0.0.1:8000/app/games/games/browse", { params: filter_parameters })
         .then(response => {
-            setGames(response.data);
+            const sortedGames = sortGames(response.data, sortOption)
+            setGames(sortedGames);
             setLoading(false);
         })
         .catch(error => {
@@ -77,16 +116,30 @@ function BrowsePage() {
             setError(error);
             setLoading(false);
         });
-    }, [selectedAccessibilityTags, selectedGenreTags, selectedPlatformTags]);
+    }, [selectedAccessibilityTags, selectedGenreTags, selectedPlatformTags, sortOption]);
+
 
     if (!games) return <p>No games data found.</p>;
+
 
     return (
         <div>
             <div className="browse-page">
                 <h1>Browse</h1>
                 <div className="browse-page-headings">
-                    <div className="heading">Results</div>
+                    <div className="heading-sort-by">
+                        <span className="heading-label">Sort by:</span>
+                        <div className="sort-option-container">
+                            <Dropdown 
+                                value={sortOption} 
+                                onChange={(e) => setSortOption(e.value)} 
+                                options={sortOptions} 
+                                optionLabel="label" 
+                                placeholder="Select an option" 
+                                className="sort-option-select" 
+                            />
+                        </div>
+                    </div>
                     <div className="heading">Filters</div>
                 </div>
                 <div className="browse-page-grid">

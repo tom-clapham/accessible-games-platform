@@ -14,11 +14,12 @@ body {
 .browse-page-headings {
   display: grid;
   grid-template-columns: 1fr 320px;
-    gap: 30px;
+  gap: 30px;
 }
 
 .heading {
     font-size: 20px;
+    padding-top: 12px;
     padding-bottom: 20px;
 }
 
@@ -70,12 +71,6 @@ body {
   border: 1px solid #2a2a2a;
 }
 
-.p-multiselect-label-container {
-  background-color: #0c0c0c;
-  padding: 4px 8px;
-  white-space: normal;
-  width: 320px;
-}
 
 .p-multiselect-trigger {
   background-color: #0c0c0c;
@@ -97,6 +92,40 @@ body {
   margin: 2px;
 }
 
+.p-multiselect-header {
+  background-color: #0C0C0C;
+  display: none;
+}
+
+.p-multiselect-items-wrapper {
+  background-color: #0c0c0c;
+}
+
 .tags-filter-container {
   padding-bottom: 35px;
+}
+
+.heading-sort-by {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  padding-bottom: 20px;
+}
+
+.heading-label {
+  font-size: 20px;      
+  padding-bottom: 0;            
+}
+
+.sort-option-select {
+  background-color: #0c0c0c;
+  border: 1px solid #2a2a2a;
+}
+
+.p-dropdown-items {
+  background-color: #0c0c0c;
+}
+
+.p-dropdown-item.p-highlight {
+  background-color: #1d1d1d;  
 }
