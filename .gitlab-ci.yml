@@ -24,6 +24,9 @@ test-project:
   image: python:3.10
   stage: test-backend
   script:
+    - echo "activating virtual env..."
+    - source env/bin/activate
     - cd team_10_application
+    - echo "Running tests..."
     - python manage.py test
     - echo "Django tests complete!"
