@@ -16,6 +16,9 @@ export const INTENTS = {
     SCROLL_UP: "SCROLL_UP",
     SCROLL_DOWN: "SCROLL_DOWN",
     GO_TO_TOP: "GO_TO_TOP",
+
+    OPEN_ABOUT_US: "OPEN_ABOUT_US",
+    OPEN_HELP: "OPEN_HELP"
 }
 
 
@@ -48,6 +51,10 @@ export const INTENT_PATTERNS = [
     {
         intent: INTENTS.GO_BACK,
         keywords: ["back", "previous"]
+    },
+        {
+        intent: INTENTS.OPEN_ABOUT_US,
+        keywords: ["about us"]
     },
 
     // Genre filtering intent patterns
@@ -211,6 +218,12 @@ export const INTENT_PATTERNS = [
         intent: INTENTS.GO_TO_TOP,
         keywords: ["top"],
     },
+
+    // Help pages intent patterns
+    {
+        intent: INTENTS.OPEN_HELP,
+        keywords: ["help"]
+    }
 ]
 
 

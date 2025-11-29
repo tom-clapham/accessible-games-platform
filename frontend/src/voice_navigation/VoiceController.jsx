@@ -375,6 +375,14 @@ function VoiceController() {
             case INTENTS.SET_SORT_ORDER:
                 applyFilterParamsAndNavigate({ sort: params.sort });
                 break;
+
+            case INTENTS.OPEN_ABOUT_US:
+                navigate("/about-us")
+                break;
+
+            case INTENTS.OPEN_HELP:
+                navigate("/help-page")
+                break;
         }
     }
 

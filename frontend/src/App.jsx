@@ -16,6 +16,8 @@ import Reset_Password from './Forgot/Reset Password.jsx'
 import GameProfile from './game_profile/GameProfile.jsx'
 import Discover from './discover/Discover.jsx'
 import Reviews from './Threads/Reviews.jsx'
+import AboutUs from './about-us/AboutUs.jsx'
+import HelpPage from './help_page/HelpPage.jsx'
 import Replies from './Threads/Replies.jsx'
 import BrowsePage from './browse/BrowsePage.jsx'
 import Account from './Account/Account.jsx'
@@ -42,6 +44,8 @@ function App() {
             <Route path="/gameprofile/:id" element={<GameProfile/>}/>
             <Route path="/discover" element={<Discover/>}/>
             <Route path="/browse" element={<BrowsePage/>}/>
+            <Route path="/about-us" element={<AboutUs/>}/>
+            <Route path="/help-page" element={<HelpPage/>}/>
             <Route path="/account" element={<PrivateRoute><Account/></PrivateRoute>}/>
             <Route path="/report/game/:gameId" element={<Report/>}/>
             <Route path="/report/post/:postId" element={<PostsReport/>}/>
