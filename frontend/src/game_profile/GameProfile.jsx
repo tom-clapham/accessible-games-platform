@@ -10,6 +10,8 @@ import {useAuth} from '../contexts/useAuth'
 
 import "./game_profile_styles.css";
 
+import { Link } from 'react-router-dom';
+
 function formatDate(dateString) {
   const date = new Date(dateString);
 
@@ -165,6 +167,9 @@ function GameProfile() {
 
                                 {successAdd &&(<div className="gp-success">Successfully added to favourites.</div>)}
                                 {successRemove &&(<div className="gp-success">Successfully removed from favourites.</div>)}
+                                <Link to={`/report/game/${game.id}`}>
+                                <button className="gp-button-report">Report</button>
+                                </Link>
                             </div>
                         </div>
                     </div>

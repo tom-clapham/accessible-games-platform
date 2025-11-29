@@ -19,11 +19,16 @@ import Reviews from './Threads/Reviews.jsx'
 import Replies from './Threads/Replies.jsx'
 import BrowsePage from './browse/BrowsePage.jsx'
 import Account from './Account/Account.jsx'
+import Report from './report/Report.jsx'
+import PostsReport from './report/PostsReport.jsx'
+import VoiceController from './voice_navigation/VoiceController.jsx'
 
 function App() {
   return (
     <Router>
       <AuthProvider>
+        <VoiceController />
+
         <Routes>
           <Route element={<LayoutWithNav/>}>
             <Route path="/" element={<Home/>}/>
@@ -38,6 +43,8 @@ function App() {
             <Route path="/discover" element={<Discover/>}/>
             <Route path="/browse" element={<BrowsePage/>}/>
             <Route path="/account" element={<PrivateRoute><Account/></PrivateRoute>}/>
+            <Route path="/report/game/:gameId" element={<Report/>}/>
+            <Route path="/report/post/:postId" element={<PostsReport/>}/>
           </Route>
           <Route path="/login" element={<Login/>}/>
           <Route path="/forgot-credentials" element={<Forgot_Information/>}/>

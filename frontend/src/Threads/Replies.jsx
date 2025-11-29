@@ -7,6 +7,8 @@ import comment_img from '../assets/chat.png';
 import report_img from '../assets/red-flag.png';
 import profile_img from '../assets/user.png';
 
+import { Link } from 'react-router-dom';
+
 function Replies() {
     const { reviewId } = useParams();
     const [thread, setThread] = useState([]);
@@ -174,7 +176,9 @@ function Replies() {
                             })}</p>
                             <img className={styles.commentImg} src={comment_img}></img>
                             <p>{item.comments}</p>
-                            <img className={styles.reportImg} src={report_img}></img>
+                            <Link to={`/report/post/${item.id}`} onClick={(e) => { e.stopPropagation(); }}>
+                                <button>Report</button>
+                            </Link>
                         </div>
                     </div>
                 </div>
