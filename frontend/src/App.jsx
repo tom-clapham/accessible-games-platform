@@ -22,6 +22,9 @@ import Account from './Account/Account.jsx'
 import Report from './report/Report.jsx'
 import PostsReport from './report/PostsReport.jsx'
 import VoiceController from './voice_navigation/VoiceController.jsx'
+import Publishers from './Publishers/Publishers.jsx'
+import Publisher_Info from './Publishers/Publisher Info.jsx'
+import Register_Publisher from './Publishers/Register Publisher.jsx'
 
 function App() {
   return (
@@ -45,6 +48,9 @@ function App() {
             <Route path="/account" element={<PrivateRoute><Account/></PrivateRoute>}/>
             <Route path="/report/game/:gameId" element={<Report/>}/>
             <Route path="/report/post/:postId" element={<PostsReport/>}/>
+            <Route path="/publishers" element={<Publishers/>}/>
+            <Route path="/publisher/:publisherId" element={<Publisher_Info/>}/>
+            <Route path="/publisher/register" element={<Register_Publisher/>}/>
           </Route>
           <Route path="/login" element={<Login/>}/>
           <Route path="/forgot-credentials" element={<Forgot_Information/>}/>
