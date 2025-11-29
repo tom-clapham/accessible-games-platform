@@ -57,6 +57,14 @@ function Navbar(){
       nav('/browse')
   }
 
+  function navAboutUs(){
+      nav('/about-us')
+  }
+
+  function navHelp(){
+      nav('/help')
+  }
+
   const handleLogout = async () => {
       const success = await logout();
       if(success){
@@ -71,12 +79,13 @@ function Navbar(){
           <ul className='list'>
             <li className='discover-link' onClick={navGames}>Discover</li>
             <li className='browse-link' onClick={navBrowse}>Browse</li>
-            <li className='community-link'>Community</li>
-            <li className='about-link'>About us</li>
+            <li className='about-link' onclick={navAboutUs}>About Us</li>
           </ul>
       
         <SearchBar/>
+
         <ul className='login'>
+          <li className='help-link' onclick={navHelp}>Help</li>
           {user ? <li className='user_profile' onClick={showHideProfile}>{user.first_name.charAt(0).toUpperCase() + user.last_name.charAt(0).toUpperCase()}
             </li> : <li className='login-link' onClick={login_redirect}>Sign in<MdAccountCircle className='profile_signin'/></li>}
         </ul>
