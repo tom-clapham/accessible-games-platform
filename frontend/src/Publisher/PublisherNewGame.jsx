@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react';
 import GameTrailer from '../game_profile/GameTrailer';
 import GameTag from '../game_profile/GameTag';
 import GameThumbnail from '../game_profile/GameThumbnail'
+import edit_img from '../assets/editing.png';
+import preview_img from '../assets/film.png';
 import '../game_profile/game_profile_styles.css';
 import styles from './PublisherNewGame.module.css';
 
@@ -12,8 +14,8 @@ function PublisherNewGame() {
     // These will store all the details that need to be filled
     const [gameName, setGameName] = useState("");
     const [description, setDescription] = useState("");
-    const [trailerUrl, setTrailerUrl] = useState(""); // "youtube.com/watch?v=EoYF4VbD9cM&list=PLaTP_B8K0vdiUP8f3h6Y2930CJS4e_e4H&index=5"
-    const [thumbnailUrl, setThumbnailUrl] = useState(""); // "https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=612x612&w=0&k=20&c=rnCKVbdxqkjlcs3xH87-9gocETqpspHFXu5dIGB4wuM="
+    const [trailerUrl, setTrailerUrl] = useState("");
+    const [thumbnailUrl, setThumbnailUrl] = useState("");
     const [price, setPrice] = useState('');
     const [displayPrice, setDisplayPrice] = useState('')
     const [releaseDate, setReleaseDate] = useState();
@@ -67,26 +69,17 @@ function PublisherNewGame() {
     }
 
     useEffect(() => {
-        console.log(releaseDate);
-    }, [releaseDate]);
-
-    useEffect(() => {
         // console.log("useEffect: ", price)
         setDisplayPrice(formatPrice(price))
     }, [price])
-    
-    // format the date
-    function formatDate(date) {
-        console.log(date)
-    }
     return(
         <>
-        { preview ? (<button onClick={() => setPreview(false)}>Edit</button>) : (<button onClick={() => setPreview(true)}>Preview</button>) }
+        { preview ? (<div className={styles.previewEdit} onClick={() => setPreview(false)}><img className={styles.peImg} src={preview_img} alt='Preview button for viewing what game would look like in current state'/></div>) : (<div className={styles.previewEdit} onClick={() => setPreview(true)}><img className={styles.peImg} src={edit_img} alt='Edit button to return to editing after viewing preview'/></div>)}
         { !preview ? (<form onSubmit={createGame} className={styles.formArea}>
             {/* <div className={styles.horizontalSection}> */}
             <div className={styles.doubleAreas}>
                 <label className={styles.doubleLabels}>Game name:<br/>
-                    <input className={styles.doubleInputs} onChange={(e) => setGameName(e.target.value)} value={gameName} required/>
+                    <input className={styles.doubleInputs} onChange={(e) => setGameName(e.target.value)} value={gameName} placeholder='Name...' required/>
                 </label><br/>
                 <label className={styles.doubleTags}>
                     Accessibility tags:<br/>
@@ -102,8 +95,7 @@ function PublisherNewGame() {
             </div>
             <div className={styles.doubleAreas}>
                 <label className={styles.doubleLabels}>Price:<br/>
-                    <input className={styles.doubleInputs} onChange={(e) => {setPrice(e.target.value.replaceAll(" ", "")) 
-                        console.log("useState: ", price)}} value={price}/>
+                    <input className={styles.doubleInputs} onChange={(e) => setPrice(e.target.value.replaceAll(" ", ""))} placeholder='Price in GBP...' value={price}/>
                 </label><br/>
                 <label className={styles.doubleTags}>
                     Genre tags:<br/>
@@ -133,21 +125,16 @@ function PublisherNewGame() {
                     />
                 </label>
             </div>
-            {/* </div>     */}
             <label className={styles.descriptionArea}>Description:<br/>
-                <textarea className={styles.description} onChange={(e) => setDescription(e.target.value)} value={description} required/>
-            </label>
-            <label className={styles.urlArea}>Thumbnail image link:<br/>
-                <input className={styles.urlBox} type={'url'}/>
+                <textarea className={styles.description} onChange={(e) => setDescription(e.target.value)} value={description} placeholder='Description...' required/>
             </label>
             <label className={styles.urlArea}>Trailer URL:<br/>
-                <input className={styles.urlBox} type={'url'} onChange={(e) => setTrailerUrl(e.target.value)} value={trailerUrl}/>
+                <input className={styles.urlBox} type={'url'} placeholder='Please enter url here. Ensure link is for a youtube video.' onChange={(e) => setTrailerUrl(e.target.value)} value={trailerUrl}/>
             </label>
-            {/* <label>
-                On sale:
-                <input type={'checkbox'}/>
-            </label> */}
-            <button type={'submit'}>Create</button>
+            <label className={styles.urlArea}>Thumbnail image link:<br/>
+                <input className={styles.urlBox} type={'url'} placeholder='Please enter link to an image here' onChange={(e) => setThumbnailUrl(e.target.value)} value={thumbnailUrl}/>
+            </label>
+            <button type={'submit'} className={styles.createBtn}>Create</button>
         </form>) : (<div>
             <div className="gp-page">
                 <h1 className="gp-title">{gameName}</h1>
@@ -156,7 +143,7 @@ function PublisherNewGame() {
                     <div className="gp-main">
 
                         <div className="gp-trailer">
-                            <GameTrailer url={trailerUrl} name={gameName}/><br/>
+                            <GameTrailer url={trailerUrl.length>1 ? trailerUrl : "https://www.youtube.com/watch?v=EoYF4VbD9cM&list=PLaTP_B8K0vdiUP8f3h6Y2930CJS4e_e4H&index=6"} name={gameName}/><br/>
                         </div>
 
                         <h2>Description</h2>
@@ -191,7 +178,7 @@ function PublisherNewGame() {
                     <div className="gp-sideinfo">
                         <div className="gp-infocard">
                             <div className="gp-thumbnail-container">
-                                <GameThumbnail url={"https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=612x612&w=0&k=20&c=rnCKVbdxqkjlcs3xH87-9gocETqpspHFXu5dIGB4wuM="} name={gameName}/>
+                                <GameThumbnail url={thumbnailUrl.length>1 ? thumbnailUrl : "https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=612x612&w=0&k=20&c=rnCKVbdxqkjlcs3xH87-9gocETqpspHFXu5dIGB4wuM="} name={gameName}/>
                             </div>
                             <div className="gp-metadata">
                                 <h2 className="gp-name">{gameName}</h2>
