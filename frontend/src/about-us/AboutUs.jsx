@@ -22,7 +22,7 @@ function AboutUs() {
                     <li className="about-us-list-item">There's no centralised place to find trailers, tags, accessibility features together, leaving players to jump across multiple websites.</li>
                     <li className="about-us-list-item">Voice navigation and inclusive controls are rare across game discovery platforms.</li>
                 </ul>
-                <p>We ourselves have always felt the same frustrations players face today:</p>
+                <p>We ourselves have always felt the same frustrations players face today.</p>
             </div>
 
             <div className="about-us-separator"></div>
