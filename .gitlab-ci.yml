@@ -19,6 +19,14 @@ default:
   services:
     - name: mysql:8.0
       alias: mysql
+
+test-fronted:
+  image: node:22
+  stage: test-frontend
+  script:
+    - echo "Running react tests..."
+    - npm test
+    - echo "Tests complete!"
   
 build-project:
   stage: build
@@ -41,14 +49,6 @@ build-project:
   artifacts:
     paths:
       - env/
-      - frontend/
-
-test-fronted:
-  stage: test-frontend
-  script:
-    - echo "Running react tests..."
-    - npm test
-    - echo "Tests complete!"
 
 test-backend:
   stage: test-backend
