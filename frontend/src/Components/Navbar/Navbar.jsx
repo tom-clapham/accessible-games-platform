@@ -79,7 +79,7 @@ function Navbar(){
           <ul className='list'>
             <li className='discover-link' onClick={navGames}>Discover</li>
             <li className='browse-link' onClick={navBrowse}>Browse</li>
-            <li className='about-link' onclick={navAboutUs}>About Us</li>
+            <li className='about-link' onClick={navAboutUs}>About Us</li>
           </ul>
       
         <SearchBar/>
