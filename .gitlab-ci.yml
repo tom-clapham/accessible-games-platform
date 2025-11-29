@@ -1,5 +1,6 @@
 stages:
   - build
+  - test-frontend
   - test-backend
 
 workflow:
@@ -19,7 +20,6 @@ default:
     - name: mysql:8.0
       alias: mysql
   
-
 build-project:
   stage: build
   script:
@@ -31,13 +31,26 @@ build-project:
     - pip install -e .
     - echo "Dependencies installed. Deactivating..."
     - deactivate
+    - echo "setting up frontend..."
+    - cd frontend
+    - npm install
+    - cd ..
+    - echo "Setup react!"
     - echo "Build successful!"
 
   artifacts:
     paths:
       - env/
+      - frontend/
 
-test-project:
+test-fronted:
+  stage: test-frontend
+  script:
+    - echo "Running react tests..."
+    - npm test
+    - echo "Tests complete!"
+
+test-backend:
   stage: test-backend
   script:
     - echo "activating virtual env..."
