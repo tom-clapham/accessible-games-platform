@@ -132,7 +132,7 @@ function PublisherNewGame() {
                 <input className={styles.urlBox} type={'url'} placeholder='Please enter url here. Ensure link is for a youtube video.' onChange={(e) => setTrailerUrl(e.target.value)} value={trailerUrl}/>
             </label>
             <label className={styles.urlArea}>Thumbnail image link:<br/>
-                <input className={styles.urlBox} type={'url'} placeholder='Please enter link to an image here' onChange={(e) => setThumbnailUrl(e.target.value)} value={thumbnailUrl}/>
+                <input className={styles.urlBox} type={'url'} placeholder='Please enter link to an image here (portrait works best)' onChange={(e) => setThumbnailUrl(e.target.value)} value={thumbnailUrl}/>
             </label>
             <button type={'submit'} className={styles.createBtn}>Create</button>
         </form>) : (<div>
