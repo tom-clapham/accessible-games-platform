@@ -14,7 +14,7 @@ const Publishers = () => {
         .then(response => {
             setPublishers(response.data);
             setLoading(false)
-            console.log(response.data)
+            console.log(response.data.name)
         })
         .catch(error => {
             setLoading(false)

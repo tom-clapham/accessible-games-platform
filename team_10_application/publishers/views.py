@@ -14,9 +14,9 @@ def get_all_publishers(request):
 
 @api_view(['GET'])
 @permission_classes([AllowAny])
-def get_publisher(request):
-    id = request.query_params.get('publisher_id')
-    publisher = Publisher.objects.filter(pk=id)
+def get_publisher(request, publisher_id):
+    publisher = Publisher.objects.filter(pk=publisher_id)
+    print(publisher)
     serializer = PublisherSerializer(publisher, many=True)
     print(serializer.data)
     return Response(serializer.data)

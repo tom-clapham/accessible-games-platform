@@ -49,7 +49,7 @@ function App() {
             <Route path="/report/game/:gameId" element={<Report/>}/>
             <Route path="/report/post/:postId" element={<PostsReport/>}/>
             <Route path="/publishers" element={<Publishers/>}/>
-            <Route path="/publisher/:publisherId" element={<Publisher_Info/>}/>
+            <Route path="/publisher/:id" element={<Publisher_Info/>}/>
             <Route path="/publisher/register" element={<Register_Publisher/>}/>
           </Route>
           <Route path="/login" element={<Login/>}/>

@@ -6,7 +6,6 @@ import GameThumbnail from './GameThumbnail';
 import GameTrailer from './GameTrailer';
 import GameTag from './GameTag';
 import { addToFavourites, user_info, removeFromFavourites, checkFavouriteGame } from '../endpoints/api';
-import {useAuth} from '../contexts/useAuth'
 
 import "./game_profile_styles.css";
 
