@@ -22,9 +22,9 @@ function PublisherNewGame() {
     const [releaseDate, setReleaseDate] = useState();
     const [preview, setPreview] = useState(false);
     const publisher = "default publisher"; // This will be taken from the authentication token from the user
-    const [selectedAccessibilityTags, setSelectedAccessibilityTags] = useState();
-    const [selectedGenreTags, setSelectedGenreTags] = useState();
-    const [selectedPlatformTags, setSelectedPlatformTags] = useState();
+    const [selectedAccessibilityTags, setSelectedAccessibilityTags] = useState([]);
+    const [selectedGenreTags, setSelectedGenreTags] = useState([]);
+    const [selectedPlatformTags, setSelectedPlatformTags] = useState([]);
     const free = new RegExp("^(?:[0]+?(?:\\.|\\,)?0*?)?$")
 
     const accessibilityTagsOptions = [
@@ -58,24 +58,31 @@ function PublisherNewGame() {
     ]
 
     useEffect(() => {
-        console.log(releaseDate)
-    }, [releaseDate])
+        console.log(selectedAccessibilityTags)
+    }, [selectedAccessibilityTags])
 
     // This will make the request to create the game
-    function createGame() {
-        axios.post("http://localhost:8000/app/games/upload/", 
-            {
-                "gameName": gameName,
-                "description": description,
-                "releaseDate": releaseDate,
-                "price": price,
-                "trailerUrl": trailerUrl,
-                "thumbnailUrl": thumbnailUrl,
-                "accessibilityTags": selectedAccessibilityTags,
-                "genreTags": selectedGenreTags,
-                "platformTags": selectedPlatformTags
-            }
-        ) // console gets refreshed on form submission, so console log is useless
+    async function createGame(e) {
+        e.preventDefault()
+        try {
+            const res = await axios.post("http://localhost:8000/app/games/upload/", 
+                {
+                    "gameName": gameName,
+                    "description": description,
+                    "releaseDate": releaseDate,
+                    "price": price,
+                    "trailerUrl": trailerUrl,
+                    "thumbnailUrl": thumbnailUrl,
+                    "accessibilityTags": selectedAccessibilityTags,
+                    "genreTags": selectedGenreTags,
+                    "platformTags": selectedPlatformTags
+                }
+            )
+            console.log(res.data)// console gets refreshed on form submission, so console log is useless
+        
+        } catch (err) {
+            console.log(err)
+        }
     }
 
     // return the price
@@ -145,10 +152,10 @@ function PublisherNewGame() {
                 <textarea className={styles.description} onChange={(e) => setDescription(e.target.value)} value={description} placeholder='Description...' required/>
             </label>
             <label className={styles.urlArea}>Trailer URL:<br/>
-                <input className={styles.urlBox} type={'url'} placeholder='Please enter url here. Ensure link is for a youtube video.' onChange={(e) => setTrailerUrl(e.target.value)} value={trailerUrl}/>
+                <input className={styles.urlBox} type={'url'} placeholder='Please enter YouTube URL here - Placeholder video will not be present on submission' onChange={(e) => setTrailerUrl(e.target.value)} value={trailerUrl}/>
             </label>
             <label className={styles.urlArea}>Thumbnail image link:<br/>
-                <input className={styles.urlBox} type={'url'} placeholder='Please enter link to an image here (portrait works best)' onChange={(e) => setThumbnailUrl(e.target.value)} value={thumbnailUrl}/>
+                <input className={styles.urlBox} type={'url'} placeholder='Please enter link to image here - Placeholder image will not be present on submission' onChange={(e) => setThumbnailUrl(e.target.value)} value={thumbnailUrl}/>
             </label>
             <button type={'submit'} className={styles.createBtn}>Create</button>
         </form>) : (<div>
