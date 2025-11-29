@@ -59,6 +59,12 @@ function Navbar(){
       nav('/discover')
   }
 
+  function navFavouriteGames(){
+    nav('account/', {
+      state: { message: 'favourites'},
+    })
+  }
+
   function navBrowse(){
       nav('/browse')
   }
@@ -105,7 +111,7 @@ function Navbar(){
         <div className='account' onClick={navAccount}>My account</div>
          <hr className='line'/>
         <div className='favourite-container'>
-          <div className='favourite-games'><CgGames className='games-icon'/>View my favourite games</div>
+          <div className='favourite-games' onClick={navFavouriteGames}><CgGames className='games-icon'/>View my favourite games</div>
         </div>
       </div>
       )}

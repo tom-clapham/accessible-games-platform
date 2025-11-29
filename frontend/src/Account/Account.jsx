@@ -1,4 +1,4 @@
-import {useState, useEffect, Fragment} from 'react'
+import {useState, useEffect, Fragment, route} from 'react'
 import { updateDetails, updatePreferences, updatePersonal, user_info, deleteAccount, getAccessibility, getGenres, changePassword, logout, getUserPosts, getAllFavouriteGames } from '../endpoints/api'
 import styles from './Account.module.css'
 import { useLocation } from 'react-router-dom'
@@ -15,7 +15,7 @@ const Account = () => {
 
     const [info, setInfo] = useState({accessibility_tags: [], genre_tags: []})
     const location = useLocation();
-    const [activeSection, setActiveSection] = useState("account")
+    const [activeSection, setActiveSection] = useState("")
     const { message } = location.state || {}
     const [first, setFirst] = useState("");
     const [last, setLast] = useState("");
@@ -151,6 +151,15 @@ const Account = () => {
             fetchInfo();
         }
     }, []);
+
+    useEffect(() => {
+        const message = location.state?.message;
+        if(message === 'favourites'){
+            setActiveSection("favourite")
+        } else {
+            setActiveSection("account")
+        }
+    }, [location])
 
     useEffect(() => {
         const fetchUserPosts = async () => {
@@ -295,12 +304,12 @@ const Account = () => {
     return (
         <div className={styles.settings_container}>
             <h1>My Settings</h1>
+            {updateSuccess && (<div className={styles.success}>Your details have been updated successfully. The page will automatically reload in <b>3 seconds</b></div>)}
             <ul className={styles.account_list}>
                 <li className={`${styles.list_account} ${activeSection === "account" ? styles.navActive : ""}`} onClick={() => handleSectionChange("account")}><CiUser className={styles.icon2}/>My Account</li>
                 <li className={`${styles.list_favourited} ${activeSection === "favourite" ? styles.navActive : ""}`} onClick={() => handleSectionChange("favourite")}><FaRegHeart className={styles.icon2}/>My Games</li>
                 <li className={`${styles.list_community} ${activeSection === "community" ? styles.navActive : ""}`} onClick={() => handleSectionChange("community")}><FaRegCommentDots className={styles.icon2}/>My Reviews</li>
             </ul>
-            
             {activeSection == "account" &&(
             <div className={styles.account_content}>
                 <div className={styles.section}>
@@ -347,7 +356,6 @@ const Account = () => {
                         </div>
                     </div>
                     {errorDate &&(<div className={styles.error}><IoIosWarning className={styles.warning} />Please enter your real birthday.</div>)}
-                    {updateSuccess &&(<div className={styles.success}>Your details have been updated successfully. The page will automatically reload in <b>3 seconds</b></div>)}
                     <button className={styles.save} onClick={() => handlePersonalSave(first, last, Number(day), Number(month), Number(year))}>Save Changes</button>
                     <hr className={styles.line}/>
                 </div>
@@ -369,7 +377,6 @@ const Account = () => {
                     {errorEmail &&(<div className={styles.error}><IoIosWarning className={styles.warning}/>This email has already been taken.</div>)}
                     {invalidEmail &&(<div className={styles.error}><IoIosWarning className={styles.warning}/>Please enter a real email address.</div>)}
                     {errorUsername &&(<div className={styles.error}><IoIosWarning className={styles.warning}/>This username has already been taken.</div>)}
-                    {updateSuccess &&(<div className={styles.success}>Your details have been updated successfully. The page will automatically reload in <b>3 seconds</b></div>)}
                     <button className={styles.save} onClick={() => handleDetailsSave(username, email)}>Save Changes</button>
                     <hr className={styles.line}/>
                 </div>
@@ -383,8 +390,8 @@ const Account = () => {
                         <input className={styles.input} type='password' maxLength='100' placeholder='Enter your new password' onChange={(e) => setNewPassword(e.target.value)}></input>
                         <label className={styles.label}>Confirm new password </label>
                         <input className={styles.input} type='password' maxLength='100' placeholder='Re-enter you new password' onChange={(e) => setConfirmNewPassword(e.target.value)}></input>
-                        {match &&(<div className={styles.error}><IoIosWarning className={styles.warningPassword}/>The new passwords don't match.</div>)}
-                        {invalid &&(<div className={styles.error}><IoIosWarning className={styles.warningPassword}/>
+                        {match &&(<div className={styles.errorPassword}><IoIosWarning className={styles.warningPassword}/>The new passwords don't match.</div>)}
+                        {invalid &&(<div className={styles.errorPassword}><IoIosWarning className={styles.warningPassword}/>
                             <div>
                                 Your password must contain:
                                 <ul>
@@ -394,8 +401,7 @@ const Account = () => {
                                 </ul>
                             </div>
                         </div>)}
-                        {oldPasswordMatch &&(<div className={styles.error}><IoIosWarning className={styles.warningPassword}/>Your current password doesn't match.</div>)}
-                        {updateSuccess &&(<div className={styles.success}>Your password has been updated. You will be redirected to login again.</div>)}
+                        {oldPasswordMatch &&(<div className={styles.errorPassword}><IoIosWarning className={styles.warningPassword}/>Your current password doesn't match.</div>)}
                         <button className={styles.regular_button} onClick={() => handleChangePassword(oldPassword, newPassword, confirmNewPassword)}>Change Password</button>
                     </div>
                     <hr className={styles.line}/>
@@ -437,7 +443,6 @@ const Account = () => {
                             </ul>) : (<ul></ul>)}
                         </div>
                     </div>
-                    {updateSuccess &&(<div className={styles.success}>Your details have been updated successfully. The page will automatically reload in <b>3 seconds</b></div>)}
                     <button className={styles.save} onClick={() => handlePreferencesSave(userGenres, userAccessibility)}>Save Changes</button>
                     <hr className={styles.line}/>
                 </div>

@@ -464,13 +464,18 @@ label {
 }
 
 .success {
-    background-color: #057c299f;
+    background-color: #057c29;
     color: #fff;
     font-weight: 500;
     margin-bottom: 20px;
     border-radius: 10px;
     padding: 25px 20px;
     font-size: 14px;
+    position: fixed;  
+    top: 100px;
+    left: 750px;
+    width: 20%;
+    z-index: 100; 
 }
 
 .error {
@@ -509,31 +514,22 @@ label {
 
 .errorPassword {
     color: #fff;
-    width: 91%;
+    width: 95%;
     font-weight: 500;
     background-color: #86131dce;
     margin-bottom: 20px;
     border-radius: 10px;
-    font-size: 12px;
     display: flex;
     align-items: center;
-    padding: 10px;
-}
-
-.successPassword{
-    background-color: #057c299f;
-    color: #fff;
-    font-weight: 500;
-    margin-bottom: 20px;
-    border-radius: 10px;
-    padding: 25px 20px;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    padding-left: 5px;
     font-size: 14px;
 }
 
 .warningPassword {
     color: red;
-    width: 13%;
-    height: 70%;
-    margin-right: 10px;
-    padding: 0;
+    width: 10%;
+    height: 40%;
+    margin: 0px 15px;
 }
