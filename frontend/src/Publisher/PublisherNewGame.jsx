@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import axios from 'axios'
 import GameTrailer from '../game_profile/GameTrailer';
 import GameTag from '../game_profile/GameTag';
 import GameThumbnail from '../game_profile/GameThumbnail'
@@ -56,9 +57,25 @@ function PublisherNewGame() {
         { label: "Android", value: "Android"},
     ]
 
+    useEffect(() => {
+        console.log(releaseDate)
+    }, [releaseDate])
+
     // This will make the request to create the game
     function createGame() {
-        console.log(gameName, description)
+        axios.post("http://localhost:8000/app/games/upload/", 
+            {
+                "gameName": gameName,
+                "description": description,
+                "releaseDate": releaseDate,
+                "price": price,
+                "trailerUrl": trailerUrl,
+                "thumbnailUrl": thumbnailUrl,
+                "accessibilityTags": selectedAccessibilityTags,
+                "genreTags": selectedGenreTags,
+                "platformTags": selectedPlatformTags
+            }
+        ) // console gets refreshed on form submission, so console log is useless
     }
 
     // return the price
@@ -69,7 +86,6 @@ function PublisherNewGame() {
     }
 
     useEffect(() => {
-        // console.log("useEffect: ", price)
         setDisplayPrice(formatPrice(price))
     }, [price])
     return(
@@ -191,7 +207,7 @@ function PublisherNewGame() {
 
                                 <div className="gp-info-row">
                                     <div className="gp-info-label">RELEASE DATE</div>
-                                    <div className="gp-info-value">{releaseDate ? new Date(releaseDate).toLocaleDateString('en-US') : null}
+                                    <div className="gp-info-value">{releaseDate ? new Date(releaseDate).toLocaleDateString('en-GB') : null}
                                     </div>
                                 </div>
 
