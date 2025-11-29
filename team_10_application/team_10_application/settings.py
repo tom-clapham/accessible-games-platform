@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'threads',
     'games',
     'reports',
+    'moderator',
 ]
 
 AUTH_USER_MODEL = 'users.CustomUser'
