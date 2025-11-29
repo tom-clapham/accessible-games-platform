@@ -148,6 +148,10 @@
   color: #60cdff;
 }
 
+.account:hover {
+  cursor: pointer;
+}
+
 .email {
   color: rgb(255, 255, 255, 0.784);
   font-size: 15px;
@@ -164,7 +168,7 @@
   padding-top: 15px;
 }
 
-hr {
+.line {
   border: none;
   border-top: 1px solid rgba(255, 255, 255, 0.24);
   padding-left: 15px;

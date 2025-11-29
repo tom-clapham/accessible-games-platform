@@ -1,5 +1,6 @@
 stages:
   - build
+  - test-frontend
   - test-backend
 
 workflow:
@@ -18,8 +19,18 @@ default:
   services:
     - name: mysql:8.0
       alias: mysql
-  
 
+test-fronted:
+  image: node:22
+  stage: test-frontend
+  script:
+    - echo "opening frontend and installing packages..."
+    - cd frontend
+    - npm install
+    - echo "Running react tests..."
+    - npm test
+    - echo "Tests complete!"
+  
 build-project:
   stage: build
   script:
@@ -37,7 +48,7 @@ build-project:
     paths:
       - env/
 
-test-project:
+test-backend:
   stage: test-backend
   script:
     - echo "activating virtual env..."

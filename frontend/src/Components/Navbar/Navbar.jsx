@@ -1,7 +1,7 @@
 import {useState, useEffect} from 'react';
 import './Navbar.css';
 import logoPicture from '../../assets/platform_logo.jpg';
-import SearchBar from '../Elements/SearchBar.jsx'
+import SearchBar from '../SearchBars/SearchBarNav.jsx'
 import { useNavigate } from 'react-router-dom';
 import { MdAccountCircle } from "react-icons/md";
 import { CgGames } from "react-icons/cg";
@@ -49,8 +49,20 @@ function Navbar(){
       nav('/')
   }
 
+  function navAccount(){
+    nav("/account", {
+      state: { message: true},
+    });
+  }
+
   function navGames(){
       nav('/discover')
+  }
+
+  function navFavouriteGames(){
+    nav('account/', {
+      state: { message: 'favourites'},
+    })
   }
 
   function navBrowse(){
@@ -105,10 +117,10 @@ function Navbar(){
             <div className='email'>{user.email}</div>
           </div>
         </div>
-        <div className='account'>My account</div>
-        <hr></hr>
+        <div className='account' onClick={navAccount}>My account</div>
+         <hr className='line'/>
         <div className='favourite-container'>
-          <div className='favourite-games'><CgGames className='games-icon'/>View my favourite games</div>
+          <div className='favourite-games' onClick={navFavouriteGames}><CgGames className='games-icon'/>View my favourite games</div>
         </div>
       </div>
       )}
