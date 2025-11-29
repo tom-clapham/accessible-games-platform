@@ -24,6 +24,9 @@ test-fronted:
   image: node:22
   stage: test-frontend
   script:
+    - echo "opening frontend and installing packages..."
+    - cd frontend
+    - npm install
     - echo "Running react tests..."
     - npm test
     - echo "Tests complete!"
@@ -39,11 +42,6 @@ build-project:
     - pip install -e .
     - echo "Dependencies installed. Deactivating..."
     - deactivate
-    # - echo "setting up frontend..."
-    # - cd frontend
-    # - npm install
-    # - cd ..
-    # - echo "Setup react!"
     - echo "Build successful!"
 
   artifacts:
