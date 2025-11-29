@@ -381,7 +381,7 @@ function VoiceController() {
                 break;
 
             case INTENTS.OPEN_HELP:
-                navigate("/help")
+                navigate("/help-page")
                 break;
         }
     }
