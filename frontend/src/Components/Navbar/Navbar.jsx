@@ -62,7 +62,7 @@ function Navbar(){
   }
 
   function navHelp(){
-      nav('/help')
+      nav('/help-page')
   }
 
   const handleLogout = async () => {
@@ -85,7 +85,7 @@ function Navbar(){
         <SearchBar/>
 
         <ul className='login'>
-          <li className='help-link' onclick={navHelp}>Help</li>
+          <li className='help-link' onClick={navHelp}>Help</li>
           {user ? <li className='user_profile' onClick={showHideProfile}>{user.first_name.charAt(0).toUpperCase() + user.last_name.charAt(0).toUpperCase()}
             </li> : <li className='login-link' onClick={login_redirect}>Sign in<MdAccountCircle className='profile_signin'/></li>}
         </ul>
