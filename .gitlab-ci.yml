@@ -39,11 +39,11 @@ build-project:
     - pip install -e .
     - echo "Dependencies installed. Deactivating..."
     - deactivate
-    - echo "setting up frontend..."
-    - cd frontend
-    - npm install
-    - cd ..
-    - echo "Setup react!"
+    # - echo "setting up frontend..."
+    # - cd frontend
+    # - npm install
+    # - cd ..
+    # - echo "Setup react!"
     - echo "Build successful!"
 
   artifacts:
