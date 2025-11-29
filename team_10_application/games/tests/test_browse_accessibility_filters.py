@@ -1,6 +1,7 @@
 from rest_framework.test import APITestCase
 from rest_framework import status
 from games.models import Game, AccessibilityTag
+from publishers.models import Publisher
 from django.urls import reverse
 
 from datetime import date
@@ -15,13 +16,17 @@ class TestBrowsePageAccessibilityFilters(APITestCase):
         cls.accessibility_tag_vision = AccessibilityTag.objects.create(name="Vision Accessibility")
         cls.accesibility_tag_hearing = AccessibilityTag.objects.create(name="Hearing Accessibility")
         cls.accessibility_tag_motor = AccessibilityTag.objects.create(name="Motor Accessibility")
+        
+        cls.publisher = Publisher.objects.create(name="Test Publisher", pending=False)
+
+    
 
         # Set up test game with all 3 accessibility tags
         cls.game_all_accessibility_tags = Game.objects.create (
             name = "Game with all accessibility tags",
             description = "This is a test game",
             price = 9.99,
-            publisher = "Test Publisher",
+            publisher = cls.publisher,
             release_date = date(2025, 1, 1),
             trending=True,
             on_sale=True
@@ -33,7 +38,7 @@ class TestBrowsePageAccessibilityFilters(APITestCase):
             name = "Game with vision and hearing accessibility tags",
             description = "This is a test game",
             price = 9.99,
-            publisher = "Test Publisher",
+            publisher = cls.publisher,
             release_date = date(2025, 1, 1),
             trending=True,
             on_sale=True
@@ -45,7 +50,7 @@ class TestBrowsePageAccessibilityFilters(APITestCase):
             name = "Game with motor accessibility tag",
             description = "This is a test game",
             price = 9.99,
-            publisher = "Test Publisher",
+            publisher = cls.publisher,
             release_date = date(2025, 1, 1),
             trending=True,
             on_sale=True

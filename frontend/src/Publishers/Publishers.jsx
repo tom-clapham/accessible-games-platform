@@ -23,7 +23,7 @@ const Publishers = () => {
 
     }, [loading]);
 
-    const itemsPerPage = 8;
+    const itemsPerPage = 9;
     const [itemOffset, setItemOffset] = useState(0);
 
     const endOffset = itemOffset + itemsPerPage;
