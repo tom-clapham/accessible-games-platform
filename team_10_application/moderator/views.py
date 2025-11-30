@@ -1,4 +1,5 @@
 from reports.models import Report, ReviewedReports
+from reports.serializers import ReviewedReportsSerializer
 from users.models import CustomUser
 from moderator.permissions import IsModerator
 from rest_framework.decorators import permission_classes
@@ -25,6 +26,14 @@ class ModeratorReportView(APIView):
         reports = Report.objects.select_related('reviewed_report', 'reviewed_report__reviewed_by').all().order_by('-created_at')
         reports = ReportSerializer(reports, many=True)
         return Response(reports.data)
+    
+@permission_classes([IsModerator])
+class ReviewedReportsView(APIView):
+    def get(self, request):
+        # Select all reviewed reports
+        reviewed_reports = ReviewedReports.objects.order_by('-reviewed_at')[:5]
+        serializer = ReviewedReportsSerializer(reviewed_reports, many=True)
+        return Response(serializer.data)
     
 @permission_classes([IsModerator])
 class ModeratorReviewReportView(APIView):

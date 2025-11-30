@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from games.models import Game
-from .models import Report
+from .models import Report, ReviewedReports
 from threads.models import Posts
 
 class GameReportPageSerializer(serializers.ModelSerializer):
@@ -22,3 +22,8 @@ class PostsReportSerializer(serializers.ModelSerializer):
     class Meta:
         model = Report
         fields = ['id', 'userId', 'postId', 'report_type', 'description', 'created_at']
+
+class ReviewedReportsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ReviewedReports
+        fields = ['id', 'report', 'reviewed_at', 'reviewed_by', 'review_reason', 'review_action']

@@ -159,7 +159,7 @@ function ModeratorReports() {
         // Handle ignore form submittions
 
         axios.post(`http://localhost:8000/app/moderator/reports/review/${report.id}/`, {
-            review_action: 'DELETE',
+            review_action: 'IGNORE',
             review_reason: reason,
         }, {
             withCredentials: true,
@@ -168,7 +168,7 @@ function ModeratorReports() {
             setDialogIgnoreVisible(false);
             // Refresh reports
             refreshReports();
-            console.log("Content deleted successfully.");
+            console.log("Report ignored.");
         })
         .catch(error => {
             console.error("Error reviewing report:", error);

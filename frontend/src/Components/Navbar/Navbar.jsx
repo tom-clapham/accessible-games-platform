@@ -78,7 +78,7 @@ function Navbar(){
             <li className='community-link'>Community</li>
             <li className='about-link'>About us</li>
             {(user && user.is_moderator) && (
-            <li className='admin-link' onClick={navAdmin}>Admin</li>
+            <li className='admin-link' onClick={navAdmin}>Moderator</li>
             )}
           </ul>
       
