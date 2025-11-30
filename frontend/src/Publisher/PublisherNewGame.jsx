@@ -18,16 +18,16 @@ function PublisherNewGame() {
     const [trailerUrl, setTrailerUrl] = useState("");
     const [thumbnailUrl, setThumbnailUrl] = useState("");
     const [price, setPrice] = useState('');
-    const [displayPrice, setDisplayPrice] = useState('')
+    const [displayPrice, setDisplayPrice] = useState('');
     const [releaseDate, setReleaseDate] = useState();
     const [preview, setPreview] = useState(false);
     const publisher = "default publisher"; // This will be taken from the authentication token from the user
     const [selectedAccessibilityTags, setSelectedAccessibilityTags] = useState([]);
     const [selectedGenreTags, setSelectedGenreTags] = useState([]);
     const [selectedPlatformTags, setSelectedPlatformTags] = useState([]);
-    const [errors, setErrors] = useState({})
-    const [success, setSuccess] = useState()
-    const free = new RegExp("^(?:[0]+?(?:\\.|\\,)?0*?)?$")
+    const [errors, setErrors] = useState({});
+    const [success, setSuccess] = useState();
+    const free = new RegExp("^(?:[0]+?(?:\\.|\\,)?0*?)?$");
 
     const accessibilityTagsOptions = [
         { label: "Vision", value: "Vision Accessibility"},
@@ -96,7 +96,6 @@ function PublisherNewGame() {
             setErrors(err.response.data)
         }
     }
-
 
     // return the price
     function formatPrice(price) {
@@ -171,7 +170,7 @@ function PublisherNewGame() {
             </label>
             <button type={'submit'} className={styles.createBtn}>Create</button>
         </form>
-        { !success ? Object.entries(errors).map(([key, issue], idx) => {return (<div key={idx}>{`Issue with ${key} - ${issue}`}</div>)}) : (<div>Success!</div>) }
+        { !success ? Object.entries(errors).map(([key, issue], idx) => {return (<div className={styles.errorMsg} key={idx}>{`Issue with ${key} - ${issue}`}</div>)}) : (<div className={styles.successMsg}>Success!</div>) }
         </div>) : (<div>
             <div className="gp-page">
                 <h1 className="gp-title">{gameName}</h1>
