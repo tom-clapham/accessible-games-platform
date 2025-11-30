@@ -1661,6 +1661,36 @@
     }
 },
 {
+    "model": "users.customuser",
+    "pk": 5,
+    "fields": {
+        "password": "pbkdf2_sha256$1000000$Q7M67pXrlSlBKpJZwNF4Dr$wNrxofoYFjE6SWLNGJBwtJs0NHt4A+rBAGruCt86pZA=",
+        "last_login": null,
+        "is_superuser": false,
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2025-11-26T19:30:12.247Z",
+        "date_of_birth": "2004-07-01",
+        "last_name": "User",
+        "first_name": "Admin",
+        "email": "admin@cardiff.ac.uk",
+        "username": "admin",
+        "is_moderator": true,
+        "groups": [],
+        "user_permissions": [],
+        "genre_tags": [
+            21,
+            22,
+            27
+        ],
+        "accessibility_tags": [
+            12,
+            13,
+            14
+        ]
+    }
+},
+{
     "model": "threads.posts",
     "pk": 1,
     "fields": {

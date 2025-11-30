@@ -6,6 +6,7 @@ import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
 import {user_info} from '../endpoints/api.js';
 import { useNavigate } from 'react-router-dom';
+import { Divider } from 'primereact/divider';
 
 
 
@@ -56,6 +57,7 @@ function Dashboard() {
 
             <div className="mod-welcome-title">
                 <h2>Welcome!</h2>
+                <Divider />
             </div>
 
             <div className="mod-side-grid">
@@ -65,10 +67,9 @@ function Dashboard() {
                 <button className="mod-button">View Publisher Requests</button>
                 <button className="mod-button">Remove Users</button>
             </div>
-
             <div className="mod-latest-reports">
                 <div className="mod-latest-reports-title">
-                    <h2>Recenty Activity</h2>
+                    <h2>Recent Moderator Activity</h2>
                 </div>
                 <div className="mod-latest-reports-content">
                     <DataTable value={recentReports} stripedRows>
