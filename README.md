@@ -4,15 +4,40 @@
 Accessible Games Platform
 
 ## Description
-This application will open up a whole new world for people with disabilities when it comes to finding accessible games that they can enjoy
-
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
-
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
+Fullstack web application built by using Django REST Framework (backend), and React + Vite (frontend).
 
 ## Installation 
+### Prerequisites
+Before running the setup scripts, ensure the following software is installed:
+- 1. Python 3.10+
+Download:
+- https://www.python.org/downloads/
+
+- 2. Node.js + npm
+Download:
+- https://nodejs.org/en/
+
+- 3. MariaDB (or MySQL)
+Download (MariaDB):
+- https://mariadb.org/download/
+
+- 4. Create the database schema
+Open a terminal and run:
+`CREATE DATABASE team_10_game_platform;`
+
+- 5. Create your .env file
+Inside `team_10_application/`, create a file named `.env`
+Add the following:
+``
+SECRET_KEY=your-secret-key
+DB_NAME=team_10_game_platform
+DB_USERNAME=root
+DB_PASSWORD=yourpassword
+GOOGLE_CLIENT_ID=your-google-client-id
+GOOGLE_CLIENT_SECRET=your-google-client-secret
+HOST=localhost
+``
+
 ### Setting Up environment (windows)
 - `python -m venv env`
 - `.\env\Scripts\activate`
@@ -43,8 +68,8 @@ Use examples liberally, and show the expected output if you can. It's helpful to
 
 ## Support
 Contact the team:
-khand6@cardiff.ac.uk - Daiyan
-wodkiewiczs@cardiff.ac.uk - Szymon
+- khand6@cardiff.ac.uk - Daiyan
+- wodkiewiczs@cardiff.ac.uk - Szymon
 
 ## Roadmap
 If you have ideas for releases in the future, it is a good idea to list them in the README.
