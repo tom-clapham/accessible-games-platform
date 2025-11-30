@@ -25,6 +25,8 @@ def get_publisher(request, publisher_id):
 @permission_classes([AllowAny])
 def register_publisher(request):
     file = request.FILES.get("logo")
+    name = request.FILES.get("name")
+    url = request.FILES.get("url")
 
     return Response(True)
 
