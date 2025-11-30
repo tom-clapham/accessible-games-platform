@@ -19,6 +19,7 @@ import Replies from './Threads/Replies.jsx'
 import BrowsePage from './browse/BrowsePage.jsx'
 import Report from './report/Report.jsx'
 import PostsReport from './report/PostsReport.jsx'
+import Dashboard from './moderator/Dashboard.jsx'
 import VoiceController from './voice_navigation/VoiceController.jsx'
 
 function App() {
@@ -42,6 +43,7 @@ function App() {
             <Route path="/browse" element={<BrowsePage/>}/>
             <Route path="/report/game/:gameId" element={<Report/>}/>
             <Route path="/report/post/:postId" element={<PostsReport/>}/>
+            <Route path="/moderator/dashboard" element={<Dashboard/>}/>
           </Route>
           <Route path="/login" element={<Login/>}/>
           <Route path="/forgot-credentials" element={<Forgot_Information/>}/>
