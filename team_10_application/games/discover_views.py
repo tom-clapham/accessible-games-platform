@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import JsonResponse
 from .models import Game, GameClicks
 from .discover_serializers import DiscoverGameSerializer
+from rest_framework import status
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.permissions import AllowAny
@@ -41,3 +42,8 @@ def refreshClicks():
     # https://docs.djangoproject.com/en/5.2/ref/models/querysets/#field-lookups
     GameClicks.objects.filter(date__lt = refresh_date).delete()
     print("Refreshed trending games")
+
+@permission_classes([AllowAny])
+def search_games(request):
+    print(request.data)
+    return Response(status.HTTP_200_OK)

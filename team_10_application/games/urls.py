@@ -9,7 +9,8 @@ router.register(r"games", GameViewSet, basename="game")
 
 urlpatterns = [
     path('discover/', discover_views.DiscoverView.as_view(), name='discover'),
-    path('upload/', upload_views.create_game, name="upload-new-game")
+    path('upload/', upload_views.create_game, name="upload-new-game"),
+    path('search/', discover_views.search_games, name='search-games')
 ]
 
 urlpatterns += router.urls
