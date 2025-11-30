@@ -31,17 +31,12 @@ Inside `team_10_application/`, create a file named `.env`
 
 Add the following:
 
-``SECRET_KEY=your-secret-key``
-
-``DB_USERNAME=root``
-
-``DB_PASSWORD=yourpassword``
-
-``GOOGLE_CLIENT_ID=your-google-client-id``
-
-``GOOGLE_CLIENT_SECRET=your-google-client-secret``
-
-``HOST=localhost``
+- ``SECRET_KEY=your-secret-key``
+- ``DB_USERNAME=root``
+- ``DB_PASSWORD=yourpassword``
+- ``GOOGLE_CLIENT_ID=your-google-client-id``
+- ``GOOGLE_CLIENT_SECRET=your-google-client-secret``
+- ``HOST=localhost``
 
 ## Installation 
 
