@@ -58,5 +58,8 @@ test-backend:
     - cd team_10_application
     - echo "Running tests..."
     - python manage.py test
-    - echo "Django tests complete! Checking migrations..."
+    - echo "Django tests complete! Checking for unapplied migrations..."
     - python manage.py migrate --check
+    - echo "Migrations checked! Checking for common problems..."
+    - python manage.py check --fail-level=WARNING
+    - echo "Checks complete!"
