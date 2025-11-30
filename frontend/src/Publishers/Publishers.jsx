@@ -36,26 +36,32 @@ const Publishers = () => {
     };
 
     return (
-    <div>
-        <h1>PUBLISHERS:</h1>
-        <div>
+    <div className='p-container'>
+        <div className='p-title'>
+            <h1>Verified Publishers</h1>
+        </div>
+        <div className='p-title'>
+            <h3>Click on any of the publishers below to discover more about them and the games they have contributed to the platform.</h3>
+        </div>
+        <div className='p-card-container'>
             {currentItems.map((publisher) => (
                 <PublisherCard
                     id={publisher.id} 
                     name={publisher.name}
                     logo={publisher.logo}
                 />
-            ))};
-            <ReactPaginate
-                onPageChange={handlePageClick}
-                pageCount={pageCount}
-                previousLabel={"← Previous"}
-                nextLabel={"Next →"}
-                breakLabel={"..."}
-                containerClassName={"pagination"}
-                activeClassName={"active"}
-            />
+            ))}
         </div>
+        <ReactPaginate
+            className='p-page-selector'
+            onPageChange={handlePageClick}
+            pageCount={pageCount}
+            previousLabel={"Previous"}
+            nextLabel={"Next"}
+            breakLabel={"..."}
+            containerClassName={"pagination"}
+            activeClassName={"active"}
+        />
     </div>
     )
 }

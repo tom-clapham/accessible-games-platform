@@ -45,8 +45,7 @@ const Publisher_Info = () => {
 
   return (
     <div>
-        <h1>{publisher.name}</h1>
-        <h2>Verified <FaCheckCircle/></h2>
+        <h1>{publisher.name}<FaCheckCircle/></h1>
         <button onClick={() => handleURL(publisher.url)}>Visit Publisher Website</button>
         <div className="filter-results-container">
             {games.map((game) => (

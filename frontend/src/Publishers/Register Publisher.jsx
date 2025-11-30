@@ -1,4 +1,4 @@
-import React from 'react'
+import {useState} from 'react'
 import axios from 'axios';
 
 const Register_Publisher = () => {
@@ -13,10 +13,10 @@ const Register_Publisher = () => {
       const formData = new FormData();
       formData.append("logo", file);
       formData.append("name", name);
-      formData.append("url", websiteUrl)
+      formData.append("url", websiteUrl);
 
       const register_publisher = await  axios.post(`http://127.0.0.1:8000/app/publishers/register/`, formData, {withCredentials:true})
-      
+
   }
 
   return (

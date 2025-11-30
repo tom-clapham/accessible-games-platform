@@ -69,6 +69,10 @@ function Navbar(){
       nav('/browse')
   }
 
+  function navPublishers(){
+      nav('/publishers')
+  }
+
   const handleLogout = async () => {
       const success = await logout();
       if(success){
@@ -84,6 +88,7 @@ function Navbar(){
             <li className='discover-link' onClick={navGames}>Discover</li>
             <li className='browse-link' onClick={navBrowse}>Browse</li>
             <li className='community-link'>Community</li>
+            <li className='publishers-link' onClick={navPublishers}>Publishers</li>
             <li className='about-link'>About us</li>
           </ul>
       

@@ -1,0 +1,89 @@
+.pc-image-box {
+  width: 100px;
+  height: 100px;
+  overflow: hidden;
+}
+
+.pc-image-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; 
+  padding: 20px;
+}
+
+.pc-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.pc-card-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border: 2px solid rgba(255, 255, 255, 0.24);
+    border-radius: 15px;
+}
+
+.pc-text {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: 17px;
+}
+
+.pc-verified-icon {
+    margin: 15px;
+}
+
+.pc-link {
+    text-decoration: none;
+}
+
+.p-card-container {
+    display: grid;
+    width: 35%;
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 20px; 
+}
+
+.p-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 60px;
+}
+
+.p-title {
+    display: flex;
+    flex-direction: row;
+    align-items: left;
+    width: 35%;
+}
+
+.p-page-selector {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    list-style: none;
+    font-size: 20px;
+    font-weight: 500;
+    gap: 25px;
+    margin: 40px;
+}
+
+.p-page-selector li a:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.p-page-selector .active a {
+  font-weight: bold;
+  color: #115ea3;
+}
+
+.p-line {
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  width: 35%;
+}
