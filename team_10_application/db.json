@@ -1761,7 +1761,7 @@
     "pk": 1,
     "fields": {
       "name": "CD Projekt RED",
-      "logo": "",
+      "logo": "/images/cd_project_red.png",
       "url": "https://www.cdprojektred.com/en",
       "pending": false
     }
@@ -1771,7 +1771,7 @@
     "pk": 2,
     "fields": {
       "name": "Rockstar Games",
-      "logo": "",
+      "logo": "images/rockstar_games.png",
       "url": "https://www.rockstargames.com/",
       "pending": false
     }
@@ -1781,7 +1781,7 @@
     "pk": 3,
     "fields": {
       "name": "Nintendo",
-      "logo": "",
+      "logo": "images/nintendo.png",
       "url": "https://www.nintendo.com/",
       "pending": false
     }
@@ -1791,7 +1791,7 @@
     "pk": 4,
     "fields": {
       "name": "Supergiant Games",
-      "logo": "",
+      "logo": "images/supergiant_games.jpg",
       "url": "https://www.supergiantgames.com/",
       "pending": false
     }
@@ -1801,7 +1801,7 @@
     "pk": 5,
     "fields": {
       "name": "ConcernedApe",
-      "logo": "",
+      "logo": "images/concerned_ape.jpg",
       "url": "https://www.stardewvalley.net/",
       "pending": false
     }
@@ -1811,7 +1811,7 @@
     "pk": 6,
     "fields": {
       "name": "Team Cherry",
-      "logo": "",
+      "logo": "images/team_cherry.png",
       "url": "https://teamcherry.com.au/",
       "pending": false
     }
@@ -1821,7 +1821,7 @@
     "pk": 7,
     "fields": {
       "name": "Maddy Makes Games",
-      "logo": "",
+      "logo": "images/maddy_makes_games.jpg",
       "url": "https://www.mattmakesgames.com/",
       "pending": false
     }
@@ -1831,7 +1831,7 @@
     "pk": 8,
     "fields": {
       "name": "Mojang Studios",
-      "logo": "",
+      "logo": "images/mojang_studios.png",
       "url": "https://www.minecraft.net/",
       "pending": false
     }
@@ -1841,7 +1841,7 @@
     "pk": 9,
     "fields": {
       "name": "Activision",
-      "logo": "",
+      "logo": "images/activision.png",
       "url": "https://www.activision.com/",
       "pending": false
     }
@@ -1851,7 +1851,7 @@
     "pk": 10,
     "fields": {
       "name": "Capcom",
-      "logo": "",
+      "logo": "images/capcom.png",
       "url": "https://www.capcom.com/",
       "pending": false
     }
@@ -1861,7 +1861,7 @@
     "pk": 11,
     "fields": {
       "name": "Riot Games",
-      "logo": "",
+      "logo": "images/riot_games.png",
       "url": "https://www.riotgames.com/",
       "pending": false
     }
@@ -1871,7 +1871,7 @@
     "pk": 12,
     "fields": {
       "name": "Psyonix",
-      "logo": "",
+      "logo": "images/psyonix.jpg",
       "url": "https://www.psyonix.com/",
       "pending": false
     }
@@ -1881,7 +1881,7 @@
     "pk": 13,
     "fields": {
       "name": "Innersloth",
-      "logo": "",
+      "logo": "images/innersloth.png",
       "url": "https://www.innersloth.com/",
       "pending": false
     }
@@ -1891,7 +1891,7 @@
     "pk": 14,
     "fields": {
       "name": "Motion Twin",
-      "logo": "",
+      "logo": "images/motion_twin.png",
       "url": "https://motiontwin.com/",
       "pending": false
     }
@@ -1901,7 +1901,7 @@
     "pk": 15,
     "fields": {
       "name": "Xbox Game Studios",
-      "logo": "",
+      "logo": "images/xbox_game_studios.png",
       "url": "https://www.xbox.com/en-US/xbox-game-studios",
       "pending": false
     }
@@ -1911,7 +1911,7 @@
     "pk": 16,
     "fields": {
       "name": "SEGA",
-      "logo": "",
+      "logo": "images/sega.png",
       "url": "https://www.sega.com/",
       "pending": false
     }
@@ -1921,7 +1921,7 @@
     "pk": 17,
     "fields": {
       "name": "Ubisoft",
-      "logo": "",
+      "logo": "images/ubisoft.png",
       "url": "https://www.ubisoft.com/",
       "pending": false
     }
@@ -1931,7 +1931,7 @@
     "pk": 18,
     "fields": {
       "name": "Bethesda Softworks",
-      "logo": "",
+      "logo": "images/bethesda_softworks.png",
       "url": "https://bethesda.net/",
       "pending": false
     }
@@ -1941,7 +1941,7 @@
     "pk": 19,
     "fields": {
       "name": "Sony Interactive Entertainment",
-      "logo": "",
+      "logo": "images/sony_interactive_entertainment.jpg",
       "url": "https://www.sie.com/",
       "pending": false
     }
@@ -1951,7 +1951,7 @@
     "pk": 20,
     "fields": {
       "name": "505 Games",
-      "logo": "",
+      "logo": "images/505_games.png",
       "url": "https://www.505games.com/",
       "pending": false
     }
@@ -1961,7 +1961,7 @@
     "pk": 21,
     "fields": {
       "name": "Square Enix",
-      "logo": "",
+      "logo": "images/square_enix.png",
       "url": "https://www.square-enix.com/",
       "pending": false
     }
@@ -1971,7 +1971,7 @@
     "pk": 22,
     "fields": {
       "name": "Bandai Namco Entertainment",
-      "logo": "",
+      "logo": "images/bandai_namco_entertainment.jpg",
       "url": "https://www.bandainamcoent.eu/",
       "pending": false
     }
@@ -1981,7 +1981,7 @@
     "pk": 23,
     "fields": {
       "name": "Studio MDHR",
-      "logo": "",
+      "logo": "images/studio_mdhr.jpg",
       "url": "https://studiomdhr.com/",
       "pending": false
     }
@@ -1991,7 +1991,7 @@
     "pk": 24,
     "fields": {
       "name": "Humble Games",
-      "logo": "",
+      "logo": "images/humble_games.jpg",
       "url": "https://www.humblegames.com/",
       "pending": false
     }
@@ -2001,7 +2001,7 @@
     "pk": 25,
     "fields": {
       "name": "Re-Logic",
-      "logo": "",
+      "logo": "images/re_logic.jpg",
       "url": "https://tmodloader.net/",
       "pending": false
     }
@@ -2011,7 +2011,7 @@
     "pk": 26,
     "fields": {
       "name": "HoYoverse",
-      "logo": "",
+      "logo": "images/hoyoverse.jpg",
       "url": "https://www.hoyoverse.com/en-us/",
       "pending": false
     }
@@ -2021,7 +2021,7 @@
     "pk": 27,
     "fields": {
       "name": "Epic Games",
-      "logo": "",
+      "logo": "images/epic_games.png",
       "url": "https://www.epicgames.com/",
       "pending": false
     }
@@ -2031,7 +2031,7 @@
     "pk": 28,
     "fields": {
       "name": "Warner Bros. Games",
-      "logo": "",
+      "logo": "images/warner_bros_games.jpg",
       "url": "https://www.wbgames.com/",
       "pending": false
     }
@@ -2041,7 +2041,7 @@
     "pk": 29,
     "fields": {
       "name": "Pocketpair",
-      "logo": "",
+      "logo": "images/pocketpair.png",
       "url": "https://pocketpair.jp/",
       "pending": false
     }
@@ -2051,7 +2051,7 @@
     "pk": 30,
     "fields": {
       "name": "Supercell",
-      "logo": "",
+      "logo": "images/supercell.png",
       "url": "https://supercell.com/",
       "pending": false
     }
@@ -2061,7 +2061,7 @@
     "pk": 31,
     "fields": {
       "name": "King",
-      "logo": "",
+      "logo": "images/king.jpg",
       "url": "https://king.com/",
       "pending": false
     }
@@ -2071,7 +2071,7 @@
     "pk": 32,
     "fields": {
       "name": "SYBO",
-      "logo": "",
+      "logo": "images/sybo.png",
       "url": "https://sybogames.com/",
       "pending": false
     }
@@ -2081,7 +2081,7 @@
     "pk": 33,
     "fields": {
       "name": "Halfbrick Studios",
-      "logo": "",
+      "logo": "images/halfbrick_studios.png",
       "url": "https://www.halfbrick.com/",
       "pending": false
     }
@@ -2091,7 +2091,7 @@
     "pk": 34,
     "fields": {
       "name": "Rovio Entertainment",
-      "logo": "",
+      "logo": "images/rovio_entertainment.png",
       "url": "https://www.rovio.com/",
       "pending": false
     }
@@ -2101,7 +2101,7 @@
     "pk": 35,
     "fields": {
       "name": "Electronic Arts",
-      "logo": "",
+      "logo": "images/electronic_arts.png",
       "url": "https://www.ea.com/",
       "pending": false
     }
@@ -2111,7 +2111,7 @@
     "pk": 36,
     "fields": {
       "name": "Tencent Games",
-      "logo": "",
+      "logo": "images/tencent_games.jpg",
       "url": "https://www.tencent.com/",
       "pending": false
     }
@@ -2121,7 +2121,7 @@
     "pk": 37,
     "fields": {
       "name": "Moonton",
-      "logo": "",
+      "logo": "images/moonton.jpg",
       "url": "https://en.moonton.com/",
       "pending": false
     }
@@ -2131,7 +2131,7 @@
     "pk": 38,
     "fields": {
       "name": "Level Infinite",
-      "logo": "",
+      "logo": "images/level_infinite.png",
       "url": "https://www.levelinfinite.com/",
       "pending": false
     }
@@ -2141,7 +2141,7 @@
     "pk": 39,
     "fields": {
       "name": "Gameloft",
-      "logo": "",
+      "logo": "images/gameloft.png",
       "url": "https://www.gameloft.com/",
       "pending": false
     }
@@ -2151,7 +2151,7 @@
     "pk": 40,
     "fields": {
       "name": "Niantic",
-      "logo": "",
+      "logo": "images/niantic.png",
       "url": "https://nianticlabs.com/",
       "pending": false
     }
@@ -2161,7 +2161,7 @@
     "pk": 41,
     "fields": {
       "name": "Second Dinner",
-      "logo": "",
+      "logo": "images/second_dinner.png",
       "url": "https://seconddinner.com/",
       "pending": false
     }
@@ -2171,7 +2171,7 @@
     "pk": 42,
     "fields": {
       "name": "Blizzard Entertainment",
-      "logo": "",
+      "logo": "images/blizzard_entertainment.jpg",
       "url": "https://www.blizzard.com/",
       "pending": false
     }
@@ -2181,7 +2181,7 @@
     "pk": 43,
     "fields": {
       "name": "Snowman",
-      "logo": "",
+      "logo": "images/snowman.png",
       "url": "https://www.builtbysnowman.com/",
       "pending": false
     }
@@ -2191,7 +2191,7 @@
     "pk": 44,
     "fields": {
       "name": "Lilith Games",
-      "logo": "",
+      "logo": "images/lilith_games.png",
       "url": "https://ancient.lilith.com/",
       "pending": false
     }
@@ -2201,7 +2201,7 @@
     "pk": 46,
     "fields": {
       "name": "Yostar",
-      "logo": "",
+      "logo": "images/yostar.png",
       "url": "https://www.yo-star.com/en-us/",
       "pending": false
     }
@@ -2211,7 +2211,7 @@
     "pk": 47,
     "fields": {
       "name": "Roblox Corporation",
-      "logo": "",
+      "logo": "images/roblox_corporation.png",
       "url": "https://corp.roblox.com/",
       "pending": false
     }
@@ -2221,7 +2221,7 @@
     "pk": 48,
     "fields": {
       "name": "Lunime",
-      "logo": "",
+      "logo": "images/lunime.png",
       "url": "https://www.lunime.com",
       "pending": false
     }
@@ -2231,7 +2231,7 @@
     "pk": 49,
     "fields": {
       "name": "Playrix",
-      "logo": "",
+      "logo": "images/playrix.png",
       "url": "https://playrix.com/",
       "pending": false
     }
@@ -2241,7 +2241,7 @@
     "pk": 50,
     "fields": {
       "name": "Larian Studios",
-      "logo": "",
+      "logo": "images/larian_studios.jpg",
       "url": "https://larian.com/",
       "pending": false
     }
@@ -2251,7 +2251,7 @@
     "pk": 51,
     "fields": {
       "name": "ustwo games",
-      "logo": "",
+      "logo": "images/ustwo_games.jpg",
       "url": "https://ustwogames.co.uk/",
       "pending": false
     }
@@ -2261,7 +2261,7 @@
     "pk": 52,
     "fields": {
       "name": "Hello Games",
-      "logo": "",
+      "logo": "images/hello_games.jpg",
       "url": "https://hellogames.org/",
       "pending": false
     }
@@ -2271,7 +2271,7 @@
     "pk": 53,
     "fields": {
       "name": "thatgamecompany",
-      "logo": "",
+      "logo": "images/that_game_company.png",
       "url": "https://thatgamecompany.com/",
       "pending": false
     }

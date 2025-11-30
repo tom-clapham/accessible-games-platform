@@ -12,9 +12,9 @@ const Publishers = () => {
     setLoading(true)
         axios.get("http://127.0.0.1:8000/app/publishers/get-all-publishers/")
         .then(response => {
+            console.log(response.data)
             setPublishers(response.data);
             setLoading(false)
-            console.log(response.data.name)
         })
         .catch(error => {
             setLoading(false)
@@ -37,12 +37,13 @@ const Publishers = () => {
 
     return (
     <div>
-        <h1></h1>
+        <h1>PUBLISHERS:</h1>
         <div>
             {currentItems.map((publisher) => (
                 <PublisherCard
                     id={publisher.id} 
                     name={publisher.name}
+                    logo={publisher.logo}
                 />
             ))};
             <ReactPaginate

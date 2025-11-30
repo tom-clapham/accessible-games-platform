@@ -21,3 +21,10 @@ def get_publisher(request, publisher_id):
     print(serializer.data)
     return Response(serializer.data)
 
+@api_view(['POST'])
+@permission_classes([AllowAny])
+def register_publisher(request):
+    file = request.FILES.get("logo")
+
+    return Response(True)
+

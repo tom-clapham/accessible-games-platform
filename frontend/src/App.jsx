@@ -31,7 +31,6 @@ function App() {
     <Router>
       <AuthProvider>
         <VoiceController />
-
         <Routes>
           <Route element={<LayoutWithNav/>}>
             <Route path="/" element={<Home/>}/>
