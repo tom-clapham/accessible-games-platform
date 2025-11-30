@@ -167,7 +167,9 @@ function Reviews() {
                     <img className={styles.commentImg} src={comment_img}></img>
                     <p>{item.comments}</p>
                     <Link to={`/report/post/${item.id}`} onClick={(e) => { e.stopPropagation(); }}>
-                        <button>Report</button>
+                        <button className={styles.reportFlag} >
+                            <img className={styles.reportImg} src={report_img} alt="Report Post"></img>
+                        </button>
                     </Link>
                 </div>
             </div>
