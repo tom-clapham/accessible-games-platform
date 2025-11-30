@@ -17,7 +17,7 @@ class UserRegistrationSerializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True)
     class Meta:
         model=User
-        fields = ['email','username', 'first_name', 'last_name', 'date_of_birth', 'password', 'accessibility_tags', 'genre_tags']
+        fields = ['email','username', 'first_name', 'last_name', 'date_of_birth', 'password', 'accessibility_tags', 'genre_tags', 'is_moderator']
 
     def create(self, validated_data):
         user = User(

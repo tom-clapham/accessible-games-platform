@@ -57,6 +57,10 @@ function Navbar(){
       nav('/browse')
   }
 
+  function navAdmin() {
+      nav('/moderator/dashboard')
+  }
+
   const handleLogout = async () => {
       const success = await logout();
       if(success){
@@ -73,6 +77,9 @@ function Navbar(){
             <li className='browse-link' onClick={navBrowse}>Browse</li>
             <li className='community-link'>Community</li>
             <li className='about-link'>About us</li>
+            {(user && user.is_moderator) && (
+            <li className='admin-link' onClick={navAdmin}>Admin</li>
+            )}
           </ul>
       
         <SearchBar/>
