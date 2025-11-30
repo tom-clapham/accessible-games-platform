@@ -1,14 +1,15 @@
 .pc-image-box {
-  width: 100px;
-  height: 100px;
+  width: 80px;
+  height: 80px;
   overflow: hidden;
+  margin-right: 15px;
 }
 
 .pc-image-box img {
   width: 100%;
   height: 100%;
   object-fit: cover; 
-  padding: 20px;
+  
 }
 
 .pc-container {
@@ -23,6 +24,7 @@
     align-items: center;
     border: 2px solid rgba(255, 255, 255, 0.24);
     border-radius: 15px;
+    padding: 15px;
 }
 
 .pc-text {
@@ -42,7 +44,7 @@
 
 .p-card-container {
     display: grid;
-    width: 35%;
+    width: 40%;
     grid-template-columns: repeat(3, 1fr); 
     gap: 20px; 
 }
@@ -59,7 +61,7 @@
     display: flex;
     flex-direction: row;
     align-items: left;
-    width: 35%;
+    width: 40%;
 }
 
 .p-page-selector {
@@ -83,7 +85,40 @@
   color: #115ea3;
 }
 
-.p-line {
-  border: 1px solid rgba(255, 255, 255, 0.24);
-  width: 35%;
+.pi-info {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.pi-info-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 45%;
+}
+
+.pi-visit-website {
+    padding: 8px 30px;
+    border-radius: 3px;
+    border: none;
+    background-color: #115ea3;
+    color: white;
+    font-size: 16px;
+}
+
+.pi-visit-website:hover {
+    background-color: #2d6ca3;
+    cursor: pointer;
+}
+
+.pi-games-container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: left;
+    gap: 24px;
+    padding-bottom: 30px;
+    width: 45%;
 }

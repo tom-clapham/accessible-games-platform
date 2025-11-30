@@ -44,19 +44,21 @@ const Publisher_Info = () => {
   if (loading) return <p>Loading...</p>;
 
   return (
-    <div>
-        <h1>{publisher.name}<FaCheckCircle/></h1>
-        <button onClick={() => handleURL(publisher.url)}>Visit Publisher Website</button>
-        <div className="filter-results-container">
-            {games.map((game) => (
-                <GameCard 
-                    id={game.id} 
-                    name={game.name}
-                    price={game.price}
-                    image_url={game.thumbnail_url}
-                />
-            ))}
-        </div>
+    <div className='p-container'>
+      <div className='pi-info-container'>
+          <h1 className='pi-info'>{publisher.name}<FaCheckCircle className='pc-verified-icon'/></h1>
+          <button className='pi-visit-website' onClick={() => handleURL(publisher.url)}>Visit Publisher Website</button>
+      </div>
+      <div className="pi-games-container">
+          {games.map((game) => (
+              <GameCard 
+                  id={game.id} 
+                  name={game.name}
+                  price={game.price}
+                  image_url={game.thumbnail_url}
+              />
+          ))}
+      </div>
     </div>
   )
 }
