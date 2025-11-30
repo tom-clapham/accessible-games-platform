@@ -64,5 +64,6 @@ start cmd /k "cd ../frontend && call npm run dev"
 
 echo.
 echo SETUP COMPLETE. BOTH SERVERS RUNNING.
+echo GO TO http://localhost:5173/ TO ACCESS THE PLATFORM.
 
 pause
