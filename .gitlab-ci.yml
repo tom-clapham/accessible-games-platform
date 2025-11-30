@@ -29,7 +29,9 @@ test-fronted:
     - npm install
     - echo "Running react tests..."
     - npm test
-    - echo "Tests complete!"
+    - echo "Tests complete! Running Build..."
+    - npm run build
+    - echo "Build Successful!"
   
 build-project:
   stage: build
@@ -56,4 +58,6 @@ test-backend:
     - cd team_10_application
     - echo "Running tests..."
     - python manage.py test
-    - echo "Django tests complete!"
+    - echo "Django tests complete! Checking for common issues..."
+    - python manage.py check --fail-level=WARNING
+    - echo "Checks complete!"
