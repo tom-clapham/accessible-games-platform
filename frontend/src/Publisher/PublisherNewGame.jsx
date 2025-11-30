@@ -25,6 +25,8 @@ function PublisherNewGame() {
     const [selectedAccessibilityTags, setSelectedAccessibilityTags] = useState([]);
     const [selectedGenreTags, setSelectedGenreTags] = useState([]);
     const [selectedPlatformTags, setSelectedPlatformTags] = useState([]);
+    const [errors, setErrors] = useState({})
+    const [success, setSuccess] = useState()
     const free = new RegExp("^(?:[0]+?(?:\\.|\\,)?0*?)?$")
 
     const accessibilityTagsOptions = [
@@ -65,7 +67,7 @@ function PublisherNewGame() {
     async function createGame(e) {
         e.preventDefault()
         try {
-            const res = await axios.post("http://localhost:8000/app/games/upload/", 
+            await axios.post("http://localhost:8000/app/games/upload/", 
                 {
                     "gameName": gameName,
                     "description": description,
@@ -78,12 +80,23 @@ function PublisherNewGame() {
                     "platformTags": selectedPlatformTags
                 }
             )
-            console.log(res.data)// console gets refreshed on form submission, so console log is useless
-        
+            setSuccess(true)
+            setGameName("")
+            setPrice("")
+            setReleaseDate("")
+            setDescription("")
+            setTrailerUrl("")
+            setThumbnailUrl("")
+            setSelectedAccessibilityTags([])
+            setSelectedGenreTags([])
+            setSelectedPlatformTags([])
         } catch (err) {
             console.log(err)
+            setSuccess(false)
+            setErrors(err.response.data)
         }
     }
+
 
     // return the price
     function formatPrice(price) {
@@ -97,9 +110,8 @@ function PublisherNewGame() {
     }, [price])
     return(
         <>
-        { preview ? (<div className={styles.previewEdit} onClick={() => setPreview(false)}><img className={styles.peImg} src={preview_img} alt='Preview button for viewing what game would look like in current state'/></div>) : (<div className={styles.previewEdit} onClick={() => setPreview(true)}><img className={styles.peImg} src={edit_img} alt='Edit button to return to editing after viewing preview'/></div>)}
-        { !preview ? (<form onSubmit={createGame} className={styles.formArea}>
-            {/* <div className={styles.horizontalSection}> */}
+        { preview ? (<div role={'button'} data-testid='edit-btn' className={styles.previewEdit} onClick={() => setPreview(false)}><img className={styles.peImg} src={edit_img} alt='Preview button for viewing what game would look like in current state'/></div>) : (<div role={'button'} data-testid='preview-btn' className={styles.previewEdit} onClick={() => setPreview(true)}><img className={styles.peImg} src={preview_img} alt='Edit button to return to editing after viewing preview'/></div>)}
+        { !preview ? (<div className={styles.formErrorArea}><form onSubmit={createGame} className={styles.formArea}>
             <div className={styles.doubleAreas}>
                 <label className={styles.doubleLabels}>Game name:<br/>
                     <input className={styles.doubleInputs} onChange={(e) => setGameName(e.target.value)} value={gameName} placeholder='Name...' required/>
@@ -134,7 +146,7 @@ function PublisherNewGame() {
             </div>
             <div className={styles.doubleAreas}>
                 <label className={styles.doubleLabels}>Release date:<br/>
-                    <input className={styles.doubleInputs} type={'date'} onChange={(e) => setReleaseDate(e.target.value)} value={releaseDate} required/>
+                    <input data-testid='release-date' className={styles.doubleInputs} type={'date'} onChange={(e) => setReleaseDate(e.target.value)} value={releaseDate} required/>
                 </label><br/>
                 <label className={styles.doubleTags}>
                     Platform tags:<br/>
@@ -152,13 +164,15 @@ function PublisherNewGame() {
                 <textarea className={styles.description} onChange={(e) => setDescription(e.target.value)} value={description} placeholder='Description...' required/>
             </label>
             <label className={styles.urlArea}>Trailer URL:<br/>
-                <input className={styles.urlBox} type={'url'} placeholder='Please enter YouTube URL here - Placeholder video will not be present on submission' onChange={(e) => setTrailerUrl(e.target.value)} value={trailerUrl}/>
+                <input data-testid='trailer-url' className={styles.urlBox} type={'url'} placeholder='Please enter YouTube URL here - Placeholder video will not be present on submission' onChange={(e) => setTrailerUrl(e.target.value)} value={trailerUrl}/>
             </label>
             <label className={styles.urlArea}>Thumbnail image link:<br/>
-                <input className={styles.urlBox} type={'url'} placeholder='Please enter link to image here - Placeholder image will not be present on submission' onChange={(e) => setThumbnailUrl(e.target.value)} value={thumbnailUrl}/>
+                <input data-testid='thumbnail-url' className={styles.urlBox} type={'url'} placeholder='Please enter link to image here - Placeholder image will not be present on submission' onChange={(e) => setThumbnailUrl(e.target.value)} value={thumbnailUrl}/>
             </label>
             <button type={'submit'} className={styles.createBtn}>Create</button>
-        </form>) : (<div>
+        </form>
+        { !success ? Object.entries(errors).map(([key, issue], idx) => {return (<div key={idx}>{`Issue with ${key} - ${issue}`}</div>)}) : (<div>Success!</div>) }
+        </div>) : (<div>
             <div className="gp-page">
                 <h1 className="gp-title">{gameName}</h1>
                 <div className="gp-grid">
