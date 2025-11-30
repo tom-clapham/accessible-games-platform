@@ -15,7 +15,7 @@ const Login = () => {
 
   const handleLogin = async () => {
       const success = await login_user(username, password);
-      console.log(success)
+      console.log("success:" + success)
       if(!success){
         setError(true);
       }

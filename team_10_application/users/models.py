@@ -1,12 +1,12 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
+from games.models import Game
 
 class AccessibilityTag(models.Model):
     name = models.CharField(max_length=200)
 
     def __str__(self):
         return self.name
-
 
 class GenreTag(models.Model):
     name = models.CharField(max_length=200)
@@ -28,8 +28,8 @@ class CustomUser(AbstractUser):
 
     genre_tags = models.ManyToManyField(GenreTag, blank=True, related_name="users")
     accessibility_tags = models.ManyToManyField(AccessibilityTag, blank=True, related_name="users")
+    favourite_games = models.ManyToManyField(Game, blank=True, related_name="users")
 
-   
     def __str__(self):
         return self.email
     

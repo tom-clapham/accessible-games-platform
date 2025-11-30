@@ -2,9 +2,13 @@ from rest_framework.response import Response
 from rest_framework import viewsets, serializers
 from rest_framework.decorators import api_view, permission_classes, action
 from rest_framework.permissions import IsAuthenticated, AllowAny
-from .serializer import UserRegistrationSerializer
+from .serializer import UserRegistrationSerializer, AccessibilityTagSerializer, GenreTagSerializer
 from .models import CustomUser, GenreTag, AccessibilityTag
+from games.models import Game
+from games.serializers import GameSerializer
 from django.core.mail import send_mail
+from django.contrib.auth.hashers import check_password
+
 from rest_framework_simplejwt.views import (
     TokenObtainPairView,
     TokenRefreshView,
@@ -92,7 +96,7 @@ def get_user(request):
     return Response(serializer.data)
         
 @api_view(['POST'])
-def logout(request):
+def logout_user(request):
     try:
         res = Response()
         res.data = {'success':True}
@@ -149,7 +153,6 @@ class RegistrationViewSet(viewsets.ViewSet):
         try:
             email = email_field.run_validation(data)
         except serializers.ValidationError as e:
-            print(e.detail)
             return Response({'success': False})
         
         request.session['reg_email'] = data
@@ -183,10 +186,10 @@ class RegistrationViewSet(viewsets.ViewSet):
     
     @action(detail=False, methods=['post'], url_path='step5')
     def step5(self, request):
+        print(request.data)
         data = request.data.get('genre_arr')
         if len(data) < 3:
             return Response({'success': False})
-        
         
         username = request.session.get('reg_username')
         password = request.session.get('reg_password')
@@ -212,7 +215,6 @@ class RegistrationViewSet(viewsets.ViewSet):
             access_qs = AccessibilityTag.objects.filter(name__in=accessibility)
             user.genre_tags.set(genres_qs)
             user.accessibility_tags.set(access_qs)
-            print("User:", user)
             return Response({'success': True})
         return Response({'success':False})
 
@@ -244,7 +246,6 @@ def forgot_credentials(request):
                 return Response({"success": True})
     return Response({"success": False})
 
-
 @api_view(['POST'])
 @permission_classes([AllowAny])
 def password_reset(request):
@@ -268,4 +269,172 @@ def password_reset(request):
     user.save()
     
     return Response({'success':True})
-        
+
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def update_personal(request): 
+    user = request.user
+    first = request.data.get('first_name')
+    last = request.data.get('last_name')
+
+    date_field = serializers.DateField(input_formats=['%Y-%m-%d'])
+    try:
+        dob = date_field.run_validation(request.data.get('dob'))
+    except serializers.ValidationError as e:
+        return Response({'success': False})
+    
+    year = dob.year
+    if year > 2012 or year < 1960:
+        return Response({'success': False})
+    
+    month = dob.month
+    if month == 'month':
+        return Response({'success': False})
+    
+    user.first_name = first
+    user.last_name = last
+    user.date_of_birth = dob
+    user.save()
+    return Response({'success':True})
+    
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def update_details(request): 
+    user = request.user
+    username = request.data.get('username')
+    email = request.data.get('email')
+    
+    if CustomUser.objects.filter(email=email).exists() and CustomUser.objects.get(email=email) != user:
+        return Response({'success': 'email'})
+    else:
+        if CustomUser.objects.filter(username=username).exists() and CustomUser.objects.get(username=username) != user:
+            return Response({'success': 'username'})
+
+    user.username = username
+    user.email = email
+    user.save()
+    return Response({'success': True})
+
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def delete(request):
+    user = request.user
+    try:
+        res = Response()
+        res.data = {'success':True}
+        res.delete_cookie('access_token', path='/', samesite='None')
+        res.delete_cookie('refresh_token', path='/', samesite='None')
+        user.delete()
+
+        return res
+    except:
+        return Response({'success':False})
+    
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def get_accessibility(request):
+    user = request.user
+    user_tag = user.accessibility_tags.values_list('id', flat=True)
+    tags = AccessibilityTag.objects.exclude(id__in=user_tag)
+    serializer = AccessibilityTagSerializer(tags, many=True)
+    return Response({'success':serializer.data})
+
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def get_genres(request):
+    user = request.user
+    user_tag = user.genre_tags.values_list('id', flat=True)
+    tags = GenreTag.objects.exclude(id__in=user_tag)
+    serializer = GenreTagSerializer(tags, many=True)
+    return Response({'success':serializer.data})
+
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def update_preferences(request):
+    user = request.user
+
+    genres = request.data.get('genre_arr')
+    accessibility = request.data.get('accessibility_arr')
+
+    genres_qs = GenreTag.objects.filter(name__in=genres)
+    access_qs = AccessibilityTag.objects.filter(name__in=accessibility)
+
+    user.genre_tags.set(genres_qs)
+    user.accessibility_tags.set(access_qs)
+
+    user.save()
+    return Response({'success':True})
+
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def change_password(request):
+    user = request.user
+
+    oldPass = request.data.get('oldPass')
+    newPass = request.data.get('newPass')
+    confirmPass = request.data.get('confirmPass')
+
+    if not(two_digits(newPass)) or (len(newPass) < 8):
+        return Response({'success':'invalidNewPassword'})
+    
+    if(newPass != confirmPass):
+        return Response({'success':'passwordMatch'})
+    
+    if not check_password(oldPass, user.password):
+        return Response({'success':'oldPasswordWrong'})
+
+    user.set_password(newPass)
+    user.save()
+    return Response({'success':True})
+
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def add_game_to_favourites(request):
+    game = request.data['game']
+    user = request.user
+    favourites = Game.objects.get(name=game)
+    user.favourite_games.add(favourites)
+    user.save()
+    return Response({'success':True})
+
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def remove_from_favourites(request):
+    game = request.data['game']
+    user = request.user
+    favourites = Game.objects.get(name=game)
+    user.favourite_games.remove(favourites)
+    user.save()
+    return Response({'success':True})
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def get_all_favourite_games(request):
+    user = request.user
+    if(user):
+        favourite_games = user.favourite_games.all()
+        serializer = GameSerializer(favourite_games, many=True)
+        return Response({'success':serializer.data})
+    
+    return Response({'success':False})
+
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def check_favourite_games(request):
+    user = request.user
+    game = request.data['game']
+    print(game)
+    object = Game.objects.get(name=game)
+    if(user):
+        if(user.favourite_games.filter(id=object.id).exists()):
+            return Response({'success':True})
+    
+    return Response({'success':False})
+
+
+
+
+
+    
+
+

@@ -5,6 +5,8 @@ import axios from 'axios';
 import GameThumbnail from './GameThumbnail';
 import GameTrailer from './GameTrailer';
 import GameTag from './GameTag';
+import { addToFavourites, user_info, removeFromFavourites, checkFavouriteGame } from '../endpoints/api';
+import {useAuth} from '../contexts/useAuth'
 
 import "./game_profile_styles.css";
 
@@ -36,7 +38,11 @@ function GameProfile() {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const navigate = useNavigate();
-
+    const [favourite, setFavourite] = useState();
+    const [user, setUser] = useState(false);
+    const [successRemove, setSuccessRemove] = useState(false);
+    const [successAdd, setSuccessAdd] = useState(false);
+    
     useEffect(() => {
         axios.get(`http://127.0.0.1:8000/app/games/games/${id}`)
         .then(response => {
@@ -51,9 +57,50 @@ function GameProfile() {
 
     }, [id]);
 
+    useEffect(() => {
+        const fetch_info = async () => {
+            const success = await user_info()
+            if(success){
+                setUser(success)
+            }
+        }
+        fetch_info();
+    })
+
+    useEffect(() => {
+        const fetch_info = async () => {
+            const success = await checkFavouriteGame(game.name)
+            if(success){
+                setFavourite(true)
+            } else {
+                setFavourite(false)
+            }
+        }
+        fetch_info();
+    }, [game])
+
     if (loading) return <p>Loading...</p>;
     if (error) return <p>Error loading game data.</p>;
     if (!game) return <p>No game data found.</p>;
+
+    const handleAddToFavourites = async () => {
+        if(favourite){
+            await removeFromFavourites(game.name);
+            setSuccessRemove(true);
+            setFavourite(false)
+            const timeout = setTimeout(() => {
+                setSuccessRemove(false);
+            }, 3000);
+        } else {
+            await addToFavourites(game.name);
+            setSuccessAdd(true);
+            setFavourite(true)
+            const timeout = setTimeout(() => {
+                setSuccessAdd(false);
+            }, 3000);
+        }
+        
+    }
 
     return(
         <div>
@@ -115,7 +162,11 @@ function GameProfile() {
                                     <div className="gp-info-value">{formatDate(game.release_date)}</div>
                                 </div>
 
-                                <button className="gp-button">Add to favourite games</button>
+                                {user ? <button className="gp-button" onClick={handleAddToFavourites}>{favourite ? 'Remove from favourites': 'Add to favourites'}</button> 
+                                : <button className="gp-button" style={{ backgroundColor: 'grey' }} disabled onClick={handleAddToFavourites}>{favourite ? 'Remove from favourites' : 'Add to favourites'}</button>}
+
+                                {successAdd &&(<div className="gp-success">Successfully added to favourites.</div>)}
+                                {successRemove &&(<div className="gp-success">Successfully removed from favourites.</div>)}
                                 <Link to={`/report/game/${game.id}`}>
                                 <button className="gp-button-report">Report</button>
                                 </Link>

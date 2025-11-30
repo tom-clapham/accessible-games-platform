@@ -1,7 +1,7 @@
 import {useState, useEffect} from 'react';
 import './Navbar.css';
 import logoPicture from '../../assets/platform_logo.jpg';
-import SearchBar from '../Elements/SearchBar.jsx'
+import SearchBar from '../SearchBars/SearchBarNav.jsx'
 import { useNavigate } from 'react-router-dom';
 import { MdAccountCircle } from "react-icons/md";
 import { CgGames } from "react-icons/cg";
@@ -49,12 +49,32 @@ function Navbar(){
       nav('/')
   }
 
+  function navAccount(){
+    nav("/account", {
+      state: { message: true},
+    });
+  }
+
   function navGames(){
       nav('/discover')
   }
 
+  function navFavouriteGames(){
+    nav('account/', {
+      state: { message: 'favourites'},
+    })
+  }
+
   function navBrowse(){
       nav('/browse')
+  }
+
+  function navAboutUs(){
+      nav('/about-us')
+  }
+
+  function navHelp(){
+      nav('/help-page')
   }
 
   function navAdmin() {
@@ -75,15 +95,16 @@ function Navbar(){
           <ul className='list'>
             <li className='discover-link' onClick={navGames}>Discover</li>
             <li className='browse-link' onClick={navBrowse}>Browse</li>
-            <li className='community-link'>Community</li>
-            <li className='about-link'>About us</li>
+            <li className='about-link' onClick={navAboutUs}>About Us</li>
             {(user && user.is_moderator) && (
             <li className='admin-link' onClick={navAdmin}>Moderator</li>
             )}
           </ul>
       
         <SearchBar/>
+
         <ul className='login'>
+          <li className='help-link' onClick={navHelp}>Help</li>
           {user ? <li className='user_profile' onClick={showHideProfile}>{user.first_name.charAt(0).toUpperCase() + user.last_name.charAt(0).toUpperCase()}
             </li> : <li className='login-link' onClick={login_redirect}>Sign in<MdAccountCircle className='profile_signin'/></li>}
         </ul>
@@ -103,10 +124,10 @@ function Navbar(){
             <div className='email'>{user.email}</div>
           </div>
         </div>
-        <div className='account'>My account</div>
-        <hr></hr>
+        <div className='account' onClick={navAccount}>My account</div>
+         <hr className='line'/>
         <div className='favourite-container'>
-          <div className='favourite-games'><CgGames className='games-icon'/>View my favourite games</div>
+          <div className='favourite-games' onClick={navFavouriteGames}><CgGames className='games-icon'/>View my favourite games</div>
         </div>
       </div>
       )}
