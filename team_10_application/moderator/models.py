@@ -1,2 +1,2 @@
 from users.models import CustomUser
-from reports.models import Report
+from reports.models import Report, ReviewedReports

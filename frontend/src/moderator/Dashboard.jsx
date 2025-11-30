@@ -13,7 +13,7 @@ function Dashboard() {
             </div>
 
             <div className="mod-welcome-title">
-                <h2>Welcome Moderator_Name!</h2>
+                <h2>Welcome!</h2>
             </div>
 
             <div className="mod-side-grid">
