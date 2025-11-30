@@ -207,7 +207,3 @@ EMAIL_HOST_USER = 'accessiblegamesplatform@gmail.com'
 EMAIL_HOST_PASSWORD = 'twbw zbsf tbgp llem'
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
-
-SILENCED_SYSTEM_CHECKS = [
-    "models.W036"
-]
