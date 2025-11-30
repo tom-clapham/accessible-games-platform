@@ -50,7 +50,7 @@ body {
 }
 
 .mod-latest-reports {
-    border: orange solid 2px;
+    /* border: orange solid 2px; */
     grid-column: 2 / 3;
     display: flex;
     flex-direction: column;
@@ -66,7 +66,7 @@ body {
 
 .mod-latest-reports-content {
     width: 100%;
-    border: red solid 2px;
+    /* border: red solid 2px; */
     padding-left: 10px;
 }
 
@@ -80,10 +80,32 @@ body {
     font-weight: bold;
     border: white solid 2px;
     font-size: 18px;
+    text-decoration: none;;
+}
 
+.mod-button-link {
+  text-decoration: none;
 }
 
 .mod-button:hover {
     filter: brightness(1.1);
     cursor: pointer;
+}
+
+.reviewed {
+    background-color: rgb(171, 250, 197);
+    opacity: 1;
+    padding: 5px;
+    color: rgb(11, 68, 58);
+    text-align: center;
+    font-weight: bold;
+}
+
+.pending {
+    background-color: rgb(255, 191, 108);
+    opacity: 1;
+    padding: 5px;
+    color: rgb(55, 13, 9);
+    text-align: center;
+    font-weight: bold;
 }

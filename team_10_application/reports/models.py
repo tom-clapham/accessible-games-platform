@@ -16,7 +16,10 @@ class Report(models.Model):
     report_type = models.CharField(max_length=30, choices=REPORT_TYPE_CHOICES)
     description = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
-
+    reviewed = models.BooleanField(default=False)
+    reviewed_by = models.ForeignKey("users.CustomUser", on_delete=models.SET_NULL, blank=True, null=True, related_name='moderator_review')
+    reviewed_at = models.DateTimeField(blank=True, null=True)
+    review_reason = models.TextField(blank=True, null=True)
     def __str__(self):
         return self.report_type
 

@@ -13,14 +13,13 @@ function Dashboard() {
             </div>
 
             <div className="mod-welcome-title">
-                <h2>Welcome Moderator!</h2>
+                <h2>Welcome Moderator_Name!</h2>
             </div>
 
             <div className="mod-side-grid">
-                
+                <Link to={`/moderator/dashboard/reports`} className='mod-button-link'>
                 <button className="mod-button">View Reports</button>
-                
-                
+                </Link>
                 <button className="mod-button">View Publisher Requests</button>
                 <button className="mod-button">Remove Users</button>
             </div>

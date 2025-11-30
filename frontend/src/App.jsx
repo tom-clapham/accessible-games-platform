@@ -21,6 +21,7 @@ import Report from './report/Report.jsx'
 import PostsReport from './report/PostsReport.jsx'
 import Dashboard from './moderator/Dashboard.jsx'
 import VoiceController from './voice_navigation/VoiceController.jsx'
+import ModeratorReports from './moderator/ModeratorReports.jsx'
 
 function App() {
   return (
@@ -44,6 +45,7 @@ function App() {
             <Route path="/report/game/:gameId" element={<Report/>}/>
             <Route path="/report/post/:postId" element={<PostsReport/>}/>
             <Route path="/moderator/dashboard" element={<Dashboard/>}/>
+            <Route path="/moderator/dashboard/reports" element={<ModeratorReports/>}/>
           </Route>
           <Route path="/login" element={<Login/>}/>
           <Route path="/forgot-credentials" element={<Forgot_Information/>}/>
