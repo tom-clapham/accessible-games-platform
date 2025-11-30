@@ -23,7 +23,9 @@ import PublisherNewGame from './Publisher/PublisherNewGame.jsx';
 import Account from './Account/Account.jsx'
 import Report from './report/Report.jsx'
 import PostsReport from './report/PostsReport.jsx'
+import Dashboard from './moderator/Dashboard.jsx'
 import VoiceController from './voice_navigation/VoiceController.jsx'
+import ModeratorReports from './moderator/ModeratorReports.jsx'
 
 function App() {
   return (
@@ -49,6 +51,8 @@ function App() {
             <Route path="/account" element={<PrivateRoute><Account/></PrivateRoute>}/>
             <Route path="/report/game/:gameId" element={<Report/>}/>
             <Route path="/report/post/:postId" element={<PostsReport/>}/>
+            <Route path="/moderator/dashboard" element={<Dashboard/>}/>
+            <Route path="/moderator/dashboard/reports" element={<ModeratorReports/>}/>
             <Route path="/new-game" element={<PublisherNewGame/>}/>
           </Route>
           <Route path="/login" element={<Login/>}/>

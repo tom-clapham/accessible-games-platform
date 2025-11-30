@@ -23,7 +23,7 @@ function ReportForm({ gameId, postId }) {
         { label: "Malicious", value: "MALIC"},
         { label: "Spam", value: "SPAM"},
         { label: "Other", value: "OTHR"},
-    ]
+    ] 
 
     const handleSubmit = (e) => {
         e.preventDefault();
