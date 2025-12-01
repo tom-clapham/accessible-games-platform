@@ -34,7 +34,7 @@ def register_publisher(request):
         'name': request.POST.get('name'),
         'url': request.POST.get('url'),
         'logo': file,
-        'pending': False,
+        'pending': True,
     }
     data_user = {
         'username': request.POST.get('username'),
