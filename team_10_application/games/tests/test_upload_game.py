@@ -1,10 +1,20 @@
 from django.test import TestCase
 from rest_framework.test import APIClient
 import pdb
+from publishers.models import Publisher
 
 class UploadTestSetup(TestCase):
     def setUp(self):
         self.client = APIClient()
+
+        
+        publisher = Publisher.objects.create(name='Offensive Publisher', pending=False)
+        self.publisher = {
+            'id': publisher.id,
+            'name': publisher.name,
+            'logo': '',
+            'url': ''
+        }
 
         self.missing_body = {
             "gameName": "F1 25",
@@ -15,7 +25,8 @@ class UploadTestSetup(TestCase):
             "thumbnailUrl": "https://d.player.one/en/full/225747/ea-sports-f1-25-iconic-edition-reveals-lewis-hamilton.png?w=1600&h=1600&q=88&f=89e02eb5622236f3f972db737c0f223e",
             "accessibilityTags": [],
             # "genreTags": selectedGenreTags,
-            "platformTags": []
+            "platformTags": [],
+            "publisher": self.publisher,
         }
 
         self.good_request = {
@@ -27,7 +38,8 @@ class UploadTestSetup(TestCase):
             "thumbnailUrl": "https://d.player.one/en/full/225747/ea-sports-f1-25-iconic-edition-reveals-lewis-hamilton.png?w=1600&h=1600&q=88&f=89e02eb5622236f3f972db737c0f223e",
             "accessibilityTags": [],
             "genreTags": [],
-            "platformTags": []
+            "platformTags": [],
+            "publisher": self.publisher,
         }
 
 
@@ -44,8 +56,8 @@ class UploadAPITests(UploadTestSetup):
     def test_game_can_be_viewed_on_site_after_successful_upload(self):
         self.client.post("/app/games/upload/", self.good_request, format='json')
         response = self.client.get("/app/games/discover/")
-        self.assertEquals(response.data['recently_released_games'][0]['name'], "F1 25")
-        self.assertEquals(response.data['recently_released_games'][0]['price'], "59.99")
+        self.assertEqual(response.data['recently_released_games'][0]['name'], "F1 25")
+        self.assertEqual(response.data['recently_released_games'][0]['price'], "59.99")
     
     def test_error_message_returned_when_game_name_missing(self):
         response = self.client.post("/app/games/upload/", {
@@ -57,7 +69,8 @@ class UploadAPITests(UploadTestSetup):
                                                     "thumbnailUrl": "https://d.player.one/en/full/225747/ea-sports-f1-25-iconic-edition-reveals-lewis-hamilton.png?w=1600&h=1600&q=88&f=89e02eb5622236f3f972db737c0f223e",
                                                     "accessibilityTags": [],
                                                     "genreTags": [],
-                                                    "platformTags": []
+                                                    "platformTags": [],
+                                                    "publisher": self.publisher,
                                                 }, format='json')
         
         self.assertEqual(response.status_code, 400)
@@ -73,7 +86,8 @@ class UploadAPITests(UploadTestSetup):
                                                     "thumbnailUrl": "https://d.player.one/en/full/225747/ea-sports-f1-25-iconic-edition-reveals-lewis-hamilton.png?w=1600&h=1600&q=88&f=89e02eb5622236f3f972db737c0f223e",
                                                     "accessibilityTags": [],
                                                     "genreTags": [],
-                                                    "platformTags": []
+                                                    "platformTags": [],
+                                                    "publisher": self.publisher,
                                                 }, format='json')
         
         self.assertEqual(response.status_code, 400)
@@ -89,7 +103,8 @@ class UploadAPITests(UploadTestSetup):
                                                     "thumbnailUrl": "https://d.player.one/en/full/225747/ea-sports-f1-25-iconic-edition-reveals-lewis-hamilton.png?w=1600&h=1600&q=88&f=89e02eb5622236f3f972db737c0f223e",
                                                     "accessibilityTags": [],
                                                     "genreTags": [],
-                                                    "platformTags": []
+                                                    "platformTags": [],
+                                                    "publisher": self.publisher,
                                                 }, format='json')
         
         self.assertEqual(response.status_code, 400)
@@ -105,7 +120,8 @@ class UploadAPITests(UploadTestSetup):
                                                     "thumbnailUrl": "https://d.player.one/en/full/225747/ea-sports-f1-25-iconic-edition-reveals-lewis-hamilton.png?w=1600&h=1600&q=88&f=89e02eb5622236f3f972db737c0f223e",
                                                     "accessibilityTags": [],
                                                     "genreTags": [],
-                                                    "platformTags": []
+                                                    "platformTags": [],
+                                                    "publisher": self.publisher,
                                                 }, format='json')
         
         self.assertEqual(response.data, 201)
@@ -120,7 +136,8 @@ class UploadAPITests(UploadTestSetup):
                                                     "thumbnailUrl": "https://d.player.one/en/full/225747/ea-sports-f1-25-iconic-edition-reveals-lewis-hamilton.png?w=1600&h=1600&q=88&f=89e02eb5622236f3f972db737c0f223e",
                                                     "accessibilityTags": [],
                                                     "genreTags": [],
-                                                    "platformTags": []
+                                                    "platformTags": [],
+                                                    "publisher": self.publisher,
                                                 }, format='json')
         
         self.assertEqual(response.status_code, 400)
@@ -136,7 +153,8 @@ class UploadAPITests(UploadTestSetup):
                                                     "thumbnailUrl": "not a url",
                                                     "accessibilityTags": [],
                                                     "genreTags": [],
-                                                    "platformTags": []
+                                                    "platformTags": [],
+                                                    "publisher": self.publisher,
                                                 }, format='json')
         
         self.assertEqual(response.status_code, 400)
@@ -152,7 +170,8 @@ class UploadAPITests(UploadTestSetup):
                                                     "thumbnailUrl": "",
                                                     "accessibilityTags": [],
                                                     "genreTags": [],
-                                                    "platformTags": []
+                                                    "platformTags": [],
+                                                    "publisher": self.publisher,
                                                 }, format='json')
         
         self.assertEqual(response.data, 201)
@@ -167,7 +186,8 @@ class UploadAPITests(UploadTestSetup):
                                                     "thumbnailUrl": "https://d.player.one/en/full/225747/ea-sports-f1-25-iconic-edition-reveals-lewis-hamilton.png?w=1600&h=1600&q=88&f=89e02eb5622236f3f972db737c0f223e",
                                                     "accessibilityTags": [],
                                                     "genreTags": [],
-                                                    "platformTags": []
+                                                    "platformTags": [],
+                                                    "publisher": self.publisher,
                                                 }, format='json')
         
         self.assertEqual(response.data, 201)

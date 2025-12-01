@@ -3,6 +3,7 @@ from .create_test_objects import set_up_moderator_user, set_up_regular_user, set
 from reports.models import ReviewedReports, Report
 from threads.models import Posts
 from games.models import Game
+from publishers.models import Publisher
 
 class TestModeratorReportView(APITestCase):
     # Test a non-logged-in user is unable to access the report view
@@ -39,8 +40,8 @@ class TestModeratorReportView(APITestCase):
         moderator = set_up_moderator_user()
         self.client.force_authenticate(user=moderator)
         user = set_up_regular_user()
-        game = Game.objects.create(name="Offensive Game", description="This is offensive content.", price=19.99, publisher="Offensive Publisher", release_date="2024-01-01", trending=False, on_sale=False)
-
+        publisher = Publisher.objects.create(name='Offensive Publisher', pending=False)
+        game = Game.objects.create(name="Offensive Game", description="This is offensive content.", price=19.99, publisher=publisher, release_date="2024-01-01", trending=False, on_sale=False)
         post = Posts.objects.create(title="Offensive Post", message="This is offensive content.", gameId=game, userId=user)
         report = Report.objects.create(
             report_type="INAPP",
@@ -61,7 +62,8 @@ class TestModeratorReportView(APITestCase):
     def test_moderator_can_delete_reported_game(self):
         moderator = set_up_moderator_user()
         self.client.force_authenticate(user=moderator)
-        game = Game.objects.create(name="Inaccurate Game", description="This game has inaccurate information.", price=29.99, publisher="Inaccurate Publisher", release_date="2024-02-01", trending=False, on_sale=False)
+        publisher = Publisher.objects.create(name='Innacurate Publisher', pending=False)
+        game = Game.objects.create(name="Inaccurate Game", description="This game has inaccurate information.", price=29.99, publisher=publisher, release_date="2024-02-01", trending=False, on_sale=False)
 
         report = Report.objects.create(
             report_type="INACC",

@@ -101,6 +101,7 @@ function Navbar(){
           <ul className='list'>
             <li className='discover-link' onClick={navGames}>Discover</li>
             <li className='browse-link' onClick={navBrowse}>Browse</li>
+            <li className='browse-link' onClick={navPublishers}>Publishers</li>
             <li className='about-link' onClick={navAboutUs}>About Us</li>
             {(user && user.is_moderator) && (
             <li className='admin-link' onClick={navAdmin}>Moderator</li>

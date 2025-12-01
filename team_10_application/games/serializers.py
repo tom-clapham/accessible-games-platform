@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from .models import Game
-from publishers.serializer import PublisherSerializer
+from publishers.models import Publisher
 
 class GameSerializer(serializers.ModelSerializer):
     accessibility_tags = serializers.SlugRelatedField(
@@ -15,7 +15,7 @@ class GameSerializer(serializers.ModelSerializer):
         many=True, slug_field="name", read_only=True
     )
 
-    publisher = PublisherSerializer(read_only=True, allow_null=True)
+    publisher = serializers.PrimaryKeyRelatedField(queryset=Publisher.objects.all())
 
     class Meta:
         model = Game

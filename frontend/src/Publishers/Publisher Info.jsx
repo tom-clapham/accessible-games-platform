@@ -4,6 +4,7 @@ import axios from 'axios';
 import { FaCheckCircle } from "react-icons/fa";
 import GameCard from '../browse/GameCard';
 import { user_info } from '../endpoints/api';
+import { useNavigate } from 'react-router-dom';
 
 const Publisher_Info = () => {
 
@@ -12,6 +13,7 @@ const Publisher_Info = () => {
   const [games, setGames] = useState([])
   const [loading, setLoading] = useState(true)
   const [user, setUser] = useState(null)
+  const nav = useNavigate()
   
  
   useEffect(() => {
@@ -52,6 +54,10 @@ const Publisher_Info = () => {
     window.open(url, '_blank');
   };
 
+  function handleAddGame(){
+    nav('/new-game')
+  }
+
   if (loading) return <p>Loading...</p>;
 
   return (
@@ -76,7 +82,7 @@ const Publisher_Info = () => {
           ))}
       </div>
       <div className='pi-button-container'>
-          {user && user.publisher ? <button className="pi-add-game">Add game</button>
+          {user && user.publisher ? <button className="pi-add-game" onClick={handleAddGame}>Add game</button>
           :  <button className="pi-add-game" style={{ backgroundColor: 'grey' }} disabled>Add game</button>}
           {/* {successAdd &&(<div className="gp-success">Successfully added to favourites.</div>)}
           {successRemove &&(<div className="gp-success">Successfully removed from favourites.</div>)} */}

@@ -41,6 +41,7 @@ function GameProfile() {
     const [user, setUser] = useState(false);
     const [successRemove, setSuccessRemove] = useState(false);
     const [successAdd, setSuccessAdd] = useState(false);
+    const [publisher, setPublisher] = useState(null)
     
     useEffect(() => {
         axios.get(`http://127.0.0.1:8000/app/games/games/${id}`)
@@ -55,6 +56,21 @@ function GameProfile() {
         });
 
     }, [id]);
+
+    useEffect(() => {
+        if (!game || !game.publisher) return;
+        axios.get(`http://127.0.0.1:8000/app/publishers/publisher/${game.publisher}`)
+        .then(response => {
+            setPublisher(response.data[0]);
+            console.log(publisher)
+            setLoading(false);
+        })
+        .catch(error => {
+            console.error(error);
+            setLoading(false);
+        });
+
+    }, [game]);
 
     useEffect(() => {
         const fetch_info = async () => {
@@ -153,7 +169,7 @@ function GameProfile() {
                                 
                                 <div className="gp-info-row-top">
                                     <div className="gp-info-label">PUBLISHER</div>
-                                    <Link to={`/publisher/${game.publisher.id}`} className="gp-info-value">{game.publisher?.name || 'No publisher'}</Link>
+                                    <Link to={`/publisher/${publisher?.id}`} className="gp-info-value">{publisher?.name || 'No publisher'}</Link>
                                 </div>
 
                                 <div className="gp-info-row">
