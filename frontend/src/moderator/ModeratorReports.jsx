@@ -24,6 +24,7 @@ function ModeratorReports() {
     const [dialogDeleteVisible, setDialogDeleteVisible] = useState(false);
     const [reason, setReason] = useState("");
 
+    // Get all reports
     useEffect(() => {
         axios.get('http://localhost:8000/app/moderator/reports/', {
             withCredentials: true,

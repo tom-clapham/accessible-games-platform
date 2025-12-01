@@ -1,6 +1,8 @@
 from reports.models import Report, ReviewedReports
 from reports.serializers import ReviewedReportsSerializer
 from users.models import CustomUser
+from publishers.models import Publisher
+from publishers.serializer import PublisherSerializer
 from moderator.permissions import IsModerator
 from rest_framework.decorators import permission_classes
 from rest_framework.views import APIView
@@ -60,7 +62,24 @@ class ModeratorReviewReportView(APIView):
         serializer = ReportSerializer(report)
         return Response(serializer.data)
     
-@permission_classes([IsModerator])
+@permission_classes([AllowAny])
 class PublisherRequestsView(APIView):
-    pass
-        
+    def get(self, request):
+        publisher_requests = Publisher.objects.order_by('-created_at')
+        serializer = PublisherSerializer(publisher_requests, many=True)
+        return Response(serializer.data)
+    
+@permission_classes([AllowAny])
+class ModeratorReviewPublisherRequestsView(APIView):
+    def post(self, request, publisher_id):
+        publisher = Publisher.objects.get(id=publisher_id)
+        pending = request.data.get('pending')
+        if pending == False:
+            publisher.pending = False
+            publisher.save()
+            serializer = PublisherSerializer(publisher)
+            return Response(serializer.data)
+        else:
+            publisher.delete()
+            return Response({'success': 'Publisher request rejected and deleted.'})
+
