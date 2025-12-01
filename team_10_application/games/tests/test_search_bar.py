@@ -2,6 +2,7 @@ from django.test import TestCase
 from rest_framework.test import APIClient
 import datetime
 from games.models import *
+from publishers.models import Publisher
 import pdb
 
 class SetUpSearchBarTests(TestCase):
@@ -11,13 +12,14 @@ class SetUpSearchBarTests(TestCase):
         self.pc_tag = PlatformTag.objects.create(name="PC")
         self.playstation_tag = PlatformTag.objects.create(name="PlayStation")
         self.android_tag = PlatformTag.objects.create(name="Android")
+        self.publisher = Publisher.objects.create(name='Test Publisher', pending=False)
 
         # Set up test game with all 3 platform tags
         self.game_all_platform_tags = Game.objects.create (
             name = "Lego Marvel Superheroes",
             description = "This is a test game",
             price = 9.99,
-            publisher = "Test Publisher",
+            publisher = self.publisher,
             release_date = datetime.datetime.now(),
             trending=True,
             on_sale=True
@@ -29,7 +31,7 @@ class SetUpSearchBarTests(TestCase):
             name = "Legend of Zelda",
             description = "This is a test game",
             price = 9.99,
-            publisher = "Test Publisher",
+            publisher = self.publisher,
             release_date = datetime.datetime.now(),
             trending=True,
             on_sale=True
@@ -41,7 +43,7 @@ class SetUpSearchBarTests(TestCase):
             name = "Burnout Paradise",
             description = "This is a test game",
             price = 9.99,
-            publisher = "Test Publisher",
+            publisher = self.publisher,
             release_date = datetime.datetime.now(),
             trending=True,
             on_sale=True
