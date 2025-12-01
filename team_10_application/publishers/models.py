@@ -5,6 +5,7 @@ class Publisher(models.Model):
     logo = models.ImageField(upload_to='images/')
     url = models.URLField()
     pending = models.BooleanField()
+    created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.name

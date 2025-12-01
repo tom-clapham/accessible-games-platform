@@ -30,6 +30,7 @@ import Publisher_Info from './Publishers/Publisher Info.jsx'
 import Register_Publisher from './Publishers/Register Publisher.jsx'
 import ModeratorReports from './moderator/ModeratorReports.jsx'
 import { Navigate } from 'react-router-dom';
+import ModeratorPublishers from './moderator/ModeratorPublishers.jsx';
 
 function App() {
   return (
@@ -59,6 +60,7 @@ function App() {
             <Route path="/publisher/register" element={<Register_Publisher/>}/>
             <Route path="/moderator/dashboard" element={<Dashboard/>}/>
             <Route path="/moderator/dashboard/reports" element={<ModeratorReports/>}/>
+            <Route path="/moderator/dashboard/publisher-requests" element={<ModeratorPublishers/>}/>
             <Route path="/new-game" element={<PublisherNewGame/>}/>
           </Route>
           <Route path="/login" element={<Login/>}/>

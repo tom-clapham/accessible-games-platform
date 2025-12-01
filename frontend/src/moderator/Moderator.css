@@ -136,3 +136,20 @@ body {
 .popup-dialog {
     width: 50vw;
 }
+
+.pc-image-box {
+  width: 80px;
+  height: 80px;
+  overflow: hidden;
+  margin-right: 15px;
+}
+
+.submit-message-success {
+    align-self: flex-end;
+    color: rgb(166, 255, 166);
+}
+
+.submit-message-error {
+    align-self: flex-end;
+    color: rgb(255, 148, 148);
+}

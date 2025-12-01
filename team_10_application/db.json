@@ -1787,495 +1787,544 @@
     }
 },
 {
-    "model": "publishers.Publisher",
-    "pk": 1,
-    "fields": {
-      "name": "CD Projekt RED",
-      "logo": "/images/cd_project_red.png",
-      "url": "https://www.cdprojektred.com/en",
-      "pending": false
-    }
-  },
-  {
-    "model": "publishers.Publisher",
-    "pk": 2,
-    "fields": {
-      "name": "Rockstar Games",
-      "logo": "images/rockstar_games.png",
-      "url": "https://www.rockstargames.com/",
-      "pending": false
-    }
-  },
-  {
-    "model": "publishers.Publisher",
-    "pk": 3,
-    "fields": {
-      "name": "Nintendo",
-      "logo": "images/nintendo.png",
-      "url": "https://www.nintendo.com/",
-      "pending": false
-    }
-  },
-  {
-    "model": "publishers.Publisher",
-    "pk": 4,
-    "fields": {
-      "name": "Supergiant Games",
-      "logo": "images/supergiant_games.jpg",
-      "url": "https://www.supergiantgames.com/",
-      "pending": false
-    }
-  },
-  {
-    "model": "publishers.Publisher",
-    "pk": 5,
-    "fields": {
-      "name": "ConcernedApe",
-      "logo": "images/concerned_ape.jpg",
-      "url": "https://www.stardewvalley.net/",
-      "pending": false
-    }
-  },
-  {
-    "model": "publishers.Publisher",
-    "pk": 6,
-    "fields": {
-      "name": "Team Cherry",
-      "logo": "images/team_cherry.png",
-      "url": "https://teamcherry.com.au/",
-      "pending": false
-    }
-  },
-  {
-    "model": "publishers.Publisher",
-    "pk": 7,
-    "fields": {
-      "name": "Maddy Makes Games",
-      "logo": "images/maddy_makes_games.jpg",
-      "url": "https://www.mattmakesgames.com/",
-      "pending": false
-    }
-  },
-  {
-    "model": "publishers.Publisher",
-    "pk": 8,
-    "fields": {
-      "name": "Mojang Studios",
-      "logo": "images/mojang_studios.png",
-      "url": "https://www.minecraft.net/",
-      "pending": false
-    }
-  },
-  {
-    "model": "publishers.Publisher",
-    "pk": 9,
-    "fields": {
-      "name": "Activision",
-      "logo": "images/activision.png",
-      "url": "https://www.activision.com/",
-      "pending": false
-    }
-  },
-  {
-    "model": "publishers.Publisher",
-    "pk": 10,
-    "fields": {
-      "name": "Capcom",
-      "logo": "images/capcom.png",
-      "url": "https://www.capcom.com/",
-      "pending": false
-    }
-  },
-  {
-    "model": "publishers.Publisher",
-    "pk": 11,
-    "fields": {
-      "name": "Riot Games",
-      "logo": "images/riot_games.png",
-      "url": "https://www.riotgames.com/",
-      "pending": false
-    }
-  },
-  {
-    "model": "publishers.Publisher",
-    "pk": 12,
-    "fields": {
-      "name": "Psyonix",
-      "logo": "images/psyonix.jpg",
-      "url": "https://www.psyonix.com/",
-      "pending": false
-    }
-  },
-  {
-    "model": "publishers.Publisher",
-    "pk": 13,
-    "fields": {
-      "name": "Innersloth",
-      "logo": "images/innersloth.png",
-      "url": "https://www.innersloth.com/",
-      "pending": false
-    }
-  },
-  {
-    "model": "publishers.Publisher",
-    "pk": 14,
-    "fields": {
-      "name": "Motion Twin",
-      "logo": "images/motion_twin.png",
-      "url": "https://motiontwin.com/",
-      "pending": false
-    }
-  },
-  {
-    "model": "publishers.Publisher",
-    "pk": 15,
-    "fields": {
-      "name": "Xbox Game Studios",
-      "logo": "images/xbox_game_studios.png",
-      "url": "https://www.xbox.com/en-US/xbox-game-studios",
-      "pending": false
-    }
-  },
-  {
-    "model": "publishers.Publisher",
-    "pk": 16,
-    "fields": {
-      "name": "SEGA",
-      "logo": "images/sega.png",
-      "url": "https://www.sega.com/",
-      "pending": false
-    }
-  },
-  {
-    "model": "publishers.Publisher",
-    "pk": 17,
-    "fields": {
-      "name": "Ubisoft",
-      "logo": "images/ubisoft.png",
-      "url": "https://www.ubisoft.com/",
-      "pending": false
-    }
-  },
-  {
-    "model": "publishers.Publisher",
-    "pk": 18,
-    "fields": {
-      "name": "Bethesda Softworks",
-      "logo": "images/bethesda_softworks.png",
-      "url": "https://bethesda.net/",
-      "pending": false
-    }
-  },
-  {
-    "model": "publishers.Publisher",
-    "pk": 19,
-    "fields": {
-      "name": "Sony Interactive Entertainment",
-      "logo": "images/sony_interactive_entertainment.jpg",
-      "url": "https://www.sie.com/",
-      "pending": false
-    }
-  },
-  {
-    "model": "publishers.Publisher",
-    "pk": 20,
-    "fields": {
-      "name": "505 Games",
-      "logo": "images/505_games.png",
-      "url": "https://www.505games.com/",
-      "pending": false
-    }
-  },
-  {
-    "model": "publishers.Publisher",
-    "pk": 21,
-    "fields": {
-      "name": "Square Enix",
-      "logo": "images/square_enix.png",
-      "url": "https://www.square-enix.com/",
-      "pending": false
-    }
-  },
-  {
-    "model": "publishers.Publisher",
-    "pk": 22,
-    "fields": {
-      "name": "Bandai Namco Entertainment",
-      "logo": "images/bandai_namco_entertainment.jpg",
-      "url": "https://www.bandainamcoent.eu/",
-      "pending": false
-    }
-  },
-  {
-    "model": "publishers.Publisher",
-    "pk": 23,
-    "fields": {
-      "name": "Studio MDHR",
-      "logo": "images/studio_mdhr.jpg",
-      "url": "https://studiomdhr.com/",
-      "pending": false
-    }
-  },
-  {
-    "model": "publishers.Publisher",
-    "pk": 24,
-    "fields": {
-      "name": "Humble Games",
-      "logo": "images/humble_games.jpg",
-      "url": "https://www.humblegames.com/",
-      "pending": false
-    }
-  },
-  {
-    "model": "publishers.Publisher",
-    "pk": 25,
-    "fields": {
-      "name": "Re-Logic",
-      "logo": "images/re_logic.jpg",
-      "url": "https://tmodloader.net/",
-      "pending": false
-    }
-  },
-  {
-    "model": "publishers.Publisher",
-    "pk": 26,
-    "fields": {
-      "name": "HoYoverse",
-      "logo": "images/hoyoverse.jpg",
-      "url": "https://www.hoyoverse.com/en-us/",
-      "pending": false
-    }
-  },
-  {
-    "model": "publishers.Publisher",
-    "pk": 27,
-    "fields": {
-      "name": "Epic Games",
-      "logo": "images/epic_games.png",
-      "url": "https://www.epicgames.com/",
-      "pending": false
-    }
-  },
-  {
-    "model": "publishers.Publisher",
-    "pk": 28,
-    "fields": {
-      "name": "Warner Bros. Games",
-      "logo": "images/warner_bros_games.jpg",
-      "url": "https://www.wbgames.com/",
-      "pending": false
-    }
-  },
-  {
-    "model": "publishers.Publisher",
-    "pk": 29,
-    "fields": {
-      "name": "Pocketpair",
-      "logo": "images/pocketpair.png",
-      "url": "https://pocketpair.jp/",
-      "pending": false
-    }
-  },
-  {
-    "model": "publishers.Publisher",
-    "pk": 30,
-    "fields": {
-      "name": "Supercell",
-      "logo": "images/supercell.png",
-      "url": "https://supercell.com/",
-      "pending": false
-    }
-  },
-  {
-    "model": "publishers.Publisher",
-    "pk": 31,
-    "fields": {
-      "name": "King",
-      "logo": "images/king.jpg",
-      "url": "https://king.com/",
-      "pending": false
-    }
-  },
-  {
-    "model": "publishers.Publisher",
-    "pk": 32,
-    "fields": {
-      "name": "SYBO",
-      "logo": "images/sybo.png",
-      "url": "https://sybogames.com/",
-      "pending": false
-    }
-  },
-  {
-    "model": "publishers.Publisher",
-    "pk": 33,
-    "fields": {
-      "name": "Halfbrick Studios",
-      "logo": "images/halfbrick_studios.png",
-      "url": "https://www.halfbrick.com/",
-      "pending": false
-    }
-  },
-  {
-    "model": "publishers.Publisher",
-    "pk": 34,
-    "fields": {
-      "name": "Rovio Entertainment",
-      "logo": "images/rovio_entertainment.png",
-      "url": "https://www.rovio.com/",
-      "pending": false
-    }
-  },
-  {
-    "model": "publishers.Publisher",
-    "pk": 35,
-    "fields": {
-      "name": "Electronic Arts",
-      "logo": "images/electronic_arts.png",
-      "url": "https://www.ea.com/",
-      "pending": false
-    }
-  },
-  {
-    "model": "publishers.Publisher",
-    "pk": 36,
-    "fields": {
-      "name": "Tencent Games",
-      "logo": "images/tencent_games.jpg",
-      "url": "https://www.tencent.com/",
-      "pending": false
-    }
-  },
-  {
-    "model": "publishers.Publisher",
-    "pk": 37,
-    "fields": {
-      "name": "Moonton",
-      "logo": "images/moonton.jpg",
-      "url": "https://en.moonton.com/",
-      "pending": false
-    }
-  },
-  {
-    "model": "publishers.Publisher",
-    "pk": 38,
-    "fields": {
-      "name": "Level Infinite",
-      "logo": "images/level_infinite.png",
-      "url": "https://www.levelinfinite.com/",
-      "pending": false
-    }
-  },
-  {
-    "model": "publishers.Publisher",
-    "pk": 39,
-    "fields": {
-      "name": "Gameloft",
-      "logo": "images/gameloft.png",
-      "url": "https://www.gameloft.com/",
-      "pending": false
-    }
-  },
-  {
-    "model": "publishers.Publisher",
-    "pk": 40,
-    "fields": {
-      "name": "Niantic",
-      "logo": "images/niantic.png",
-      "url": "https://nianticlabs.com/",
-      "pending": false
-    }
-  },
-  {
-    "model": "publishers.Publisher",
-    "pk": 41,
-    "fields": {
-      "name": "Second Dinner",
-      "logo": "images/second_dinner.png",
-      "url": "https://seconddinner.com/",
-      "pending": false
-    }
-  },
-  {
-    "model": "publishers.Publisher",
-    "pk": 42,
-    "fields": {
-      "name": "Blizzard Entertainment",
-      "logo": "images/blizzard_entertainment.jpg",
-      "url": "https://www.blizzard.com/",
-      "pending": false
-    }
-  },
-  {
-    "model": "publishers.Publisher",
-    "pk": 43,
-    "fields": {
-      "name": "Snowman",
-      "logo": "images/snowman.png",
-      "url": "https://www.builtbysnowman.com/",
-      "pending": false
-    }
-  },
-  {
-    "model": "publishers.Publisher",
-    "pk": 44,
-    "fields": {
-      "name": "Lilith Games",
-      "logo": "images/lilith_games.png",
-      "url": "https://ancient.lilith.com/",
-      "pending": false
-    }
-  },
-  {
-    "model": "publishers.Publisher",
-    "pk": 46,
-    "fields": {
-      "name": "Yostar",
-      "logo": "images/yostar.png",
-      "url": "https://www.yo-star.com/en-us/",
-      "pending": false
-    }
-  },
-  {
-    "model": "publishers.Publisher",
-    "pk": 47,
-    "fields": {
-      "name": "Roblox Corporation",
-      "logo": "images/roblox_corporation.png",
-      "url": "https://corp.roblox.com/",
-      "pending": false
-    }
-  },
-  {
-    "model": "publishers.Publisher",
-    "pk": 48,
-    "fields": {
-      "name": "Lunime",
-      "logo": "images/lunime.png",
-      "url": "https://www.lunime.com",
-      "pending": false
-    }
-  },
-  {
-    "model": "publishers.Publisher",
-    "pk": 49,
-    "fields": {
-      "name": "Playrix",
-      "logo": "images/playrix.png",
-      "url": "https://playrix.com/",
-      "pending": false
-    }
-  },
-  {
-    "model": "publishers.Publisher",
-    "pk": 50,
-    "fields": {
-      "name": "Larian Studios",
-      "logo": "images/larian_studios.jpg",
-      "url": "https://larian.com/",
-      "pending": false
-    }
-  },
+  "model": "publishers.Publisher",
+  "pk": 1,
+  "fields": {
+    "name": "CD Projekt RED",
+    "logo": "/images/cd_project_red.png",
+    "url": "https://www.cdprojektred.com/en",
+    "pending": false,
+    "created_at": "2024-01-01 00:00:00"
+  }
+},
+{
+  "model": "publishers.Publisher",
+  "pk": 2,
+  "fields": {
+    "name": "Rockstar Games",
+    "logo": "images/rockstar_games.png",
+    "url": "https://www.rockstargames.com/",
+    "pending": false,
+    "created_at": "2024-01-01 00:00:00"
+  }
+},
+{
+  "model": "publishers.Publisher",
+  "pk": 3,
+  "fields": {
+    "name": "Nintendo",
+    "logo": "images/nintendo.png",
+    "url": "https://www.nintendo.com/",
+    "pending": false,
+    "created_at": "2024-01-01 00:00:00"
+  }
+},
+{
+  "model": "publishers.Publisher",
+  "pk": 4,
+  "fields": {
+    "name": "Supergiant Games",
+    "logo": "images/supergiant_games.jpg",
+    "url": "https://www.supergiantgames.com/",
+    "pending": false,
+    "created_at": "2024-01-01 00:00:00"
+  }
+},
+{
+  "model": "publishers.Publisher",
+  "pk": 5,
+  "fields": {
+    "name": "ConcernedApe",
+    "logo": "images/concerned_ape.jpg",
+    "url": "https://www.stardewvalley.net/",
+    "pending": false,
+    "created_at": "2024-01-01 00:00:00"
+  }
+},
+{
+  "model": "publishers.Publisher",
+  "pk": 6,
+  "fields": {
+    "name": "Team Cherry",
+    "logo": "images/team_cherry.png",
+    "url": "https://teamcherry.com.au/",
+    "pending": false,
+    "created_at": "2024-01-01 00:00:00"
+  }
+},
+{
+  "model": "publishers.Publisher",
+  "pk": 7,
+  "fields": {
+    "name": "Maddy Makes Games",
+    "logo": "images/maddy_makes_games.jpg",
+    "url": "https://www.mattmakesgames.com/",
+    "pending": false,
+    "created_at": "2024-01-01 00:00:00"
+  }
+},
+{
+  "model": "publishers.Publisher",
+  "pk": 8,
+  "fields": {
+    "name": "Mojang Studios",
+    "logo": "images/mojang_studios.png",
+    "url": "https://www.minecraft.net/",
+    "pending": false,
+    "created_at": "2024-01-01 00:00:00"
+  }
+},
+{
+  "model": "publishers.Publisher",
+  "pk": 9,
+  "fields": {
+    "name": "Activision",
+    "logo": "images/activision.png",
+    "url": "https://www.activision.com/",
+    "pending": false,
+    "created_at": "2024-01-01 00:00:00"
+  }
+},
+{
+  "model": "publishers.Publisher",
+  "pk": 10,
+  "fields": {
+    "name": "Capcom",
+    "logo": "images/capcom.png",
+    "url": "https://www.capcom.com/",
+    "pending": false,
+    "created_at": "2024-01-01 00:00:00"
+  }
+},
+{
+  "model": "publishers.Publisher",
+  "pk": 11,
+  "fields": {
+    "name": "Riot Games",
+    "logo": "images/riot_games.png",
+    "url": "https://www.riotgames.com/",
+    "pending": false,
+    "created_at": "2024-01-01 00:00:00"
+  }
+},
+{
+  "model": "publishers.Publisher",
+  "pk": 12,
+  "fields": {
+    "name": "Psyonix",
+    "logo": "images/psyonix.jpg",
+    "url": "https://www.psyonix.com/",
+    "pending": false,
+    "created_at": "2024-01-01 00:00:00"
+  }
+},
+{
+  "model": "publishers.Publisher",
+  "pk": 13,
+  "fields": {
+    "name": "Innersloth",
+    "logo": "images/innersloth.png",
+    "url": "https://www.innersloth.com/",
+    "pending": false,
+    "created_at": "2024-01-01 00:00:00"
+  }
+},
+{
+  "model": "publishers.Publisher",
+  "pk": 14,
+  "fields": {
+    "name": "Motion Twin",
+    "logo": "images/motion_twin.png",
+    "url": "https://motiontwin.com/",
+    "pending": false,
+    "created_at": "2024-01-01 00:00:00"
+  }
+},
+{
+  "model": "publishers.Publisher",
+  "pk": 15,
+  "fields": {
+    "name": "Xbox Game Studios",
+    "logo": "images/xbox_game_studios.png",
+    "url": "https://www.xbox.com/en-US/xbox-game-studios",
+    "pending": false,
+    "created_at": "2024-01-01 00:00:00"
+  }
+},
+{
+  "model": "publishers.Publisher",
+  "pk": 16,
+  "fields": {
+    "name": "SEGA",
+    "logo": "images/sega.png",
+    "url": "https://www.sega.com/",
+    "pending": false,
+    "created_at": "2024-01-01 00:00:00"
+  }
+},
+{
+  "model": "publishers.Publisher",
+  "pk": 17,
+  "fields": {
+    "name": "Ubisoft",
+    "logo": "images/ubisoft.png",
+    "url": "https://www.ubisoft.com/",
+    "pending": false,
+    "created_at": "2024-01-01 00:00:00"
+  }
+},
+{
+  "model": "publishers.Publisher",
+  "pk": 18,
+  "fields": {
+    "name": "Bethesda Softworks",
+    "logo": "images/bethesda_softworks.png",
+    "url": "https://bethesda.net/",
+    "pending": false,
+    "created_at": "2024-01-01 00:00:00"
+  }
+},
+{
+  "model": "publishers.Publisher",
+  "pk": 19,
+  "fields": {
+    "name": "Sony Interactive Entertainment",
+    "logo": "images/sony_interactive_entertainment.jpg",
+    "url": "https://www.sie.com/",
+    "pending": false,
+    "created_at": "2024-01-01 00:00:00"
+  }
+},
+{
+  "model": "publishers.Publisher",
+  "pk": 20,
+  "fields": {
+    "name": "505 Games",
+    "logo": "images/505_games.png",
+    "url": "https://www.505games.com/",
+    "pending": false,
+    "created_at": "2024-01-01 00:00:00"
+  }
+},
+{
+  "model": "publishers.Publisher",
+  "pk": 21,
+  "fields": {
+    "name": "Square Enix",
+    "logo": "images/square_enix.png",
+    "url": "https://www.square-enix.com/",
+    "pending": false,
+    "created_at": "2024-01-01 00:00:00"
+  }
+},
+{
+  "model": "publishers.Publisher",
+  "pk": 22,
+  "fields": {
+    "name": "Bandai Namco Entertainment",
+    "logo": "images/bandai_namco_entertainment.jpg",
+    "url": "https://www.bandainamcoent.eu/",
+    "pending": false,
+    "created_at": "2024-01-01 00:00:00"
+  }
+},
+{
+  "model": "publishers.Publisher",
+  "pk": 23,
+  "fields": {
+    "name": "Studio MDHR",
+    "logo": "images/studio_mdhr.jpg",
+    "url": "https://studiomdhr.com/",
+    "pending": false,
+    "created_at": "2024-01-01 00:00:00"
+  }
+},
+{
+  "model": "publishers.Publisher",
+  "pk": 24,
+  "fields": {
+    "name": "Humble Games",
+    "logo": "images/humble_games.jpg",
+    "url": "https://www.humblegames.com/",
+    "pending": false,
+    "created_at": "2024-01-01 00:00:00"
+  }
+},
+{
+  "model": "publishers.Publisher",
+  "pk": 25,
+  "fields": {
+    "name": "Re-Logic",
+    "logo": "images/re_logic.jpg",
+    "url": "https://tmodloader.net/",
+    "pending": false,
+    "created_at": "2024-01-01 00:00:00"
+  }
+},
+{
+  "model": "publishers.Publisher",
+  "pk": 26,
+  "fields": {
+    "name": "HoYoverse",
+    "logo": "images/hoyoverse.jpg",
+    "url": "https://www.hoyoverse.com/en-us/",
+    "pending": false,
+    "created_at": "2024-01-01 00:00:00"
+  }
+},
+{
+  "model": "publishers.Publisher",
+  "pk": 27,
+  "fields": {
+    "name": "Epic Games",
+    "logo": "images/epic_games.png",
+    "url": "https://www.epicgames.com/",
+    "pending": false,
+    "created_at": "2024-01-01 00:00:00"
+  }
+},
+{
+  "model": "publishers.Publisher",
+  "pk": 28,
+  "fields": {
+    "name": "Warner Bros. Games",
+    "logo": "images/warner_bros_games.jpg",
+    "url": "https://www.wbgames.com/",
+    "pending": false,
+    "created_at": "2024-01-01 00:00:00"
+  }
+},
+{
+  "model": "publishers.Publisher",
+  "pk": 29,
+  "fields": {
+    "name": "Pocketpair",
+    "logo": "images/pocketpair.png",
+    "url": "https://pocketpair.jp/",
+    "pending": false,
+    "created_at": "2024-01-01 00:00:00"
+  }
+},
+{
+  "model": "publishers.Publisher",
+  "pk": 30,
+  "fields": {
+    "name": "Supercell",
+    "logo": "images/supercell.png",
+    "url": "https://supercell.com/",
+    "pending": false,
+    "created_at": "2024-01-01 00:00:00"
+  }
+},
+{
+  "model": "publishers.Publisher",
+  "pk": 31,
+  "fields": {
+    "name": "King",
+    "logo": "images/king.jpg",
+    "url": "https://king.com/",
+    "pending": false,
+    "created_at": "2024-01-01 00:00:00"
+  }
+},
+{
+  "model": "publishers.Publisher",
+  "pk": 32,
+  "fields": {
+    "name": "SYBO",
+    "logo": "images/sybo.png",
+    "url": "https://sybogames.com/",
+    "pending": false,
+    "created_at": "2024-01-01 00:00:00"
+  }
+},
+{
+  "model": "publishers.Publisher",
+  "pk": 33,
+  "fields": {
+    "name": "Halfbrick Studios",
+    "logo": "images/halfbrick_studios.png",
+    "url": "https://www.halfbrick.com/",
+    "pending": false,
+    "created_at": "2024-01-01 00:00:00"
+  }
+},
+{
+  "model": "publishers.Publisher",
+  "pk": 34,
+  "fields": {
+    "name": "Rovio Entertainment",
+    "logo": "images/rovio_entertainment.png",
+    "url": "https://www.rovio.com/",
+    "pending": false,
+    "created_at": "2024-01-01 00:00:00"
+  }
+},
+{
+  "model": "publishers.Publisher",
+  "pk": 35,
+  "fields": {
+    "name": "Electronic Arts",
+    "logo": "images/electronic_arts.png",
+    "url": "https://www.ea.com/",
+    "pending": false,
+    "created_at": "2024-01-01 00:00:00"
+  }
+},
+{
+  "model": "publishers.Publisher",
+  "pk": 36,
+  "fields": {
+    "name": "Tencent Games",
+    "logo": "images/tencent_games.jpg",
+    "url": "https://www.tencent.com/",
+    "pending": false,
+    "created_at": "2024-01-01 00:00:00"
+  }
+},
+{
+  "model": "publishers.Publisher",
+  "pk": 37,
+  "fields": {
+    "name": "Moonton",
+    "logo": "images/moonton.jpg",
+    "url": "https://en.moonton.com/",
+    "pending": false,
+    "created_at": "2024-01-01 00:00:00"
+  }
+},
+{
+  "model": "publishers.Publisher",
+  "pk": 38,
+  "fields": {
+    "name": "Level Infinite",
+    "logo": "images/level_infinite.png",
+    "url": "https://www.levelinfinite.com/",
+    "pending": false,
+    "created_at": "2024-01-01 00:00:00"
+  }
+},
+{
+  "model": "publishers.Publisher",
+  "pk": 39,
+  "fields": {
+    "name": "Gameloft",
+    "logo": "images/gameloft.png",
+    "url": "https://www.gameloft.com/",
+    "pending": false,
+    "created_at": "2024-01-01 00:00:00"
+  }
+},
+{
+  "model": "publishers.Publisher",
+  "pk": 40,
+  "fields": {
+    "name": "Niantic",
+    "logo": "images/niantic.png",
+    "url": "https://nianticlabs.com/",
+    "pending": false,
+    "created_at": "2024-01-01 00:00:00"
+  }
+},
+{
+  "model": "publishers.Publisher",
+  "pk": 41,
+  "fields": {
+    "name": "Second Dinner",
+    "logo": "images/second_dinner.png",
+    "url": "https://seconddinner.com/",
+    "pending": false,
+    "created_at": "2024-01-01 00:00:00"
+  }
+},
+{
+  "model": "publishers.Publisher",
+  "pk": 42,
+  "fields": {
+    "name": "Blizzard Entertainment",
+    "logo": "images/blizzard_entertainment.jpg",
+    "url": "https://www.blizzard.com/",
+    "pending": false,
+    "created_at": "2024-01-01 00:00:00"
+  }
+},
+{
+  "model": "publishers.Publisher",
+  "pk": 43,
+  "fields": {
+    "name": "Snowman",
+    "logo": "images/snowman.png",
+    "url": "https://www.builtbysnowman.com/",
+    "pending": false,
+    "created_at": "2024-01-01 00:00:00"
+  }
+},
+{
+  "model": "publishers.Publisher",
+  "pk": 44,
+  "fields": {
+    "name": "Lilith Games",
+    "logo": "images/lilith_games.png",
+    "url": "https://ancient.lilith.com/",
+    "pending": false,
+    "created_at": "2024-01-01 00:00:00"
+  }
+},
+{
+  "model": "publishers.Publisher",
+  "pk": 46,
+  "fields": {
+    "name": "Yostar",
+    "logo": "images/yostar.png",
+    "url": "https://www.yo-star.com/en-us/",
+    "pending": false,
+    "created_at": "2024-01-01 00:00:00"
+  }
+},
+{
+  "model": "publishers.Publisher",
+  "pk": 47,
+  "fields": {
+    "name": "Roblox Corporation",
+    "logo": "images/roblox_corporation.png",
+    "url": "https://corp.roblox.com/",
+    "pending": false,
+    "created_at": "2024-01-01 00:00:00"
+  }
+},
+{
+  "model": "publishers.Publisher",
+  "pk": 48,
+  "fields": {
+    "name": "Lunime",
+    "logo": "images/lunime.png",
+    "url": "https://www.lunime.com",
+    "pending": false,
+    "created_at": "2024-01-01 00:00:00"
+  }
+},
+{
+  "model": "publishers.Publisher",
+  "pk": 49,
+  "fields": {
+    "name": "Playrix",
+    "logo": "images/playrix.png",
+    "url": "https://playrix.com/",
+    "pending": false,
+    "created_at": "2024-01-01 00:00:00"
+  }
+},
+{
+  "model": "publishers.Publisher",
+  "pk": 50,
+  "fields": {
+    "name": "Larian Studios",
+    "logo": "images/larian_studios.jpg",
+    "url": "https://larian.com/",
+    "pending": false,
+    "created_at": "2024-01-01 00:00:00"
+  }
+},
   {
     "model": "publishers.Publisher",
     "pk": 51,
@@ -2283,7 +2332,8 @@
       "name": "ustwo games",
       "logo": "images/ustwo_games.jpg",
       "url": "https://ustwogames.co.uk/",
-      "pending": false
+      "pending": false,
+      "created_at": "2024-01-01 00:00:00"
     }
   },
   {
@@ -2293,7 +2343,8 @@
       "name": "Hello Games",
       "logo": "images/hello_games.jpg",
       "url": "https://hellogames.org/",
-      "pending": false
+      "pending": true,
+      "created_at": "2024-02-01 00:00:00"
     }
   },
   {
@@ -2303,9 +2354,75 @@
       "name": "thatgamecompany",
       "logo": "images/that_game_company.png",
       "url": "https://thatgamecompany.com/",
-      "pending": false
+      "pending": true,
+      "created_at": "2024-03-01 00:00:00"
+    }
+  },
+  
+  {
+    "model": "reports.Report",
+    "pk": 1,
+    "fields": {
+      "userId": 1,
+      "gameId": 2,
+      "postId": null,
+      "report_type": "INAPP",
+      "description": "This game contains inappropriate content.",
+      "created_at": "2025-12-01T12:00:00Z"
+    }
+  },
+  {
+    "model": "reports.Report",
+    "pk": 2,
+    "fields": {
+      "userId": 2,
+      "gameId": null,
+      "postId": 2,
+      "report_type": "INACC",
+      "description": "This post contains inaccurate information.",
+      "created_at": "2025-12-01T12:05:00Z"
+    }
+  },
+  {
+    "model": "reports.Report",
+    "pk": 3,
+    "fields": {
+      "userId": 3,
+      "gameId": 1,
+      "postId": null,
+      "report_type": "MALIC",
+      "description": "The game contains malicious content.",
+      "created_at": "2025-12-01T12:10:00Z"
+    }
+  },
+  {
+    "model": "reports.Report",
+    "pk": 4,
+    "fields": {
+      "userId": 1,
+      "gameId": null,
+      "postId": 2,
+      "report_type": "SPAM",
+      "description": "This post is spam.",
+      "created_at": "2025-12-01T12:15:00Z"
+    }
+  },
+  {
+    "model": "reports.Report",
+    "pk": 5,
+    "fields": {
+      "userId": 2,
+      "gameId": 4,
+      "postId": null,
+      "report_type": "OTHR",
+      "description": "Other issues with this game.",
+      "created_at": "2025-12-01T12:20:00Z"
     }
   }
+
+
+
+
 ]
 
   
