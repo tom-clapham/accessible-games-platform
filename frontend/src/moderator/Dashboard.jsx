@@ -71,7 +71,6 @@ function Dashboard() {
                 <Link to={`/moderator/dashboard/publisher-requests`} className='mod-button-link'>
                 <button className="mod-button">View Publisher Requests</button>
                 </Link>
-                <button className="mod-button">Remove Users</button>
             </div>
             <div className="mod-latest-reports">
                 <div className="mod-latest-reports-title">
