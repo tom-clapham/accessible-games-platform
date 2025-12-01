@@ -153,7 +153,7 @@ function GameProfile() {
                                 
                                 <div className="gp-info-row-top">
                                     <div className="gp-info-label">PUBLISHER</div>
-                                    <div className="gp-info-value">{game.publisher}</div>
+                                    <Link to={`/publisher/${game.publisher.id}`} className="gp-info-value">{game.publisher?.name || 'No publisher'}</Link>
                                 </div>
 
                                 <div className="gp-info-row">

@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { FaCheckCircle } from "react-icons/fa";
 import GameCard from '../browse/GameCard';
+import { user_info } from '../endpoints/api';
 
 const Publisher_Info = () => {
 
@@ -10,6 +11,8 @@ const Publisher_Info = () => {
   const [publisher, setPublisher] = useState(null)
   const [games, setGames] = useState([])
   const [loading, setLoading] = useState(true)
+  const [user, setUser] = useState(null)
+  
  
   useEffect(() => {
     axios.get(`http://127.0.0.1:8000/app/publishers/publisher/${id}`)
@@ -37,6 +40,14 @@ const Publisher_Info = () => {
 
   }, [publisher]);
 
+  useEffect(() => {
+      const fetchInfo = async () => {
+        const info = await user_info();
+        setUser(info);
+      }
+      fetchInfo();
+  }, []);
+
   function handleURL(url){
     window.open(url, '_blank');
   };
@@ -63,6 +74,12 @@ const Publisher_Info = () => {
                   image_url={game.thumbnail_url}
               />
           ))}
+      </div>
+      <div className='pi-button-container'>
+          {user && user.publisher ? <button className="pi-add-game">Add game</button>
+          :  <button className="pi-add-game" style={{ backgroundColor: 'grey' }} disabled>Add game</button>}
+          {/* {successAdd &&(<div className="gp-success">Successfully added to favourites.</div>)}
+          {successRemove &&(<div className="gp-success">Successfully removed from favourites.</div>)} */}
       </div>
     </div>
   )
