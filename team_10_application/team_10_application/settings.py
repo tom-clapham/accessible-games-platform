@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     'games',
     'reports',
     'publishers',
+    'moderator',
 ]
 
 AUTH_USER_MODEL = 'users.CustomUser'

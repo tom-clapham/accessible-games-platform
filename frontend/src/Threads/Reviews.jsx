@@ -30,6 +30,7 @@ function Reviews() {
         // console.log(user)
         axios.get(`http://localhost:8000/app/threads/reviews/${reviewId}/`, {params: user ? {"userEmail": user.email} : {}})
         .then(res => {
+            console.log(res)
             if (!Number.isInteger(res.data)) {
             setParents(res.data.parents)
             setGame(res.data.game)
@@ -94,9 +95,9 @@ function Reviews() {
         
     }
 
-    // useEffect(() => {
-    //     console.log(parents)
-    // }, [parents])
+    useEffect(() => {
+        console.log(parents)
+    }, [parents])
 
     const upVote = (id, idx) => {
         if (user) {
@@ -167,7 +168,9 @@ function Reviews() {
                     <img className={styles.commentImg} src={comment_img}></img>
                     <p>{item.comments}</p>
                     <Link to={`/report/post/${item.id}`} onClick={(e) => { e.stopPropagation(); }}>
-                        <button>Report</button>
+                        <button className={styles.reportFlag} >
+                            <img className={styles.reportImg} src={report_img} alt="Report Post"></img>
+                        </button>
                     </Link>
                 </div>
             </div>

@@ -9,7 +9,7 @@ from django.shortcuts import get_object_or_404
 from rest_framework.permissions import AllowAny
 from rest_framework.decorators import permission_classes
 
-from .serializers import GameReportPageSerializer, PostsReportPageSerializer, PostsReportSerializer, GameReportSerializer
+from .serializers import GameReportPageSerializer, PostsReportPageSerializer, PostsReportSerializer, GameReportSerializer, ReviewedReportsSerializer
 
 from rest_framework.permissions import IsAuthenticated
 
@@ -41,6 +41,7 @@ class ReportView(APIView):
         else:
             print(serializer.errors)
             return Response(serializer.errors, status.HTTP_400_BAD_REQUEST)
+
         
 @permission_classes([IsAuthenticated])
 class PostsReportView(APIView):
@@ -67,8 +68,5 @@ class PostsReportView(APIView):
         else:
             print(serializer.errors)
             return Response(serializer.errors, status.HTTP_400_BAD_REQUEST)
-
-
-
 
 

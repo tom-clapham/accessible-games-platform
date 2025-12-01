@@ -22,6 +22,8 @@ class CustomUser(AbstractUser):
     email = models.EmailField(max_length=50, unique=True)
     username = models.CharField(max_length=50, unique=True)
 
+    is_moderator = models.BooleanField(default=False)
+
     USERNAME_FIELD = 'username'
     REQUIRED_FIELDS = ['email', 'date_of_birth', 'last_name', 'first_name', 'genre_tags', 'accessibility_tags']
 

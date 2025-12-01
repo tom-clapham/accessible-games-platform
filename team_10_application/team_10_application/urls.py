@@ -30,6 +30,7 @@ urlpatterns = [
     path('app/games/', include('games.urls')),
     path('app/reports/', include('reports.urls')),
     path('app/publishers/', include('publishers.urls')),
+    path('app/moderator/', include('moderator.urls')),
 ]
 
 if settings.DEBUG:

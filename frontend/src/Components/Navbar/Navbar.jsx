@@ -72,6 +72,18 @@ function Navbar(){
   function navPublishers(){
       nav('/publishers')
   }
+  
+  function navAboutUs(){
+      nav('/about-us')
+  }
+
+  function navHelp(){
+      nav('/help-page')
+  }
+
+  function navAdmin() {
+      nav('/moderator/dashboard')
+  }
 
   const handleLogout = async () => {
       const success = await logout();
@@ -89,13 +101,16 @@ function Navbar(){
           <ul className='list'>
             <li className='discover-link' onClick={navGames}>Discover</li>
             <li className='browse-link' onClick={navBrowse}>Browse</li>
-            <li className='community-link'>Community</li>
-            <li className='publishers-link' onClick={navPublishers}>Publishers</li>
-            <li className='about-link'>About us</li>
+            <li className='about-link' onClick={navAboutUs}>About Us</li>
+            {(user && user.is_moderator) && (
+            <li className='admin-link' onClick={navAdmin}>Moderator</li>
+            )}
           </ul>
       
         <SearchBar/>
+
         <ul className='login'>
+          <li className='help-link' onClick={navHelp}>Help</li>
           {user ? <li className='user_profile' onClick={showHideProfile}>{user.publisher == null ? user.first_name.charAt(0).toUpperCase() + user.last_name.charAt(0).toUpperCase() : 
             <img src={`http://localhost:8000${user.publisher.logo}`} className='avatar-img' alt="User logo"/>}
             </li> : <li className='login-link' onClick={login_redirect}>Sign in<MdAccountCircle className='profile_signin'/></li>}

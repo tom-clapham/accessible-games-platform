@@ -37,7 +37,7 @@
     cursor: pointer;
 }
 
-.discover-link:hover, .browse-link:hover, .community-link:hover, .about-link:hover, .publishers-link:hover {
+.discover-link:hover, .browse-link:hover, .community-link:hover, .about-link:hover, .admin-link:hover {
     color: #60cdff;
 }
 

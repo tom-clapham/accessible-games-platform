@@ -187,6 +187,7 @@ class RegistrationViewSet(viewsets.ViewSet):
     
     @action(detail=False, methods=['post'], url_path='step5')
     def step5(self, request):
+        print(request.data)
         data = request.data.get('genre_arr')
         if len(data) < 3:
             return Response({'success': False})
