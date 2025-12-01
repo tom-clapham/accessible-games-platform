@@ -135,9 +135,9 @@ function Replies() {
                             hour: '2-digit',
                             minute: '2-digit'
                             })}</p>
-                            <button className={styles.rpUpVoteBtn} onClick={(e) => upVote(item.id, idx, true)} style={item.userVote != null ? item.userVote ? {color:"#00a6ff"} : null : null}>&uarr;</button>
-                            <h3 className={styles.voteCount}>{item.votes}</h3>
-                            <button className={styles.rpDownVoteBtn} onClick={(e) => downVote(item.id, idx, true)} style={item.userVote != null ? item.userVote ? null : {color: "red"} : null}>&darr;</button>
+                            <button data-testid='upvote-btn' className={styles.rpUpVoteBtn} onClick={(e) => upVote(item.id, idx, true)} style={item.userVote != null ? item.userVote ? {color:"#00a6ff"} : null : null}>&uarr;</button>
+                            <h3 data-testid='vote-count' className={styles.voteCount}>{item.votes}</h3>
+                            <button data-testid='downvote-btn' className={styles.rpDownVoteBtn} onClick={(e) => downVote(item.id, idx, true)} style={item.userVote != null ? item.userVote ? null : {color: "red"} : null}>&darr;</button>
                             <img className={styles.rpCommentImg} src={comment_img}></img>
                             <p>{item.comments}</p>
                             <Link to={`/report/post/${item.id}`} onClick={(e) => { e.stopPropagation(); }}>
@@ -162,7 +162,6 @@ function Replies() {
                         <button className={styles.downVoteBtn} onClick={(e) => downVote(item.id, idx)} style={item.userVote != null ? item.userVote ? null : {color: "red"} : null}>&darr;</button>
                     </div>
                     <div className={styles.postBox} onClick={() => navigate(`/replies/${item.id}`)}>
-                        <h2 className={styles.postTitle}>{item.title}</h2>
                         {/* profile picture */}
                         <div className={styles.postOwner}>
                             <h3 className={styles.postName}>{item.firstname} {item.surname}</h3>
@@ -236,7 +235,7 @@ function Replies() {
             <div className={styles.createReply}>
                     <img className={styles.profileImg} src={profile_img}/>
                     <textarea className={styles.createReplyMessage} value={reply} placeholder="Create reply here..." onChange={replyChange}/>
-                    <button className={styles.createReplyBtn} onClick={submitReply}>Reply</button>
+                    <button data-testid='reply-btn' className={styles.createReplyBtn} onClick={submitReply}>Reply</button>
             </div>
             <hr className={styles.replyHr}/>
             </>) : <hr className={styles.replyHr}/>}

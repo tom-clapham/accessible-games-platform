@@ -6,7 +6,9 @@ import axios from 'axios';
 import { MemoryRouter } from 'react-router-dom';
 
 import Reviews from './Reviews.jsx';
+import Replies from './Replies.jsx';
 import { user_info } from '../endpoints/api.js';
+
 // Mock router 'useNavigate' and 'useParams'
 const mockUseNavigate = vi.fn();
 const mockUseParams = vi.fn();
@@ -454,5 +456,258 @@ describe("tests for reviews", () => {
         // check that colour is not blue
         expect(screen.getByTestId('downvote-btn').style.color).not.toBe('red')
     });
+});
 
+// Replies
+describe("tests for replies", () => {
+    beforeEach(() => {
+        vi.clearAllMocks();
+    });
+
+    test("If a user is not logged in, they should not be able to dislike a post", async () => {
+        mockUseParams.mockReturnValue({'reviewId': '1'}) // setting the useParams
+        user_info.mockResolvedValue(false);
+        axios.get.mockResolvedValue({ 'data': {
+            'parent': [
+                {
+                    'id': 1,
+                    'gameId': 1,
+                    'title': 'Best one yet!',
+                    'message': 'This is potentially the best game I have ever played mate!',
+                    'votes': 10,
+                    'comments': 1,
+                    'date': '2025-11-11T13:36:31.111000Z',
+                    'firstname': 'Daiyan',
+                    'surname': 'Khan',
+                    'username': 'max_verstappen1'
+                }
+            ],
+            'replies': [
+                {
+                    'id': 2,
+                    'gameId': 1,
+                    'message': 'I am definitely your biggest fan lewis!!!!',
+                    'votes': -10,
+                    'comments': 1,
+                    'date': '2025-11-11T13:36:31.111000Z',
+                    'firstname': 'Fan',
+                    'surname': 'Boy',
+                    'username': 'lewis_hamilton_goat_007'
+                }
+            ]
+        } }) // Setting up the initial axios call
+        render(<MemoryRouter><Replies/></MemoryRouter>)
+        await waitFor(() => {
+            expect(axios.get).toHaveBeenCalledWith("http://localhost:8000/app/threads/reviews/replies/1/",  {params: {}});
+        });
+        // simulate upvote click
+        await userEvent.click(screen.getByTestId("downvote-btn"))
+        // check that colour is not blue
+        expect(screen.getByTestId('downvote-btn').style.color).not.toBe('red')
+    });
+
+    test("If a user is logged in, they should be able to dislike a post", async () => {
+        mockUseParams.mockReturnValue({'reviewId': '1'}) // setting the useParams
+        user_info.mockResolvedValue({'email':'Tester@gmail.com'});
+        axios.get.mockResolvedValue({ 'data': {
+            'parent': [
+                {
+                    'id': 1,
+                    'gameId': 1,
+                    'title': 'Best one yet!',
+                    'message': 'This is potentially the best game I have ever played mate!',
+                    'votes': 10,
+                    'comments': 1,
+                    'date': '2025-11-11T13:36:31.111000Z',
+                    'firstname': 'Daiyan',
+                    'surname': 'Khan',
+                    'username': 'max_verstappen1'
+                }
+            ],
+            'replies': [
+                {
+                    'id': 2,
+                    'gameId': 1,
+                    'message': 'I am definitely your biggest fan lewis!!!!',
+                    'votes': -10,
+                    'comments': 1,
+                    'date': '2025-11-11T13:36:31.111000Z',
+                    'firstname': 'Fan',
+                    'surname': 'Boy',
+                    'username': 'lewis_hamilton_goat_007'
+                }
+            ]
+        } }) // Setting up the initial axios call
+        render(<MemoryRouter><Replies/></MemoryRouter>)
+        await waitFor(() => {
+            expect(axios.get).toHaveBeenCalledWith("http://localhost:8000/app/threads/reviews/replies/1/",  {params: {}});
+        });
+        // simulate upvote click
+        await userEvent.click(screen.getByTestId("downvote-btn"))
+        // check that colour is not blue
+        expect(screen.getByTestId('downvote-btn').style.color).toBe('red')
+    });
+
+    test("If a user is not logged in, they should not be able to like a post", async () => {
+        mockUseParams.mockReturnValue({'reviewId': '1'}) // setting the useParams
+        user_info.mockResolvedValue(false);
+        axios.get.mockResolvedValue({ 'data': {
+            'parent': [
+                {
+                    'id': 1,
+                    'gameId': 1,
+                    'title': 'Best one yet!',
+                    'message': 'This is potentially the best game I have ever played mate!',
+                    'votes': 10,
+                    'comments': 1,
+                    'date': '2025-11-11T13:36:31.111000Z',
+                    'firstname': 'Daiyan',
+                    'surname': 'Khan',
+                    'username': 'max_verstappen1'
+                }
+            ],
+            'replies': [
+                {
+                    'id': 2,
+                    'gameId': 1,
+                    'message': 'I am definitely your biggest fan lewis!!!!',
+                    'votes': -10,
+                    'comments': 1,
+                    'date': '2025-11-11T13:36:31.111000Z',
+                    'firstname': 'Fan',
+                    'surname': 'Boy',
+                    'username': 'lewis_hamilton_goat_007'
+                }
+            ]
+        } }) // Setting up the initial axios call
+        render(<MemoryRouter><Replies/></MemoryRouter>)
+        await waitFor(() => {
+            expect(axios.get).toHaveBeenCalledWith("http://localhost:8000/app/threads/reviews/replies/1/",  {params: {}});
+        });
+        screen.debug()
+        // simulate upvote click
+        await userEvent.click(screen.getByTestId("upvote-btn"))
+        // check that colour is not blue
+        expect(screen.getByTestId('upvote-btn').style.color).not.toBe('rgb(0, 166, 255)')
+    });
+    test("If a user is logged in, they should not be able to like a post", async () => {
+        mockUseParams.mockReturnValue({'reviewId': '1'}) // setting the useParams
+        user_info.mockResolvedValue({'email':'Tester@gmail.com'});
+        axios.get.mockResolvedValue({ 'data': {
+            'parent': [
+                {
+                    'id': 1,
+                    'gameId': 1,
+                    'title': 'Best one yet!',
+                    'message': 'This is potentially the best game I have ever played mate!',
+                    'votes': 10,
+                    'comments': 1,
+                    'date': '2025-11-11T13:36:31.111000Z',
+                    'firstname': 'Daiyan',
+                    'surname': 'Khan',
+                    'username': 'max_verstappen1'
+                }
+            ],
+            'replies': [
+                {
+                    'id': 2,
+                    'gameId': 1,
+                    'message': 'I am definitely your biggest fan lewis!!!!',
+                    'votes': -10,
+                    'comments': 1,
+                    'date': '2025-11-11T13:36:31.111000Z',
+                    'firstname': 'Fan',
+                    'surname': 'Boy',
+                    'username': 'lewis_hamilton_goat_007'
+                }
+            ]
+        } }) // Setting up the initial axios call
+        render(<MemoryRouter><Replies/></MemoryRouter>)
+        await waitFor(() => {
+            expect(axios.get).toHaveBeenCalledWith("http://localhost:8000/app/threads/reviews/replies/1/",  {params: {}});
+        });
+        screen.debug()
+        // simulate upvote click
+        await userEvent.click(screen.getByTestId("upvote-btn"))
+        // check that colour is not blue
+        expect(screen.getByTestId('upvote-btn').style.color).toBe('rgb(0, 166, 255)')
+    });
+
+    test("user should be able to leave a reply if logged in", async () => {
+        mockUseParams.mockReturnValue({'reviewId': '1'}) // setting the useParams
+        user_info.mockResolvedValue({'email':'Tester@gmail.com'});
+        axios.get.mockResolvedValue({ 'data': {
+            'parent': [
+                {
+                    'id': 1,
+                    'gameId': 1,
+                    'title': 'Best one yet!',
+                    'message': 'This is potentially the best game I have ever played mate!',
+                    'votes': 10,
+                    'comments': 1,
+                    'date': '2025-11-11T13:36:31.111000Z',
+                    'firstname': 'Daiyan',
+                    'surname': 'Khan',
+                    'username': 'max_verstappen1'
+                }
+            ],
+            'replies': [
+                {
+                    'id': 2,
+                    'gameId': 1,
+                    'message': 'I am definitely your biggest fan lewis!!!!',
+                    'votes': -10,
+                    'comments': 1,
+                    'date': '2025-11-11T13:36:31.111000Z',
+                    'firstname': 'Fan',
+                    'surname': 'Boy',
+                    'username': 'lewis_hamilton_goat_007'
+                }
+            ]
+        } }) // Setting up the initial axios call
+        render(<MemoryRouter><Replies/></MemoryRouter>)
+        await waitFor(() => {
+            expect(axios.get).toHaveBeenCalledWith("http://localhost:8000/app/threads/reviews/replies/1/",  {params: {}});
+        });
+        expect(screen.getByTestId('reply-btn')).toBeInTheDocument();
+    });
+
+    test("user shouldn't be able to leave a reply if not logged in", async () => {
+        mockUseParams.mockReturnValue({'reviewId': '1'}) // setting the useParams
+        user_info.mockResolvedValue(false);
+        axios.get.mockResolvedValue({ 'data': {
+            'parent': [
+                {
+                    'id': 1,
+                    'gameId': 1,
+                    'title': 'Best one yet!',
+                    'message': 'This is potentially the best game I have ever played mate!',
+                    'votes': 10,
+                    'comments': 1,
+                    'date': '2025-11-11T13:36:31.111000Z',
+                    'firstname': 'Daiyan',
+                    'surname': 'Khan',
+                    'username': 'max_verstappen1'
+                }
+            ],
+            'replies': [
+                {
+                    'id': 2,
+                    'gameId': 1,
+                    'message': 'I am definitely your biggest fan lewis!!!!',
+                    'votes': -10,
+                    'comments': 1,
+                    'date': '2025-11-11T13:36:31.111000Z',
+                    'firstname': 'Fan',
+                    'surname': 'Boy',
+                    'username': 'lewis_hamilton_goat_007'
+                }
+            ]
+        } }) // Setting up the initial axios call
+        render(<MemoryRouter><Replies/></MemoryRouter>)
+        await waitFor(() => {
+            expect(axios.get).toHaveBeenCalledWith("http://localhost:8000/app/threads/reviews/replies/1/",  {params: {}});
+        });
+        expect(screen.queryByTestId('reply-btn')).not.toBeInTheDocument();
+    });
 });
