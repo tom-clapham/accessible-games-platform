@@ -47,15 +47,12 @@ def register_publisher(request):
     publisher_serializer = PublisherSerializer(data=data_publisher)
 
     if CustomUser.objects.filter(email=data_user['email']).exists():
-        print("email")
         return Response({'success': 'email'})
     
     if CustomUser.objects.filter(username=data_user['username']).exists():
-        print("username")
         return Response({'success': 'username'})
         
     if(data_user['password'] != data_user['cPassword']) or not(two_digits(data_user['password'])) or (len(data_user['cPassword']) < 8):
-        print("password")
         return Response({'success': 'password'})
 
     if not user_serializer.is_valid():
@@ -64,6 +61,7 @@ def register_publisher(request):
     user = user_serializer.save()
 
     if not publisher_serializer.is_valid():
+        print(publisher_serializer.errors)
         user.delete()
         return Response({'success': False})
 
