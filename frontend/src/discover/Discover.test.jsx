@@ -12,6 +12,25 @@ describe("Discover Component", () => {
         vi.clearAllMocks();
     });
 
+    test("correct titles are shown", async () => {
+        // Mock empty games so I do not get undefined reading
+        const mockData = {
+            trending_games: [],
+            on_sale_games: [],
+            recently_released_games: []
+        };
+        axios.get.mockResolvedValue({ data: mockData });
+        render(
+            <MemoryRouter>
+                <Discover />
+            </MemoryRouter>
+        );
+
+        expect(await screen.findByText("Trending")).toBeInTheDocument();
+        expect(await screen.findByText("On-Sale")).toBeInTheDocument();
+        expect(await screen.findByText("Latest Releases")).toBeInTheDocument();
+    })
+
     test("if there are no trending games and no on-sale games then show the correct message", async () => {
         // Empty games
         const mockData = {
