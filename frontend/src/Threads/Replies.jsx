@@ -135,9 +135,9 @@ function Replies() {
                             hour: '2-digit',
                             minute: '2-digit'
                             })}</p>
-                            <button className={styles.rpVoteBtn} onClick={(e) => upVote(item.id, idx, true)} style={item.userVote != null ? item.userVote ? {color:"#00a6ff"} : null : null}>&uarr;</button>
+                            <button className={styles.rpUpVoteBtn} onClick={(e) => upVote(item.id, idx, true)} style={item.userVote != null ? item.userVote ? {color:"#00a6ff"} : null : null}>&uarr;</button>
                             <h3 className={styles.voteCount}>{item.votes}</h3>
-                            <button className={styles.rpVoteBtn} onClick={(e) => downVote(item.id, idx, true)} style={item.userVote != null ? item.userVote ? null : {color: "red"} : null}>&darr;</button>
+                            <button className={styles.rpDownVoteBtn} onClick={(e) => downVote(item.id, idx, true)} style={item.userVote != null ? item.userVote ? null : {color: "red"} : null}>&darr;</button>
                             <img className={styles.rpCommentImg} src={comment_img}></img>
                             <p>{item.comments}</p>
                             <Link to={`/report/post/${item.id}`} onClick={(e) => { e.stopPropagation(); }}>
@@ -157,9 +157,9 @@ function Replies() {
             <Fragment key={idx}>
                 <div className={styles.vpBox}>
                     <div className={styles.votesBox}>
-                        <button className={styles.voteBtn} onClick={(e) => upVote(item.id, idx)} style={item.userVote != null ? item.userVote ? {color:"#00a6ff"} : null : null}>&uarr;</button>
+                        <button className={styles.upVoteBtn} onClick={(e) => upVote(item.id, idx)} style={item.userVote != null ? item.userVote ? {color:"#00a6ff"} : null : null}>&uarr;</button>
                         <h3 className={styles.voteCount}>{item.votes}</h3>
-                        <button className={styles.voteBtn} onClick={(e) => downVote(item.id, idx)} style={item.userVote != null ? item.userVote ? null : {color: "red"} : null}>&darr;</button>
+                        <button className={styles.downVoteBtn} onClick={(e) => downVote(item.id, idx)} style={item.userVote != null ? item.userVote ? null : {color: "red"} : null}>&darr;</button>
                     </div>
                     <div className={styles.postBox} onClick={() => navigate(`/replies/${item.id}`)}>
                         <h2 className={styles.postTitle}>{item.title}</h2>

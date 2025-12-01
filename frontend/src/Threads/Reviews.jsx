@@ -144,9 +144,9 @@ function Reviews() {
         <Fragment key={idx}>
         <div className={styles.vpBox}>
             <div className={styles.votesBox}>
-                <button className={styles.voteBtn} onClick={(e) => upVote(item.id, idx)} style={item.userVote != null ? item.userVote ? {color:"#00a6ff"} : null : null}>&uarr;</button>
+                <button className={styles.upVoteBtn} onClick={(e) => upVote(item.id, idx)} style={item.userVote != null ? item.userVote ? {color:"#00a6ff"} : null : null}>&uarr;</button>
                 <h3 className={styles.voteCount}>{item.votes}</h3>
-                <button className={styles.voteBtn} onClick={(e) => downVote(item.id, idx)} style={item.userVote != null ? item.userVote ? null : {color: "red"} : null}>&darr;</button>
+                <button className={styles.downVoteBtn} onClick={(e) => downVote(item.id, idx)} style={item.userVote != null ? item.userVote ? null : {color: "red"} : null}>&darr;</button>
             </div>
             <div className={styles.postBox} onClick={() => navigate(`/replies/${item.id}`)}>
                 <h2 className={styles.postTitle}>{item.title}</h2>
