@@ -54,8 +54,7 @@ Add the following:
 
 #### Setting up Django server
 - `cd team_10_application`
-- input settings into .env file - ensure that teh `DB_NAME` variable is based on a real schema
-- `python manage.py makemigrations`
+- input settings into .env file - ensure that the `DB_NAME` variable is based on a real schema
 - `python manage.py migrate`
 - `python manage.py runserver`
 
