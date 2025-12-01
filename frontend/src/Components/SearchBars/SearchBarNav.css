@@ -1,27 +1,107 @@
 .search-container {
-  display: flex;
-  align-items: center;
-  background: #242424;
+  position: relative;
+  display: inline-block;
+  width: 700px;
+}
+
+.search-input {
+  width: 100%;
+  left:0;
+  border-style: solid;
+  border-radius: 20px;
   padding: 10px 20px;
-  border-radius: 50px;
-  flex: 1 1 auto;
-  max-width: 700px;
-  min-width: 0;
-}
-
-.search-container input {
-  padding: 6px;
-  background: transparent;
-  border: 0;
-  outline: 0;
-  color: #fff;
   font-size: 18px;
-  flex: 1 1 auto;
-  max-width: 700px;
-  min-width: 0;
+  background: #242424;
 }
 
+.information {
+  position: absolute;
+  top: 100%;
+  width: 100%;
+  min-height: 140px;
+  max-height: 40vh;
+  overflow-y: scroll;
+  scrollbar-width: none;
+  border-color: hsl(0, 0%, 50%);
+  border-style: solid;
+  border-width: 2px;
+  border-radius: 20px;
+  margin-top: 2px;
+  padding: 10px;
+  padding-right: 20px;
+  background: #242424;
+  display: none;
+}
+
+.search-input:focus ~ .information {
+  display: block;
+}
 
 .search-container input::placeholder {
     color: #fff;
+}
+
+.search-item {
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+  justify-content: space-around;
+  margin: 5px;
+  cursor: pointer;
+  transition: .2s;
+}
+
+.search-item:hover {
+  transform: scale(1.03) ;
+  transition: .2s;
+}
+
+.search-item-img {
+  height: 100px;
+  width: 100px
+}
+
+.name-price-area {
+  display: flex;
+  flex-direction: column;
+  gap:15px
+}
+
+.search-item-name, .search-item-price {
+  margin: 0;
+}
+
+.search-item-price {
+  font-family: "roboto";
+  font-size: 14px;
+}
+
+.accessiblity-area {
+  display: flex;
+  flex-direction: column;
+}
+
+.accessiblity-label {
+  margin: 0;
+}
+
+.tags {
+  font-size: 12px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.single-tag {
+  background: #2b2b2f;
+  padding: 2px 5px;
+  width: fit-content;
+  border-radius: 5px;
+  margin:2px
+}
+
+.separator {
+  width: 90%;
+  border-color: hsl(0, 0%, 40%);
+  border-style: solid;
+  height: 1px;
 }

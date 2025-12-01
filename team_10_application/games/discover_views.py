@@ -4,11 +4,13 @@ from .models import Game, GameClicks
 from .discover_serializers import DiscoverGameSerializer
 from rest_framework import status
 from rest_framework.views import APIView
+from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework.permissions import AllowAny
 from rest_framework.decorators import permission_classes
 import django.utils.timezone as timezone
-from django.db.models import Sum
+from django.db.models import Sum, F, Subquery, OuterRef
+from .models import *
 
 # API View Tutorial: https://www.django-rest-framework.org/tutorial/3-class-based-views/
 @permission_classes([AllowAny])
@@ -43,7 +45,25 @@ def refreshClicks():
     GameClicks.objects.filter(date__lt = refresh_date).delete()
     print("Refreshed trending games")
 
+@api_view(['GET'])
 @permission_classes([AllowAny])
 def search_games(request):
-    print(request.data)
-    return Response(status.HTTP_200_OK)
+    game_name = request.GET.get("name")
+
+    pre_res = (
+        Game.objects
+        .filter(name__icontains=game_name)
+        .prefetch_related("accessibility_tags", "platform_tags")
+    )
+    # Have to create the json manually, since access and platform tags are ManyToMany fields
+    result =  [{
+        "name": game.name,
+        "description": game.description,
+        "thumbnail_url": game.thumbnail_url,
+        "price": game.price,
+        "profile": game.pk,
+        "accessiblity_tags": [tag.name for tag in game.accessibility_tags.all()], # List comprehension to create list of tags
+        "platform_tags": [tag.name for tag in game.platform_tags.all()] # List comprehension to create list of tags
+    } for game in pre_res] # List comprehension to create list of dicts containing the details for each game
+
+    return Response(result)
