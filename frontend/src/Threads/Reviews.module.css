@@ -1,4 +1,4 @@
-h2, h3 {
+h2, h3, .postName, .postMessage, .rpName, .rpMessage {
     font-weight:400;
     color:hsl(0, 0%, 90%);
     /* background-color: hsl(0, 0%, 15%); */
@@ -206,10 +206,6 @@ h2, h3 {
     z-index: 3;
 }
 
-.backBtn:hover, .newPost:hover, .postBox:hover {
-    cursor: pointer;
-}
-
 .postBox {
     display: flex;
     flex-direction: column;
@@ -217,12 +213,19 @@ h2, h3 {
     border-color: hsl(0, 0%, 40%);
     border-radius: 5px;
     border-width: 1px;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
     padding-top: 10px;
     padding-left: 15px;
     padding-right: 15px;
     width: 70vw;
     height: 20vh;
+    transition: .2s;
+}
+
+.backBtn:hover, .newPost:hover, .postBox:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+    transition: .2s
 }
 
 .commentImg {
