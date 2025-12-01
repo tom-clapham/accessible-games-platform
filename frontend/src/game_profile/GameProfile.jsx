@@ -80,7 +80,7 @@ function GameProfile() {
             }
         }
         fetch_info();
-    })
+    }, [])
 
     useEffect(() => {
         const fetch_info = async () => {
