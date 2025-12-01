@@ -40,18 +40,20 @@ Add the following:
 
 ## Manual Setup 
 
-### Setting Up environment (windows)
+### Setting up virtual environment (windows)
 - `python -m venv env`
 - `.\env\Scripts\activate`
 - `pip install -e .`
+
 #### Setting up Django server
 - `cd team_10_application`
 - input settings into .env file - ensure that teh `DB_NAME` variable is based on a real schema
 - `python manage.py makemigrations`
 - `python manage.py migrate`
 - `python manage.py runserver`
-##### Go back with `cd ..` to access frontend folder
-##### Running dev server for react
+
+#### Running dev server for react
+- Go back with `cd ..` to access frontend folder
 - `cd frontend`
 - `npm install`
 - `npm run dev`
@@ -66,13 +68,21 @@ Add the following:
 - `python manage.py test`
 
 ## Assumptions
+### Functional Assumptions
 - The platform will only be used on desktop devices, not mobile.
 - Approved publishers are trusted entities and therefore do not require further explicit permission to upload games.
 - Each game requires only one thumbnail image and one trailer.
 - Storing game media (images, trailers) via URL link is sufficient, no local file storage system is required.
 - User preferences (favourite genres, accessibility tags, favourite games) are private and do not need to be displayed on a public user profile.
 - A website footer is not required, as all essential information through the 'About Us' page.
-- The platform is UK based, using GBP as the currency, English as the only language, short-form UK date format (DD/MM/YYYY).
+
+### Non-Functional Assumptions
+- The platform is UK based, using:
+    - GBP as the currency
+    - English as the only language
+    - Short-form UK date format (DD/MM/YYYY).
+
+### Technical Assumptions
 - Full end-to-end testing with live test servers is not required for the scope of this coursework.
 - Deployment to a real production server is not required, local development servers are sufficient.
 
