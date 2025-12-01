@@ -181,3 +181,7 @@ body {
     padding: 20px 10px;
     font-size: 14px;
 }
+
+.gp-info-value {
+  text-decoration: none;
+}

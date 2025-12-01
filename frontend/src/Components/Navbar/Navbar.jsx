@@ -2,7 +2,7 @@ import {useState, useEffect} from 'react';
 import './Navbar.css';
 import logoPicture from '../../assets/platform_logo.jpg';
 import SearchBar from '../SearchBars/SearchBarNav.jsx'
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { MdAccountCircle } from "react-icons/md";
 import { CgGames } from "react-icons/cg";
 import { user_info, logout } from '../../endpoints/api';
@@ -69,6 +69,10 @@ function Navbar(){
       nav('/browse')
   }
 
+  function navPublishers(){
+      nav('/publishers')
+  }
+  
   function navAboutUs(){
       nav('/about-us')
   }
@@ -87,6 +91,8 @@ function Navbar(){
           window.location.reload();
       }
   }
+
+  console.log(user)
   
   return (
     <div>
@@ -95,6 +101,7 @@ function Navbar(){
           <ul className='list'>
             <li className='discover-link' onClick={navGames}>Discover</li>
             <li className='browse-link' onClick={navBrowse}>Browse</li>
+            <li className='browse-link' onClick={navPublishers}>Publishers</li>
             <li className='about-link' onClick={navAboutUs}>About Us</li>
             {(user && user.is_moderator) && (
             <li className='admin-link' onClick={navAdmin}>Moderator</li>
@@ -105,31 +112,56 @@ function Navbar(){
 
         <ul className='login'>
           <li className='help-link' onClick={navHelp}>Help</li>
-          {user ? <li className='user_profile' onClick={showHideProfile}>{user.first_name.charAt(0).toUpperCase() + user.last_name.charAt(0).toUpperCase()}
+          {user ? <li className='user_profile' onClick={showHideProfile}>{user.publisher == null ? user.first_name.charAt(0).toUpperCase() + user.last_name.charAt(0).toUpperCase() : 
+            <img src={`http://localhost:8000${user.publisher.logo}`} className='avatar-img' alt="User logo"/>}
             </li> : <li className='login-link' onClick={login_redirect}>Sign in<MdAccountCircle className='profile_signin'/></li>}
         </ul>
       </div>
-      {profile == true &&(<div className='profile-popup'>
-        <div className='logo-signout'>
-          <img className='logo-small' src={logo}></img>
-          <a className='signout' onClick={handleLogout}>Sign out</a>
-        </div>
-        <div className='account-info'>
-          <div className='initials-container'> 
-            {user ? <div className='initials'>{user.first_name.charAt(0).toUpperCase() + user.last_name.charAt(0).toUpperCase()}</div> : <div></div>}
+      {profile == true &&(
+            user.publisher == null ? (
+        <div className='profile-popup'>
+          <div className='logo-signout'>
+            <img className='logo-small' src={logo}></img>
+            <a className='signout' onClick={handleLogout}>Sign out</a>
           </div>
-          <div>
-            <div className='user-info'></div>
-            <div className='name'>{user.first_name + ' ' + user.last_name}</div>
-            <div className='email'>{user.email}</div>
+          <div className='account-info'>
+            <div className='initials-container'> 
+              {user ? <div className='initials'>{user.first_name.charAt(0).toUpperCase() + user.last_name.charAt(0).toUpperCase()}</div> : <div></div>}
+            </div>
+            <div>
+              <div className='user-info'></div>
+              <div className='name'>{user.first_name + ' ' + user.last_name}</div>
+              <div className='email'>{user.email}</div>
+            </div>
+          </div>
+          <div className='account' onClick={navAccount}>My account</div>
+          <hr className='line'/>
+          <div className='favourite-container'>
+            <div className='favourite-games' onClick={navFavouriteGames}><CgGames className='games-icon'/>View my favourite games</div>
           </div>
         </div>
-        <div className='account' onClick={navAccount}>My account</div>
-         <hr className='line'/>
-        <div className='favourite-container'>
-          <div className='favourite-games' onClick={navFavouriteGames}><CgGames className='games-icon'/>View my favourite games</div>
+      ) : (
+        <div className='profile-popup'>
+          <div className='logo-signout'>
+            <img className='logo-small' src={logo}></img>
+            <a className='signout' onClick={handleLogout}>Sign out</a>
+          </div>
+          <div className='account-info'>
+            <div className='avatar-img-profile'>
+                {user ? <img src={`http://localhost:8000${user.publisher.logo}`} alt="User logo"/> : <div></div>}
+            </div>
+            <div>
+              <div className='user-info'></div>
+              <div className='name'>{user.publisher.name}</div>
+              <div className='email'>{user.email}</div>
+            </div>
+          </div>
+          <hr className='line'/>
+          <div className='favourite-container'>
+            <Link to={`/publisher/${user.publisher.id}`} className='favourite-games'><CgGames className='games-icon'/>View published games</Link>
+          </div>
         </div>
-      </div>
+      )
       )}
     </div>
   )

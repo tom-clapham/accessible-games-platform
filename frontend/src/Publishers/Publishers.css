@@ -1,0 +1,242 @@
+.pc-image-box {
+  width: 80px;
+  height: 80px;
+  overflow: hidden;
+  margin-right: 15px;
+}
+
+.pc-image-box img, .pi-image-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; 
+}
+
+.pi-image-box {
+  width: 80px;
+  height: 80px;
+  overflow: hidden;
+  margin-right: 25px;
+}
+
+.pc-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.pc-card-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border: 2px solid rgba(255, 255, 255, 0.24);
+    border-radius: 15px;
+    padding: 15px;
+}
+
+.pc-text {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: 17px;
+}
+
+.pc-verified-icon {
+    margin: 15px;
+}
+
+.pc-link {
+    text-decoration: none;
+}
+
+.p-card-container {
+    display: grid;
+    width: 40%;
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 20px; 
+}
+
+.p-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 60px;
+}
+
+.p-title {
+    display: flex;
+    flex-direction: row;
+    align-items: left;
+    width: 40%;
+}
+
+.p-page-selector {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    list-style: none;
+    font-size: 20px;
+    font-weight: 500;
+    gap: 25px;
+    margin: 40px;
+}
+
+.p-page-selector li a:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.p-page-selector .active a {
+  font-weight: bold;
+  color: #115ea3;
+}
+
+.pi-info, .pi-logo-text {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.pi-info-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 45%;
+    margin: 30px 0px;
+}
+
+.pi-visit-website {
+    padding: 8px 30px;
+    border-radius: 3px;
+    border: none;
+    background-color: #115ea3;
+    color: white;
+    font-size: 16px;
+}
+
+.pi-visit-website:hover {
+    background-color: #2d6ca3;
+    cursor: pointer;
+}
+
+.pi-games-container, .pi-button-container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: left;
+    gap: 24px;
+    padding-bottom: 30px;
+    width: 45%;
+}
+
+.rp-label {
+    margin-bottom: 5px;
+    font-size: 13px;
+    margin-left: 14px;
+}
+
+.rp-input {
+    padding: 8px;
+    border-radius: 10px;
+    border: 1px solid black;
+    cursor: pointer;
+    margin-right: 14px;
+    margin-left: 14px;
+    margin-bottom: 15px;
+}
+
+.rp-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;  
+}
+
+.rp-form {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    border: 2px solid black;
+    border-radius: 20px;
+    width: 20%;
+    padding: 25px;
+    min-width: 425px;
+    margin: 30px;
+}
+
+.rp-submit-button {
+    margin-right: 14px;
+    margin-left: 14px;
+    padding: 8px;
+    border-radius: 10px;
+    border: none;
+    color: #fff;
+    background-color:#115ea3;
+    cursor: pointer;
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+
+.rp-submit-button:hover {
+    background-color: #2d6ca3;
+}
+
+.rp-title {
+    margin-top:17px;
+    margin-bottom: 15px;
+    margin-left: 14px;
+    font-size: 25px;
+}
+
+.rp-error {
+    color: #fff;
+    font-weight: 500;
+    background-color: #86131dce;
+    margin-left: 14px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    padding-left: 5px;
+    font-size: 14px;
+    margin-right: 14px;
+    display: flex;
+    align-items: center;
+}
+
+.rp-success {
+    background-color: #057c299f;
+    color: #fff;
+    font-weight: 500;
+    margin-left: 14px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    padding: 25px 20px;
+    font-size: 14px;
+    margin-right: 14px;
+}
+
+.rp-warning {
+    color: red;
+    width: 16%;
+    height: 16%;
+    padding-left: 15px;
+    padding-right: 5px;
+}
+
+.pi-add-game {
+    background: #115ea3;
+    color: #0c0c0c;
+    margin-top: 12px;
+    border: none;
+    padding: 10px 14px;
+    border-radius: 9px;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer; 
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.pi-add-game:hover {
+    background-color: #2d6ca3;
+}

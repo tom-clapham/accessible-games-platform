@@ -1,6 +1,7 @@
 from rest_framework.test import APITestCase
 from rest_framework import status
 from games.models import Game, PlatformTag
+from publishers.models import Publisher
 from django.urls import reverse
 
 from datetime import date
@@ -16,12 +17,14 @@ class TestBrowsePagePlatformFilters(APITestCase):
         cls.playstation_tag = PlatformTag.objects.create(name="PlayStation")
         cls.android_tag = PlatformTag.objects.create(name="Android")
 
+        cls.publisher = Publisher.objects.create(name='Test Publisher', pending=False)
+
         # Set up test game with all 3 platform tags
         cls.game_all_platform_tags = Game.objects.create (
             name = "Game with all platform tags",
             description = "This is a test game",
             price = 9.99,
-            publisher = "Test Publisher",
+            publisher = cls.publisher,
             release_date = date(2025, 1, 1),
             trending=True,
             on_sale=True
@@ -33,7 +36,7 @@ class TestBrowsePagePlatformFilters(APITestCase):
             name = "Game with PC and playstation tags",
             description = "This is a test game",
             price = 9.99,
-            publisher = "Test Publisher",
+            publisher = cls.publisher,
             release_date = date(2025, 1, 1),
             trending=True,
             on_sale=True
@@ -45,7 +48,7 @@ class TestBrowsePagePlatformFilters(APITestCase):
             name = "Game with android tag",
             description = "This is a test game",
             price = 9.99,
-            publisher = "Test Publisher",
+            publisher = cls.publisher,
             release_date = date(2025, 1, 1),
             trending=True,
             on_sale=True

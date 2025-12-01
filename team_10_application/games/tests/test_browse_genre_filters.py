@@ -1,6 +1,7 @@
 from rest_framework.test import APITestCase
 from rest_framework import status
 from games.models import Game, GenreTag
+from publishers.models import Publisher
 from django.urls import reverse
 
 from datetime import date
@@ -16,12 +17,14 @@ class TestBrowsePageGenreFilters(APITestCase):
         cls.adventure_tag = GenreTag.objects.create(name="Adventure")
         cls.shooter_tag = GenreTag.objects.create(name="Shooter")
 
+        cls.publisher = Publisher.objects.create(name="Test Publisher", pending=False)
+
         # Set up test game with all 3 genre tags
         cls.game_all_genre_tags = Game.objects.create (
             name = "Game with all genre tags",
             description = "This is a test game",
             price = 9.99,
-            publisher = "Test Publisher",
+            publisher = cls.publisher,
             release_date = date(2025, 1, 1),
             trending=True,
             on_sale=True
@@ -33,7 +36,7 @@ class TestBrowsePageGenreFilters(APITestCase):
             name = "Game with action and adventure genre tags",
             description = "This is a test game",
             price = 9.99,
-            publisher = "Test Publisher",
+            publisher = cls.publisher,
             release_date = date(2025, 1, 1),
             trending=True,
             on_sale=True
@@ -45,7 +48,7 @@ class TestBrowsePageGenreFilters(APITestCase):
             name = "Game with shooter genre tag",
             description = "This is a test game",
             price = 9.99,
-            publisher = "Test Publisher",
+            publisher = cls.publisher,
             release_date = date(2025, 1, 1),
             trending=True,
             on_sale=True

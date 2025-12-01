@@ -1,5 +1,6 @@
 from django.contrib.auth import get_user_model
 from threads.models import Posts
+from publishers.models import Publisher
 from games.models import Game
 
 def set_up_user():
@@ -16,11 +17,12 @@ def set_up_user():
         )
 
 def set_up_game():
+    publisher = Publisher.objects.create(name="Test Publisher", pending=False)
     return Game.objects.create(
         name="Test Game",
         description="A test game",
         price=59.99,
-        publisher="Test Studio",
+        publisher=publisher,
         release_date="2025-01-01",
         thumbnail_url="http://example.com/thumb.jpg",
         trailer_url="http://example.com/trailer.mp4",
