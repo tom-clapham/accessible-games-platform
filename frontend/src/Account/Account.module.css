@@ -62,13 +62,6 @@
   width: 100%;
 }
 
-.line {
-    border: none;
-    border: 1px solid rgba(219, 210, 210, 0.788);
-    margin: 0px;
-    width: 94.5%;
-}
-
 h3 {
     font-size: 17px;
     color: rgba(219, 210, 210, 0.788);

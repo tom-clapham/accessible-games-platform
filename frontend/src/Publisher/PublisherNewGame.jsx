@@ -7,6 +7,7 @@ import edit_img from '../assets/editing.png';
 import preview_img from '../assets/film.png';
 import '../game_profile/game_profile_styles.css';
 import styles from './PublisherNewGame.module.css';
+import { user_info } from '../endpoints/api';
 
 import { MultiSelect } from 'primereact/multiselect';
 import "primereact/resources/themes/lara-dark-indigo/theme.css";
@@ -21,7 +22,7 @@ function PublisherNewGame() {
     const [displayPrice, setDisplayPrice] = useState('');
     const [releaseDate, setReleaseDate] = useState();
     const [preview, setPreview] = useState(false);
-    const publisher = "default publisher"; // This will be taken from the authentication token from the user
+    const [publisher, setPublisher] = useState("vlalsgepogep");
     const [selectedAccessibilityTags, setSelectedAccessibilityTags] = useState([]);
     const [selectedGenreTags, setSelectedGenreTags] = useState([]);
     const [selectedPlatformTags, setSelectedPlatformTags] = useState([]);
@@ -63,6 +64,14 @@ function PublisherNewGame() {
         console.log(selectedAccessibilityTags)
     }, [selectedAccessibilityTags])
 
+    useEffect(() => {
+        const fetchInfo = async () => {
+        const info = await user_info();
+        setPublisher(info.publisher);
+        }
+        fetchInfo();
+    }, []);
+
     // This will make the request to create the game
     async function createGame(e) {
         e.preventDefault()
@@ -77,7 +86,8 @@ function PublisherNewGame() {
                     "thumbnailUrl": thumbnailUrl,
                     "accessibilityTags": selectedAccessibilityTags,
                     "genreTags": selectedGenreTags,
-                    "platformTags": selectedPlatformTags
+                    "platformTags": selectedPlatformTags,
+                    "publisher": publisher
                 }
             )
             setSuccess(true)

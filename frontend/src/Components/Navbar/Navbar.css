@@ -179,7 +179,8 @@
 .favourite-games {
   display: inline-flex;       
   margin: 10px 20px;
-  align-items: center;  
+  align-items: center; 
+  text-decoration: none; 
   cursor: pointer;
   color: rgb(255, 255, 255, 0.784);
   font-size: 15px;
@@ -200,5 +201,19 @@
 .favourite-games:hover, .games-icon:hover {
   cursor: pointer;
   color: white;
+}
+
+.avatar-img {
+  width: 170%;
+  height: 170%;
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+.avatar-img-profile img {
+  width: 80%;
+  height: 30%;
+  object-fit: cover;
+  border-radius: 50px;
 }
 

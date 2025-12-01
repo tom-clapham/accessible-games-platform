@@ -58,3 +58,12 @@ class GameViewSet(viewsets.ModelViewSet):
 
         serializer = self.get_serializer(games, many=True)
         return Response(serializer.data)
+    
+    @action(detail=False, methods=['get'])
+    def publisher(self, request):
+        id = request.query_params.get('id')
+
+        games = Game.objects.filter(publisher__id=id)
+        serializer = self.get_serializer(games, many=True)
+        
+        return Response(serializer.data)

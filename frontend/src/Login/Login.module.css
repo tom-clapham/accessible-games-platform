@@ -17,6 +17,7 @@
 
 .create {
     font-size: 14px;
+    margin-bottom: 5px;
 }
 
 .create a {
@@ -124,5 +125,4 @@
     padding-left: 15px;
     padding-right: 5px;
 }
-
 

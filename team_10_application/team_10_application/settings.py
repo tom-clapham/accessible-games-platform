@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'threads',
     'games',
     'reports',
+    'publishers',
     'moderator',
 ]
 
@@ -76,13 +77,6 @@ AUTHENTICATION_BACKENDS = [
     'allauth.account.auth_backends.AuthenticationBackend',
 ]
 
-SOCIALACCOUNT_PROVIDERS = {
-    'google': {
-        'SCOPE': ['profile', 'email'],
-        'AUTH_PARAMS': {'access_type': 'online'},
-    }
-}
-
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'users.authentication.CookiesJWTAuthentication',
@@ -103,6 +97,9 @@ AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
     'allauth.account.auth_backends.AuthenticationBackend',
 ]
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 SOCIALACCOUNT_PROVIDERS = {
     'google': {

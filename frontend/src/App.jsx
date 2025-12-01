@@ -25,6 +25,9 @@ import Report from './report/Report.jsx'
 import PostsReport from './report/PostsReport.jsx'
 import Dashboard from './moderator/Dashboard.jsx'
 import VoiceController from './voice_navigation/VoiceController.jsx'
+import Publishers from './Publishers/Publishers.jsx'
+import Publisher_Info from './Publishers/Publisher Info.jsx'
+import Register_Publisher from './Publishers/Register Publisher.jsx'
 import ModeratorReports from './moderator/ModeratorReports.jsx'
 import { Navigate } from 'react-router-dom';
 
@@ -33,7 +36,6 @@ function App() {
     <Router>
       <AuthProvider>
         <VoiceController />
-
         <Routes>
           <Route element={<LayoutWithNav/>}>
             <Route path="/" element={<Discover/>}/>
@@ -52,6 +54,9 @@ function App() {
             <Route path="/account" element={<PrivateRoute><Account/></PrivateRoute>}/>
             <Route path="/report/game/:gameId" element={<Report/>}/>
             <Route path="/report/post/:postId" element={<PostsReport/>}/>
+            <Route path="/publishers" element={<Publishers/>}/>
+            <Route path="/publisher/:id" element={<Publisher_Info/>}/>
+            <Route path="/publisher/register" element={<Register_Publisher/>}/>
             <Route path="/moderator/dashboard" element={<Dashboard/>}/>
             <Route path="/moderator/dashboard/reports" element={<ModeratorReports/>}/>
             <Route path="/new-game" element={<PublisherNewGame/>}/>

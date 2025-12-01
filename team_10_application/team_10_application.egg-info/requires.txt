@@ -8,3 +8,4 @@ django-allauth
 requests
 cryptography
 python-dotenv>=1.2.1
+Pillow

@@ -2,6 +2,7 @@ from django.test import TestCase
 from rest_framework.test import APIClient
 from users.models import *
 from games.models import Game
+from publishers.models import Publisher
 from datetime import date
 
 
@@ -24,11 +25,13 @@ class UsersTestSetup(TestCase):
             name = 'Action'
         )
         
+        self.publisher = Publisher.objects.create(name="Rovio Entertainment Oyj", pending=False)
+
         self.game = Game.objects.create (
             name = "Test game",
             description = "This is a test game",
             price = 9.99,
-            publisher = "Test Publisher",
+            publisher = self.publisher,
             release_date = date(2025, 1, 1),
             trending=True,
             on_sale=True

@@ -21,6 +21,8 @@ def create_game(request):
         accessibility_tags = request.data['accessibilityTags']
         genre_tags = request.data['genreTags']
         platform_tags = request.data['platformTags']
+        publisher = request.data['publisher']
+
     except:
         return Response(status.HTTP_206_PARTIAL_CONTENT)
     
@@ -36,8 +38,9 @@ def create_game(request):
         'platform_tags': platform_tags,
         'trending': False,
         'on_sale': False,
-        'publisher': 'EA'
+        'publisher': publisher['id'],
     })
+
     # check if valid
     if serializer.is_valid():
         game = serializer.save()
@@ -50,6 +53,7 @@ def create_game(request):
         game.platform_tags.set(platform)
         return Response(status.HTTP_201_CREATED)
     
+    print(serializer.errors)
     # If not valid, return json of issues
     return Response(
         {f'{key}':val[0] for key,val in serializer.errors.items()},

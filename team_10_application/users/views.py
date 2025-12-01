@@ -8,6 +8,7 @@ from games.models import Game
 from games.serializers import GameSerializer
 from django.core.mail import send_mail
 from django.contrib.auth.hashers import check_password
+from publishers.models import Publisher
 
 from rest_framework_simplejwt.views import (
     TokenObtainPairView,

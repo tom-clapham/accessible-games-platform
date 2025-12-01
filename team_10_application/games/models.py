@@ -1,4 +1,5 @@
 from django.db import models
+from publishers.models import Publisher
 
 # Create your models here.
 class AccessibilityTag(models.Model):
@@ -25,7 +26,7 @@ class Game(models.Model):
     name = models.CharField(max_length=200)
     description = models.TextField()
     price = models.DecimalField(max_digits=4, decimal_places=2)
-    publisher = models.TextField()
+    publisher = models.ForeignKey(Publisher, on_delete=models.CASCADE)
     release_date = models.DateField()
 
     accessibility_tags = models.ManyToManyField(AccessibilityTag, related_name="games", blank=True)

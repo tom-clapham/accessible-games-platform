@@ -1,6 +1,7 @@
 from rest_framework.test import APITestCase
 from rest_framework import status
 from games.models import Game, GameClicks
+from publishers.models import Publisher
 from django.utils import timezone
 from django.urls import reverse
 from datetime import date
@@ -9,6 +10,7 @@ class DiscoverPageTests(APITestCase):
     @classmethod
     def setUpTestData(cls):
         cls.url = reverse('discover')
+        cls.publisher = Publisher.objects.create(name="Test Publisher", pending=False)
 
         today = timezone.now().date()
 
@@ -18,7 +20,7 @@ class DiscoverPageTests(APITestCase):
                 name=f"Game {i}",
                 description="A test game",
                 price=19.99,
-                publisher="Test Publisher",
+                publisher=cls.publisher,
                 # Increment release date for variety
                 release_date=date(2024, 1, 1) + timezone.timedelta(days=i), 
                 trending=False,
@@ -81,13 +83,14 @@ class DiscoverPageTests(APITestCase):
             self.assertGreaterEqual(click.date, today - timezone.timedelta(days=3))
 
     def test_on_sale_games_display(self):
+        self.publisher = Publisher.objects.create(name="Test Publisher", pending=False)
         # Create on-sale games
         for i in range(3):
             Game.objects.create(
                 name=f"On Sale Game {i}",
                 description="A test on-sale game",
                 price=9.99,
-                publisher="Test Publisher",
+                publisher=self.publisher,
                 release_date=date(2024, 1, 1),
                 trending=False,
                 on_sale=True
