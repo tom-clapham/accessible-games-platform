@@ -59,4 +59,8 @@ class ModeratorReviewReportView(APIView):
 
         serializer = ReportSerializer(report)
         return Response(serializer.data)
+    
+@permission_classes([IsModerator])
+class PublisherRequestsView(APIView):
+    pass
         
