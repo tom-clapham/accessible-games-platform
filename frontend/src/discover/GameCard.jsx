@@ -10,7 +10,7 @@ function GameCard({ game }) {
                             </div>
                             <div className="card_info">
                                 <h2 className="title">{game.name}</h2>
-                                <p>{game.price}</p>
+                                <p>£{game.price}</p>
                             </div>
                         </div>
     )

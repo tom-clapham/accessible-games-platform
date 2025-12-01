@@ -140,7 +140,11 @@ function Replies() {
                             <button className={styles.rpVoteBtn} onClick={(e) => downVote(item.id, idx, true)} style={item.userVote != null ? item.userVote ? null : {color: "red"} : null}>&darr;</button>
                             <img className={styles.rpCommentImg} src={comment_img}></img>
                             <p>{item.comments}</p>
-                            <img className={styles.reportImg} src={report_img}></img>
+                            <Link to={`/report/post/${item.id}`} onClick={(e) => { e.stopPropagation(); }}>
+                                <button className={styles.reportFlag} >
+                                    <img className={styles.reportImg} src={report_img} alt="Report Post"></img>
+                                </button>
+                            </Link>
                         </div>
             </div>
             </Fragment>
@@ -177,7 +181,9 @@ function Replies() {
                             <img className={styles.commentImg} src={comment_img}></img>
                             <p>{item.comments}</p>
                             <Link to={`/report/post/${item.id}`} onClick={(e) => { e.stopPropagation(); }}>
-                                <button>Report</button>
+                                <button className={styles.reportFlag} >
+                                    <img className={styles.reportImg} src={report_img} alt="Report Post"></img>
+                                </button>
                             </Link>
                         </div>
                     </div>

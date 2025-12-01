@@ -236,7 +236,7 @@ h2, h3 {
     width:25px;
     height: 19px;
     filter: invert(100%);
-    margin-left: 5px
+    margin-left: 5px;
 }
 
 .emptyReplies {
@@ -373,4 +373,16 @@ h2, h3 {
     border-radius: 50%;
     width: 50px;
     height: 50px;
+}
+
+.reportFlag {
+    all: unset;
+    border: none;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+}
+
+.reportFlag:hover {
+    filter: invert(27%) sepia(89%) saturate(7444%) hue-rotate(357deg) brightness(95%) contrast(101%);
 }

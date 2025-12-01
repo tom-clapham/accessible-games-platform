@@ -27,4 +27,5 @@ urlpatterns = [
     path('app/threads/', include('threads.urls')),
     path('app/games/', include('games.urls')),
     path('app/reports/', include('reports.urls')),
+    path('app/moderator/', include('moderator.urls')),
 ]
