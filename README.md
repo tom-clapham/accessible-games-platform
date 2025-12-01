@@ -38,9 +38,16 @@ Add the following:
 - ``GOOGLE_CLIENT_SECRET=your-google-client-secret``
 - ``HOST=localhost``
 
+## Automatic Setup (Batch Scripts)
+### Windows
+- setup_and_run.bat 
+
+### macOS / Linux
+- ./setup_and_run.sh
+
 ## Manual Setup 
 
-### Setting up virtual environment (windows)
+### Setting up virtual environment (Windows)
 - `python -m venv env`
 - `.\env\Scripts\activate`
 - `pip install -e .`
