@@ -95,9 +95,9 @@ function Reviews() {
         
     }
 
-    useEffect(() => {
-        console.log(parents)
-    }, [parents])
+    // useEffect(() => {
+    //     console.log(parents)
+    // }, [parents])
 
     const upVote = (id, idx) => {
         if (user) {
@@ -144,9 +144,9 @@ function Reviews() {
         <Fragment key={idx}>
         <div className={styles.vpBox}>
             <div className={styles.votesBox}>
-                <button className={styles.upVoteBtn} onClick={(e) => upVote(item.id, idx)} style={item.userVote != null ? item.userVote ? {color:"#00a6ff"} : null : null}>&uarr;</button>
-                <h3 className={styles.voteCount}>{item.votes}</h3>
-                <button className={styles.downVoteBtn} onClick={(e) => downVote(item.id, idx)} style={item.userVote != null ? item.userVote ? null : {color: "red"} : null}>&darr;</button>
+                <button data-testid='upvote-btn' className={styles.upVoteBtn} onClick={(e) => upVote(item.id, idx)} style={item.userVote != null ? item.userVote ? {color:"#00a6ff"} : null : null}>&uarr;</button>
+                <h3 data-testid='vote-count' className={styles.voteCount}>{item.votes}</h3>
+                <button data-testid='downvote-btn' className={styles.downVoteBtn} onClick={(e) => downVote(item.id, idx)} style={item.userVote != null ? item.userVote ? null : {color: "red"} : null}>&darr;</button>
             </div>
             <div className={styles.postBox} onClick={() => navigate(`/replies/${item.id}`)}>
                 <h2 className={styles.postTitle}>{item.title}</h2>
@@ -182,7 +182,7 @@ function Reviews() {
         <>
             <button className={styles.backBtn} onClick={() => navigate(`/gameprofile/${reviewId}`)}>Back</button>
             <h1 className={styles.gameName}>{game}</h1>
-            {user ? <button className={styles.newPost} onClick={() => setModal(true)}>&#10010;</button> : null}
+            {user ? <button data-testid='add-btn' className={styles.newPost} onClick={() => setModal(true)}>&#10010;</button> : null}
             {loading ? noGame ? (<h2 className={styles.loadingIcon}>Unfortunately, we don't have that here :/</h2>): (<h2 className={styles.loadingIcon}>Loading...</h2>) : null}
             
             {loading == false ? displayParents() : null}
