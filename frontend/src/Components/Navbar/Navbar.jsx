@@ -18,6 +18,9 @@ function Navbar(){
       const fetchInfo = async () => {
         const info = await user_info();
         setUser(info);
+        if(info.publisher != null){
+          console.log("OMG PUBLSHER NO WAY")
+        }
       }
       fetchInfo();
 
@@ -79,6 +82,8 @@ function Navbar(){
           window.location.reload();
       }
   }
+
+  console.log(user)
   
   return (
     <div>

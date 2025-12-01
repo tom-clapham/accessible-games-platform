@@ -46,8 +46,13 @@ const Publisher_Info = () => {
   return (
     <div className='p-container'>
       <div className='pi-info-container'>
+        <div className='pi-logo-text'>
+          <div className='pi-image-box'>
+            <img src={`http://localhost:8000${publisher.logo}`}></img>
+          </div>
           <h1 className='pi-info'>{publisher.name}<FaCheckCircle className='pc-verified-icon'/></h1>
-          <button className='pi-visit-website' onClick={() => handleURL(publisher.url)}>Visit Publisher Website</button>
+        </div>
+        <button className='pi-visit-website' onClick={() => handleURL(publisher.url)}>Visit Publisher Website</button>
       </div>
       <div className="pi-games-container">
           {games.map((game) => (
