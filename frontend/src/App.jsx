@@ -26,6 +26,7 @@ import PostsReport from './report/PostsReport.jsx'
 import Dashboard from './moderator/Dashboard.jsx'
 import VoiceController from './voice_navigation/VoiceController.jsx'
 import ModeratorReports from './moderator/ModeratorReports.jsx'
+import { Navigate } from 'react-router-dom';
 
 function App() {
   return (
@@ -35,7 +36,7 @@ function App() {
 
         <Routes>
           <Route element={<LayoutWithNav/>}>
-            <Route path="/" element={<Home/>}/>
+            <Route path="/" element={<Navigate to="/discover" replace />} />
             <Route path="/register/step_1" element={<Register_Stage_1/>}/>
             <Route path="/register/step_2" element={<Register_Stage_2/>}/>
             <Route path="/register/step_3" element={<Register_Stage_3/>}/>
