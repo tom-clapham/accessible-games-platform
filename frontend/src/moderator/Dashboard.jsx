@@ -23,6 +23,10 @@ function Dashboard() {
                 return;
             }
         })
+        .catch(error => {
+            
+            navigate('/discover');
+        });
 
 
 
