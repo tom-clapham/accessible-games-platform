@@ -177,6 +177,62 @@ describe("PostsReport Component", () => {
         expect(await screen.findByText("Invalid report. Please check your inputs.")).toBeInTheDocument();
     });
 
+    test("error message displayed if user only fills out report type", async () => {
+        // Mock user_info to return a logged-in user
+        api.user_info.mockResolvedValue({ id: 10, username: "username" });
+        // Create a mock post
+        axios.get.mockResolvedValue({ data: {
+            id: 1,
+            title: "Test Post",
+            message: "This is a test post content.",
+            userId: 2,
+            gameId: 3
+        } });
+        render(
+            <MemoryRouter>
+                <PostsReport />
+            </MemoryRouter>
+        );
+        // Simulate selecting a report type but not filling description
+        const dropdown = await screen.findByLabelText("Select A Report Type");
+        await userEvent.click(dropdown);
+        // select option
+        const option = await screen.findByText("Spam"); 
+        await userEvent.click(option);
+        const submitButton = await screen.findByRole("button", { name: "Submit Report" });
+        await userEvent.click(submitButton);
+        // Expected error message
+        expect(await screen.findByText("Invalid report. Please check your inputs.")).toBeInTheDocument();
+    });
+
+        test("error message displayed if user only fills out report description", async () => {
+        // Mock user_info to return a logged-in user
+        api.user_info.mockResolvedValue({ id: 10, username: "username" });
+        // Create a mock post
+        axios.get.mockResolvedValue({ data: {
+            id: 1,
+            title: "Test Post",
+            message: "This is a test post content.",
+            userId: 2,
+            gameId: 3
+        } });
+        render(
+            <MemoryRouter>
+                <PostsReport />
+            </MemoryRouter>
+        );
+        // Simulate writing a report description but not selecting a report type
+        const descriptionBox = await screen.findByPlaceholderText("Give a reason for your report...");
+        await userEvent.type(descriptionBox, "test");
+        
+        const submitButton = await screen.findByRole("button", { name: "Submit Report" });
+        await userEvent.click(submitButton);
+        // Expected error message
+        expect(await screen.findByText("Invalid report. Please check your inputs.")).toBeInTheDocument();
+    });
+
+
+
 });
 
 
