@@ -116,7 +116,67 @@ describe("PostsReport Component", () => {
         expect(backButton.closest("a")).toHaveAttribute("href", "/reviews/3");
         
     });
-});
 
+    test("success message is shown after submitting report", async () => {
+        // Mock user_info to return a logged-in user
+        api.user_info.mockResolvedValue({ id: 10, username: "username" });
+        // Create a mock post
+        axios.get.mockResolvedValue({ data: {
+            id: 1,
+            title: "Test Post",
+            message: "This is a test post content.",
+            userId: 2,
+            gameId: 3
+        } });
+
+        // Mocking a successful report submission
+        axios.post = vi.fn().mockResolvedValue({
+            data: { report_type: "INAPP", description:"description" }
+        
+        });
+        render(
+            <MemoryRouter>
+                <PostsReport />
+            </MemoryRouter>
+        );
+
+        // Simulate button click
+        const submitButton = await screen.findByRole("button", { name: "Submit Report" });
+        await userEvent.click(submitButton);
+        // Expected success message
+        expect(await screen.findByText("Report submitted successfully!")).toBeInTheDocument();
+    });
+
+    test("error message is shown if report is invalid", async () => {
+        // Mock user_info to return a logged-in user
+        api.user_info.mockResolvedValue({ id: 10, username: "username" });
+        // Create a mock post
+        axios.get.mockResolvedValue({ data: {
+            id: 1,
+            title: "Test Post",
+            message: "This is a test post content.",
+            userId: 2,
+            gameId: 3
+        } });
+        
+        // Mock an invalid report
+        axios.post = vi.fn().mockRejectedValue({
+            response: { data: { description: "Invalid report" } }
+        });
+
+        render(
+            <MemoryRouter>
+                <PostsReport />
+            </MemoryRouter>
+        );
+
+        // simulate button click
+        const submitButton = await screen.findByRole("button", { name: "Submit Report" });
+        await userEvent.click(submitButton);
+        // Expected error message
+        expect(await screen.findByText("Invalid report. Please check your inputs.")).toBeInTheDocument();
+    });
+
+});
 
 
