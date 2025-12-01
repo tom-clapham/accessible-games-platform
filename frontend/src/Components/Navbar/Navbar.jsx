@@ -18,9 +18,6 @@ function Navbar(){
       const fetchInfo = async () => {
         const info = await user_info();
         setUser(info);
-        if(info.publisher != null){
-          console.log("OMG PUBLSHER NO WAY")
-        }
       }
       fetchInfo();
 
@@ -99,7 +96,11 @@ function Navbar(){
       
         <SearchBar/>
         <ul className='login'>
-          {user ? <li className='user_profile' onClick={showHideProfile}>{user.first_name.charAt(0).toUpperCase() + user.last_name.charAt(0).toUpperCase()}
+          {user ? <li className='user_profile' onClick={showHideProfile}>{user.publisher == null ? user.first_name.charAt(0).toUpperCase() + user.last_name.charAt(0).toUpperCase() : 
+            <div>
+                <img src={user.publisher.logo} alt="User logo" className="avatar-img" />
+            </div>}
+            
             </li> : <li className='login-link' onClick={login_redirect}>Sign in<MdAccountCircle className='profile_signin'/></li>}
         </ul>
       </div>
@@ -110,7 +111,7 @@ function Navbar(){
         </div>
         <div className='account-info'>
           <div className='initials-container'> 
-            {user ? <div className='initials'>{user.first_name.charAt(0).toUpperCase() + user.last_name.charAt(0).toUpperCase()}</div> : <div></div>}
+            {user ? <div className='initials'>{user.publisher == null ? user.first_name.charAt(0).toUpperCase() + user.last_name.charAt(0).toUpperCase() : <img src={user.publisher.logo} alt="User logo" className="avatar-img" />}</div> : <div></div>}
           </div>
           <div>
             <div className='user-info'></div>
