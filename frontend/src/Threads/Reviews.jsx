@@ -187,7 +187,6 @@ function Reviews() {
             
             {loading == false ? displayParents() : null}
             <div id='modal-overlay' className={modal ? styles.modalBox : styles.modalHidden} onClick={() => setModal(false)}>
-                {/* need to get user details from JWT token? */}
                 <div className={styles.modalActual} onClick={e => e.stopPropagation()}>
                     <img className={styles.clostModalBtn} src={close_modal} onClick={() => setModal(false)}/>
                     <div className={styles.titleMessage}>
