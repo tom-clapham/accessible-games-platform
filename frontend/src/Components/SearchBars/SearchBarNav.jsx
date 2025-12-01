@@ -14,7 +14,6 @@ function SearchBar(){
     const name = setTimeout(() => {
       axios.get("http://localhost:8000/app/games/search", {params: {"name": userSearch}})
       .then(res => {
-        console.log(res.data)
         setGames(res.data)})
       .catch(err=>{console.log(err)})
       console.log(userSearch)
@@ -31,7 +30,7 @@ function SearchBar(){
   return (
     <>
     <div className='search-container'>
-      <input type='text' className='search-input' placeholder='Search apps, games and more...' onChange={(e) => setUserSearch(e.target.value)} onInput={() => initialDispaly()}/>
+      <input type='text' className='search-input' placeholder='Search apps, games and more...' onChange={(e) => setUserSearch(e.target.value)} value={userSearch}/>
       <div className='information'>{games.length > 0 ? games.map((game, idx) => (
         <>
         <div className='search-item' key={idx} onMouseDown={(e) => e.preventDefault()} onClick={() => {
