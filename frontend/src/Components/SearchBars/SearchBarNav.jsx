@@ -34,7 +34,9 @@ function SearchBar(){
       <input type='text' className='search-input' placeholder='Search apps, games and more...' onChange={(e) => setUserSearch(e.target.value)} onInput={() => initialDispaly()}/>
       <div className='information'>{games.length > 0 ? games.map((game, idx) => (
         <>
-        <div className='search-item' key={idx} onMouseDown={(e) => e.preventDefault()} onClick={() => navigate(`/gameprofile/${game.profile}`)}>
+        <div className='search-item' key={idx} onMouseDown={(e) => e.preventDefault()} onClick={() => {
+            navigate(`/gameprofile/${game.profile}`)
+            window.location.reload()}}>
           <img 
                 src={game.thumbnail_url}
                 alt={`${game.name} cover`}
