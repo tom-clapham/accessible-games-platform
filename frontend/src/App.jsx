@@ -36,7 +36,7 @@ function App() {
 
         <Routes>
           <Route element={<LayoutWithNav/>}>
-            <Route path="/" element={<Navigate to="/discover" replace />} />
+            <Route path="/" element={<Discover/>}/>
             <Route path="/register/step_1" element={<Register_Stage_1/>}/>
             <Route path="/register/step_2" element={<Register_Stage_2/>}/>
             <Route path="/register/step_3" element={<Register_Stage_3/>}/>
