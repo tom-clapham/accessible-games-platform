@@ -190,10 +190,10 @@ function Reviews() {
                 <div className={styles.modalActual} onClick={e => e.stopPropagation()}>
                     <img className={styles.clostModalBtn} src={close_modal} onClick={() => setModal(false)}/>
                     <div className={styles.titleMessage}>
-                        <input className={styles.parentTitle} placeholder='Create title...' value={newTitle} onChange={titleChange}/>
-                        <textarea className={styles.parentMessage} value={newMessage} placeholder='Write your message here...' onChange={messageChange}></textarea>
+                        <input data-testid='modal-input' className={styles.parentTitle} placeholder='Create title...' value={newTitle} onChange={titleChange}/>
+                        <textarea data-testid='modal-text-area' className={styles.parentMessage} value={newMessage} placeholder='Write your message here...' onChange={messageChange}></textarea>
                     </div>
-                    <button className={styles.postButton} onClick={() => createNewPost()}>Post</button>
+                    <button data-testid='modal-post' className={styles.postButton} onClick={() => createNewPost()}>Post</button>
                 </div>
             </div>
         </>
