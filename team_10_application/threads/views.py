@@ -10,10 +10,6 @@ from django.http import JsonResponse
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.decorators import permission_classes
 
-class PostsListCreate(generics.ListCreateAPIView): # This is a class based view
-    queryset = Posts.objects.all()
-    serializer_class = PostsSerializer
-
 @api_view()
 @permission_classes([IsAuthenticated])
 def getUserPosts(request):
@@ -166,7 +162,6 @@ def getThread(request, post_id):
                 )
                 .values(
                     'id',
-                    'title',
                     'message',
                     'votes',
                     'comments',
@@ -206,7 +201,6 @@ def getThread(request, post_id):
         .filter(parent=post_id)
         .values(
             'id',
-            'title',
             'message',
             'votes',
             'comments',
