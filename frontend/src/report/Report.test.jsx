@@ -1,8 +1,8 @@
 import { render, screen, waitFor, fireEvent, act } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { MemoryRouter, Route, Routes } from "react-router-dom";
-import PostsReport from "./PostsReport";
-import ReportForm from "./ReportForm";
+import PostsReport from "./PostsReport.jsx";
+import ReportForm from "./ReportForm.jsx";
 import axios from "axios";
 import { afterEach, describe, expect, vi } from "vitest";
 
@@ -112,23 +112,12 @@ describe("PostsReport Component", () => {
         // Simulate clicking the back button
         const backButton = await screen.findByRole("button", { name: "Back" });
         await userEvent.click(backButton);
-        // Navigate to /reviews/3 since the post's gameId is 3
+        // Navigate to /reviews/3 since the post has gameId of 3
         expect(backButton.closest("a")).toHaveAttribute("href", "/reviews/3");
         
     });
 
     test("success message is shown after submitting report", async () => {
-        // Mock user_info to return a logged-in user
-        api.user_info.mockResolvedValue({ id: 10, username: "username" });
-        // Create a mock post
-        axios.get.mockResolvedValue({ data: {
-            id: 1,
-            title: "Test Post",
-            message: "This is a test post content.",
-            userId: 2,
-            gameId: 3
-        } });
-
         // Mocking a successful report submission
         axios.post = vi.fn().mockResolvedValue({
             data: { report_type: "INAPP", description:"description" }
@@ -148,16 +137,6 @@ describe("PostsReport Component", () => {
     });
 
     test("error message is shown if report is invalid", async () => {
-        // Mock user_info to return a logged-in user
-        api.user_info.mockResolvedValue({ id: 10, username: "username" });
-        // Create a mock post
-        axios.get.mockResolvedValue({ data: {
-            id: 1,
-            title: "Test Post",
-            message: "This is a test post content.",
-            userId: 2,
-            gameId: 3
-        } });
         
         // Mock an invalid report
         axios.post = vi.fn().mockRejectedValue({
@@ -178,16 +157,6 @@ describe("PostsReport Component", () => {
     });
 
     test("error message displayed if user only fills out report type", async () => {
-        // Mock user_info to return a logged-in user
-        api.user_info.mockResolvedValue({ id: 10, username: "username" });
-        // Create a mock post
-        axios.get.mockResolvedValue({ data: {
-            id: 1,
-            title: "Test Post",
-            message: "This is a test post content.",
-            userId: 2,
-            gameId: 3
-        } });
         render(
             <MemoryRouter>
                 <PostsReport />
@@ -205,17 +174,7 @@ describe("PostsReport Component", () => {
         expect(await screen.findByText("Invalid report. Please check your inputs.")).toBeInTheDocument();
     });
 
-        test("error message displayed if user only fills out report description", async () => {
-        // Mock user_info to return a logged-in user
-        api.user_info.mockResolvedValue({ id: 10, username: "username" });
-        // Create a mock post
-        axios.get.mockResolvedValue({ data: {
-            id: 1,
-            title: "Test Post",
-            message: "This is a test post content.",
-            userId: 2,
-            gameId: 3
-        } });
+    test("error message displayed if user only fills out report description", async () => {
         render(
             <MemoryRouter>
                 <PostsReport />
@@ -230,6 +189,10 @@ describe("PostsReport Component", () => {
         // Expected error message
         expect(await screen.findByText("Invalid report. Please check your inputs.")).toBeInTheDocument();
     });
+
+
+
+
 
 
 
