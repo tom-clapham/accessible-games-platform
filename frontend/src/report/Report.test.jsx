@@ -1,0 +1,201 @@
+import { render, screen, waitFor, fireEvent, act } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
+import { MemoryRouter, Route, Routes } from "react-router-dom";
+import PostsReport from "./PostsReport.jsx";
+import ReportForm from "./ReportForm.jsx";
+import axios from "axios";
+import { afterEach, describe, expect, vi } from "vitest";
+
+
+vi.mock("axios");
+
+// Mock useNavigate function (used to redirect to Log In page)
+const mockNavigate = vi.fn();
+vi.mock("react-router-dom", async () => {
+  const actual = await vi.importActual("react-router-dom");
+  return {
+    ...actual,
+    useNavigate: () => mockNavigate,
+    useParams: () => ({ postId: "1" }),
+  };
+});
+
+
+// Mock the OpenLogin function that pops up the Log In page
+vi.mock("../Login/Login.js", () => ({
+  OpenLogin: vi.fn(),
+}));
+
+// Mock user_info
+vi.mock("../endpoints/api.js", () => ({
+  user_info: vi.fn(),
+}));
+
+import * as api from "../endpoints/api.js";
+
+describe("PostsReport Component", () => {
+    afterEach(() => {
+        vi.clearAllMocks();
+    });
+
+    test("report form shows correct titles and buttons", async () => {
+        
+        // Create a mock post
+        axios.get.mockResolvedValue({ data: {
+            id: 1,
+            title: "Test Post",
+            message: "This is a test post content.",
+            userId: 2,
+            gameId: 3
+        } });
+
+        render(
+            <MemoryRouter>
+                <PostsReport />
+            </MemoryRouter>
+        );
+
+        expect(await screen.findByText("Report For Post: Test Post")).toBeInTheDocument();
+        expect(await screen.findByRole("button", { name: "Submit Report" })).toBeInTheDocument();
+        expect(await screen.findByRole("button", { name: "Back" })).toBeInTheDocument();
+
+    });
+
+    test("submitting report posts correct information", async () => {
+        // Mock user_info to return a logged-in user
+        api.user_info.mockResolvedValue({ id: 10, username: "username" });
+
+        // Create a mock post
+        axios.get.mockResolvedValue({ data: {
+            id: 1,
+            title: "Test Post",
+            message: "This is a test post content.",
+            userId: 2,
+            gameId: 3
+        } });
+
+        render(
+            <MemoryRouter>
+                <PostsReport />
+            </MemoryRouter>
+        );
+
+        await act(async () => {
+            await axios.post(
+            `http://localhost:8000/app/reports/report/post/1/`,
+            { report_type: "INAPP", description:"description" },
+            { withCredentials: true }
+            );
+        });
+
+        expect(axios.post).toHaveBeenCalledWith(
+            `http://localhost:8000/app/reports/report/post/1/`,
+            { report_type: "INAPP", description:"description" },
+            { withCredentials: true }
+        );
+    });
+
+    test("back button navigates to previous page", async () => {
+        // Create a mock post
+        axios.get.mockResolvedValue({ data: {
+            id: 1,
+            title: "Test Post",
+            message: "This is a test post content.",
+            userId: 2,
+            gameId: 3
+        } });
+        render(
+            <MemoryRouter>
+                <PostsReport />
+            </MemoryRouter>
+        );
+        // Simulate clicking the back button
+        const backButton = await screen.findByRole("button", { name: "Back" });
+        await userEvent.click(backButton);
+        // Navigate to /reviews/3 since the post has gameId of 3
+        expect(backButton.closest("a")).toHaveAttribute("href", "/reviews/3");
+        
+    });
+
+    test("success message is shown after submitting report", async () => {
+        // Mocking a successful report submission
+        axios.post = vi.fn().mockResolvedValue({
+            data: { report_type: "INAPP", description:"description" }
+        
+        });
+        render(
+            <MemoryRouter>
+                <PostsReport />
+            </MemoryRouter>
+        );
+
+        // Simulate button click
+        const submitButton = await screen.findByRole("button", { name: "Submit Report" });
+        await userEvent.click(submitButton);
+        // Expected success message
+        expect(await screen.findByText("Report submitted successfully!")).toBeInTheDocument();
+    });
+
+    test("error message is shown if report is invalid", async () => {
+        
+        // Mock an invalid report
+        axios.post = vi.fn().mockRejectedValue({
+            response: { data: { description: "Invalid report" } }
+        });
+
+        render(
+            <MemoryRouter>
+                <PostsReport />
+            </MemoryRouter>
+        );
+
+        // simulate button click
+        const submitButton = await screen.findByRole("button", { name: "Submit Report" });
+        await userEvent.click(submitButton);
+        // Expected error message
+        expect(await screen.findByText("Invalid report. Please check your inputs.")).toBeInTheDocument();
+    });
+
+    test("error message displayed if user only fills out report type", async () => {
+        render(
+            <MemoryRouter>
+                <PostsReport />
+            </MemoryRouter>
+        );
+        // Simulate selecting a report type but not filling description
+        const dropdown = await screen.findByLabelText("Select A Report Type");
+        await userEvent.click(dropdown);
+        // select option
+        const option = await screen.findByText("Spam"); 
+        await userEvent.click(option);
+        const submitButton = await screen.findByRole("button", { name: "Submit Report" });
+        await userEvent.click(submitButton);
+        // Expected error message
+        expect(await screen.findByText("Invalid report. Please check your inputs.")).toBeInTheDocument();
+    });
+
+    test("error message displayed if user only fills out report description", async () => {
+        render(
+            <MemoryRouter>
+                <PostsReport />
+            </MemoryRouter>
+        );
+        // Simulate writing a report description but not selecting a report type
+        const descriptionBox = await screen.findByPlaceholderText("Give a reason for your report...");
+        await userEvent.type(descriptionBox, "test");
+        
+        const submitButton = await screen.findByRole("button", { name: "Submit Report" });
+        await userEvent.click(submitButton);
+        // Expected error message
+        expect(await screen.findByText("Invalid report. Please check your inputs.")).toBeInTheDocument();
+    });
+
+
+
+
+
+
+
+});
+
+
