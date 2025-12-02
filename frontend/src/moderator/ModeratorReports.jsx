@@ -8,12 +8,14 @@ import { Button } from 'primereact/button';
 import { ButtonGroup } from 'primereact/buttongroup';
 import { Divider } from 'primereact/divider';
 
+import {user_info} from '../endpoints/api.js';
 import axios from 'axios';
 import { InputTextarea } from 'primereact/inputtextarea';
-
+import { useNavigate } from 'react-router-dom';
 
 function ModeratorReports() {
 
+    const navigate = useNavigate();
     const [reports, setReports] = useState([]);
     const [report, setReport] = useState(null);
     const[loading, setLoading] = useState(true);
@@ -26,6 +28,18 @@ function ModeratorReports() {
 
     // Get all reports
     useEffect(() => {
+
+        user_info()
+        .then(user => {
+            if(!user.is_moderator){
+                navigate('/discover');
+                return;
+            }
+        })
+        .catch(error => {
+            
+            navigate('/discover');
+        });
         axios.get('http://localhost:8000/app/moderator/reports/', {
             withCredentials: true,
         })

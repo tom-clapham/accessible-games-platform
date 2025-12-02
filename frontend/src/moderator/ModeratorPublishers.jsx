@@ -8,12 +8,15 @@ import { Button } from 'primereact/button';
 import { ButtonGroup } from 'primereact/buttongroup';
 import { Divider } from 'primereact/divider';
 
+import {user_info} from '../endpoints/api.js';
 import axios from 'axios';
 import { InputTextarea } from 'primereact/inputtextarea';
+import { useNavigate } from 'react-router-dom';
 
 
 function ModeratorPublishers() {
 
+    const navigate = useNavigate();
     const [publishers, setPublishers] = useState([]);
     const [publisher, setPublisher] = useState(null);
     const[loading, setLoading] = useState(true);
@@ -23,6 +26,18 @@ function ModeratorPublishers() {
 
     // Get all publisher requests
     useEffect(() => {
+
+        user_info()
+        .then(user => {
+            if(!user.is_moderator){
+                navigate('/discover');
+                return;
+            }
+        })
+        .catch(error => {
+            
+            navigate('/discover');
+        });
         axios.get('http://localhost:8000/app/moderator/publisher-requests/', 
             { withCredentials: true })
             .then(response => {

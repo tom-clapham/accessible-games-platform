@@ -22,7 +22,7 @@ function PublisherNewGame() {
     const [displayPrice, setDisplayPrice] = useState('');
     const [releaseDate, setReleaseDate] = useState();
     const [preview, setPreview] = useState(false);
-    const [publisher, setPublisher] = useState("vlalsgepogep");
+    const [publisher, setPublisher] = useState([]);
     const [selectedAccessibilityTags, setSelectedAccessibilityTags] = useState([]);
     const [selectedGenreTags, setSelectedGenreTags] = useState([]);
     const [selectedPlatformTags, setSelectedPlatformTags] = useState([]);
@@ -67,7 +67,9 @@ function PublisherNewGame() {
     useEffect(() => {
         const fetchInfo = async () => {
         const info = await user_info();
+        console.log("PUBLISHER: ", info.publisher)
         setPublisher(info.publisher);
+        
         }
         fetchInfo();
     }, []);
@@ -232,7 +234,7 @@ function PublisherNewGame() {
                                 
                                 <div className="gp-info-row-top">
                                     <div className="gp-info-label">PUBLISHER</div>
-                                    <div className="gp-info-value">{publisher}</div>
+                                    <div className="gp-info-value">{publisher.name}</div>
                                 </div>
 
                                 <div className="gp-info-row">

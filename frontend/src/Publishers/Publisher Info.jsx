@@ -60,6 +60,9 @@ const Publisher_Info = () => {
 
   if (loading) return <p>Loading...</p>;
 
+  console.log("User:", user);
+  console.log("Pending type:", typeof user?.publisher?.pending, user?.publisher?.pending);
+
   return (
     <div className='p-container'>
       <div className='pi-info-container'>
@@ -82,8 +85,16 @@ const Publisher_Info = () => {
           ))}
       </div>
       <div className='pi-button-container'>
-          {user && user.publisher ? <button className="pi-add-game" onClick={handleAddGame}>Add game</button>
-          :  <button className="pi-add-game" style={{ backgroundColor: 'grey' }} disabled>Add game</button>}
+
+          {!user ? (
+              <p>No user information available.</p>
+          ) : user.publisher && user.publisher.pending === false ? (
+              <button className="pi-add-game" onClick={handleAddGame}>Add game</button>
+          ) : (
+              <p>You are currently awaiting moderator approval... Check back soon.</p>
+          )}
+
+          
           {/* {successAdd &&(<div className="gp-success">Successfully added to favourites.</div>)}
           {successRemove &&(<div className="gp-success">Successfully removed from favourites.</div>)} */}
       </div>
