@@ -96,3 +96,5 @@ Add the following:
 Contact the team:
 - khand6@cardiff.ac.uk - Daiyan
 - wodkiewiczs@cardiff.ac.uk - Szymon
+- webstero1@cardiff.ac.uk - Oscar
+- claphamt@cardiff.ac.uk - Tom
