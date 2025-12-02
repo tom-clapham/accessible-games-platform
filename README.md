@@ -38,6 +38,8 @@ Add the following:
 - ``GOOGLE_CLIENT_SECRET=your-google-client-secret``
 - ``HOST=localhost``
 
+Find the SECRET_KEY, GOOGLE_CLIENT_ID and GOOGLE_CLIENT_SECRET variables in the project's Settings -> CI/CD -> Variables
+
 ## Automatic Setup (Batch Scripts)
 ### Windows
 - setup_and_run.bat 
@@ -54,7 +56,7 @@ Add the following:
 
 #### Setting up Django server
 - `cd team_10_application`
-- input settings into .env file - ensure that the `DB_NAME` variable is based on a real schema
+- * Input settings into .env file - ensure that the `DB_NAME` variable is based on your real schema name.
 - `python manage.py migrate`
 - `python manage.py runserver`
 
