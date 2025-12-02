@@ -7,6 +7,8 @@ import comment_img from '../assets/chat.png';
 import report_img from '../assets/red-flag.png'; 
 import close_modal from '../assets/delete.png';
 
+import { Link } from 'react-router-dom';
+
 
 function Reviews() {
     const { reviewId } = useParams();
@@ -28,6 +30,7 @@ function Reviews() {
         // console.log(user)
         axios.get(`http://localhost:8000/app/threads/reviews/${reviewId}/`, {params: user ? {"userEmail": user.email} : {}})
         .then(res => {
+            console.log(res)
             if (!Number.isInteger(res.data)) {
             setParents(res.data.parents)
             setGame(res.data.game)
@@ -141,9 +144,9 @@ function Reviews() {
         <Fragment key={idx}>
         <div className={styles.vpBox}>
             <div className={styles.votesBox}>
-                <button className={styles.voteBtn} onClick={(e) => upVote(item.id, idx)} style={item.userVote != null ? item.userVote ? {color:"#00a6ff"} : null : null}>&uarr;</button>
-                <h3 className={styles.voteCount}>{item.votes}</h3>
-                <button className={styles.voteBtn} onClick={(e) => downVote(item.id, idx)} style={item.userVote != null ? item.userVote ? null : {color: "red"} : null}>&darr;</button>
+                <button data-testid='upvote-btn' className={styles.upVoteBtn} onClick={(e) => upVote(item.id, idx)} style={item.userVote != null ? item.userVote ? {color:"#00a6ff"} : null : null}>&uarr;</button>
+                <h3 data-testid='vote-count' className={styles.voteCount}>{item.votes}</h3>
+                <button data-testid='downvote-btn' className={styles.downVoteBtn} onClick={(e) => downVote(item.id, idx)} style={item.userVote != null ? item.userVote ? null : {color: "red"} : null}>&darr;</button>
             </div>
             <div className={styles.postBox} onClick={() => navigate(`/replies/${item.id}`)}>
                 <h2 className={styles.postTitle}>{item.title}</h2>
@@ -164,7 +167,11 @@ function Reviews() {
                     })}</p>
                     <img className={styles.commentImg} src={comment_img}></img>
                     <p>{item.comments}</p>
-                    <img className={styles.reportImg} src={report_img}></img>
+                    <Link to={`/report/post/${item.id}`} onClick={(e) => { e.stopPropagation(); }}>
+                        <button className={styles.reportFlag} >
+                            <img className={styles.reportImg} src={report_img} alt="Report Post"></img>
+                        </button>
+                    </Link>
                 </div>
             </div>
         </div>
@@ -175,19 +182,18 @@ function Reviews() {
         <>
             <button className={styles.backBtn} onClick={() => navigate(`/gameprofile/${reviewId}`)}>Back</button>
             <h1 className={styles.gameName}>{game}</h1>
-            {user ? <button className={styles.newPost} onClick={() => setModal(true)}>&#10010;</button> : null}
+            {user ? <button data-testid='add-btn' className={styles.newPost} onClick={() => setModal(true)}>&#10010;</button> : null}
             {loading ? noGame ? (<h2 className={styles.loadingIcon}>Unfortunately, we don't have that here :/</h2>): (<h2 className={styles.loadingIcon}>Loading...</h2>) : null}
             
             {loading == false ? displayParents() : null}
             <div id='modal-overlay' className={modal ? styles.modalBox : styles.modalHidden} onClick={() => setModal(false)}>
-                {/* need to get user details from JWT token? */}
                 <div className={styles.modalActual} onClick={e => e.stopPropagation()}>
                     <img className={styles.clostModalBtn} src={close_modal} onClick={() => setModal(false)}/>
                     <div className={styles.titleMessage}>
-                        <input className={styles.parentTitle} placeholder='Create title...' value={newTitle} onChange={titleChange}/>
-                        <textarea className={styles.parentMessage} value={newMessage} placeholder='Write your message here...' onChange={messageChange}></textarea>
+                        <input data-testid='modal-input' className={styles.parentTitle} placeholder='Create title...' value={newTitle} onChange={titleChange}/>
+                        <textarea data-testid='modal-text-area' className={styles.parentMessage} value={newMessage} placeholder='Write your message here...' onChange={messageChange}></textarea>
                     </div>
-                    <button className={styles.postButton} onClick={() => createNewPost()}>Post</button>
+                    <button data-testid='modal-post' className={styles.postButton} onClick={() => createNewPost()}>Post</button>
                 </div>
             </div>
         </>

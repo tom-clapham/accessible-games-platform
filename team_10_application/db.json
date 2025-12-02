@@ -113,7 +113,7 @@
     "fields": {
       "name": "F1 25",
       "description": "Leave your mark on the world of racing in F1® 25, the official video game of the 2025 FIA Formula One World Championship™, featuring a revamped My Team mode, the thrilling third chapter of Braking Point, and more!",
-      "publisher": "Electronics Arts",
+      "publisher": 35,
       "price": 49.99,
       "release_date": "2025-05-30",
       "thumbnail_url": "https://upload.wikimedia.org/wikipedia/en/thumb/9/9e/F1_25_cover_art.jpg/250px-F1_25_cover_art.jpg",
@@ -132,7 +132,7 @@
     "fields": {
       "name": "Elden Ring",
       "description": "Open-world action RPG set in the Lands Between where you become the Tarnished and face punishing bosses.",
-      "publisher": "Bandai Namco Entertainment",
+      "publisher": 22,
       "price": 59.99,
       "release_date": "2022-02-25",
       "thumbnail_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1245620/capsule_616x353.jpg?t=1748630546",
@@ -150,7 +150,7 @@
     "fields": {
       "name": "Baldur's Gate 3",
       "description": "Story-rich party-based RPG set in the Dungeons & Dragons universe with deep choices and turn-based combat.",
-      "publisher": "Larian Studios",
+      "publisher": 50,
       "price": 59.99,
       "release_date": "2023-08-03",
       "thumbnail_url": "https://upload.wikimedia.org/wikipedia/en/1/12/Baldur%27s_Gate_3_cover_art.jpg",
@@ -168,7 +168,7 @@
     "fields": {
       "name": "Cyberpunk 2077",
       "description": "First-person RPG set in Night City where you play as V, a mercenary chasing immortality in a neon dystopia.",
-      "publisher": "CD Projekt RED",
+      "publisher": 1,
       "price": 39.99,
       "release_date": "2020-12-10",
       "thumbnail_url": "https://upload.wikimedia.org/wikipedia/en/9/9f/Cyberpunk_2077_box_art.jpg",
@@ -186,7 +186,7 @@
     "fields": {
       "name": "The Witcher 3: Wild Hunt",
       "description": "Open-world fantasy RPG where monster hunter Geralt searches for his adopted daughter amid a continent at war.",
-      "publisher": "CD Projekt RED",
+      "publisher": 1,
       "price": 29.99,
       "release_date": "2015-05-19",
       "thumbnail_url": "https://image.api.playstation.com/vulcan/ap/rnd/202211/0711/kh4MUIuMmHlktOHar3lVl6rY.png",
@@ -204,7 +204,7 @@
     "fields": {
       "name": "Red Dead Redemption 2",
       "description": "Epic Western adventure following Arthur Morgan and the Van der Linde gang across a dying frontier.",
-      "publisher": "Rockstar Games",
+      "publisher": 2,
       "price": 39.99,
       "release_date": "2018-10-26",
       "thumbnail_url": "https://image.api.playstation.com/cdn/UP1004/CUSA03041_00/Hpl5MtwQgOVF9vJqlfui6SDB5Jl4oBSq.png",
@@ -222,7 +222,7 @@
     "fields": {
       "name": "Grand Theft Auto V",
       "description": "Open-world crime sandbox in Los Santos featuring three playable protagonists and a massive online mode.",
-      "publisher": "Rockstar Games",
+      "publisher": 2,
       "price": 29.99,
       "release_date": "2013-09-17",
       "thumbnail_url": "https://upload.wikimedia.org/wikipedia/en/a/a5/Grand_Theft_Auto_V.png",
@@ -240,7 +240,7 @@
     "fields": {
       "name": "The Legend of Zelda: Tears of the Kingdom",
       "description": "Action-adventure set above and below Hyrule where Link uses new powers to battle a spreading gloom.",
-      "publisher": "Nintendo",
+      "publisher": 3,
       "price": 59.99,
       "release_date": "2023-05-12",
       "thumbnail_url": "https://upload.wikimedia.org/wikipedia/en/f/fb/The_Legend_of_Zelda_Tears_of_the_Kingdom_cover.jpg",
@@ -258,7 +258,7 @@
     "fields": {
       "name": "God of War Ragnar\u00f6k",
       "description": "Kratos and Atreus journey across the Nine Realms as the foretold Ragnar\u00f6k looms over Norse mythology.",
-      "publisher": "Sony Interactive Entertainment",
+      "publisher": 19,
       "price": 59.99,
       "release_date": "2022-11-09",
       "thumbnail_url": "https://upload.wikimedia.org/wikipedia/en/e/ee/God_of_War_Ragnar%C3%B6k_cover.jpg",
@@ -276,7 +276,7 @@
     "fields": {
       "name": "Horizon Forbidden West",
       "description": "Aloy travels to the Forbidden West to uncover the source of a deadly red blight in a lush open world.",
-      "publisher": "Sony Interactive Entertainment",
+      "publisher": 19,
       "price": 49.99,
       "release_date": "2022-02-18",
       "thumbnail_url": "https://upload.wikimedia.org/wikipedia/en/thumb/6/69/Horizon_Forbidden_West_cover_art.jpg/250px-Horizon_Forbidden_West_cover_art.jpg",
@@ -294,7 +294,7 @@
     "fields": {
       "name": "Marvel's Spider-Man 2",
       "description": "Peter Parker and Miles Morales swing through New York in a dual-protagonist superhero adventure.",
-      "publisher": "Sony Interactive Entertainment",
+      "publisher": 19,
       "price": 69.99,
       "release_date": "2023-10-20",
       "thumbnail_url": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTj0Fz1X64flpoUaSzW6s78zrISiQEPkjZc-Lzx7TyD3l1MTXFx",
@@ -312,7 +312,7 @@
     "fields": {
       "name": "Hades",
       "description": "Fast-paced roguelike where you battle out of the Greek underworld as Zagreus, son of Hades.",
-      "publisher": "Supergiant Games",
+      "publisher": 4,
       "price": 24.99,
       "release_date": "2020-09-17",
       "thumbnail_url": "https://upload.wikimedia.org/wikipedia/en/c/cc/Hades_cover_art.jpg",
@@ -330,7 +330,7 @@
     "fields": {
       "name": "Stardew Valley",
       "description": "Relaxing farming sim where you restore a run-down farm, befriend villagers and explore mines.",
-      "publisher": "ConcernedApe",
+      "publisher": 5,
       "price": 13.99,
       "release_date": "2016-02-26",
       "thumbnail_url": "https://upload.wikimedia.org/wikipedia/en/f/fd/Logo_of_Stardew_Valley.png",
@@ -348,7 +348,7 @@
     "fields": {
       "name": "Hollow Knight",
       "description": "Metroidvania set in the ruined insect kingdom of Hallownest, full of secrets and tough bosses.",
-      "publisher": "Team Cherry",
+      "publisher": 6,
       "price": 14.99,
       "release_date": "2017-02-24",
       "thumbnail_url": "https://upload.wikimedia.org/wikipedia/en/thumb/0/04/Hollow_Knight_first_cover_art.webp/250px-Hollow_Knight_first_cover_art.webp.png",
@@ -366,7 +366,7 @@
     "fields": {
       "name": "Celeste",
       "description": "Precision platformer about climbing a mountain while confronting anxiety and self-doubt.",
-      "publisher": "Matt Makes Games",
+      "publisher": 7,
       "price": 19.99,
       "release_date": "2018-01-25",
       "thumbnail_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Celeste_box_art_full.png/250px-Celeste_box_art_full.png",
@@ -384,7 +384,7 @@
     "fields": {
       "name": "Minecraft",
       "description": "Sandbox building game where you mine resources, craft tools and create in a blocky world.",
-      "publisher": "Mojang Studios",
+      "publisher": 8,
       "price": 19.99,
       "release_date": "2011-11-18",
       "thumbnail_url": "https://upload.wikimedia.org/wikipedia/en/b/b6/Minecraft_2024_cover_art.png",
@@ -402,7 +402,7 @@
     "fields": {
       "name": "Sekiro: Shadows Die Twice",
       "description": "Stealth-action adventure set in Sengoku Japan where a shinobi seeks revenge and redemption.",
-      "publisher": "Activision",
+      "publisher": 9,
       "price": 39.99,
       "release_date": "2019-03-22",
       "thumbnail_url": "https://upload.wikimedia.org/wikipedia/en/6/6e/Sekiro_art.jpg",
@@ -420,7 +420,7 @@
     "fields": {
       "name": "Resident Evil 4",
       "description": "Survival horror remake where Leon S. Kennedy infiltrates a rural European village to rescue the president's daughter.",
-      "publisher": "Capcom",
+      "publisher": 10,
       "price": 59.99,
       "release_date": "2023-03-24",
       "thumbnail_url": "https://upload.wikimedia.org/wikipedia/en/d/df/Resident_Evil_4_remake_cover_art.jpg",
@@ -438,7 +438,7 @@
     "fields": {
       "name": "Monster Hunter: World",
       "description": "Co-op action RPG where you track and hunt colossal creatures in sprawling ecosystems.",
-      "publisher": "Capcom",
+      "publisher": 10,
       "price": 29.99,
       "release_date": "2018-01-26",
       "thumbnail_url": "https://upload.wikimedia.org/wikipedia/en/thumb/1/1b/Monster_Hunter_World_cover_art.jpg/250px-Monster_Hunter_World_cover_art.jpg",
@@ -456,7 +456,7 @@
     "fields": {
       "name": "Diablo IV",
       "description": "Dark action RPG where you battle the forces of Lilith across a shared open world of Sanctuary.",
-      "publisher": "Blizzard Entertainment",
+      "publisher": 42,
       "price": 69.99,
       "release_date": "2023-06-06",
       "thumbnail_url": "https://upload.wikimedia.org/wikipedia/en/1/1c/Diablo_IV_cover_art.png",
@@ -474,7 +474,7 @@
     "fields": {
       "name": "Overwatch 2",
       "description": "Team-based hero shooter featuring objective-focused 5v5 matches with a diverse cast.",
-      "publisher": "Blizzard Entertainment",
+      "publisher": 42,
       "price": 0.00,
       "release_date": "2022-10-04",
       "thumbnail_url": "https://upload.wikimedia.org/wikipedia/en/8/89/Overwatch_2_Steam_artwork.jpg",
@@ -492,7 +492,7 @@
     "fields": {
       "name": "Apex Legends",
       "description": "Free-to-play battle royale where squads of heroes fight to be the last team standing.",
-      "publisher": "Electronic Arts",
+      "publisher": 35,
       "price": 0.00,
       "release_date": "2019-02-04",
       "thumbnail_url": "https://upload.wikimedia.org/wikipedia/en/d/db/Apex_legends_cover.jpg",
@@ -510,7 +510,7 @@
     "fields": {
       "name": "Fortnite",
       "description": "Colourful building-focused battle royale with constant live events and seasonal updates.",
-      "publisher": "Epic Games",
+      "publisher": 27,
       "price": 0.00,
       "release_date": "2017-07-25",
       "thumbnail_url": "https://upload.wikimedia.org/wikipedia/en/a/ae/Fortnite_Save_The_World.jpg",
@@ -528,7 +528,7 @@
     "fields": {
       "name": "League of Legends",
       "description": "5v5 MOBA where teams battle to destroy the enemy nexus using unique champions.",
-      "publisher": "Riot Games",
+      "publisher": 11,
       "price": 0.00,
       "release_date": "2009-10-27",
       "thumbnail_url": "https://mediaproxy.tvtropes.org/width/1200/https://static.tvtropes.org/pmwiki/pub/images/leagueoflegends.png",
@@ -546,7 +546,7 @@
     "fields": {
       "name": "Rocket League",
       "description": "High-speed sports game that combines arcade-style football with rocket-powered cars.",
-      "publisher": "Psyonix",
+      "publisher": 12,
       "price": 0.00,
       "release_date": "2015-07-07",
       "thumbnail_url": "https://cdn1.epicgames.com/offer/9773aa1aa54f4f7b80e44bef04986cea/EGS_RocketLeague_PsyonixLLC_S2_1200x1600-11616f9d64ab28e808baa8ba7f656d89",
@@ -564,7 +564,7 @@
     "fields": {
       "name": "Among Us",
       "description": "Social deduction game where Crewmates try to identify Impostors sabotaging a spaceship.",
-      "publisher": "Innersloth",
+      "publisher": 13,
       "price": 4.99,
       "release_date": "2018-06-15",
       "thumbnail_url": "https://upload.wikimedia.org/wikipedia/en/9/9a/Among_Us_cover_art.jpg",
@@ -582,7 +582,7 @@
     "fields": {
       "name": "Dead Cells",
       "description": "Roguelite metroidvania with fast combat, procedurally generated levels and permadeath.",
-      "publisher": "Motion Twin",
+      "publisher": 14,
       "price": 24.99,
       "release_date": "2018-08-07",
       "thumbnail_url": "https://upload.wikimedia.org/wikipedia/en/1/1f/Dead_cells_cover_art.png",
@@ -600,7 +600,7 @@
     "fields": {
       "name": "Ori and the Will of the Wisps",
       "description": "Emotional metroidvania platformer with fluid movement and stunning hand-painted visuals.",
-      "publisher": "Xbox Game Studios",
+      "publisher": 15,
       "price": 29.99,
       "release_date": "2020-03-11",
       "thumbnail_url": "https://upload.wikimedia.org/wikipedia/en/9/94/Ori_and_the_Will_of_the_Wisps.jpg",
@@ -618,7 +618,7 @@
     "fields": {
       "name": "Ghost of Tsushima",
       "description": "Samurai action-adventure where Jin Sakai fights to repel the Mongol invasion of Tsushima Island.",
-      "publisher": "Sony Interactive Entertainment",
+      "publisher": 19,
       "price": 49.99,
       "release_date": "2020-07-17",
       "thumbnail_url": "https://upload.wikimedia.org/wikipedia/en/b/b6/Ghost_of_Tsushima.jpg",
@@ -636,7 +636,7 @@
     "fields": {
       "name": "Persona 5 Royal",
       "description": "Stylish JRPG where high school students lead double lives as Phantom Thieves in Tokyo.",
-      "publisher": "SEGA",
+      "publisher": 16,
       "price": 59.99,
       "release_date": "2020-03-31",
       "thumbnail_url": "https://assets1.ignimgs.com/2020/02/14/persona-5-royal---button-fin-1581716582492.jpg",
@@ -654,7 +654,7 @@
     "fields": {
       "name": "Assassin's Creed Valhalla",
       "description": "Viking-themed action RPG where you lead Eivor's clan to settle in England.",
-      "publisher": "Ubisoft",
+      "publisher": 17,
       "price": 39.99,
       "release_date": "2020-11-10",
       "thumbnail_url": "https://upload.wikimedia.org/wikipedia/en/thumb/f/ff/Assassin%27s_Creed_Valhalla_cover.jpg/250px-Assassin%27s_Creed_Valhalla_cover.jpg",
@@ -672,7 +672,7 @@
     "fields": {
       "name": "Starfield",
       "description": "Spacefaring RPG where you join Constellation and explore a vast galaxy of star systems.",
-      "publisher": "Bethesda Softworks",
+      "publisher": 18,
       "price": 69.99,
       "release_date": "2023-09-06",
       "thumbnail_url": "https://upload.wikimedia.org/wikipedia/en/6/6d/Bethesda_Starfield.jpg",
@@ -690,7 +690,7 @@
     "fields": {
       "name": "No Man's Sky",
       "description": "Procedural space exploration game with base building, survival and seamless planet hopping.",
-      "publisher": "Hello Games",
+      "publisher": 52,
       "price": 39.99,
       "release_date": "2016-08-09",
       "thumbnail_url": "https://image.api.playstation.com/vulcan/ap/rnd/202508/2714/107cd4a41110b3622a5e07959df3807ee61b1dd55d873674.png",
@@ -708,7 +708,7 @@
     "fields": {
       "name": "The Elder Scrolls V: Skyrim",
       "description": "Open-world fantasy RPG where you are the Dragonborn, destined to face Alduin the World-Eater.",
-      "publisher": "Bethesda Softworks",
+      "publisher": 18,
       "price": 19.99,
       "release_date": "2011-11-11",
       "thumbnail_url": "https://e.snmc.io/lk/l/x/d8576cc87572648c31790712eb67e2ac/9559459",
@@ -726,7 +726,7 @@
     "fields": {
       "name": "Fallout 4",
       "description": "Post-apocalyptic RPG where you emerge from Vault 111 to search for your missing child.",
-      "publisher": "Bethesda Softworks",
+      "publisher": 18,
       "price": 19.99,
       "release_date": "2015-11-10",
       "thumbnail_url": "https://upload.wikimedia.org/wikipedia/en/thumb/7/70/Fallout_4_cover_art.jpg/250px-Fallout_4_cover_art.jpg",
@@ -744,7 +744,7 @@
     "fields": {
       "name": "DOOM Eternal",
       "description": "Ultra-violent FPS where the Doom Slayer battles demons across Earth and beyond.",
-      "publisher": "Bethesda Softworks",
+      "publisher": 18,
       "price": 39.99,
       "release_date": "2020-03-20",
       "thumbnail_url": "https://upload.wikimedia.org/wikipedia/en/thumb/9/9d/Cover_Art_of_Doom_Eternal.png/250px-Cover_Art_of_Doom_Eternal.png",
@@ -762,7 +762,7 @@
     "fields": {
       "name": "Returnal",
       "description": "Roguelike third-person shooter where Selene is trapped in a time loop on an alien planet.",
-      "publisher": "Sony Interactive Entertainment",
+      "publisher": 19,
       "price": 59.99,
       "release_date": "2021-04-30",
       "thumbnail_url": "https://upload.wikimedia.org/wikipedia/en/thumb/9/91/Returnal_cover_art.jpg/250px-Returnal_cover_art.jpg",
@@ -780,7 +780,7 @@
     "fields": {
       "name": "Control",
       "description": "Supernatural action-adventure where Jesse Faden investigates the shifting Federal Bureau of Control.",
-      "publisher": "505 Games",
+      "publisher": 20,
       "price": 29.99,
       "release_date": "2019-08-27",
       "thumbnail_url": "https://upload.wikimedia.org/wikipedia/en/thumb/e/e5/Control_game_cover_art.jpg/250px-Control_game_cover_art.jpg",
@@ -798,7 +798,7 @@
     "fields": {
       "name": "NieR: Automata",
       "description": "Action RPG following androids 2B and 9S in a proxy war between machines and humanity.",
-      "publisher": "Square Enix",
+      "publisher": 21,
       "price": 39.99,
       "release_date": "2017-03-07",
       "thumbnail_url": "https://upload.wikimedia.org/wikipedia/en/2/21/Nier_Automata_cover_art.jpg",
@@ -816,7 +816,7 @@
     "fields": {
       "name": "Dark Souls III",
       "description": "Challenging action RPG where you face twisted enemies in a crumbling, dying world.",
-      "publisher": "Bandai Namco Entertainment",
+      "publisher": 22,
       "price": 39.99,
       "release_date": "2016-04-12",
       "thumbnail_url": "https://upload.wikimedia.org/wikipedia/en/thumb/b/bb/Dark_souls_3_cover_art.jpg/250px-Dark_souls_3_cover_art.jpg",
@@ -834,7 +834,7 @@
     "fields": {
       "name": "Cuphead",
       "description": "Run-and-gun platformer with 1930s cartoon art and brutally challenging boss fights.",
-      "publisher": "Studio MDHR",
+      "publisher": 23,
       "price": 19.99,
       "release_date": "2017-09-29",
       "thumbnail_url": "https://upload.wikimedia.org/wikipedia/en/thumb/e/eb/Cuphead_%28artwork%29.png/250px-Cuphead_%28artwork%29.png",
@@ -852,7 +852,7 @@
     "fields": {
       "name": "Slay the Spire",
       "description": "Deck-building roguelike where you craft card combos to climb a shifting spire.",
-      "publisher": "Humble Games",
+      "publisher": 24,
       "price": 24.99,
       "release_date": "2019-01-23",
       "thumbnail_url": "https://upload.wikimedia.org/wikipedia/en/b/b7/Slay_the_spire_cover.jpg",
@@ -870,7 +870,7 @@
     "fields": {
       "name": "Terraria",
       "description": "2D sandbox adventure with exploration, crafting, building and boss encounters.",
-      "publisher": "Re-Logic",
+      "publisher": 25,
       "price": 9.99,
       "release_date": "2011-05-16",
       "thumbnail_url": "https://upload.wikimedia.org/wikipedia/en/thumb/1/1a/Terraria_Steam_artwork.jpg/250px-Terraria_Steam_artwork.jpg",
@@ -888,7 +888,7 @@
     "fields": {
       "name": "Genshin Impact",
       "description": "Anime-styled open-world action RPG with elemental combat and gacha characters.",
-      "publisher": "Cognosphere",
+      "publisher": 26,
       "price": 0.00,
       "release_date": "2020-09-28",
       "thumbnail_url": "https://cdn1.epicgames.com/offer/879b0d8776ab46a59a129983ba78f0ce/genshintall_1200x1600-4a5697be3925e8cb1f59725a9830cafc",
@@ -906,7 +906,7 @@
     "fields": {
       "name": "Alan Wake 2",
       "description": "Survival horror sequel where writer Alan Wake and FBI agent Saga Anderson confront a dark narrative.",
-      "publisher": "Epic Games Publishing",
+      "publisher": 27,
       "price": 49.99,
       "release_date": "2023-10-27",
       "thumbnail_url": "https://upload.wikimedia.org/wikipedia/en/thumb/e/ed/Alan_Wake_2_box_art.jpg/250px-Alan_Wake_2_box_art.jpg",
@@ -924,7 +924,7 @@
     "fields": {
       "name": "Forza Horizon 5",
       "description": "Open-world racing game set in a vibrant recreation of Mexico with dynamic seasons.",
-      "publisher": "Xbox Game Studios",
+      "publisher": 15,
       "price": 59.99,
       "release_date": "2021-11-09",
       "thumbnail_url": "https://upload.wikimedia.org/wikipedia/en/8/86/Forza_Horizon_5_cover_art.jpg",
@@ -942,7 +942,7 @@
     "fields": {
       "name": "Gran Turismo 7",
       "description": "Realistic racing simulator featuring a huge garage of cars and detailed tuning options.",
-      "publisher": "Sony Interactive Entertainment",
+      "publisher": 19,
       "price": 69.99,
       "release_date": "2022-03-04",
       "thumbnail_url": "https://upload.wikimedia.org/wikipedia/en/thumb/1/14/Gran_Turismo_7_cover_art.jpg/250px-Gran_Turismo_7_cover_art.jpg",
@@ -960,7 +960,7 @@
     "fields": {
       "name": "Mortal Kombat 1",
       "description": "Brutal fighting game reboot set in a newly forged universe overseen by Fire God Liu Kang.",
-      "publisher": "Warner Bros. Games",
+      "publisher": 28,
       "price": 69.99,
       "release_date": "2023-09-19",
       "thumbnail_url": "https://upload.wikimedia.org/wikipedia/en/5/5b/Mortal_Kombat_1_key_art.jpeg",
@@ -978,7 +978,7 @@
     "fields": {
       "name": "Street Fighter 6",
       "description": "Modern fighting game with a new World Tour mode and accessible control schemes.",
-      "publisher": "Capcom",
+      "publisher": 10,
       "price": 59.99,
       "release_date": "2023-06-02",
       "thumbnail_url": "https://upload.wikimedia.org/wikipedia/en/thumb/9/94/Street_Fighter_6_box_art.jpg/250px-Street_Fighter_6_box_art.jpg",
@@ -996,7 +996,7 @@
     "fields": {
       "name": "Palworld",
       "description": "Monster-collecting survival game where you explore, build bases and battle with armed Pals.",
-      "publisher": "Pocketpair",
+      "publisher": 29,
       "price": 29.99,
       "release_date": "2024-01-19",
       "thumbnail_url": "https://upload.wikimedia.org/wikipedia/en/f/fb/Palworld_Steam_artwork.jpg",
@@ -1014,7 +1014,7 @@
   "fields": {
     "name": "Clash Royale",
     "description": "Real-time PvP strategy game where you deploy troops and spells to destroy your opponent's towers.",
-    "publisher": "Supercell",
+    "publisher": 30,
     "price": 0.00,
     "release_date": "2016-03-02",
     "thumbnail_url": "https://cdna.artstation.com/p/assets/covers/images/027/736/046/large/mar-studio-mar-studio-thumbnail.jpg?1592402346",
@@ -1032,7 +1032,7 @@
   "fields": {
     "name": "Clash of Clans",
     "description": "Build a village, raise a clan and battle other players in strategic raids.",
-    "publisher": "Supercell",
+    "publisher": 30,
     "price": 0.00,
     "release_date": "2012-08-02",
     "thumbnail_url": "https://m.media-amazon.com/images/M/MV5BZTEyNjE0OGEtYmIwNS00NjQ4LTgzNTEtYWVmMzBkMmYxMGI0XkEyXkFqcGc@._V1_.jpg",
@@ -1050,7 +1050,7 @@
   "fields": {
     "name": "Brawl Stars",
     "description": "Fast-paced 3v3 and battle royale shooter with a cast of quirky brawlers.",
-    "publisher": "Supercell",
+    "publisher": 30,
     "price": 0.00,
     "release_date": "2018-12-12",
     "thumbnail_url": "https://m.media-amazon.com/images/M/MV5BMzVkNDFkNjEtZDE1OC00MTJmLWIxNjQtYWM1MWQxNThiODI0XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
@@ -1068,7 +1068,7 @@
   "fields": {
     "name": "Candy Crush Saga",
     "description": "Match-3 puzzle game where you swap colourful candies across hundreds of levels.",
-    "publisher": "King",
+    "publisher": 31,
     "price": 0.00,
     "release_date": "2012-11-14",
     "thumbnail_url": "https://us.v-cdn.net/6030983/uploads/TLR037R07Z6E/candycrushsaga-wp-lullabylake-portrait.png",
@@ -1086,7 +1086,7 @@
   "fields": {
     "name": "Subway Surfers",
     "description": "Endless runner where you dodge trains and obstacles while surfing the subways.",
-    "publisher": "Kiloo / SYBO",
+    "publisher": 32,
     "price": 0.00,
     "release_date": "2012-05-24",
     "thumbnail_url": "https://m.media-amazon.com/images/M/MV5BNWRkNGNmMDgtMmU5MC00MjgzLWFmZTQtNTdhZDYzMGUzN2I0XkEyXkFqcGc@._V1_.jpg",
@@ -1104,7 +1104,7 @@
   "fields": {
     "name": "Jetpack Joyride",
     "description": "Side-scrolling action game where you dodge hazards with a jetpack in a secret lab.",
-    "publisher": "Halfbrick Studios",
+    "publisher": 33,
     "price": 1.99,
     "release_date": "2011-09-01",
     "thumbnail_url": "https://i0.wp.com/tabletoptogether.com/wp-content/uploads/2020/01/Jetpack-Joyride-Cover.png?ssl=1",
@@ -1122,7 +1122,7 @@
   "fields": {
     "name": "Angry Birds 2",
     "description": "Physics-based puzzle game where you fling birds to topple pig-built structures.",
-    "publisher": "Rovio Entertainment",
+    "publisher": 34,
     "price": 0.00,
     "release_date": "2015-07-30",
     "thumbnail_url": "https://www.angrybirds.com/wp-content/uploads/2022/08/AB2_202208_1920x1080_KeyArt_KeyArt_Flying.jpg",
@@ -1140,7 +1140,7 @@
   "fields": {
     "name": "Plants vs. Zombies 2",
     "description": "Tower defense game where you plant defensive plants to stop waves of zombies.",
-    "publisher": "PopCap / Electronic Arts",
+    "publisher": 35,
     "price": 0.00,
     "release_date": "2013-07-09",
     "thumbnail_url": "https://static-cdn.jtvnw.net/ttv-boxart/67719_IGDB-272x380.jpg",
@@ -1158,7 +1158,7 @@
   "fields": {
     "name": "Call of Duty: Mobile",
     "description": "First-person shooter bringing classic Call of Duty modes and maps to mobile.",
-    "publisher": "Activision",
+    "publisher": 9,
     "price": 0.00,
     "release_date": "2019-10-01",
     "thumbnail_url": "https://wallpapers.com/images/hd/call-of-duty-mobile-full-mask-5okyfcebv82jlv6p.jpg",
@@ -1176,7 +1176,7 @@
   "fields": {
     "name": "PUBG Mobile",
     "description": "Battle royale shooter where 100 players fight to be the last one standing.",
-    "publisher": "Tencent Games",
+    "publisher": 36,
     "price": 0.00,
     "release_date": "2018-03-19",
     "thumbnail_url": "https://m.media-amazon.com/images/M/MV5BODQzNzJjY2QtY2Y2YS00OWJmLTlkZWMtMmNmMmE2NTg1MjQzXkEyXkFqcGc@._V1_.jpg",
@@ -1194,7 +1194,7 @@
   "fields": {
     "name": "Mobile Legends: Bang Bang",
     "description": "5v5 MOBA with short matches and touchscreen-optimized controls.",
-    "publisher": "Moonton",
+    "publisher": 37,
     "price": 0.00,
     "release_date": "2016-07-14",
     "thumbnail_url": "https://m.media-amazon.com/images/M/MV5BODhlZDk5Y2EtMGFhOS00MTQ5LTgwNjgtYTI2ZmE1Y2ZjMDE2XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
@@ -1212,7 +1212,7 @@
   "fields": {
     "name": "Arena of Valor",
     "description": "Mobile MOBA featuring 5v5 battles with a large roster of heroes.",
-    "publisher": "TiMi Studio / Level Infinite",
+    "publisher": 38,
     "price": 0.00,
     "release_date": "2016-10-14",
     "thumbnail_url": "https://m.media-amazon.com/images/M/MV5BZTc5Nzk2MGItY2MwNy00NDVkLWJkZGItNTU3YjlkMWVjMjc4XkEyXkFqcGc@._V1_.jpg",
@@ -1230,7 +1230,7 @@
   "fields": {
     "name": "Asphalt 9: Legends",
     "description": "Arcade racing game with licensed cars and flashy nitro-fueled tracks.",
-    "publisher": "Gameloft",
+    "publisher": 39,
     "price": 0.00,
     "release_date": "2018-07-25",
     "thumbnail_url": "https://m.media-amazon.com/images/M/MV5BNGViOTZhNWUtNzk0Ni00NDJjLThjMmItZmRhNDEwYWIzZTA4XkEyXkFqcGc@._V1_.jpg",
@@ -1248,7 +1248,7 @@
   "fields": {
     "name": "Pokémon GO",
     "description": "Location-based AR game where you catch Pokémon in the real world.",
-    "publisher": "Niantic",
+    "publisher": 40,
     "price": 0.00,
     "release_date": "2016-07-06",
     "thumbnail_url": "https://m.media-amazon.com/images/M/MV5BYTJkNDRhMzAtMzVmOS00ZTE2LTllNzAtOTRiN2M2ZTA4OTI0XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
@@ -1266,7 +1266,7 @@
   "fields": {
     "name": "Marvel Snap",
     "description": "Fast-paced collectible card game with Marvel heroes and villains.",
-    "publisher": "Second Dinner",
+    "publisher": 41,
     "price": 0.00,
     "release_date": "2022-10-18",
     "thumbnail_url": "https://upload.wikimedia.org/wikipedia/en/3/3b/Marvel_Snap.png",
@@ -1284,7 +1284,7 @@
   "fields": {
     "name": "Hearthstone",
     "description": "Digital card game set in the Warcraft universe with deck-building and ranked play.",
-    "publisher": "Blizzard Entertainment",
+    "publisher": 42,
     "price": 0.00,
     "release_date": "2014-04-02",
     "thumbnail_url": "https://wallpapers.com/images/hd/hearthstone-desktop-oj0ztwtqp07f51l6.jpg",
@@ -1302,7 +1302,7 @@
   "fields": {
     "name": "Monument Valley 2",
     "description": "Artful puzzle game about guiding a mother and child through impossible architecture.",
-    "publisher": "ustwo games",
+    "publisher": 51,
     "price": 4.99,
     "release_date": "2017-06-05",
     "thumbnail_url": "https://m.media-amazon.com/images/M/MV5BYzI1NWM0YWMtZjhmMy00YTEwLTgwNDQtODMwOTgwMTVkOTM3XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
@@ -1320,7 +1320,7 @@
   "fields": {
     "name": "Alto's Odyssey",
     "description": "Endless sandboarding journey across beautiful desert landscapes.",
-    "publisher": "Snowman",
+    "publisher": 43,
     "price": 4.99,
     "release_date": "2018-02-21",
     "thumbnail_url": "https://assets1.ignimgs.com/2016/12/09/altos-odyssey-button-1481322373876.jpg",
@@ -1338,7 +1338,7 @@
   "fields": {
     "name": "Sky: Children of the Light",
     "description": "Social adventure game where you explore dreamlike realms and help lost spirits.",
-    "publisher": "thatgamecompany",
+    "publisher": 53,
     "price": 0.00,
     "release_date": "2019-07-18",
     "thumbnail_url": "https://e.snmc.io/lk/o/x/6c6047385de5db03806f2aaeaca799e8/9210399",
@@ -1356,7 +1356,7 @@
   "fields": {
     "name": "AFK Arena",
     "description": "Idle RPG where heroes battle automatically while you collect loot and progress.",
-    "publisher": "Lilith Games",
+    "publisher": 44,
     "price": 0.00,
     "release_date": "2019-04-09",
     "thumbnail_url": "https://afkarena.lilith.com/m/images/slogimg2_no_m.jpg?v=0208",
@@ -1374,7 +1374,7 @@
   "fields": {
     "name": "RAID: Shadow Legends",
     "description": "Hero-collector RPG with turn-based battles and a dark fantasy setting.",
-    "publisher": "Plarium",
+    "publisher": 35,
     "price": 0.00,
     "release_date": "2019-02-28",
     "thumbnail_url": "https://e.snmc.io/lk/f/x/79143bd36989585d14e93ec0e042cc65/9177538",
@@ -1392,7 +1392,7 @@
   "fields": {
     "name": "Arknights",
     "description": "Strategic tower-defense RPG with anime art and deep unit synergies.",
-    "publisher": "Yostar",
+    "publisher": 46,
     "price": 0.00,
     "release_date": "2020-01-16",
     "thumbnail_url": "https://m.media-amazon.com/images/M/MV5BNTRkZDIyMjktZjc0Ni00Y2FjLTkyNTgtZWFhOWExNTgzYmUzXkEyXkFqcGc@._V1_.jpg",
@@ -1410,7 +1410,7 @@
   "fields": {
     "name": "Roblox",
     "description": "User-generated game platform where players create and play millions of experiences.",
-    "publisher": "Roblox Corporation",
+    "publisher": 47,
     "price": 0.00,
     "release_date": "2012-12-11",
     "thumbnail_url": "https://m.media-amazon.com/images/M/MV5BYmZkNzAyNjYtZWNhYy00YjE2LTk2NTgtMTkxZjAwNDg0YWFmXkEyXkFqcGc@._V1_.jpg",
@@ -1428,7 +1428,7 @@
   "fields": {
     "name": "Gacha Life",
     "description": "Character creator and mini-game collection with anime-style avatars and skits.",
-    "publisher": "Lunime",
+    "publisher": 48,
     "price": 0.00,
     "release_date": "2018-10-20",
     "thumbnail_url": "https://img.itch.zone/aW1hZ2UvMzI5MDIwLzE2Mjc4NzMucG5n/original/J2N9FM.png",
@@ -1446,7 +1446,7 @@
   "fields": {
     "name": "Homescapes",
     "description": "Match-3 puzzle game where you renovate a mansion by completing levels.",
-    "publisher": "Playrix",
+    "publisher": 49,
     "price": 0.00,
     "release_date": "2017-09-19",
     "thumbnail_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSCLwWUmq6P8zL7lDD3wY5QWu3SJ8FoAkPUQ&s",
@@ -1661,51 +1661,63 @@
     }
 },
 {
+    "model": "users.customuser",
+    "pk": 5,
+    "fields": {
+        "password": "pbkdf2_sha256$1000000$Q7M67pXrlSlBKpJZwNF4Dr$wNrxofoYFjE6SWLNGJBwtJs0NHt4A+rBAGruCt86pZA=",
+        "last_login": null,
+        "is_superuser": false,
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2025-11-26T19:30:12.247Z",
+        "date_of_birth": "2004-07-01",
+        "last_name": "User",
+        "first_name": "Admin",
+        "email": "admin@cardiff.ac.uk",
+        "username": "admin",
+        "is_moderator": true,
+        "groups": [],
+        "user_permissions": [],
+        "genre_tags": [
+            21,
+            22,
+            27
+        ],
+        "accessibility_tags": [
+            12,
+            13,
+            14
+        ]
+    }
+},
+{
     "model": "threads.posts",
     "pk": 1,
     "fields": {
-        "title": "F1 is phenmoneal!",
-        "message": "This is a big moment everyone, can we get some cheers please!!!!",
+        "title": "F1 is phenomenal!",
+        "message": "This is a big moment everyone, can we get some cheers please... It's Finally HERE!!!!",
+        "votes": 1,
         "date": "2025-11-11T13:36:31.111Z",
+        "comments": 2,
         "gameId": 1,
         "userId": 1,
-        "parent": null
+        "parent": null,
+        "is_deleted": false
     }
 },
 {
     "model": "threads.posts",
     "pk": 2,
     "fields": {
-        "title": "CHEER",
+        "title": null,
         "message": "WOOP WOOP!!",
+        "votes": 1,
         "date": "2025-11-11T13:36:48.862Z",
-        "gameId": 1,
-        "userId": 2,
-        "parent": 1
-    }
-},
-{
-    "model": "threads.posts",
-    "pk": 3,
-    "fields": {
-        "title": "THREE BIG BOOMS!",
-        "message": "BOOM BOOM BOOM!",
-        "date": "2025-11-11T13:37:02.632Z",
+        "comments": 0,
         "gameId": 1,
         "userId": 3,
-        "parent": 1
-    }
-},
-{
-    "model": "threads.posts",
-    "pk": 4,
-    "fields": {
-        "title": "YANITED!",
-        "message": "ryan was here",
-        "date": "2025-11-11T13:37:16.564Z",
-        "gameId": 1,
-        "userId": 4,
-        "parent": 1
+        "parent": 1,
+        "is_deleted": false
     }
 },
 {
@@ -1713,35 +1725,44 @@
     "pk": 5,
     "fields": {
         "title": "This is the second new post for this site!!",
-        "message": "Hello there my name is founder and I am the goat!",
+        "message": "This is my first post here, and I thought it would be fitting to make it about my favourite game as of late",
+        "votes": -1,
         "date": "2025-11-12T15:02:41.698Z",
+        "comments": 0,
         "gameId": 1,
         "userId": 4,
-        "parent": null
+        "parent": null,
+        "is_deleted": false
     }
 },
 {
     "model": "threads.posts",
     "pk": 6,
     "fields": {
-        "title": "asdfasdf",
-        "message": "asdfasdf",
-        "date": "2025-11-14T23:02:38.760Z",
+        "title": "Honestly, it's not all that...",
+        "message": "The mechanics are off and the game is honestly boring after playing for a few hours. Would not recommend if you already have the previous year's game. \n\nEA need to do better.",
+        "votes": 0,
+        "date": "2025-12-01T22:43:23.750Z",
+        "comments": 0,
         "gameId": 1,
-        "userId": 1,
-        "parent": null
+        "userId": 2,
+        "parent": null,
+        "is_deleted": false
     }
 },
 {
     "model": "threads.posts",
     "pk": 7,
     "fields": {
-        "title": "Hello there",
-        "message": "asdfasdffkalsjdhfklasjdhf",
-        "date": "2025-11-14T23:03:50.844Z",
+        "title": null,
+        "message": "Not my favourite. Glad you're enjoying it though!",
+        "votes": 1,
+        "date": "2025-12-01T22:44:19.906Z",
+        "comments": 1,
         "gameId": 1,
-        "userId": 1,
-        "parent": null
+        "userId": 2,
+        "parent": 1,
+        "is_deleted": false
     }
 },
 {
@@ -1749,11 +1770,775 @@
     "pk": 8,
     "fields": {
         "title": null,
-        "message": "asdfasdf",
-        "date": "2025-11-15T11:57:13.983Z",
-        "gameId": 1,
-        "userId": 2,
-        "parent": 1
+        "message": "Fair enough mate. Can't win 'em all!",
+        "votes": 0,
+        "date": "2025-12-01T22:48:26.684Z",
+        "comments": 0,
+        "gameId": 7,
+        "userId": 1,
+        "parent": 7,
+        "is_deleted": false
     }
-}
+},
+{
+    "model": "threads.posts",
+    "pk": 9,
+    "fields": {
+        "title": "Wow!",
+        "message": "This game is just fantastic. Never enjoyed a game so much in my life!!",
+        "votes": -2,
+        "date": "2025-12-01T22:50:42.259Z",
+        "comments": 0,
+        "gameId": 24,
+        "userId": 1,
+        "parent": null,
+        "is_deleted": false
+    }
+},
+{
+    "model": "threads.posts",
+    "pk": 10,
+    "fields": {
+        "title": "This game...",
+        "message": "I have been playing this game for the last 7 years. I have not enjoyed it once... I'll be back on tomorrow.",
+        "votes": 4,
+        "date": "2025-12-01T22:52:19.325Z",
+        "comments": 0,
+        "gameId": 24,
+        "userId": 3,
+        "parent": null,
+        "is_deleted": false
+    }
+},
+{
+    "model": "threads.reviewsvotes",
+    "pk": 1,
+    "fields": {
+        "vote": false,
+        "postId": 5,
+        "userId": 2
+    }
+},
+{
+    "model": "threads.reviewsvotes",
+    "pk": 2,
+    "fields": {
+        "vote": true,
+        "postId": 2,
+        "userId": 1
+    }
+},
+{
+    "model": "threads.reviewsvotes",
+    "pk": 3,
+    "fields": {
+        "vote": true,
+        "postId": 7,
+        "userId": 1
+    }
+},
+{
+    "model": "threads.reviewsvotes",
+    "pk": 4,
+    "fields": {
+        "vote": true,
+        "postId": 1,
+        "userId": 1
+    }
+},
+{
+    "model": "threads.reviewsvotes",
+    "pk": 5,
+    "fields": {
+        "vote": true,
+        "postId": 10,
+        "userId": 3
+    }
+},
+{
+    "model": "threads.reviewsvotes",
+    "pk": 6,
+    "fields": {
+        "vote": true,
+        "postId": 10,
+        "userId": 1
+    }
+},
+{
+    "model": "threads.reviewsvotes",
+    "pk": 7,
+    "fields": {
+        "vote": true,
+        "postId": 10,
+        "userId": 4
+    }
+},
+{
+    "model": "threads.reviewsvotes",
+    "pk": 8,
+    "fields": {
+        "vote": false,
+        "postId": 9,
+        "userId": 4
+    }
+},
+{
+    "model": "threads.reviewsvotes",
+    "pk": 9,
+    "fields": {
+        "vote": true,
+        "postId": 10,
+        "userId": 2
+    }
+},
+{
+    "model": "threads.reviewsvotes",
+    "pk": 10,
+    "fields": {
+        "vote": false,
+        "postId": 9,
+        "userId": 2
+    }
+},
+{
+  "model": "publishers.Publisher",
+  "pk": 1,
+  "fields": {
+    "name": "CD Projekt RED",
+    "logo": "/images/cd_project_red.png",
+    "url": "https://www.cdprojektred.com/en",
+    "pending": false,
+    "created_at": "2024-01-01T12:00:00Z"
+  }
+},
+{
+  "model": "publishers.Publisher",
+  "pk": 2,
+  "fields": {
+    "name": "Rockstar Games",
+    "logo": "images/rockstar_games.png",
+    "url": "https://www.rockstargames.com/",
+    "pending": false,
+    "created_at": "2024-01-01T12:00:00Z"
+  }
+},
+{
+  "model": "publishers.Publisher",
+  "pk": 3,
+  "fields": {
+    "name": "Nintendo",
+    "logo": "images/nintendo.png",
+    "url": "https://www.nintendo.com/",
+    "pending": false,
+    "created_at": "2024-01-01T12:00:00Z"
+  }
+},
+{
+  "model": "publishers.Publisher",
+  "pk": 4,
+  "fields": {
+    "name": "Supergiant Games",
+    "logo": "images/supergiant_games.jpg",
+    "url": "https://www.supergiantgames.com/",
+    "pending": false,
+    "created_at": "2024-01-01T12:00:00Z"
+  }
+},
+{
+  "model": "publishers.Publisher",
+  "pk": 5,
+  "fields": {
+    "name": "ConcernedApe",
+    "logo": "images/concerned_ape.jpg",
+    "url": "https://www.stardewvalley.net/",
+    "pending": false,
+    "created_at": "2024-01-01T12:00:00Z"
+  }
+},
+{
+  "model": "publishers.Publisher",
+  "pk": 6,
+  "fields": {
+    "name": "Team Cherry",
+    "logo": "images/team_cherry.png",
+    "url": "https://teamcherry.com.au/",
+    "pending": false,
+    "created_at": "2024-01-01T12:00:00Z"
+  }
+},
+{
+  "model": "publishers.Publisher",
+  "pk": 7,
+  "fields": {
+    "name": "Maddy Makes Games",
+    "logo": "images/maddy_makes_games.jpg",
+    "url": "https://www.mattmakesgames.com/",
+    "pending": false,
+    "created_at": "2024-01-01T12:00:00Z"
+  }
+},
+{
+  "model": "publishers.Publisher",
+  "pk": 8,
+  "fields": {
+    "name": "Mojang Studios",
+    "logo": "images/mojang_studios.png",
+    "url": "https://www.minecraft.net/",
+    "pending": false,
+    "created_at": "2024-01-01T12:00:00Z"
+  }
+},
+{
+  "model": "publishers.Publisher",
+  "pk": 9,
+  "fields": {
+    "name": "Activision",
+    "logo": "images/activision.png",
+    "url": "https://www.activision.com/",
+    "pending": false,
+    "created_at": "2024-01-01T12:00:00Z"
+  }
+},
+{
+  "model": "publishers.Publisher",
+  "pk": 10,
+  "fields": {
+    "name": "Capcom",
+    "logo": "images/capcom.png",
+    "url": "https://www.capcom.com/",
+    "pending": false,
+    "created_at": "2024-01-01T12:00:00Z"
+  }
+},
+{
+  "model": "publishers.Publisher",
+  "pk": 11,
+  "fields": {
+    "name": "Riot Games",
+    "logo": "images/riot_games.png",
+    "url": "https://www.riotgames.com/",
+    "pending": false,
+    "created_at": "2024-01-01T12:00:00Z"
+  }
+},
+{
+  "model": "publishers.Publisher",
+  "pk": 12,
+  "fields": {
+    "name": "Psyonix",
+    "logo": "images/psyonix.jpg",
+    "url": "https://www.psyonix.com/",
+    "pending": false,
+    "created_at": "2024-01-01T12:00:00Z"
+  }
+},
+{
+  "model": "publishers.Publisher",
+  "pk": 13,
+  "fields": {
+    "name": "Innersloth",
+    "logo": "images/innersloth.png",
+    "url": "https://www.innersloth.com/",
+    "pending": false,
+    "created_at": "2024-01-01T12:00:00Z"
+  }
+},
+{
+  "model": "publishers.Publisher",
+  "pk": 14,
+  "fields": {
+    "name": "Motion Twin",
+    "logo": "images/motion_twin.png",
+    "url": "https://motiontwin.com/",
+    "pending": false,
+    "created_at": "2024-01-01T12:00:00Z"
+  }
+},
+{
+  "model": "publishers.Publisher",
+  "pk": 15,
+  "fields": {
+    "name": "Xbox Game Studios",
+    "logo": "images/xbox_game_studios.png",
+    "url": "https://www.xbox.com/en-US/xbox-game-studios",
+    "pending": false,
+    "created_at": "2024-01-01T12:00:00Z"
+  }
+},
+{
+  "model": "publishers.Publisher",
+  "pk": 16,
+  "fields": {
+    "name": "SEGA",
+    "logo": "images/sega.png",
+    "url": "https://www.sega.com/",
+    "pending": false,
+    "created_at": "2024-01-01T12:00:00Z"
+  }
+},
+{
+  "model": "publishers.Publisher",
+  "pk": 17,
+  "fields": {
+    "name": "Ubisoft",
+    "logo": "images/ubisoft.png",
+    "url": "https://www.ubisoft.com/",
+    "pending": false,
+    "created_at": "2024-01-01T12:00:00Z"
+  }
+},
+{
+  "model": "publishers.Publisher",
+  "pk": 18,
+  "fields": {
+    "name": "Bethesda Softworks",
+    "logo": "images/bethesda_softworks.png",
+    "url": "https://bethesda.net/",
+    "pending": false,
+    "created_at": "2024-01-01T12:00:00Z"
+  }
+},
+{
+  "model": "publishers.Publisher",
+  "pk": 19,
+  "fields": {
+    "name": "Sony Interactive Entertainment",
+    "logo": "images/sony_interactive_entertainment.jpg",
+    "url": "https://www.sie.com/",
+    "pending": false,
+    "created_at": "2024-01-01T12:00:00Z"
+  }
+},
+{
+  "model": "publishers.Publisher",
+  "pk": 20,
+  "fields": {
+    "name": "505 Games",
+    "logo": "images/505_games.png",
+    "url": "https://www.505games.com/",
+    "pending": false,
+    "created_at": "2024-01-01T12:00:00Z"
+  }
+},
+{
+  "model": "publishers.Publisher",
+  "pk": 21,
+  "fields": {
+    "name": "Square Enix",
+    "logo": "images/square_enix.png",
+    "url": "https://www.square-enix.com/",
+    "pending": false,
+    "created_at": "2024-01-01T12:00:00Z"
+  }
+},
+{
+  "model": "publishers.Publisher",
+  "pk": 22,
+  "fields": {
+    "name": "Bandai Namco Entertainment",
+    "logo": "images/bandai_namco_entertainment.jpg",
+    "url": "https://www.bandainamcoent.eu/",
+    "pending": false,
+    "created_at": "2024-01-01T12:00:00Z"
+  }
+},
+{
+  "model": "publishers.Publisher",
+  "pk": 23,
+  "fields": {
+    "name": "Studio MDHR",
+    "logo": "images/studio_mdhr.jpg",
+    "url": "https://studiomdhr.com/",
+    "pending": false,
+    "created_at": "2024-01-01T12:00:00Z"
+  }
+},
+{
+  "model": "publishers.Publisher",
+  "pk": 24,
+  "fields": {
+    "name": "Humble Games",
+    "logo": "images/humble_games.jpg",
+    "url": "https://www.humblegames.com/",
+    "pending": false,
+    "created_at": "2024-01-01T12:00:00Z"
+  }
+},
+{
+  "model": "publishers.Publisher",
+  "pk": 25,
+  "fields": {
+    "name": "Re-Logic",
+    "logo": "images/re_logic.jpg",
+    "url": "https://tmodloader.net/",
+    "pending": false,
+    "created_at": "2024-01-01T12:00:00Z"
+  }
+},
+{
+  "model": "publishers.Publisher",
+  "pk": 26,
+  "fields": {
+    "name": "HoYoverse",
+    "logo": "images/hoyoverse.jpg",
+    "url": "https://www.hoyoverse.com/en-us/",
+    "pending": false,
+    "created_at": "2024-01-01T12:00:00Z"
+  }
+},
+{
+  "model": "publishers.Publisher",
+  "pk": 27,
+  "fields": {
+    "name": "Epic Games",
+    "logo": "images/epic_games.png",
+    "url": "https://www.epicgames.com/",
+    "pending": false,
+    "created_at": "2024-01-01T12:00:00Z"
+  }
+},
+{
+  "model": "publishers.Publisher",
+  "pk": 28,
+  "fields": {
+    "name": "Warner Bros. Games",
+    "logo": "images/warner_bros_games.jpg",
+    "url": "https://www.wbgames.com/",
+    "pending": false,
+    "created_at": "2024-01-01T12:00:00Z"
+  }
+},
+{
+  "model": "publishers.Publisher",
+  "pk": 29,
+  "fields": {
+    "name": "Pocketpair",
+    "logo": "images/pocketpair.png",
+    "url": "https://pocketpair.jp/",
+    "pending": false,
+    "created_at": "2024-01-01T12:00:00Z"
+  }
+},
+{
+  "model": "publishers.Publisher",
+  "pk": 30,
+  "fields": {
+    "name": "Supercell",
+    "logo": "images/supercell.png",
+    "url": "https://supercell.com/",
+    "pending": false,
+    "created_at": "2024-01-01T12:00:00Z"
+  }
+},
+{
+  "model": "publishers.Publisher",
+  "pk": 31,
+  "fields": {
+    "name": "King",
+    "logo": "images/king.jpg",
+    "url": "https://king.com/",
+    "pending": false,
+    "created_at": "2024-01-01T12:00:00Z"
+  }
+},
+{
+  "model": "publishers.Publisher",
+  "pk": 32,
+  "fields": {
+    "name": "SYBO",
+    "logo": "images/sybo.png",
+    "url": "https://sybogames.com/",
+    "pending": false,
+    "created_at": "2024-01-01T12:00:00Z"
+  }
+},
+{
+  "model": "publishers.Publisher",
+  "pk": 33,
+  "fields": {
+    "name": "Halfbrick Studios",
+    "logo": "images/halfbrick_studios.png",
+    "url": "https://www.halfbrick.com/",
+    "pending": false,
+    "created_at": "2024-01-01T12:00:00Z"
+  }
+},
+{
+  "model": "publishers.Publisher",
+  "pk": 34,
+  "fields": {
+    "name": "Rovio Entertainment",
+    "logo": "images/rovio_entertainment.png",
+    "url": "https://www.rovio.com/",
+    "pending": false,
+    "created_at": "2024-01-01T12:00:00Z"
+  }
+},
+{
+  "model": "publishers.Publisher",
+  "pk": 35,
+  "fields": {
+    "name": "Electronic Arts",
+    "logo": "images/electronic_arts.png",
+    "url": "https://www.ea.com/",
+    "pending": false,
+    "created_at": "2024-01-01T12:00:00Z"
+  }
+},
+{
+  "model": "publishers.Publisher",
+  "pk": 36,
+  "fields": {
+    "name": "Tencent Games",
+    "logo": "images/tencent_games.jpg",
+    "url": "https://www.tencent.com/",
+    "pending": false,
+    "created_at": "2024-01-01T12:00:00Z"
+  }
+},
+{
+  "model": "publishers.Publisher",
+  "pk": 37,
+  "fields": {
+    "name": "Moonton",
+    "logo": "images/moonton.jpg",
+    "url": "https://en.moonton.com/",
+    "pending": false,
+    "created_at": "2024-01-01T12:00:00Z"
+  }
+},
+{
+  "model": "publishers.Publisher",
+  "pk": 38,
+  "fields": {
+    "name": "Level Infinite",
+    "logo": "images/level_infinite.png",
+    "url": "https://www.levelinfinite.com/",
+    "pending": false,
+    "created_at": "2024-01-01T12:00:00Z"
+  }
+},
+{
+  "model": "publishers.Publisher",
+  "pk": 39,
+  "fields": {
+    "name": "Gameloft",
+    "logo": "images/gameloft.png",
+    "url": "https://www.gameloft.com/",
+    "pending": false,
+    "created_at": "2024-01-01T12:00:00Z"
+  }
+},
+{
+  "model": "publishers.Publisher",
+  "pk": 40,
+  "fields": {
+    "name": "Niantic",
+    "logo": "images/niantic.png",
+    "url": "https://nianticlabs.com/",
+    "pending": false,
+    "created_at": "2024-01-01T12:00:00Z"
+  }
+},
+{
+  "model": "publishers.Publisher",
+  "pk": 41,
+  "fields": {
+    "name": "Second Dinner",
+    "logo": "images/second_dinner.png",
+    "url": "https://seconddinner.com/",
+    "pending": false,
+    "created_at": "2024-01-01T12:00:00Z"
+  }
+},
+{
+  "model": "publishers.Publisher",
+  "pk": 42,
+  "fields": {
+    "name": "Blizzard Entertainment",
+    "logo": "images/blizzard_entertainment.jpg",
+    "url": "https://www.blizzard.com/",
+    "pending": false,
+    "created_at": "2024-01-01T12:00:00Z"
+  }
+},
+{
+  "model": "publishers.Publisher",
+  "pk": 43,
+  "fields": {
+    "name": "Snowman",
+    "logo": "images/snowman.png",
+    "url": "https://www.builtbysnowman.com/",
+    "pending": false,
+    "created_at": "2024-01-01T12:00:00Z"
+  }
+},
+{
+  "model": "publishers.Publisher",
+  "pk": 44,
+  "fields": {
+    "name": "Lilith Games",
+    "logo": "images/lilith_games.png",
+    "url": "https://ancient.lilith.com/",
+    "pending": false,
+    "created_at": "2024-01-01T12:00:00Z"
+  }
+},
+{
+  "model": "publishers.Publisher",
+  "pk": 46,
+  "fields": {
+    "name": "Yostar",
+    "logo": "images/yostar.png",
+    "url": "https://www.yo-star.com/en-us/",
+    "pending": false,
+    "created_at": "2024-01-01T12:00:00Z"
+  }
+},
+{
+  "model": "publishers.Publisher",
+  "pk": 47,
+  "fields": {
+    "name": "Roblox Corporation",
+    "logo": "images/roblox_corporation.png",
+    "url": "https://corp.roblox.com/",
+    "pending": false,
+    "created_at": "2024-01-01T12:00:00Z"
+  }
+},
+{
+  "model": "publishers.Publisher",
+  "pk": 48,
+  "fields": {
+    "name": "Lunime",
+    "logo": "images/lunime.png",
+    "url": "https://www.lunime.com",
+    "pending": false,
+    "created_at": "2024-01-01T12:00:00Z"
+  }
+},
+{
+  "model": "publishers.Publisher",
+  "pk": 49,
+  "fields": {
+    "name": "Playrix",
+    "logo": "images/playrix.png",
+    "url": "https://playrix.com/",
+    "pending": false,
+    "created_at": "2024-01-01T12:00:00Z"
+  }
+},
+{
+  "model": "publishers.Publisher",
+  "pk": 50,
+  "fields": {
+    "name": "Larian Studios",
+    "logo": "images/larian_studios.jpg",
+    "url": "https://larian.com/",
+    "pending": false,
+    "created_at": "2024-01-01T12:00:00Z"
+  }
+},
+  {
+    "model": "publishers.Publisher",
+    "pk": 51,
+    "fields": {
+      "name": "ustwo games",
+      "logo": "images/ustwo_games.jpg",
+      "url": "https://ustwogames.co.uk/",
+      "pending": false,
+      "created_at": "2024-01-01T12:00:00Z"
+    }
+  },
+  {
+    "model": "publishers.Publisher",
+    "pk": 52,
+    "fields": {
+      "name": "Hello Games",
+      "logo": "images/hello_games.jpg",
+      "url": "https://hellogames.org/",
+      "pending": true,
+      "created_at": "2024-02-01T12:00:00Z"
+    }
+  },
+  {
+    "model": "publishers.Publisher",
+    "pk": 53,
+    "fields": {
+      "name": "thatgamecompany",
+      "logo": "images/that_game_company.png",
+      "url": "https://thatgamecompany.com/",
+      "pending": true,
+      "created_at": "2024-03-01T12:00:00Z"
+    }
+  },
+  
+  {
+    "model": "reports.Report",
+    "pk": 1,
+    "fields": {
+      "userId": 1,
+      "gameId": 2,
+      "postId": null,
+      "report_type": "INAPP",
+      "description": "This game contains inappropriate content.",
+      "created_at": "2025-12-01T12:00:00Z"
+    }
+  },
+  {
+    "model": "reports.Report",
+    "pk": 2,
+    "fields": {
+      "userId": 2,
+      "gameId": null,
+      "postId": 2,
+      "report_type": "INACC",
+      "description": "This post contains inaccurate information.",
+      "created_at": "2025-12-01T12:05:00Z"
+    }
+  },
+  {
+    "model": "reports.Report",
+    "pk": 3,
+    "fields": {
+      "userId": 3,
+      "gameId": 1,
+      "postId": null,
+      "report_type": "MALIC",
+      "description": "The game contains malicious content.",
+      "created_at": "2025-12-01T12:10:00Z"
+    }
+  },
+  {
+    "model": "reports.Report",
+    "pk": 4,
+    "fields": {
+      "userId": 1,
+      "gameId": null,
+      "postId": 2,
+      "report_type": "SPAM",
+      "description": "This post is spam.",
+      "created_at": "2025-12-01T12:15:00Z"
+    }
+  },
+  {
+    "model": "reports.Report",
+    "pk": 5,
+    "fields": {
+      "userId": 2,
+      "gameId": 4,
+      "postId": null,
+      "report_type": "OTHR",
+      "description": "Other issues with this game.",
+      "created_at": "2025-12-01T12:20:00Z"
+    }
+  }
+
+
+
+
 ]
+
+  
+
+  

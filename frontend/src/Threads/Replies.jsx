@@ -7,6 +7,8 @@ import comment_img from '../assets/chat.png';
 import report_img from '../assets/red-flag.png';
 import profile_img from '../assets/user.png';
 
+import { Link } from 'react-router-dom';
+
 function Replies() {
     const { reviewId } = useParams();
     const [thread, setThread] = useState([]);
@@ -133,12 +135,16 @@ function Replies() {
                             hour: '2-digit',
                             minute: '2-digit'
                             })}</p>
-                            <button className={styles.rpVoteBtn} onClick={(e) => upVote(item.id, idx, true)} style={item.userVote != null ? item.userVote ? {color:"#00a6ff"} : null : null}>&uarr;</button>
-                            <h3 className={styles.voteCount}>{item.votes}</h3>
-                            <button className={styles.rpVoteBtn} onClick={(e) => downVote(item.id, idx, true)} style={item.userVote != null ? item.userVote ? null : {color: "red"} : null}>&darr;</button>
+                            <button data-testid='upvote-btn' className={styles.rpUpVoteBtn} onClick={(e) => upVote(item.id, idx, true)} style={item.userVote != null ? item.userVote ? {color:"#00a6ff"} : null : null}>&uarr;</button>
+                            <h3 data-testid='vote-count' className={styles.voteCount}>{item.votes}</h3>
+                            <button data-testid='downvote-btn' className={styles.rpDownVoteBtn} onClick={(e) => downVote(item.id, idx, true)} style={item.userVote != null ? item.userVote ? null : {color: "red"} : null}>&darr;</button>
                             <img className={styles.rpCommentImg} src={comment_img}></img>
                             <p>{item.comments}</p>
-                            <img className={styles.reportImg} src={report_img}></img>
+                            <Link to={`/report/post/${item.id}`} onClick={(e) => { e.stopPropagation(); }}>
+                                <button className={styles.reportFlag} >
+                                    <img className={styles.reportImg} src={report_img} alt="Report Post"></img>
+                                </button>
+                            </Link>
                         </div>
             </div>
             </Fragment>
@@ -151,12 +157,11 @@ function Replies() {
             <Fragment key={idx}>
                 <div className={styles.vpBox}>
                     <div className={styles.votesBox}>
-                        <button className={styles.voteBtn} onClick={(e) => upVote(item.id, idx)} style={item.userVote != null ? item.userVote ? {color:"#00a6ff"} : null : null}>&uarr;</button>
+                        <button className={styles.upVoteBtn} onClick={(e) => upVote(item.id, idx)} style={item.userVote != null ? item.userVote ? {color:"#00a6ff"} : null : null}>&uarr;</button>
                         <h3 className={styles.voteCount}>{item.votes}</h3>
-                        <button className={styles.voteBtn} onClick={(e) => downVote(item.id, idx)} style={item.userVote != null ? item.userVote ? null : {color: "red"} : null}>&darr;</button>
+                        <button className={styles.downVoteBtn} onClick={(e) => downVote(item.id, idx)} style={item.userVote != null ? item.userVote ? null : {color: "red"} : null}>&darr;</button>
                     </div>
                     <div className={styles.postBox} onClick={() => navigate(`/replies/${item.id}`)}>
-                        <h2 className={styles.postTitle}>{item.title}</h2>
                         {/* profile picture */}
                         <div className={styles.postOwner}>
                             <h3 className={styles.postName}>{item.firstname} {item.surname}</h3>
@@ -174,7 +179,11 @@ function Replies() {
                             })}</p>
                             <img className={styles.commentImg} src={comment_img}></img>
                             <p>{item.comments}</p>
-                            <img className={styles.reportImg} src={report_img}></img>
+                            <Link to={`/report/post/${item.id}`} onClick={(e) => { e.stopPropagation(); }}>
+                                <button className={styles.reportFlag} >
+                                    <img className={styles.reportImg} src={report_img} alt="Report Post"></img>
+                                </button>
+                            </Link>
                         </div>
                     </div>
                 </div>
@@ -226,7 +235,7 @@ function Replies() {
             <div className={styles.createReply}>
                     <img className={styles.profileImg} src={profile_img}/>
                     <textarea className={styles.createReplyMessage} value={reply} placeholder="Create reply here..." onChange={replyChange}/>
-                    <button className={styles.createReplyBtn} onClick={submitReply}>Reply</button>
+                    <button data-testid='reply-btn' className={styles.createReplyBtn} onClick={submitReply}>Reply</button>
             </div>
             <hr className={styles.replyHr}/>
             </>) : <hr className={styles.replyHr}/>}

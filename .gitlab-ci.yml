@@ -1,0 +1,63 @@
+stages:
+  - build
+  - test-frontend
+  - test-backend
+
+workflow:
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+    - if: $CI_COMMIT_BRANCH == "main"
+    - if: $CI_COMMIT_BRANCH == "development"
+    - when: never
+
+variables:
+  MYSQL_DATABASE: $DB_NAME
+  MYSQL_ROOT_PASSWORD: $DB_PASSWORD
+
+default:
+  image: python:3.10
+  services:
+    - name: mysql:8.0
+      alias: mysql
+
+test-fronted:
+  image: node:22
+  stage: test-frontend
+  script:
+    - echo "opening frontend and installing packages..."
+    - cd frontend
+    - npm install
+    - echo "Running react tests..."
+    - npm test
+    - echo "Tests complete! Running Build..."
+    - npm run build
+    - echo "Build Successful!"
+  
+build-project:
+  stage: build
+  script:
+    - echo "Creating env..."
+    - python -m venv env
+    - echo "Created env. Activating env..."
+    - source env/bin/activate
+    - echo "Installing dependencies"
+    - pip install -e .
+    - echo "Dependencies installed. Deactivating..."
+    - deactivate
+    - echo "Build successful!"
+
+  artifacts:
+    paths:
+      - env/
+
+test-backend:
+  stage: test-backend
+  script:
+    - echo "activating virtual env..."
+    - source env/bin/activate
+    - cd team_10_application
+    - echo "Running tests..."
+    - python manage.py test
+    - echo "Django tests complete! Checking for common issues..."
+    - python manage.py check --fail-level=WARNING
+    - echo "Checks complete!"

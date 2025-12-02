@@ -1,31 +1,35 @@
 from django.contrib.auth import get_user_model
 from rest_framework import serializers
 from .models import CustomUser, AccessibilityTag, GenreTag
+from publishers.models import Publisher
+from publishers.serializer import PublisherSerializer
 
 User = get_user_model()
 
 class UserRegistrationSerializer(serializers.ModelSerializer):
 
     accessibility_tags = serializers.SlugRelatedField(
-        many=True, slug_field="name", queryset=AccessibilityTag.objects.all()
+        many=True, slug_field="name", queryset=AccessibilityTag.objects.all(), required = False
     )
 
     genre_tags = serializers.SlugRelatedField(
-        many=True, slug_field="name", queryset=GenreTag.objects.all()
+        many=True, slug_field="name", queryset=GenreTag.objects.all(), required = False
     )
+
+    publisher = PublisherSerializer(read_only=True, allow_null=True)
 
     password = serializers.CharField(write_only=True)
     class Meta:
         model=User
-        fields = ['email','username', 'first_name', 'last_name', 'date_of_birth', 'password', 'accessibility_tags', 'genre_tags']
+        fields = ['email','username', 'first_name', 'last_name', 'date_of_birth', 'password', 'accessibility_tags', 'genre_tags', 'publisher', 'is_moderator']
 
     def create(self, validated_data):
         user = User(
-            first_name=validated_data['first_name'],
-            last_name=validated_data['last_name'],
-            username=validated_data['username'],
-            email=validated_data['email'],
-            date_of_birth=validated_data['date_of_birth'],
+            first_name=validated_data.get('first_name', None),
+            last_name=validated_data.get('last_name', None),
+            username=validated_data.get('username', None),
+            email=validated_data.get('email', None),
+            date_of_birth=validated_data.get('date_of_birth', None),
         )
         user.set_password(validated_data['password'])
         user.save()
@@ -36,3 +40,12 @@ class UserEmailsSerializer(serializers.ModelSerializer):
         model = CustomUser
         fields = ('username', 'email')
         
+class AccessibilityTagSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = AccessibilityTag
+        fields = '__all__'  
+
+class GenreTagSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = GenreTag
+        fields = '__all__'

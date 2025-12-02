@@ -1,6 +1,7 @@
 from rest_framework.test import APITestCase
 from rest_framework import status
 from games.models import Game, GameClicks
+from publishers.models import Publisher
 from django.utils import timezone
 from django.urls import reverse
 from datetime import date
@@ -9,6 +10,9 @@ class DiscoverPageTests(APITestCase):
     @classmethod
     def setUpTestData(cls):
         cls.url = reverse('discover')
+        cls.publisher = Publisher.objects.create(name="Test Publisher", pending=False)
+
+        today = timezone.now().date()
 
         # Set up test games
         for i in range(12):
@@ -16,7 +20,7 @@ class DiscoverPageTests(APITestCase):
                 name=f"Game {i}",
                 description="A test game",
                 price=19.99,
-                publisher="Test Publisher",
+                publisher=cls.publisher,
                 # Increment release date for variety
                 release_date=date(2024, 1, 1) + timezone.timedelta(days=i), 
                 trending=False,
@@ -27,7 +31,7 @@ class DiscoverPageTests(APITestCase):
         for i in range(6):
             GameClicks.objects.create(
                 gameId=Game.objects.get(name=f"Game {i}"),
-                date=date(2025, 11, 20),
+                date=today - timezone.timedelta(days=3),
                 clicks=20
             )
 
@@ -35,7 +39,7 @@ class DiscoverPageTests(APITestCase):
         for i in range(6):
             GameClicks.objects.create(
                 gameId=Game.objects.get(name=f"Game {i}"),
-                date=date(2025, 11, 21),
+                date=today - timezone.timedelta(days=2),
                 clicks=30
             )
 
@@ -43,7 +47,7 @@ class DiscoverPageTests(APITestCase):
         for i in range(6):
             GameClicks.objects.create(
                 gameId=Game.objects.get(name=f"Game {i}"),
-                date=date(2025, 11, 22),
+                date=today - timezone.timedelta(days=1),
                 clicks=50
             )
         
@@ -51,7 +55,7 @@ class DiscoverPageTests(APITestCase):
         for i in range(6):
             GameClicks.objects.create(
                 gameId=Game.objects.get(name=f"Game {i}"),
-                date=date(2025, 11, 23),
+                date=today,
                 clicks=40
             )
 
@@ -79,13 +83,14 @@ class DiscoverPageTests(APITestCase):
             self.assertGreaterEqual(click.date, today - timezone.timedelta(days=3))
 
     def test_on_sale_games_display(self):
+        self.publisher = Publisher.objects.create(name="Test Publisher", pending=False)
         # Create on-sale games
         for i in range(3):
             Game.objects.create(
                 name=f"On Sale Game {i}",
                 description="A test on-sale game",
                 price=9.99,
-                publisher="Test Publisher",
+                publisher=self.publisher,
                 release_date=date(2024, 1, 1),
                 trending=False,
                 on_sale=True

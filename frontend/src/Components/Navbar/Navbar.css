@@ -37,7 +37,7 @@
     cursor: pointer;
 }
 
-.discover-link:hover, .browse-link:hover, .community-link:hover, .about-link:hover {
+.discover-link:hover, .browse-link:hover, .community-link:hover, .about-link:hover, .admin-link:hover {
     color: #60cdff;
 }
 
@@ -148,6 +148,10 @@
   color: #60cdff;
 }
 
+.account:hover {
+  cursor: pointer;
+}
+
 .email {
   color: rgb(255, 255, 255, 0.784);
   font-size: 15px;
@@ -164,7 +168,7 @@
   padding-top: 15px;
 }
 
-hr {
+.line {
   border: none;
   border-top: 1px solid rgba(255, 255, 255, 0.24);
   padding-left: 15px;
@@ -175,7 +179,8 @@ hr {
 .favourite-games {
   display: inline-flex;       
   margin: 10px 20px;
-  align-items: center;  
+  align-items: center; 
+  text-decoration: none; 
   cursor: pointer;
   color: rgb(255, 255, 255, 0.784);
   font-size: 15px;
@@ -196,5 +201,19 @@ hr {
 .favourite-games:hover, .games-icon:hover {
   cursor: pointer;
   color: white;
+}
+
+.avatar-img {
+  width: 170%;
+  height: 170%;
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+.avatar-img-profile img {
+  width: 80%;
+  height: 30%;
+  object-fit: cover;
+  border-radius: 50px;
 }
 

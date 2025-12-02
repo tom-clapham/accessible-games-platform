@@ -10,10 +10,56 @@ from django.http import JsonResponse
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.decorators import permission_classes
 
-class PostsListCreate(generics.ListCreateAPIView): # This is a class based view
-    queryset = Posts.objects.all()
-    serializer_class = PostsSerializer
-
+@api_view()
+@permission_classes([IsAuthenticated])
+def getUserPosts(request):
+    user = request.user
+    print(user)
+    if user.is_authenticated:
+        posts = (
+            Posts.objects
+            .select_related('userId')
+            .filter(parent=None, userId=user)
+            .annotate(
+                userVote=Subquery(
+                    ReviewsVotes.objects
+                    .filter(postId=OuterRef('pk'), userId=user.id)
+                    .values('vote')[:1]
+                )
+            )
+            .values(
+                'id',
+                'title',
+                'message',
+                'votes',
+                'comments',
+                'date',
+                'gameId',
+                'userVote',
+                firstname=F('userId__first_name'),
+                surname=F('userId__last_name'),
+                username=F('userId__username')
+            )
+        )
+        return Response({"parents": posts})
+    posts = (
+        Posts.objects
+        .select_related('userId')
+        .filter(parent=None)
+        .values(
+            'id',
+            'title',
+            'message',
+            'votes',
+            'comments',
+            'date',
+            'gameId',
+            firstname=F('userId__first_name'),
+            surname=F('userId__last_name'),
+            username=F('userId__username')
+        )
+    )
+    return Response({"parents": posts})
 
 @api_view()
 @permission_classes([AllowAny])
@@ -116,7 +162,6 @@ def getThread(request, post_id):
                 )
                 .values(
                     'id',
-                    'title',
                     'message',
                     'votes',
                     'comments',
@@ -156,7 +201,6 @@ def getThread(request, post_id):
         .filter(parent=post_id)
         .values(
             'id',
-            'title',
             'message',
             'votes',
             'comments',

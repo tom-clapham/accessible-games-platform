@@ -1,0 +1,155 @@
+body {
+    font-size: 16px;
+    color: white;
+    background-color: #121212;
+}
+
+.mod-title h1,
+.mod-welcome-title h2,
+.mod-latest-reports-title h2 {
+    margin: 0; 
+    padding: 0;
+}
+
+.mod-container {
+    display: grid;
+    grid-template-columns: 1fr 3fr;    
+    width: 80%;
+    margin: 0 auto;
+    /* border: red solid 2px; */
+}
+
+.mod-title {
+    font-size: 24px;
+    font-weight: 800;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    /* border: green solid 2px; */
+    grid-column: 1 / 3;
+    text-align: left;
+}
+
+.mod-welcome-title{
+    font-size: 20px;
+    font-weight: 600;
+    padding-bottom: 30px;
+    /* border: yellow solid 2px; */
+    grid-column: 1 / 3;
+}
+
+
+.mod-side-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 20px;
+    /* border: blue solid 2px; */
+    grid-column: 1 / 2;
+    align-items: center;
+    justify-items: center;
+}
+
+.mod-latest-reports {
+    /* border: orange solid 2px; */
+    grid-column: 2 / 3;
+    display: flex;
+    flex-direction: column;
+}
+
+.mod-latest-reports-title {
+    font-size: 18px;
+    font-weight: 800;
+    margin-bottom: 10px;
+    /* border: purple solid 2px; */
+    padding-left: 10px;
+}
+
+.mod-latest-reports-content {
+    width: 100%;
+    /* border: red solid 2px; */
+    padding-left: 10px;
+}
+
+.mod-button {
+    width: 180px;
+    height: 180px;
+    background-color: cornflowerblue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    border: white solid 2px;
+    font-size: 18px;
+    text-decoration: none;;
+}
+
+.mod-button-link {
+  text-decoration: none;
+}
+
+.mod-back-button {
+    width: auto;
+    color: black;
+    font-weight: bold;
+    text-decoration: none;;
+}
+
+.mod-back-button-link {
+  text-decoration: none;
+  color: black;
+}
+
+.mod-button:hover {
+    filter: brightness(1.1);
+    cursor: pointer;
+}
+
+.reviewed {
+    background-color: rgb(171, 250, 197);
+    opacity: 1;
+    padding: 5px;
+    color: rgb(11, 68, 58);
+    text-align: center;
+    font-weight: bold;
+}
+
+.pending {
+    background-color: rgb(255, 191, 108);
+    opacity: 1;
+    padding: 5px;
+    color: rgb(55, 13, 9);
+    text-align: center;
+    font-weight: bold;
+}
+
+.mod-reports-title {
+    padding-bottom: 100px;
+}
+
+.text-field {
+    resize: none;
+    font-size: large;
+    width: 100%;
+    height: 150px;
+}
+
+.popup-dialog {
+    width: 50vw;
+}
+
+.pc-image-box {
+  width: 80px;
+  height: 80px;
+  overflow: hidden;
+  margin-right: 15px;
+}
+
+.submit-message-success {
+    align-self: flex-end;
+    color: rgb(166, 255, 166);
+}
+
+.submit-message-error {
+    align-self: flex-end;
+    color: rgb(255, 148, 148);
+}

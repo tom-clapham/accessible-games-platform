@@ -26,6 +26,8 @@ class ThreadsTestSetup(TestCase):
         self.genreTag_action = GenreTag.objects.create(
             name = 'Action'
         )
+
+        self.publisher = Publisher.objects.create(name="Rovio Entertainment Oyj", pending=False)
         
         self.user_1.set_password('password123')
         self.user_1.accessibility_tags.set([self.accessibilityTag_deaf])
@@ -42,7 +44,7 @@ class ThreadsTestSetup(TestCase):
             name = 'Angry Birds',
             description = r'Play the world\'s best bird flinging, pig popping game!\nUse the slingshot to fling birds at the piggies\' towers and bring them crashing down – all to save the precious eggs.\nNew to the world of Angry Birds? Angry Birds 2 is the best way to get to know all of the iconic characters and experience the fun gameplay that has captured the hearts (and spare time) of millions of players.',
             price = 1.99,
-            publisher = 'Rovio Entertainment Oyj',
+            publisher = self.publisher,
             release_date = datetime.datetime.now(),
             thumbnail_url = 'https://platform.theverge.com/wp-content/uploads/sites/2/chorus/uploads/chorus_asset/file/24449543/1NxZI0CgUFzQsrgXe69J88Hn6D8_wMok.jpg?quality=90&strip=all&crop=7.8125,0,84.375,100',
             trailer_url = 'https://youtu.be/bNNzRyd1xz0?si=Mcj5G33quJawlgVR',

@@ -119,26 +119,11 @@
     justify-content: center;
 }
 
-.email {
-    padding: 8px;
-    border-radius: 10px;
-    border: 1px solid black;
-    cursor: pointer;
-    margin-right: 14px;
-    margin-left: 14px;
-    margin-bottom: 15px;
-}
-
 .emailLabel {
     margin-top: 10px;
     margin-bottom: 5px;
     font-size: 13px;
     margin-left: 14px;
-}
-
-.or {
-    margin-bottom: 5px;
-    font-size: 13px;
 }
 
 .emailI, .userI, .passwordI {

@@ -15,7 +15,7 @@ const Login = () => {
 
   const handleLogin = async () => {
       const success = await login_user(username, password);
-      console.log(success)
+      console.log("success:" + success)
       if(!success){
         setError(true);
       }
@@ -25,6 +25,12 @@ const Login = () => {
     setError(false);
     window.close()
     window.opener.location.href = "/register/step_1/";
+  }
+
+  const handleRegisterPublisher = () => {
+    setError(false);
+    window.close()
+    window.opener.location.href = "/publisher/register/";
   }
 
   const forgot = (value) => {
@@ -40,7 +46,7 @@ const Login = () => {
         <div className={styles.form}>
             <img src={Logo} alt='Platform Logo' className={styles.logo}></img>
             <h1 className={styles.signin}>Sign in</h1>
-            <h3 className={styles.subtext}>Use your platform account</h3>
+            <h3 className={styles.subtext}>Use your user or publisher account</h3>
             <div className={styles.elements}>
                 <label className={styles.label}>Username</label>
                 <input className={styles.input} onChange={(e) => setUsername(e.target.value)} value={username} placeholder="Enter your username"></input>
@@ -56,6 +62,7 @@ const Login = () => {
             )}
             <button className={styles.button} type="submit">Sign in</button>
             <h3 className={styles.create}>New to us? <a onClick={handleRegister}>Create an account</a></h3> 
+            <h3 className={styles.create}>Want to become a publisher? <a onClick={handleRegisterPublisher}>Create an account</a></h3> 
         </div>
     </form>
   )

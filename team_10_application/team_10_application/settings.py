@@ -52,6 +52,9 @@ INSTALLED_APPS = [
     'users',
     'threads',
     'games',
+    'reports',
+    'publishers',
+    'moderator',
 ]
 
 AUTH_USER_MODEL = 'users.CustomUser'
@@ -74,13 +77,6 @@ AUTHENTICATION_BACKENDS = [
     'allauth.account.auth_backends.AuthenticationBackend',
 ]
 
-SOCIALACCOUNT_PROVIDERS = {
-    'google': {
-        'SCOPE': ['profile', 'email'],
-        'AUTH_PARAMS': {'access_type': 'online'},
-    }
-}
-
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'users.authentication.CookiesJWTAuthentication',
@@ -101,6 +97,9 @@ AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
     'allauth.account.auth_backends.AuthenticationBackend',
 ]
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 SOCIALACCOUNT_PROVIDERS = {
     'google': {
@@ -144,9 +143,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': os.environ.get('DB_NAME'),
-        'USER':os.environ.get('USER'),
-        'PASSWORD':os.environ.get('PASSWORD'),
-        'HOST':'localhost',
+        'USER':os.environ.get('DB_USERNAME'),
+        'PASSWORD':os.environ.get('DB_PASSWORD'),
+        'HOST':os.environ.get('HOST'),
         'PORT':'3306',
         'OPTIONS': {"charset": "utf8mb4"}
     }

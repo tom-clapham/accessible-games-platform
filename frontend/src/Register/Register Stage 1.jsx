@@ -12,7 +12,7 @@ const Register_Stage_1 = () => {
   const [year, setYear] = useState("");
   const [isDate, setIsDate] = useState("");
   const checkDate = async (year, month, day) => {
-    const d = new Date(year, month, day);
+    const d = new Date(year - 1, month, day);
     const isoString = d.toISOString();        
     const dateOnly = isoString.split('T')[0]; 
     const success = await step_1(dateOnly);

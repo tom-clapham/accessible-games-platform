@@ -17,6 +17,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.http import HttpResponse
+from django.conf import settings
+from django.conf.urls.static import static
 
 def home(request):
     return HttpResponse("Welcome to the backend!")
@@ -26,4 +28,10 @@ urlpatterns = [
     path('app/users/', include('users.urls')),
     path('app/threads/', include('threads.urls')),
     path('app/games/', include('games.urls')),
+    path('app/reports/', include('reports.urls')),
+    path('app/publishers/', include('publishers.urls')),
+    path('app/moderator/', include('moderator.urls')),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

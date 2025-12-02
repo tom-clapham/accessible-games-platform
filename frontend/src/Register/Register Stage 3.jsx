@@ -9,7 +9,6 @@ const Register_Stage_3 = () => {
   const [isPassword, setIsPassword] = useState("");
 
   const nav = useNavigate();
-  const [email, setEmail] = useState("");
   const [first, setFirst] = useState("");
   const [last, setLast] = useState("");
   const [user, setUser] = useState("");
@@ -73,14 +72,12 @@ const Register_Stage_3 = () => {
             </div>
             )}
             {isPassword=="false" &&(<div className={styles.error}><IoIosWarning className={styles.warning}/>
-                <div>
-                    Your password must contain:
+                    Your passwords must:
                     <ul>
-                        <li>A minimum of 8 characters</li>
+                        <li>Match one another</li>
                         <li>At least 2 numbers</li>
-                        <li>One upper case character</li>
+                        <li>A minimum of 8 characters</li>
                     </ul>
-                </div>
             </div>
             )}
             <button className={styles.continue3} type="submit">Continue</button>

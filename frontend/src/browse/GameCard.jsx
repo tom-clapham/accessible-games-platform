@@ -1,6 +1,16 @@
 import { Link } from "react-router-dom";
 import "./browse_page_styles.css";
 
+function formatPrice(price) {
+  if (price === "0" || price === "0.00") {
+    price = 'Free';
+  } else {
+    price = `£${price}`
+  }
+
+  return price;
+}
+
 function GameCard({ id, name, price, image_url }) {
     return (
         <div className="game-card">
@@ -16,7 +26,7 @@ function GameCard({ id, name, price, image_url }) {
                 {name}
             </div>
             <div className="game-price">
-                £{price}
+                {formatPrice(price)}
             </div>
         </div>
     )
