@@ -325,6 +325,10 @@ function VoiceController() {
                 navigateToReviews(urlPath)
                 break;
 
+            case INTENTS.OPEN_PUBLISHERS:
+                navigate("/publishers")
+                break;
+
             case INTENTS.OPEN_GAME:
                 if (params.gameName) {
                     openGameByName(params.gameName, navigate);
