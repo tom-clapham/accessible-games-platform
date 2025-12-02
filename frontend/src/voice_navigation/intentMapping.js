@@ -4,6 +4,7 @@ export const INTENTS = {
     OPEN_LOGIN: "OPEN_LOGIN",
     OPEN_REGISTER: "OPEN_REGISTER",
     OPEN_REVIEWS: "OPEN_REVIEWS",
+    OPEN_PUBLISHERS: "OPEN_PUBLISHERS",
     OPEN_GAME: "OPEN_GAME",
     GO_BACK: "GO_BACK",
 
@@ -43,6 +44,10 @@ export const INTENT_PATTERNS = [
     {
         intent: INTENTS.OPEN_REVIEWS,
         keywords: ["reviews", "go to reviews", "show reviews"]
+    },
+    {
+        intent: INTENTS.OPEN_PUBLISHERS,
+        keywords: ["publishers", "go to publishers"]
     },
     {
         intent: INTENTS.OPEN_GAME,
