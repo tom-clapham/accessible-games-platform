@@ -62,14 +62,14 @@ class ModeratorReviewReportView(APIView):
         serializer = ReportSerializer(report)
         return Response(serializer.data)
     
-@permission_classes([AllowAny])
+@permission_classes([IsModerator])
 class PublisherRequestsView(APIView):
     def get(self, request):
         publisher_requests = Publisher.objects.order_by('-created_at')
         serializer = PublisherSerializer(publisher_requests, many=True)
         return Response(serializer.data)
     
-@permission_classes([AllowAny])
+@permission_classes([IsModerator])
 class ModeratorReviewPublisherRequestsView(APIView):
     def post(self, request, publisher_id):
         publisher = Publisher.objects.get(id=publisher_id)
