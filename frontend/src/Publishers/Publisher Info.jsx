@@ -87,7 +87,7 @@ const Publisher_Info = () => {
       <div className='pi-button-container'>
 
           {!user ? (
-              <p>Loading user...</p>
+              <p>No user information available.</p>
           ) : user.publisher && user.publisher.pending === false ? (
               <button className="pi-add-game" onClick={handleAddGame}>Add game</button>
           ) : (
