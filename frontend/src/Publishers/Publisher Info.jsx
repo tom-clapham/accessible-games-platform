@@ -82,8 +82,10 @@ const Publisher_Info = () => {
           ))}
       </div>
       <div className='pi-button-container'>
-          {user && user.publisher ? <button className="pi-add-game" onClick={handleAddGame}>Add game</button>
-          :  <button className="pi-add-game" style={{ backgroundColor: 'grey' }} disabled>Add game</button>}
+
+          {user && user.publisher && user.publisher.pending === 0 
+          ? <button className="pi-add-game" onClick={handleAddGame}>Add game</button>
+          :  <p>You are currently awaiting moderator approval... Check back soon.</p>}
           {/* {successAdd &&(<div className="gp-success">Successfully added to favourites.</div>)}
           {successRemove &&(<div className="gp-success">Successfully removed from favourites.</div>)} */}
       </div>
