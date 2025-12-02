@@ -5,9 +5,19 @@ import '@testing-library/jest-dom';
 import axios from 'axios';
 
 import PublisherNewGame from './PublisherNewGame.jsx';
+import { user_info } from '../endpoints/api.js';
+
+// Mock user_info
+vi.mock("../endpoints/api.js", () => ({
+    user_info: vi.fn(),
+}));
 
 describe("Publishing new game component", () => {
+    beforeEach(() => {
+        vi.clearAllMocks();
+    })
     test("should show the preview page onClick of the preview button", async () => {
+        user_info.mockResolvedValue({'publisher': {'name': 'TestPublisher'}})
         render(<PublisherNewGame/>)
         // screen.debug()
         const preview_btn = screen.getByTestId('preview-btn')
@@ -17,6 +27,7 @@ describe("Publishing new game component", () => {
     });
 
     test("Should show the edit page onClick of the edit button", async () => {
+        user_info.mockResolvedValue({'publisher': {'name': 'TestPublisher'}})
         render(<PublisherNewGame/>)
         // screen.debug()
         const preview_btn = screen.getByTestId('preview-btn')
@@ -28,6 +39,7 @@ describe("Publishing new game component", () => {
     });
 
     test("Should show input game name in the preview page", async () => {
+        user_info.mockResolvedValue({'publisher': {'name': 'TestPublisher'}})
         render(<PublisherNewGame/>);
         // screen.debug();
         await userEvent.type(screen.getByPlaceholderText("Name..."), "New Test Game!");
@@ -38,11 +50,13 @@ describe("Publishing new game component", () => {
     });
 
     test("Empty game name input should be invalid", () => {
+        user_info.mockResolvedValue({'publisher': {'name': 'TestPublisher'}})
         render(<PublisherNewGame/>);
         expect(screen.getByPlaceholderText('Name...')).not.toBeValid()
     });
 
     test("Should show input description in the preview page", async () => {
+        user_info.mockResolvedValue({'publisher': {'name': 'TestPublisher'}})
         render(<PublisherNewGame/>);
         // screen.debug();
         await userEvent.type(screen.getByPlaceholderText("Description..."), "Test description!");
@@ -53,17 +67,20 @@ describe("Publishing new game component", () => {
     });
 
     test("Empty description input should be invalid", () => {
+        user_info.mockResolvedValue({'publisher': {'name': 'TestPublisher'}})
         render(<PublisherNewGame/>);
         expect(screen.getByPlaceholderText('Description...')).not.toBeValid()
     });
 
     test("Empty price should show as free in preview", async () => {
+        user_info.mockResolvedValue({'publisher': {'name': 'TestPublisher'}})
         render(<PublisherNewGame/>);
         await userEvent.click(screen.getByTestId('preview-btn'));
         expect(document.getElementsByClassName('gp-price').item(0).textContent).toBe("Free");
     });
 
     test("Price of 0 should show as free in preview", async () => {
+        user_info.mockResolvedValue({'publisher': {'name': 'TestPublisher'}})
         render(<PublisherNewGame/>);
         await userEvent.type(screen.getByPlaceholderText("Price in GBP..."), "0");
         await userEvent.click(screen.getByTestId('preview-btn'));
@@ -71,6 +88,7 @@ describe("Publishing new game component", () => {
     });
 
     test("Price of 0.00 should show as free in preview", async () => {
+        user_info.mockResolvedValue({'publisher': {'name': 'TestPublisher'}})
         render(<PublisherNewGame/>);
         await userEvent.type(screen.getByPlaceholderText("Price in GBP..."), "0.00");
         await userEvent.click(screen.getByTestId('preview-btn'));
@@ -78,6 +96,7 @@ describe("Publishing new game component", () => {
     });
     
     test("Non-zero price should show as £<price> in preview", async () => {
+        user_info.mockResolvedValue({'publisher': {'name': 'TestPublisher'}})
         render(<PublisherNewGame/>);
         await userEvent.type(screen.getByPlaceholderText("Price in GBP..."), "49.99");
         await userEvent.click(screen.getByTestId('preview-btn'));
@@ -85,6 +104,7 @@ describe("Publishing new game component", () => {
     });
 
     test("Input release date should be reflected in preview", async () => {
+        user_info.mockResolvedValue({'publisher': {'name': 'TestPublisher'}})
         render(<PublisherNewGame/>);
         screen.getByTestId
         await userEvent.type(screen.getByTestId("release-date"), "2024-11-11");
@@ -93,29 +113,34 @@ describe("Publishing new game component", () => {
     });
 
     test("Empty release date input should be invalid", () => {
+        user_info.mockResolvedValue({'publisher': {'name': 'TestPublisher'}})
         render(<PublisherNewGame/>);
         expect(screen.getByTestId("release-date")).not.toBeValid();
     });
 
     test("Non URL trailer inputs should not be valid", async () => {
+        user_info.mockResolvedValue({'publisher': {'name': 'TestPublisher'}})
         render(<PublisherNewGame/>);
         await userEvent.type(screen.getByTestId("trailer-url"), "Non url input")
         expect(screen.getByTestId("trailer-url")).not.toBeValid();
     });
 
     test("URL trailer inputs should be valid", async () => {
+        user_info.mockResolvedValue({'publisher': {'name': 'TestPublisher'}})
         render(<PublisherNewGame/>);
         await userEvent.type(screen.getByTestId("trailer-url"), "https://www.google.com");
         expect(screen.getByTestId("trailer-url")).toBeValid();
     });
 
     test("Non URL thumbnail inputs should not be valid", async () => {
+        user_info.mockResolvedValue({'publisher': {'name': 'TestPublisher'}})
         render(<PublisherNewGame/>);
         await userEvent.type(screen.getByTestId("thumbnail-url"), "Non url input")
         expect(screen.getByTestId("thumbnail-url")).not.toBeValid();
     });
 
     test("URL thumbnail inputs should be valid", async () => {
+        user_info.mockResolvedValue({'publisher': {'name': 'TestPublisher'}})
         render(<PublisherNewGame/>);
         await userEvent.type(screen.getByTestId("thumbnail-url"), "https://www.google.com");
         expect(screen.getByTestId("thumbnail-url")).toBeValid();
@@ -130,6 +155,7 @@ describe("Handling the API calls for publishing new games", () => {
     });
 
     test("Testing successful post request when required form information is filled", async () => {
+        user_info.mockResolvedValue({'publisher': {'name': 'TestPublisher'}})
         render(<PublisherNewGame/>);
         axios.post.mockResolvedValue({ status:201 })
         await userEvent.type(screen.getByPlaceholderText("Name..."), "New Test Game!")
@@ -146,6 +172,9 @@ describe("Handling the API calls for publishing new games", () => {
             "genreTags": [],
             "platformTags": [],
             "price": "49.99",
+            "publisher": {
+            "name": "TestPublisher",
+            },
             "releaseDate": "2024-11-11",
             "thumbnailUrl": "https://www.google.com",
             "trailerUrl": "https://www.google.com"
@@ -154,6 +183,7 @@ describe("Handling the API calls for publishing new games", () => {
     });
 
     test("Testing unsuccessful post request when price is not in a valid format", async () => {
+        user_info.mockResolvedValue({'publisher': {'name': 'TestPublisher'}})
         render(<PublisherNewGame/>);
         axios.post.mockRejectedValue({
             status: 400,
@@ -177,6 +207,9 @@ describe("Handling the API calls for publishing new games", () => {
             "genreTags": [],
             "platformTags": [],
             "price": "49.109",
+            "publisher": {
+            "name": "TestPublisher",
+            },
             "releaseDate": "2024-11-11",
             "thumbnailUrl": "https://www.google.com",
             "trailerUrl": "https://www.google.com"
@@ -186,6 +219,7 @@ describe("Handling the API calls for publishing new games", () => {
     });
 
     test("Test that all input fields are cleared on successful post request", async () => {
+        user_info.mockResolvedValue({'publisher': {'name': 'TestPublisher'}})
         render(<PublisherNewGame/>);
         // Test that post was successful
         axios.post.mockResolvedValue({ status:201 })
@@ -203,6 +237,9 @@ describe("Handling the API calls for publishing new games", () => {
             "genreTags": [],
             "platformTags": [],
             "price": "49.99",
+            "publisher": {
+            "name": "TestPublisher",
+            },
             "releaseDate": "2024-11-11",
             "thumbnailUrl": "https://www.google.com",
             "trailerUrl": "https://www.google.com"
@@ -218,6 +255,7 @@ describe("Handling the API calls for publishing new games", () => {
     });
 
     test("Test inputs aren't cleared on unsuccessful post request", async () => {
+        user_info.mockResolvedValue({'publisher': {'name': 'TestPublisher'}})
         render(<PublisherNewGame/>);
         axios.post.mockRejectedValue({
             status: 400,
@@ -241,6 +279,9 @@ describe("Handling the API calls for publishing new games", () => {
             "genreTags": [],
             "platformTags": [],
             "price": "49.109",
+            "publisher": {
+            "name": "TestPublisher",
+            },
             "releaseDate": "2024-11-11",
             "thumbnailUrl": "https://www.google.com",
             "trailerUrl": "https://www.google.com"
