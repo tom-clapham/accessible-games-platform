@@ -31,6 +31,7 @@ function HelpPage() {
                     commands={[
                         { name: "Open Discover Page", example: "Go to discover page"},
                         { name: "Open Browse Page", example: "Go to browse page"},
+                        { name: "Open Publishers Page", example: "Go to publishers page"},
                         { name: "Open Login Page", example: "Go to login page"},
                         { name: "Open Register Page", example: "Go to register page"},
                         { name: "Open About Us Page", example: "Go to about us page"},
